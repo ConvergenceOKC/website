@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@googlemaps/markerclusterer": "^2.5.3",
+    "@libsql/client": "^0.14.0",
     "@payloadcms/db-sqlite": "3.9.0",
     "@payloadcms/live-preview-react": "3.9.0",
     "@payloadcms/next": "3.9.0",
