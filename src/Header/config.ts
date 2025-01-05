@@ -1,6 +1,7 @@
 import type { GlobalConfig } from 'payload'
 
 import { link } from '@/fields/link'
+
 import { revalidateHeader } from './hooks/revalidateHeader'
 
 export const Header: GlobalConfig = {
@@ -9,16 +10,6 @@ export const Header: GlobalConfig = {
     read: () => true,
   },
   fields: [
-    {
-      name: 'logo',
-      label: 'Logo',
-      type: 'upload',
-      relationTo: 'media',
-      filterOptions: {
-        mimeType: { contains: 'image' },
-      },
-      required: true,
-    },
     {
       name: 'navItems',
       type: 'array',

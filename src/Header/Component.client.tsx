@@ -1,11 +1,12 @@
 'use client'
-import { useHeaderTheme } from '@/providers/HeaderTheme'
+
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
-import { Media } from '@/components/Media'
 
+import { Logo } from '@/components/Logo/Logo'
 import type { Header } from '@/payload-types'
+import { useHeaderTheme } from '@/providers/HeaderTheme'
 
 import { HeaderNav } from './Nav'
 
@@ -30,14 +31,19 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   }, [headerTheme])
 
   return (
-    <header className="w-full bg-[#09745f]">
-      <div className="container relative z-20" {...(theme ? { 'data-theme': theme } : {})}>
-        <div className="py-6 flex justify-between">
-          <Link href="/">
-            <Media priority resource={data.logo} imgClassName="w-32" />
-          </Link>
-          <HeaderNav data={data} />
-        </div>
+    <header
+      className="container relative z-20"
+      {...(theme ? { 'data-theme': theme } : {})}
+    >
+      <div className="flex justify-between py-8">
+        <Link href="/">
+          <Logo
+            loading="eager"
+            priority="high"
+            className="invert dark:invert-0"
+          />
+        </Link>
+        <HeaderNav data={data} />
       </div>
     </header>
   )
