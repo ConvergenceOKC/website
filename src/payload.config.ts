@@ -61,18 +61,18 @@ export default buildConfig({
   },
   // This config helps us configure global or default features that the other editors can inherit
   editor: defaultLexical,
-  db: sqliteAdapter({
-    client: {
-      url: process.env.DATABASE_URI || '',
-      authToken: process.env.DATABASE_AUTH_TOKEN || '',
-    },
-  }),
+  db: vercelPostgresAdapter(),
   collections: [Pages, Posts, Media, Categories, Users, HouseChurches],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer, Socials],
   plugins: [
     ...plugins,
-    // storage-adapter-placeholder
+    vercelBlobStorage({
+      collections: {
+        media: true,
+      },
+      token: process.env.BLOB_READ_WRITE_TOKEN || '',
+    }),
   ],
   secret: process.env.PAYLOAD_SECRET,
   sharp,
