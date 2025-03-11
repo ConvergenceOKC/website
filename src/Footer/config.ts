@@ -1,14 +1,23 @@
-import type { GlobalConfig } from 'payload'
+import type { GlobalConfig } from 'payload';
 
-import { link } from '@/fields/link'
-import { revalidateFooter } from './hooks/revalidateFooter'
+import { authenticated } from '@/access/authenticated';
+import { link } from '@/fields/link';
+
+import { revalidateFooter } from './hooks/revalidateFooter';
 
 export const Footer: GlobalConfig = {
   slug: 'footer',
   access: {
     read: () => true,
+    update: authenticated,
   },
   fields: [
+    {
+      name: 'logo',
+      type: 'upload',
+      relationTo: 'media',
+      required: false,
+    },
     {
       name: 'navItems',
       type: 'array',
@@ -29,4 +38,4 @@ export const Footer: GlobalConfig = {
   hooks: {
     afterChange: [revalidateFooter],
   },
-}
+};

@@ -11,6 +11,7 @@
   h6 {
     font-size: auto;
     font-weight: auto;
+    font-family: var(--font-serif);
   }
 
   :root {
@@ -89,7 +90,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground min-h-[100vh] flex flex-col;
+    @apply flex min-h-[100vh] flex-col bg-background text-foreground;
   }
 }
 

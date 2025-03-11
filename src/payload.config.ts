@@ -1,26 +1,26 @@
-// storage-adapter-import-placeholder
-import { sqliteAdapter } from '@payloadcms/db-sqlite'
-// sharp-import
-import path from 'path'
-import { buildConfig } from 'payload'
-import sharp from 'sharp'
-import { fileURLToPath } from 'url'
+import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres';
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob';
+import path from 'path';
+import { buildConfig } from 'payload';
+import sharp from 'sharp';
+import { fileURLToPath } from 'url';
 
-import { defaultLexical } from '@/fields/defaultLexical'
+import { defaultLexical } from '@/fields/defaultLexical';
 
-import { Footer } from './Footer/config'
-import { Header } from './Header/config'
-import { Categories } from './collections/Categories'
-import { HouseChurches } from './collections/HouseChurches'
-import { Media } from './collections/Media'
-import { Pages } from './collections/Pages'
-import { Posts } from './collections/Posts'
-import { Users } from './collections/Users'
-import { plugins } from './plugins'
-import { getServerSideURL } from './utilities/getURL'
+import { Footer } from './Footer/config';
+import { Header } from './Header/config';
+import { Socials } from './Socials/config';
+import { Categories } from './collections/Categories';
+import { HouseChurches } from './collections/HouseChurches';
+import { Media } from './collections/Media';
+import { Pages } from './collections/Pages';
+import { Posts } from './collections/Posts';
+import { Users } from './collections/Users';
+import { plugins } from './plugins';
+import { getServerSideURL } from './utilities/getURL';
 
-const filename = fileURLToPath(import.meta.url)
-const dirname = path.dirname(filename)
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
 
 export default buildConfig({
   admin: {
@@ -69,7 +69,7 @@ export default buildConfig({
   }),
   collections: [Pages, Posts, Media, Categories, Users, HouseChurches],
   cors: [getServerSideURL()].filter(Boolean),
-  globals: [Header, Footer],
+  globals: [Header, Footer, Socials],
   plugins: [
     ...plugins,
     // storage-adapter-placeholder
@@ -79,4 +79,4 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-})
+});

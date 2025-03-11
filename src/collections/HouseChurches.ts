@@ -1,7 +1,9 @@
-import { CollectionConfig } from 'payload'
+import { CollectionConfig } from 'payload';
 
-import { anyone } from '@/access/anyone'
-import { authenticated } from '@/access/authenticated'
+import { anyone } from '@/access/anyone';
+import { authenticated } from '@/access/authenticated';
+
+import { revalidateDelete, revalidateMap } from './hooks/revalidateMap';
 
 export const HouseChurches: CollectionConfig = {
   slug: 'house-churches',
@@ -19,6 +21,7 @@ export const HouseChurches: CollectionConfig = {
     useAsTitle: 'name',
     defaultColumns: [
       'name',
+      'language',
       'locationDescription',
       'facilitator',
       'time',
@@ -91,4 +94,8 @@ export const HouseChurches: CollectionConfig = {
       defaultValue: -97.45800992201534,
     },
   ],
-}
+  hooks: {
+    afterChange: [revalidateMap],
+    afterDelete: [revalidateDelete],
+  },
+};

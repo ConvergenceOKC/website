@@ -1,15 +1,31 @@
-import type { GlobalConfig } from 'payload'
+import type { GlobalConfig } from 'payload';
 
-import { link } from '@/fields/link'
+import { authenticated } from '@/access/authenticated';
+import { link } from '@/fields/link';
 
-import { revalidateHeader } from './hooks/revalidateHeader'
+import { revalidateHeader } from './hooks/revalidateHeader';
 
 export const Header: GlobalConfig = {
   slug: 'header',
   access: {
     read: () => true,
+    update: authenticated,
   },
   fields: [
+    {
+      name: 'logo-light',
+      label: 'Logo (Light)',
+      type: 'upload',
+      relationTo: 'media',
+      required: false,
+    },
+    {
+      name: 'logo-dark',
+      label: 'Logo (Dark)',
+      type: 'upload',
+      relationTo: 'media',
+      required: false,
+    },
     {
       name: 'navItems',
       type: 'array',
@@ -30,4 +46,4 @@ export const Header: GlobalConfig = {
   hooks: {
     afterChange: [revalidateHeader],
   },
-}
+};
