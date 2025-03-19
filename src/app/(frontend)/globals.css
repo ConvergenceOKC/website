@@ -15,8 +15,15 @@
   }
 
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --cream: 39 63% 90%;
+    --deep-green: 69 18% 23%;
+    --taupe: 31 22% 55%;
+    --orange: 33 74% 54%;
+    --charcoal: 45 13% 18%;
+    --bright-white: 39 63% 98%;
+
+    --background: var(--cream);
+    --foreground: var(--deep-green);
 
     --card: 240 5% 96%;
     --card-foreground: 222.2 84% 4.9%;
@@ -24,17 +31,17 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: var(--orange);
+    --primary-foreground: var(--bright-white);
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: var(--taupe);
+    --secondary-foreground: var(--cream);
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: var(--charcoal);
+    --muted-foreground: var(--cream);
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: var(--orange);
+    --accent-foreground: var(--bright-white);
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -50,9 +57,10 @@
     --error: 10 100% 86%;
   }
 
-  [data-theme='dark'] {
-    --background: 0 0% 0%;
-    --foreground: 210 40% 98%;
+  /* Dark mode to be added later */
+  /* [data-theme='dark'] {
+    --background: var(--charcoal);
+    --foreground: var(--cream);
 
     --card: 0 0% 4%;
     --card-foreground: 210 40% 98%;
@@ -82,7 +90,7 @@
     --success: 196 100% 14%;
     --warning: 34 51% 25%;
     --error: 10 39% 43%;
-  }
+  } */
 }
 
 @layer base {

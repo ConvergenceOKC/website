@@ -1,7 +1,7 @@
 import type { GlobalConfig } from 'payload';
 
 import { authenticated } from '@/access/authenticated';
-import { link } from '@/fields/link';
+import { LinkAppearances, appearanceOptions, link } from '@/fields/link';
 
 import { revalidateHeader } from './hooks/revalidateHeader';
 
@@ -13,15 +13,15 @@ export const Header: GlobalConfig = {
   },
   fields: [
     {
-      name: 'logo-light',
-      label: 'Logo (Light)',
+      name: 'logoLight',
+      label: 'Logo (Light Header)',
       type: 'upload',
       relationTo: 'media',
       required: false,
     },
     {
-      name: 'logo-dark',
-      label: 'Logo (Dark)',
+      name: 'logoDark',
+      label: 'Logo (Dark Header)',
       type: 'upload',
       relationTo: 'media',
       required: false,
@@ -31,7 +31,9 @@ export const Header: GlobalConfig = {
       type: 'array',
       fields: [
         link({
-          appearances: false,
+          appearances: Object.values(appearanceOptions).map(
+            (appearance) => appearance.value,
+          ) as LinkAppearances[],
         }),
       ],
       maxRows: 6,

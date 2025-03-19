@@ -56,6 +56,12 @@ const config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       colors: {
+        cream: 'hsl(var(--cream))',
+        'deep-green': 'hsl(var(--deep-green))',
+        taupe: 'hsl(var(--taupe))',
+        orange: 'hsl(var(--orange))',
+        charcoal: 'hsl(var(--charcoal))',
+        'bright-white': 'hsl(var(--bright-white))',
         accent: {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',

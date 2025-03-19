@@ -187,7 +187,7 @@ export interface Page {
             /**
              * Choose how the link should be rendered.
              */
-            appearance?: ('default' | 'outline') | null;
+            appearance?: ('default' | 'outline' | 'destructive' | 'link' | 'ghost' | 'secondary') | null;
           };
           id?: string | null;
         }[]
@@ -427,7 +427,7 @@ export interface CallToActionBlock {
           /**
            * Choose how the link should be rendered.
            */
-          appearance?: ('default' | 'outline') | null;
+          appearance?: ('default' | 'outline' | 'destructive' | 'link' | 'ghost' | 'secondary') | null;
         };
         id?: string | null;
       }[]
@@ -477,7 +477,7 @@ export interface ContentBlock {
           /**
            * Choose how the link should be rendered.
            */
-          appearance?: ('default' | 'outline') | null;
+          appearance?: ('link' | 'secondary' | 'ghost' | 'destructive' | 'default' | 'outline') | null;
         };
         id?: string | null;
       }[]
@@ -1574,8 +1574,8 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Header {
   id: number;
-  'logo-light'?: (number | null) | Media;
-  'logo-dark'?: (number | null) | Media;
+  logoLight?: (number | null) | Media;
+  logoDark?: (number | null) | Media;
   navItems?:
     | {
         link: {
@@ -1592,6 +1592,10 @@ export interface Header {
               } | null);
           url?: string | null;
           label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline' | 'destructive' | 'link' | 'ghost' | 'secondary') | null;
         };
         id?: string | null;
       }[]
@@ -1650,8 +1654,8 @@ export interface Social {
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
-  'logo-light'?: T;
-  'logo-dark'?: T;
+  logoLight?: T;
+  logoDark?: T;
   navItems?:
     | T
     | {
@@ -1663,6 +1667,7 @@ export interface HeaderSelect<T extends boolean = true> {
               reference?: T;
               url?: T;
               label?: T;
+              appearance?: T;
             };
         id?: T;
       };
