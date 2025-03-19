@@ -16,7 +16,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
             key={i}
             {...link}
             appearance={link.appearance}
-            className="text-inherit"
+            className="text-xs text-inherit"
           />
         );
       })}

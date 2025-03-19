@@ -143,10 +143,19 @@ const config = {
           css: [
             {
               h1: {
-                fontSize: '3.5rem',
+                fontSize: '9.875rem',
               },
               h2: {
+                fontSize: '4rem',
+              },
+              h3: {
+                fontSize: '2.25rem',
+              },
+              h4: {
                 fontSize: '1.5rem',
+              },
+              h5: {
+                fontSize: '1.25rem',
               },
             },
           ],

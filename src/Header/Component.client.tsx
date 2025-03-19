@@ -34,10 +34,10 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   return (
     <header
       className={cn(
-        'fixed z-10 w-full',
+        'fixed z-10 w-full text-xs uppercase',
         theme === 'light'
-          ? 'from-cream/100 to-cream/0 !text-deep-green bg-gradient-to-b from-50%'
-          : 'from-deep-green/100 to-deep-green/0 !text-cream bg-gradient-to-b from-50%',
+          ? 'bg-gradient-to-b from-cream/100 from-50% to-cream/0 !text-deep-green'
+          : 'bg-gradient-to-b from-deep-green/100 from-50% to-deep-green/0 !text-cream',
       )}
       {...(theme ? { 'data-theme': theme } : {})}
     >
