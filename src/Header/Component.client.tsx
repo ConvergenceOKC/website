@@ -34,15 +34,15 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   return (
     <header
       className={cn(
-        'fixed z-10 w-full text-xs uppercase',
+        'subtitle fixed z-10 w-full',
         theme === 'light'
-          ? 'bg-gradient-to-b from-cream/100 from-50% to-cream/0 !text-deep-green'
-          : 'bg-gradient-to-b from-deep-green/100 from-50% to-deep-green/0 !text-cream',
+          ? 'bg-gradient-to-b from-cream/100 from-50% to-cream/0 text-deep-green'
+          : 'bg-gradient-to-b from-charcoal/100 from-50% to-charcoal/0 text-cream',
       )}
       {...(theme ? { 'data-theme': theme } : {})}
     >
-      <div className="container">
-        <div className="flex justify-between pb-12 pt-4">
+      <div className="container h-[7.375rem] pt-4">
+        <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link href="/">
               <Media

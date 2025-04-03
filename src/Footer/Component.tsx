@@ -26,11 +26,11 @@ export async function Footer() {
           </Link>
           <div className="flex flex-col">
             <h6>{footerData.leftColumn.title}</h6>
-            <nav className="flex flex-col gap-2">
+            <nav className="flex flex-col gap-1">
               {leftNavItems.map(({ link }, i) => {
                 return (
                   <CMSLink
-                    className="text-xs uppercase text-taupe"
+                    className="!subtitle text-taupe"
                     appearance={'link'}
                     key={i}
                     {...link}
@@ -41,11 +41,11 @@ export async function Footer() {
           </div>
           <div className="flex flex-col">
             <h6>{footerData.middleColumn.title}</h6>
-            <nav className="flex flex-col gap-2">
+            <nav className="flex flex-col gap-1">
               {middleNavItems.map(({ link }, i) => {
                 return (
                   <CMSLink
-                    className="text-xs uppercase text-taupe"
+                    className="!subtitle text-taupe"
                     appearance={'link'}
                     key={i}
                     {...link}
@@ -56,11 +56,11 @@ export async function Footer() {
           </div>
           <div className="flex flex-col">
             <h6>{footerData.rightColumn.title}</h6>
-            <nav className="flex flex-col gap-2">
+            <nav className="flex flex-col gap-1">
               {rightNavItems.map(({ link }, i) => {
                 return (
                   <CMSLink
-                    className="text-xs uppercase text-taupe"
+                    className="!subtitle text-taupe"
                     appearance={'link'}
                     key={i}
                     {...link}
@@ -79,7 +79,7 @@ export async function Footer() {
           )}
         </div>
       </div>
-      <div className="relative py-16 text-xs text-taupe before:pointer-events-none before:absolute before:inset-0 before:w-full before:border-t-[1px] before:border-taupe before:mix-blend-overlay">
+      <div className="subtitle relative py-16 text-taupe before:pointer-events-none before:absolute before:inset-0 before:w-full before:border-t-[1px] before:border-taupe before:mix-blend-overlay">
         <div className="container grid grid-cols-5 items-start gap-8">
           <div className="col-span-2">
             <p>
