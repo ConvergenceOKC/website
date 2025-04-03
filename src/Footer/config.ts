@@ -1,6 +1,7 @@
 import type { GlobalConfig } from 'payload';
 
 import { authenticated } from '@/access/authenticated';
+import { FormBlock } from '@/blocks/Form/config';
 import { link } from '@/fields/link';
 
 import { revalidateFooter } from './hooks/revalidateFooter';
@@ -19,20 +20,108 @@ export const Footer: GlobalConfig = {
       required: false,
     },
     {
-      name: 'navItems',
-      type: 'array',
+      name: 'leftColumn',
+      type: 'group',
       fields: [
-        link({
-          appearances: false,
-        }),
-      ],
-      maxRows: 6,
-      admin: {
-        initCollapsed: true,
-        components: {
-          RowLabel: '@/Footer/RowLabel#RowLabel',
+        {
+          name: 'title',
+          type: 'text',
+          required: true,
         },
-      },
+        {
+          name: 'navItems',
+          type: 'array',
+          fields: [
+            link({
+              appearances: false,
+            }),
+          ],
+          maxRows: 5,
+          admin: {
+            initCollapsed: true,
+            components: {
+              RowLabel: '@/Footer/RowLabel#RowLabel',
+            },
+          },
+        },
+      ],
+    },
+    {
+      name: 'middleColumn',
+      type: 'group',
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'navItems',
+          type: 'array',
+          fields: [
+            link({
+              appearances: false,
+            }),
+          ],
+          maxRows: 5,
+          admin: {
+            initCollapsed: true,
+            components: {
+              RowLabel: '@/Footer/RowLabel#RowLabel',
+            },
+          },
+        },
+      ],
+    },
+    {
+      name: 'rightColumn',
+      type: 'group',
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'navItems',
+          type: 'array',
+          fields: [
+            link({
+              appearances: false,
+            }),
+          ],
+          maxRows: 5,
+          admin: {
+            initCollapsed: true,
+            components: {
+              RowLabel: '@/Footer/RowLabel#RowLabel',
+            },
+          },
+        },
+      ],
+    },
+    {
+      name: 'form',
+      type: 'blocks',
+      blocks: [FormBlock],
+      maxRows: 1,
+      required: false,
+    },
+    {
+      name: 'privacyPolicy',
+      label: 'Privacy Policy Page',
+      type: 'relationship',
+      relationTo: 'pages',
+      hasMany: false,
+      required: false,
+    },
+    {
+      name: 'terms',
+      label: 'Terms & Conditions Page',
+      type: 'relationship',
+      relationTo: 'pages',
+      hasMany: false,
+      required: false,
     },
   ],
   hooks: {

@@ -7,13 +7,14 @@ import { revalidateSocials } from './hooks/revalidateSocials';
 
 export const Socials: GlobalConfig = {
   slug: 'socials',
+
   access: {
     read: () => true,
     update: authenticated,
   },
   fields: [
     {
-      name: 'socials',
+      name: 'platforms',
       label: 'Social Platforms',
       type: 'array',
       fields: [
@@ -25,6 +26,12 @@ export const Socials: GlobalConfig = {
         {
           name: 'url',
           type: 'text',
+          required: true,
+        },
+        {
+          name: 'icon',
+          type: 'upload',
+          relationTo: 'media',
           required: true,
         },
       ],

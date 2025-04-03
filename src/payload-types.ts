@@ -54,6 +54,7 @@ export type SupportedTimezones =
   | 'Asia/Singapore'
   | 'Asia/Tokyo'
   | 'Asia/Seoul'
+  | 'Australia/Brisbane'
   | 'Australia/Sydney'
   | 'Pacific/Guam'
   | 'Pacific/Noumea'
@@ -628,6 +629,7 @@ export interface Form {
             label?: string | null;
             width?: number | null;
             defaultValue?: string | null;
+            placeholder?: string | null;
             options?:
               | {
                   label: string;
@@ -1396,6 +1398,7 @@ export interface FormsSelect<T extends boolean = true> {
               label?: T;
               width?: T;
               defaultValue?: T;
+              placeholder?: T;
               options?:
                 | T
                 | {
@@ -1610,26 +1613,78 @@ export interface Header {
 export interface Footer {
   id: number;
   logo?: (number | null) | Media;
-  navItems?:
-    | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: number | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-        };
-        id?: string | null;
-      }[]
-    | null;
+  leftColumn: {
+    title: string;
+    navItems?:
+      | {
+          link: {
+            type?: ('reference' | 'custom') | null;
+            newTab?: boolean | null;
+            reference?:
+              | ({
+                  relationTo: 'pages';
+                  value: number | Page;
+                } | null)
+              | ({
+                  relationTo: 'posts';
+                  value: number | Post;
+                } | null);
+            url?: string | null;
+            label: string;
+          };
+          id?: string | null;
+        }[]
+      | null;
+  };
+  middleColumn: {
+    title: string;
+    navItems?:
+      | {
+          link: {
+            type?: ('reference' | 'custom') | null;
+            newTab?: boolean | null;
+            reference?:
+              | ({
+                  relationTo: 'pages';
+                  value: number | Page;
+                } | null)
+              | ({
+                  relationTo: 'posts';
+                  value: number | Post;
+                } | null);
+            url?: string | null;
+            label: string;
+          };
+          id?: string | null;
+        }[]
+      | null;
+  };
+  rightColumn: {
+    title: string;
+    navItems?:
+      | {
+          link: {
+            type?: ('reference' | 'custom') | null;
+            newTab?: boolean | null;
+            reference?:
+              | ({
+                  relationTo: 'pages';
+                  value: number | Page;
+                } | null)
+              | ({
+                  relationTo: 'posts';
+                  value: number | Post;
+                } | null);
+            url?: string | null;
+            label: string;
+          };
+          id?: string | null;
+        }[]
+      | null;
+  };
+  form?: FormBlock[] | null;
+  privacyPolicy?: (number | null) | Page;
+  terms?: (number | null) | Page;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1639,10 +1694,11 @@ export interface Footer {
  */
 export interface Social {
   id: number;
-  socials?:
+  platforms?:
     | {
         platform: string;
         url: string;
+        icon: number | Media;
         id?: string | null;
       }[]
     | null;
@@ -1681,20 +1737,70 @@ export interface HeaderSelect<T extends boolean = true> {
  */
 export interface FooterSelect<T extends boolean = true> {
   logo?: T;
-  navItems?:
+  leftColumn?:
     | T
     | {
-        link?:
+        title?: T;
+        navItems?:
           | T
           | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                    label?: T;
+                  };
+              id?: T;
             };
-        id?: T;
       };
+  middleColumn?:
+    | T
+    | {
+        title?: T;
+        navItems?:
+          | T
+          | {
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                    label?: T;
+                  };
+              id?: T;
+            };
+      };
+  rightColumn?:
+    | T
+    | {
+        title?: T;
+        navItems?:
+          | T
+          | {
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                    label?: T;
+                  };
+              id?: T;
+            };
+      };
+  form?:
+    | T
+    | {
+        formBlock?: T | FormBlockSelect<T>;
+      };
+  privacyPolicy?: T;
+  terms?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -1704,11 +1810,12 @@ export interface FooterSelect<T extends boolean = true> {
  * via the `definition` "socials_select".
  */
 export interface SocialsSelect<T extends boolean = true> {
-  socials?:
+  platforms?:
     | T
     | {
         platform?: T;
         url?: T;
+        icon?: T;
         id?: T;
       };
   updatedAt?: T;
