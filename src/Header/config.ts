@@ -31,9 +31,14 @@ export const Header: GlobalConfig = {
       type: 'array',
       fields: [
         link({
-          appearances: Object.values(appearanceOptions).map(
-            (appearance) => appearance.value,
-          ) as LinkAppearances[],
+          appearances: [
+            'link',
+            'secondary',
+            'ghost',
+            'destructive',
+            'default',
+            'outline',
+          ],
         }),
       ],
       maxRows: 6,

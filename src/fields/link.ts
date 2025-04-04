@@ -161,6 +161,7 @@ export const link: LinkType = ({
       },
       defaultValue: 'link',
       options: appearanceOptionsToUse,
+      enumName: 'link_appearance',
     });
   }
 
