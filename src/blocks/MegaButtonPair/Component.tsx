@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import type { BigButtonPair as BigButtonPairProps } from 'src/payload-types';
+import type { MegaButtonPair as MegaButtonPairProps } from 'src/payload-types';
 
 import { CMSLink } from '@/components/Link';
 import { Media } from '@/components/Media';
@@ -8,9 +8,9 @@ import { cn } from '@/utilities/ui';
 
 type Props = {
   className?: string;
-} & BigButtonPairProps;
+} & MegaButtonPairProps;
 
-export const BigButtonPairBlock: React.FC<Props> = ({
+export const MegaButtonPairBlock: React.FC<Props> = ({
   className,
   leftButton,
   rightButton,

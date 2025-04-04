@@ -14,7 +14,7 @@ export const LinkedTextBlock: React.FC<Props> = ({
   return (
     <div
       className={cn(
-        'subtitle mx-auto mb-16 flex w-full gap-2 text-cream',
+        'subtitle mx-auto mb-24 flex w-full gap-2 text-cream',
         className,
       )}
     >

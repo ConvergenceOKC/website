@@ -2,8 +2,8 @@ import { Block } from 'payload';
 
 import { link } from '@/fields/link';
 
-export const BigButtonPair: Block = {
-  slug: 'bigButtonPair',
+export const MegaButtonPair: Block = {
+  slug: 'megaButtonPair',
   fields: [
     {
       type: 'tabs',
@@ -63,5 +63,5 @@ export const BigButtonPair: Block = {
       ],
     },
   ],
-  interfaceName: 'BigButtonPair',
+  interfaceName: 'MegaButtonPair',
 };

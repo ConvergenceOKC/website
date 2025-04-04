@@ -21,7 +21,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
 
   return (
     <div className="relative flex pt-[7.375rem] text-cream" data-theme="dark">
-      <div className="container relative my-16 flex">
+      <div className="container relative mb-24 mt-20 flex">
         <div className="">
           {richText && (
             <RichText

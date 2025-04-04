@@ -1857,9 +1857,9 @@ export interface LinkedText {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "BigButtonPair".
+ * via the `definition` "MegaButtonPair".
  */
-export interface BigButtonPair {
+export interface MegaButtonPair {
   leftButton: {
     icon: number | Media;
     title: string;
@@ -1900,7 +1900,7 @@ export interface BigButtonPair {
   };
   id?: string | null;
   blockName?: string | null;
-  blockType: 'bigButtonPair';
+  blockType: 'megaButtonPair';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

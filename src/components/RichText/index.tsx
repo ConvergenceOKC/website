@@ -11,17 +11,17 @@ import {
 } from '@payloadcms/richtext-lexical/react';
 
 import { BannerBlock } from '@/blocks/Banner/Component';
-import { BigButtonPairBlock } from '@/blocks/BigButtonPair/Component';
 import { CallToActionBlock } from '@/blocks/CallToAction/Component';
 import { CodeBlock, CodeBlockProps } from '@/blocks/Code/Component';
 import { LinkedTextBlock } from '@/blocks/LinkedText/Component';
 import { MediaBlock } from '@/blocks/MediaBlock/Component';
+import { MegaButtonPairBlock } from '@/blocks/MegaButtonPair/Component';
 import type {
   BannerBlock as BannerBlockProps,
-  BigButtonPair as BigButtonPairProps,
   CallToActionBlock as CTABlockProps,
   LinkedText as LinkedTextProps,
   MediaBlock as MediaBlockProps,
+  MegaButtonPair as MegaButtonPairProps,
 } from '@/payload-types';
 import { cn } from '@/utilities/ui';
 
@@ -33,7 +33,7 @@ type NodeTypes =
       | BannerBlockProps
       | CodeBlockProps
       | LinkedTextProps
-      | BigButtonPairProps
+      | MegaButtonPairProps
     >;
 
 const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
@@ -57,7 +57,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
     code: ({ node }) => <CodeBlock className="col-start-2" {...node.fields} />,
     cta: ({ node }) => <CallToActionBlock {...node.fields} />,
     linkedText: ({ node }) => <LinkedTextBlock {...node.fields} />,
-    bigButtonPair: ({ node }) => <BigButtonPairBlock {...node.fields} />,
+    megaButtonPair: ({ node }) => <MegaButtonPairBlock {...node.fields} />,
   },
 });
 
