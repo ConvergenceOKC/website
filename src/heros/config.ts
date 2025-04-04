@@ -1,13 +1,16 @@
-import type { Field } from 'payload'
-
 import {
+  BlocksFeature,
   FixedToolbarFeature,
   HeadingFeature,
   InlineToolbarFeature,
   lexicalEditor,
-} from '@payloadcms/richtext-lexical'
+} from '@payloadcms/richtext-lexical';
+import type { Field } from 'payload';
 
-import { linkGroup } from '@/fields/linkGroup'
+import { Banner } from '@/blocks/Banner/config';
+import { BigButtonPair } from '@/blocks/BigButtonPair/config';
+import { LinkedText } from '@/blocks/LinkedText/config';
+import { linkGroup } from '@/fields/linkGroup';
 
 export const hero: Field = {
   name: 'hero',
@@ -48,7 +51,10 @@ export const hero: Field = {
             HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
             FixedToolbarFeature(),
             InlineToolbarFeature(),
-          ]
+            BlocksFeature({
+              blocks: [LinkedText, BigButtonPair],
+            }),
+          ];
         },
       }),
       label: false,
@@ -62,11 +68,12 @@ export const hero: Field = {
       name: 'media',
       type: 'upload',
       admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+        condition: (_, { type } = {}) =>
+          ['highImpact', 'mediumImpact'].includes(type),
       },
       relationTo: 'media',
       required: true,
     },
   ],
   label: false,
-}
+};

@@ -1,4 +1,4 @@
-import { cn } from '@/utilities/cn'
+import { cn } from '@/utilities/ui';
 
 const MapPin = ({ className, icon }) => (
   <div
@@ -9,6 +9,6 @@ const MapPin = ({ className, icon }) => (
   >
     {icon}
   </div>
-)
+);
 
-export default MapPin
+export default MapPin;

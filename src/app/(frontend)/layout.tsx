@@ -3,7 +3,7 @@ import { DM_Sans, DM_Serif_Display } from 'next/font/google';
 import { draftMode } from 'next/headers';
 import React from 'react';
 
-import { cn } from 'src/utilities/cn';
+import { cn } from 'src/utilities/ui';
 
 import { Footer } from '@/Footer/Component';
 import { Header } from '@/Header/Component';

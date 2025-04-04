@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react';
 import { Media } from '@/components/Media';
 import type { Header } from '@/payload-types';
 import { useHeaderTheme } from '@/providers/HeaderTheme';
-import { cn } from '@/utilities/cn';
+import { cn } from '@/utilities/ui';
 
 import { HeaderNav } from './Nav';
 
