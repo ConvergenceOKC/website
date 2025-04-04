@@ -1,7 +1,7 @@
 {
   "name": "convergence",
   "version": "1.0.0",
-  "description": "Website template for Payload",
+  "description": "Convergence Church OKC Website",
   "license": "MIT",
   "type": "module",
   "scripts": {
@@ -19,7 +19,7 @@
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
   },
   "dependencies": {
-    "@payloadcms/db-vercel-postgres": "latest",
+    "@payloadcms/db-mongodb": "latest",
     "@payloadcms/live-preview-react": "latest",
     "@payloadcms/next": "latest",
     "@payloadcms/payload-cloud": "latest",

@@ -1,4 +1,4 @@
-import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres';
+import { mongooseAdapter } from '@payloadcms/db-mongodb';
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob';
 import path from 'path';
 import { buildConfig } from 'payload';
@@ -25,12 +25,7 @@ const dirname = path.dirname(filename);
 export default buildConfig({
   admin: {
     components: {
-      // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
-      // Feel free to delete this at any time. Simply remove the line below and the import `BeforeLogin` statement on line 15.
       beforeLogin: ['@/components/BeforeLogin'],
-      // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
-      // Feel free to delete this at any time. Simply remove the line below and the import `BeforeDashboard` statement on line 15.
-      beforeDashboard: ['@/components/BeforeDashboard'],
     },
     importMap: {
       baseDir: path.resolve(dirname),
@@ -61,7 +56,9 @@ export default buildConfig({
   },
   // This config helps us configure global or default features that the other editors can inherit
   editor: defaultLexical,
-  db: vercelPostgresAdapter(),
+  db: mongooseAdapter({
+    url: process.env.DATABASE_URL || '',
+  }),
   collections: [Pages, Posts, Media, Categories, Users, HouseChurches],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer, Socials],
