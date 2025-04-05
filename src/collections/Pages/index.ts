@@ -7,6 +7,7 @@ import {
 } from '@payloadcms/plugin-seo/fields';
 import type { CollectionConfig } from 'payload';
 
+import { SliderGallery } from '@/blocks/SliderGallery/config';
 import { slugField } from '@/fields/slug';
 import { hero } from '@/heros/config';
 
@@ -75,7 +76,14 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock],
+              blocks: [
+                CallToAction,
+                Content,
+                MediaBlock,
+                Archive,
+                FormBlock,
+                SliderGallery,
+              ],
               required: true,
               admin: {
                 initCollapsed: true,

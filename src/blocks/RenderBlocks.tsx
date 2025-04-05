@@ -7,12 +7,15 @@ import { FormBlock } from '@/blocks/Form/Component';
 import { MediaBlock } from '@/blocks/MediaBlock/Component';
 import type { Page } from '@/payload-types';
 
+import { SliderGalleryBlock } from './SliderGallery/Component';
+
 const blockComponents = {
   archive: ArchiveBlock,
   content: ContentBlock,
   cta: CallToActionBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
+  sliderGallery: SliderGalleryBlock,
 };
 
 export const RenderBlocks: React.FC<{
