@@ -444,7 +444,7 @@ export interface CallToActionBlock {
 export interface ContentBlock {
   columns?:
     | {
-        size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
+        size?: ('full' | 'half' | 'oneThird' | 'twoThirds' | 'oneFifth') | null;
         richText?: {
           root: {
             type: string;
@@ -1650,77 +1650,7 @@ export interface Header {
  */
 export interface Footer {
   id: string;
-  logo?: (string | null) | Media;
-  leftColumn: {
-    title: string;
-    navItems?:
-      | {
-          link: {
-            type?: ('reference' | 'custom') | null;
-            newTab?: boolean | null;
-            reference?:
-              | ({
-                  relationTo: 'pages';
-                  value: string | Page;
-                } | null)
-              | ({
-                  relationTo: 'posts';
-                  value: string | Post;
-                } | null);
-            url?: string | null;
-            label: string;
-          };
-          id?: string | null;
-        }[]
-      | null;
-  };
-  middleColumn: {
-    title: string;
-    navItems?:
-      | {
-          link: {
-            type?: ('reference' | 'custom') | null;
-            newTab?: boolean | null;
-            reference?:
-              | ({
-                  relationTo: 'pages';
-                  value: string | Page;
-                } | null)
-              | ({
-                  relationTo: 'posts';
-                  value: string | Post;
-                } | null);
-            url?: string | null;
-            label: string;
-          };
-          id?: string | null;
-        }[]
-      | null;
-  };
-  rightColumn: {
-    title: string;
-    navItems?:
-      | {
-          link: {
-            type?: ('reference' | 'custom') | null;
-            newTab?: boolean | null;
-            reference?:
-              | ({
-                  relationTo: 'pages';
-                  value: string | Page;
-                } | null)
-              | ({
-                  relationTo: 'posts';
-                  value: string | Post;
-                } | null);
-            url?: string | null;
-            label: string;
-          };
-          id?: string | null;
-        }[]
-      | null;
-  };
-  form?: FormBlock[] | null;
+  layout?: ContentBlock[] | null;
   privacyPolicy?: (string | null) | Page;
   terms?: (string | null) | Page;
   updatedAt?: string | null;
@@ -1774,68 +1704,10 @@ export interface HeaderSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
-  logo?: T;
-  leftColumn?:
+  layout?:
     | T
     | {
-        title?: T;
-        navItems?:
-          | T
-          | {
-              link?:
-                | T
-                | {
-                    type?: T;
-                    newTab?: T;
-                    reference?: T;
-                    url?: T;
-                    label?: T;
-                  };
-              id?: T;
-            };
-      };
-  middleColumn?:
-    | T
-    | {
-        title?: T;
-        navItems?:
-          | T
-          | {
-              link?:
-                | T
-                | {
-                    type?: T;
-                    newTab?: T;
-                    reference?: T;
-                    url?: T;
-                    label?: T;
-                  };
-              id?: T;
-            };
-      };
-  rightColumn?:
-    | T
-    | {
-        title?: T;
-        navItems?:
-          | T
-          | {
-              link?:
-                | T
-                | {
-                    type?: T;
-                    newTab?: T;
-                    reference?: T;
-                    url?: T;
-                    label?: T;
-                  };
-              id?: T;
-            };
-      };
-  form?:
-    | T
-    | {
-        formBlock?: T | FormBlockSelect<T>;
+        content?: T | ContentBlockSelect<T>;
       };
   privacyPolicy?: T;
   terms?: T;
@@ -1881,6 +1753,36 @@ export interface TaskSchedulePublish {
     user?: (string | null) | User;
   };
   output?: unknown;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LinkGroupBlock".
+ */
+export interface LinkGroupBlock {
+  title: string;
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: string | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: string | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'linkGroupBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

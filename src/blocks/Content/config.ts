@@ -1,4 +1,5 @@
 import {
+  BlocksFeature,
   FixedToolbarFeature,
   HeadingFeature,
   InlineToolbarFeature,
@@ -8,6 +9,10 @@ import type { Block, Field } from 'payload';
 
 import { link } from '@/fields/link';
 
+import { FormBlock } from '../Form/config';
+import { LinkGroupBlock } from '../LinkGroupBlock/config';
+import { MediaBlock } from '../MediaBlock/config';
+
 const columnFields: Field[] = [
   {
     name: 'size',
@@ -15,20 +20,24 @@ const columnFields: Field[] = [
     defaultValue: 'oneThird',
     options: [
       {
-        label: 'One Third',
-        value: 'oneThird',
+        label: 'Full',
+        value: 'full',
       },
       {
         label: 'Half',
         value: 'half',
       },
       {
+        label: 'One Third',
+        value: 'oneThird',
+      },
+      {
         label: 'Two Thirds',
         value: 'twoThirds',
       },
       {
-        label: 'Full',
-        value: 'full',
+        label: 'One Fifth',
+        value: 'oneFifth',
       },
     ],
   },
@@ -39,9 +48,14 @@ const columnFields: Field[] = [
       features: ({ rootFeatures }) => {
         return [
           ...rootFeatures,
-          HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
+          HeadingFeature({
+            enabledHeadingSizes: ['h2', 'h3', 'h4', 'h5', 'h6'],
+          }),
           FixedToolbarFeature(),
           InlineToolbarFeature(),
+          BlocksFeature({
+            blocks: [FormBlock, MediaBlock, LinkGroupBlock],
+          }),
         ];
       },
     }),

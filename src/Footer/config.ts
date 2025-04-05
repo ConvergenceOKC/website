@@ -1,8 +1,7 @@
 import type { GlobalConfig } from 'payload';
 
 import { authenticated } from '@/access/authenticated';
-import { FormBlock } from '@/blocks/Form/config';
-import { link } from '@/fields/link';
+import { Content } from '@/blocks/Content/config';
 
 import { revalidateFooter } from './hooks/revalidateFooter';
 
@@ -14,102 +13,13 @@ export const Footer: GlobalConfig = {
   },
   fields: [
     {
-      name: 'logo',
-      type: 'upload',
-      relationTo: 'media',
-      required: false,
-    },
-    {
-      name: 'leftColumn',
-      type: 'group',
-      fields: [
-        {
-          name: 'title',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'navItems',
-          type: 'array',
-          fields: [
-            link({
-              appearances: false,
-            }),
-          ],
-          maxRows: 5,
-          admin: {
-            initCollapsed: true,
-            components: {
-              RowLabel: '@/Footer/RowLabel#RowLabel',
-            },
-          },
-        },
-      ],
-    },
-    {
-      name: 'middleColumn',
-      type: 'group',
-      fields: [
-        {
-          name: 'title',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'navItems',
-          type: 'array',
-          fields: [
-            link({
-              appearances: false,
-            }),
-          ],
-          maxRows: 5,
-          admin: {
-            initCollapsed: true,
-            components: {
-              RowLabel: '@/Footer/RowLabel#RowLabel',
-            },
-          },
-        },
-      ],
-    },
-    {
-      name: 'rightColumn',
-      type: 'group',
-      fields: [
-        {
-          name: 'title',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'navItems',
-          type: 'array',
-          fields: [
-            link({
-              appearances: false,
-            }),
-          ],
-          maxRows: 5,
-          admin: {
-            initCollapsed: true,
-            components: {
-              RowLabel: '@/Footer/RowLabel#RowLabel',
-            },
-          },
-        },
-      ],
-    },
-    {
-      name: 'form',
+      name: 'layout',
       type: 'blocks',
-      blocks: [FormBlock],
-      maxRows: 1,
-      required: false,
+      blocks: [Content],
     },
     {
       name: 'privacyPolicy',
-      label: 'Privacy Policy Page',
+      label: 'Privacy Policy',
       type: 'relationship',
       relationTo: 'pages',
       hasMany: false,
@@ -117,7 +27,7 @@ export const Footer: GlobalConfig = {
     },
     {
       name: 'terms',
-      label: 'Terms & Conditions Page',
+      label: 'Terms & Conditions',
       type: 'relationship',
       relationTo: 'pages',
       hasMany: false,

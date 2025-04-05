@@ -2,23 +2,25 @@ import {
   DefaultNodeTypes,
   type DefaultTypedEditorState,
   SerializedBlockNode,
-  SerializedLinkNode,
 } from '@payloadcms/richtext-lexical';
 import {
   RichText as ConvertRichText,
   JSXConvertersFunction,
-  LinkJSXConverter,
 } from '@payloadcms/richtext-lexical/react';
 
 import { BannerBlock } from '@/blocks/Banner/Component';
 import { CallToActionBlock } from '@/blocks/CallToAction/Component';
 import { CodeBlock, CodeBlockProps } from '@/blocks/Code/Component';
+import { FormBlock } from '@/blocks/Form/Component';
+import { LinkGroupBlock } from '@/blocks/LinkGroupBlock/Component';
 import { LinkedTextBlock } from '@/blocks/LinkedText/Component';
 import { MediaBlock } from '@/blocks/MediaBlock/Component';
 import { MegaButtonPairBlock } from '@/blocks/MegaButtonPair/Component';
 import type {
   BannerBlock as BannerBlockProps,
   CallToActionBlock as CTABlockProps,
+  FormBlock as FormBlockProps,
+  LinkGroupBlock as LinkGroupBlockProps,
   LinkedText as LinkedTextProps,
   MediaBlock as MediaBlockProps,
   MegaButtonPair as MegaButtonPairProps,
@@ -34,6 +36,8 @@ type NodeTypes =
       | CodeBlockProps
       | LinkedTextProps
       | MegaButtonPairProps
+      | LinkGroupBlockProps
+      | FormBlockProps
     >;
 
 const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
@@ -58,6 +62,8 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
     cta: ({ node }) => <CallToActionBlock {...node.fields} />,
     linkedText: ({ node }) => <LinkedTextBlock {...node.fields} />,
     megaButtonPair: ({ node }) => <MegaButtonPairBlock {...node.fields} />,
+    linkGroupBlock: ({ node }) => <LinkGroupBlock {...node.fields} />,
+    formBlock: ({ node }) => <FormBlock {...node.fields} />,
   },
 });
 
@@ -77,7 +83,7 @@ export default function RichText(props: Props) {
         {
           container: enableGutter,
           'max-w-none': !enableGutter,
-          'prose mx-auto md:prose-md dark:prose-invert': enableProse,
+          'prose md:prose-md dark:prose-invert mx-auto': enableProse,
         },
         className,
       )}
