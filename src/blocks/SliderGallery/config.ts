@@ -31,6 +31,11 @@ export const SliderGallery: Block = {
       label: 'Images',
       minRows: 1,
       maxRows: 10,
+      admin: {
+        components: {
+          RowLabel: '@/blocks/SliderGallery/RowLabel#RowLabel',
+        },
+      },
       fields: [
         {
           name: 'image',
@@ -49,17 +54,10 @@ export const SliderGallery: Block = {
           label: 'Caption',
           required: false,
         },
-        // linkGroup({
-        //   appearances: false,
-        //   overrides: {
-        //     maxRows: 1,
-        //     fields: [
-        //       link({
-        //         disableLabel: true,
-        //       }),
-        //     ],
-        //   },
-        // }),
+        link({
+          appearances: false,
+          disableLabel: true,
+        }),
       ],
     },
   ],

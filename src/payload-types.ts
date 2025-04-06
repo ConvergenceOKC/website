@@ -743,6 +743,20 @@ export interface SliderGalleryBlock {
         image: string | Media;
         title: string;
         caption?: string | null;
+        link?: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: string | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: string | Post;
+              } | null);
+          url?: string | null;
+        };
         id?: string | null;
       }[]
     | null;
@@ -1174,6 +1188,14 @@ export interface SliderGalleryBlockSelect<T extends boolean = true> {
         image?: T;
         title?: T;
         caption?: T;
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+            };
         id?: T;
       };
   id?: T;

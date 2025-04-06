@@ -25,7 +25,7 @@ export const linkGroup: LinkGroupType = ({
     admin: {
       initCollapsed: true,
       components: {
-        RowLabel: '@/blocks/Content/RowLabel#RowLabel',
+        RowLabel: '@/blocks/LinkGroupBlock/RowLabel#RowLabel',
       },
     },
   };
