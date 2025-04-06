@@ -10,21 +10,19 @@ import { getCachedGlobal } from '@/utilities/getGlobals';
 export async function Footer() {
   const footerData = (await getCachedGlobal('footer', 1)()) as Footer;
   const blocks = footerData?.layout as ContentBlock[];
+  const copyright = footerData?.copyright as string;
   const privacy = footerData?.privacyPolicy as Page;
   const terms = footerData?.terms as Page;
   const socials = (await getCachedGlobal('socials', 1)()) as Social;
 
   return (
     <footer className="bg-deep-green text-cream bg-[url('/images/shapes-footer.svg')] bg-bottom bg-no-repeat">
-      <div className="container grid grid-cols-10 py-16">
-        <RenderBlocks blocks={blocks} />
-      </div>
+      <RenderBlocks blocks={blocks} />
       <div className="text-taupe before:border-taupe relative py-16 text-xs uppercase before:pointer-events-none before:absolute before:inset-0 before:w-full before:border-t-[1px] before:mix-blend-overlay">
         <div className="container grid grid-cols-5 items-start gap-8">
           <div className="col-span-2">
             <p>
-              &copy; {new Date().getFullYear()} Convergence OKC. All rights
-              reserved.
+              &copy; {new Date().getFullYear()} {copyright}
             </p>
           </div>
           <div className="col-span-2 flex gap-2">

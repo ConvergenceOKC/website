@@ -1650,7 +1650,8 @@ export interface Header {
  */
 export interface Footer {
   id: string;
-  layout?: ContentBlock[] | null;
+  layout: ContentBlock[];
+  copyright: string;
   privacyPolicy?: (string | null) | Page;
   terms?: (string | null) | Page;
   updatedAt?: string | null;
@@ -1709,6 +1710,7 @@ export interface FooterSelect<T extends boolean = true> {
     | {
         content?: T | ContentBlockSelect<T>;
       };
+  copyright?: T;
   privacyPolicy?: T;
   terms?: T;
   updatedAt?: T;

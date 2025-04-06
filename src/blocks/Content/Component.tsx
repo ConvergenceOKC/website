@@ -19,7 +19,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
 
   return (
     <div className="container my-16">
-      <div className="grid grid-cols-4 gap-x-16 gap-y-8 lg:grid-cols-12">
+      <div className="grid grid-cols-4 gap-x-16 gap-y-8 lg:grid-cols-10">
         {columns &&
           columns.length > 0 &&
           columns.map((col, index) => {

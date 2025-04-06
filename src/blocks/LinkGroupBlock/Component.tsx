@@ -12,14 +12,19 @@ export const LinkGroupBlock: React.FC<Props> = ({
   title,
   links,
 }) => {
-  console.log(links);
   return (
-    <div className={cn('flex flex-col', className)}>
+    <div className={cn('flex flex-col gap-1.5', className)}>
       <h6>{title}</h6>
       {links &&
-        links.length > 0 &&
-        links.map((link, i) => {
-          return <CMSLink key={i} appearance={'link'} {...link} />;
+        links.map(({ link }, i) => {
+          return (
+            <CMSLink
+              key={i}
+              className="text-taupe text-xs uppercase"
+              appearance={'link'}
+              {...link}
+            />
+          );
         })}
     </div>
   );

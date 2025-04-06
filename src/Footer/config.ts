@@ -16,6 +16,13 @@ export const Footer: GlobalConfig = {
       name: 'layout',
       type: 'blocks',
       blocks: [Content],
+      required: true,
+    },
+    {
+      name: 'copyright',
+      label: 'Copyright Message',
+      type: 'text',
+      required: true,
     },
     {
       name: 'privacyPolicy',
