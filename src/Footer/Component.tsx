@@ -18,8 +18,8 @@ export async function Footer() {
   return (
     <footer className="bg-deep-green text-cream bg-[url('/images/shapes-footer.svg')] bg-bottom bg-no-repeat">
       <RenderBlocks blocks={blocks} />
-      <div className="text-taupe before:border-taupe relative py-16 text-xs uppercase before:pointer-events-none before:absolute before:inset-0 before:w-full before:border-t-[1px] before:mix-blend-overlay">
-        <div className="container grid grid-cols-5 items-start gap-8">
+      <div className="text-taupe before:border-taupe relative py-12 text-xs before:pointer-events-none before:absolute before:inset-0 before:w-full before:border-t-[1px] before:mix-blend-overlay">
+        <div className="container grid grid-cols-5 items-center gap-8">
           <div className="col-span-2">
             <p>
               &copy; {new Date().getFullYear()} {copyright}
@@ -29,7 +29,7 @@ export async function Footer() {
             {privacy && (
               <CMSLink
                 appearance="link"
-                className="text-taupe text-xs font-normal uppercase"
+                className="text-taupe text-xs font-normal"
                 reference={{
                   relationTo: 'pages',
                   value: privacy,
@@ -42,7 +42,7 @@ export async function Footer() {
             {terms && (
               <CMSLink
                 appearance="link"
-                className="text-taupe text-xs uppercase"
+                className="text-taupe text-xs"
                 reference={{
                   relationTo: 'pages',
                   value: terms,
