@@ -1,6 +1,5 @@
 import { CMSLink } from '@/components/Link';
 import { Media } from '@/components/Media';
-import { Button } from '@/components/ui/button';
 import type { SliderGalleryBlock as SliderGalleryProps } from '@/payload-types';
 
 export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
