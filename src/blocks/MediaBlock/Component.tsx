@@ -1,6 +1,7 @@
 import type { StaticImageData } from 'next/image';
 import React from 'react';
 
+import { CMSLink } from '@/components/Link';
 import RichText from '@/components/RichText';
 import type { MediaBlock as MediaBlockProps } from '@/payload-types';
 import { cn } from '@/utilities/ui';
@@ -26,6 +27,8 @@ export const MediaBlock: React.FC<Props> = (props) => {
     media,
     staticImage,
     disableInnerContainer,
+    enableLink,
+    link,
   } = props;
 
   let caption;
@@ -41,7 +44,17 @@ export const MediaBlock: React.FC<Props> = (props) => {
         className,
       )}
     >
-      <Media imgClassName={imgClassName} resource={media} src={staticImage} />
+      {enableLink ? (
+        <CMSLink {...link}>
+          <Media
+            imgClassName={imgClassName}
+            resource={media}
+            src={staticImage}
+          />
+        </CMSLink>
+      ) : (
+        <Media imgClassName={imgClassName} resource={media} src={staticImage} />
+      )}
       {caption && (
         <div
           className={cn(

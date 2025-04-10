@@ -49,7 +49,7 @@ const columnFields: Field[] = [
         return [
           ...rootFeatures,
           HeadingFeature({
-            enabledHeadingSizes: ['h2', 'h3', 'h4', 'h5', 'h6'],
+            enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
           }),
           FixedToolbarFeature(),
           InlineToolbarFeature(),
