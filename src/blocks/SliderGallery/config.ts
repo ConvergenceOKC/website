@@ -1,9 +1,6 @@
 import { Block } from 'payload';
-import { block } from 'sharp';
 
 import { link } from '@/fields/link';
-
-import { linkGroup } from '../../fields/linkGroup';
 
 export const SliderGallery: Block = {
   slug: 'sliderGallery',
