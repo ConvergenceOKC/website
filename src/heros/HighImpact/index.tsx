@@ -20,8 +20,8 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
   });
 
   return (
-    <div className="relative flex pt-[7.375rem] text-cream" data-theme="dark">
-      <div className="container relative mb-24 mt-20 flex">
+    <div className="text-cream relative flex pt-[7.375rem]" data-theme="dark">
+      <div className="relative container mt-20 mb-24 flex">
         <div className="">
           {richText && (
             <RichText
@@ -48,7 +48,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
         {media && typeof media === 'object' && (
           <Media
             fill
-            imgClassName="-z-10 object-cover mix-blend-plus-darker"
+            imgClassName="-z-10 object-cover mix-blend-luminosity"
             priority
             resource={media}
           />

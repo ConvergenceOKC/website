@@ -55,7 +55,7 @@ export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
           </div>
         </div>
         <div className="relative flex w-full">
-          <div className="bg-charcoal absolute top-0 right-1/2 h-full w-1/2 max-w-[1100px] mix-blend-plus-darker" />
+          <div className="bg-charcoal absolute top-0 right-1/2 h-full w-1/2 max-w-[1100px] mix-blend-multiply" />
           <div className="text-cream relative container grid min-h-96 w-full grid-cols-2 gap-4">
             <div className="mr-24 mb-24 flex flex-col items-end gap-16">
               <CMSLink {...images[0]?.link} appearance={'secondary'}>
