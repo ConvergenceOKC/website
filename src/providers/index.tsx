@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-import { HeaderThemeProvider } from './HeaderTheme'
-import { ThemeProvider } from './Theme'
-import { GoogleMapsProvider } from './GoogleMaps'
+import { GoogleMapsProvider } from './GoogleMaps';
+import { HeaderThemeProvider } from './HeaderTheme';
+import { ThemeProvider } from './Theme';
 
 export const Providers: React.FC<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }> = ({ children }) => {
   return (
     <ThemeProvider>
@@ -13,5 +13,5 @@ export const Providers: React.FC<{
         <GoogleMapsProvider>{children}</GoogleMapsProvider>
       </HeaderThemeProvider>
     </ThemeProvider>
-  )
-}
+  );
+};
