@@ -1,4 +1,5 @@
 import {
+  AlignFeature,
   BlocksFeature,
   FixedToolbarFeature,
   HeadingFeature,
@@ -56,6 +57,7 @@ const columnFields: Field[] = [
           BlocksFeature({
             blocks: [FormBlock, MediaBlock, LinkGroupBlock],
           }),
+          AlignFeature(),
         ];
       },
     }),

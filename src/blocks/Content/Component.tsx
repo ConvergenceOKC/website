@@ -19,18 +19,19 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
 
   return (
     <div className="container my-16">
-      <div className="grid grid-cols-4 gap-x-8 gap-y-8 lg:grid-cols-10">
+      <div className="grid grid-cols-2 gap-x-8 gap-y-8 md:grid-cols-4 xl:grid-cols-10">
         {columns &&
           columns.length > 0 &&
           columns.map((col, index) => {
             const { enableLink, link, richText, size } = col;
+            console.log('size:', size, colsSpanClasses[size!]);
 
             return (
               <div
                 className={cn(
-                  `col-span-2 lg:col-span-${colsSpanClasses[size!]}`,
+                  `col-span-2 xl:col-span-${colsSpanClasses[size!]}`,
                   {
-                    'md:col-span-2': size !== 'full',
+                    'md:col-span-4': size === 'full',
                   },
                 )}
                 key={index}

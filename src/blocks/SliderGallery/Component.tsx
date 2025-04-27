@@ -57,7 +57,7 @@ export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
       {/* Image Grid */}
       <div className="grid h-96 w-full grid-cols-[50%_1fr] gap-6 overflow-hidden">
         {/* Main Active Image */}
-        <div className="justify-self-end overflow-hidden">
+        <div className="w-full justify-self-end overflow-hidden">
           <Media
             resource={images[activeImageIndex]?.image}
             imgClassName="relative object-cover h-96 w-full max-w-[1100px]"
@@ -94,7 +94,8 @@ export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
               <div
                 className="bg-orange"
                 style={{
-                  width: `${((activeImageIndex + 1) / images.length) * 100}%`,
+                  width: `${(1 / images.length) * 100}%`,
+                  transform: `translateX(${activeImageIndex * 100}%)`,
                 }}
               />
             </div>

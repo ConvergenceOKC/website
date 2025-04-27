@@ -8,6 +8,7 @@ import { cn } from 'src/utilities/ui';
 import { Footer } from '@/Footer/Component';
 import { Header } from '@/Header/Component';
 import { AdminBar } from '@/components/AdminBar';
+import { TailwindIndicator } from '@/components/TailwindIndicator';
 import { Providers } from '@/providers';
 import { InitTheme } from '@/providers/Theme/InitTheme';
 import { getServerSideURL } from '@/utilities/getURL';
@@ -56,6 +57,7 @@ export default async function RootLayout({
           <Header />
           {children}
           <Footer />
+          <TailwindIndicator />
         </Providers>
       </body>
     </html>
