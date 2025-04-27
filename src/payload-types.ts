@@ -753,6 +753,7 @@ export interface Form {
 export interface SliderGalleryBlock {
   showMegaTitle?: boolean | null;
   megaTitle?: string | null;
+  backgroundShape?: ('none' | 'shape1' | 'shape2' | 'shape3' | 'shape4') | null;
   images?:
     | {
         image: string | Media;
@@ -1206,6 +1207,7 @@ export interface FormBlockSelect<T extends boolean = true> {
 export interface SliderGalleryBlockSelect<T extends boolean = true> {
   showMegaTitle?: T;
   megaTitle?: T;
+  backgroundShape?: T;
   images?:
     | T
     | {

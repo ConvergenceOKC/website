@@ -2,6 +2,8 @@ import { Block } from 'payload';
 
 import { link } from '@/fields/link';
 
+import { revalidatePage } from './revalidatePage';
+
 export const SliderGallery: Block = {
   slug: 'sliderGallery',
   interfaceName: 'SliderGalleryBlock',
@@ -20,6 +22,37 @@ export const SliderGallery: Block = {
         condition: (data, siblingData, { blockData }) => {
           return blockData?.showMegaTitle;
         },
+      },
+    },
+    {
+      name: 'backgroundShape',
+      type: 'select',
+      label: 'Background Shape',
+      options: [
+        {
+          label: 'None',
+          value: 'none',
+        },
+        {
+          label: 'Shape 1',
+          value: 'shape1',
+        },
+        {
+          label: 'Shape 2',
+          value: 'shape2',
+        },
+        {
+          label: 'Shape 3',
+          value: 'shape3',
+        },
+        {
+          label: 'Shape 4',
+          value: 'shape4',
+        },
+      ],
+      defaultValue: 'none',
+      hooks: {
+        afterChange: [revalidatePage],
       },
     },
     {

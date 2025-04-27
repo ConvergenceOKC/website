@@ -18,7 +18,7 @@ export async function Footer() {
   return (
     <footer className="text-cream relative">
       <div className="bg-deep-green absolute top-0 right-0 left-0 -z-10 h-full w-full" />
-      <div className="absolute top-0 left-0 -z-10 h-full w-full bg-[url('/images/shapes-footer.svg')] bg-bottom bg-no-repeat mix-blend-multiply" />
+      <div className="absolute top-0 left-0 -z-10 h-full w-full bg-[url('/images/footer-shapes.svg')] bg-bottom bg-no-repeat mix-blend-multiply" />
       <RenderBlocks blocks={blocks} />
       <div className="text-taupe before:border-taupe relative py-12 text-xs before:pointer-events-none before:absolute before:inset-0 before:w-full before:border-t-[1px] before:mix-blend-overlay">
         <div className="container grid grid-cols-5 items-center gap-8">
