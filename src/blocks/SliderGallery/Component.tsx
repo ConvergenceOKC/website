@@ -90,7 +90,7 @@ export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
 
           {/* Progress Bar */}
           <div className="flex h-full flex-row items-end">
-            <div className="bg-bright-white flex h-1 w-[550px]">
+            <div className="bg-cream flex h-1 w-[550px]">
               <div
                 className="bg-orange"
                 style={{
