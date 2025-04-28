@@ -107,15 +107,17 @@ export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
       <div className="relative flex w-full">
         <div className="bg-charcoal absolute top-0 right-1/2 h-full w-1/2 max-w-[1100px] mix-blend-multiply" />
         <div className="text-cream relative container grid min-h-96 w-full grid-cols-2 gap-4">
-          <div className="mr-24 mb-24 flex flex-col items-end gap-16">
+          <div className="mt-16 mr-24 mb-24 flex flex-col items-end gap-16">
+            <h2 className="text-right">{images[activeImageIndex]?.title}</h2>
+          </div>
+          <div className="mx-10 mt-16 mb-24 h-56 overflow-hidden">
+            <p className="text-deep-green mb-4 line-clamp-7">
+              {images[activeImageIndex]?.caption}
+            </p>
             <CMSLink {...images[activeImageIndex]?.link} appearance="secondary">
               Learn More
             </CMSLink>
-            <h2 className="text-right">{images[activeImageIndex]?.title}</h2>
           </div>
-          <p className="text-deep-green mx-10 mt-28 mb-24 flex h-48 items-start">
-            {images[activeImageIndex]?.caption}
-          </p>
         </div>
       </div>
     </div>
