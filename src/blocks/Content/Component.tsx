@@ -24,7 +24,6 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
           columns.length > 0 &&
           columns.map((col, index) => {
             const { enableLink, link, richText, size } = col;
-            console.log('size:', size, colsSpanClasses[size!]);
 
             return (
               <div
