@@ -9,6 +9,7 @@ import {
 } from '@payloadcms/richtext-lexical/react';
 
 import { BannerBlock } from '@/blocks/Banner/Component';
+import { ButtonBlock } from '@/blocks/ButtonBlock/Component';
 import { CallToActionBlock } from '@/blocks/CallToAction/Component';
 import { CodeBlock, CodeBlockProps } from '@/blocks/Code/Component';
 import { FormBlock } from '@/blocks/Form/Component';
@@ -18,6 +19,7 @@ import { MediaBlock } from '@/blocks/MediaBlock/Component';
 import { MegaButtonPairBlock } from '@/blocks/MegaButtonPair/Component';
 import type {
   BannerBlock as BannerBlockProps,
+  ButtonBlock as ButtonBlockProps,
   CallToActionBlock as CTABlockProps,
   FormBlock as FormBlockProps,
   LinkGroupBlock as LinkGroupBlockProps,
@@ -38,6 +40,7 @@ type NodeTypes =
       | MegaButtonPairProps
       | LinkGroupBlockProps
       | FormBlockProps
+      | ButtonBlockProps
     >;
 
 const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
@@ -64,6 +67,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
     megaButtonPair: ({ node }) => <MegaButtonPairBlock {...node.fields} />,
     linkGroupBlock: ({ node }) => <LinkGroupBlock {...node.fields} />,
     formBlock: ({ node }) => <FormBlock {...node.fields} />,
+    buttonBlock: ({ node }) => <ButtonBlock {...node.fields} />,
   },
 });
 
@@ -83,7 +87,7 @@ export default function RichText(props: Props) {
         {
           container: enableGutter,
           'max-w-none': !enableGutter,
-          'prose md:prose-md dark:prose-invert mx-auto': enableProse,
+          'prose md:prose-md mx-auto': enableProse,
         },
         className,
       )}

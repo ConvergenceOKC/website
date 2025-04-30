@@ -195,7 +195,16 @@ export interface Page {
       | null;
     media?: (string | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | SliderGalleryBlock)[];
+  layout: (
+    | CallToActionBlock
+    | ContentBlock
+    | MediaBlock
+    | ArchiveBlock
+    | FormBlock
+    | SliderGalleryBlock
+    | ContentPathwayBlock
+    | ImageCarouselBlock
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -782,6 +791,62 @@ export interface SliderGalleryBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContentPathwayBlock".
+ */
+export interface ContentPathwayBlock {
+  alignment: 'left' | 'center';
+  contentItems?:
+    | {
+        title: string;
+        icon: string | Media;
+        content: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        displayMode: 'inline' | 'popover';
+        popoverSide?: ('left' | 'right') | null;
+        anchorPoint?: ('start' | 'center' | 'end') | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contentPathway';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageCarouselBlock".
+ */
+export interface ImageCarouselBlock {
+  showTitle?: boolean | null;
+  title?: string | null;
+  backgroundShape?: ('none' | 'shape1' | 'shape2' | 'shape3' | 'shape4') | null;
+  autoPlayInterval?: number | null;
+  images?:
+    | {
+        image: string | Media;
+        title: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'eventCarousel';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "house-churches".
  */
 export interface HouseChurch {
@@ -1092,6 +1157,8 @@ export interface PagesSelect<T extends boolean = true> {
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         sliderGallery?: T | SliderGalleryBlockSelect<T>;
+        contentPathway?: T | ContentPathwayBlockSelect<T>;
+        eventCarousel?: T | ImageCarouselBlockSelect<T>;
       };
   meta?:
     | T
@@ -1222,6 +1289,46 @@ export interface SliderGalleryBlockSelect<T extends boolean = true> {
               reference?: T;
               url?: T;
             };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContentPathwayBlock_select".
+ */
+export interface ContentPathwayBlockSelect<T extends boolean = true> {
+  alignment?: T;
+  contentItems?:
+    | T
+    | {
+        title?: T;
+        icon?: T;
+        content?: T;
+        displayMode?: T;
+        popoverSide?: T;
+        anchorPoint?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageCarouselBlock_select".
+ */
+export interface ImageCarouselBlockSelect<T extends boolean = true> {
+  showTitle?: T;
+  title?: T;
+  backgroundShape?: T;
+  autoPlayInterval?: T;
+  images?:
+    | T
+    | {
+        image?: T;
+        title?: T;
+        description?: T;
         id?: T;
       };
   id?: T;
@@ -1833,6 +1940,39 @@ export interface LinkGroupBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'linkGroupBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ButtonBlock".
+ */
+export interface ButtonBlock {
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: string | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: string | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline' | 'destructive' | 'link' | 'ghost' | 'secondary') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'buttonBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

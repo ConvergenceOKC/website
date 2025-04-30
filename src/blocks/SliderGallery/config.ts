@@ -27,7 +27,6 @@ export const SliderGallery: Block = {
     {
       name: 'backgroundShape',
       type: 'select',
-      label: 'Background Shape',
       options: [
         {
           label: 'None',

@@ -10,6 +10,7 @@ import type { Block, Field } from 'payload';
 
 import { link } from '@/fields/link';
 
+import { ButtonBlock } from '../ButtonBlock/config';
 import { FormBlock } from '../Form/config';
 import { LinkGroupBlock } from '../LinkGroupBlock/config';
 import { MediaBlock } from '../MediaBlock/config';
@@ -55,7 +56,7 @@ const columnFields: Field[] = [
           FixedToolbarFeature(),
           InlineToolbarFeature(),
           BlocksFeature({
-            blocks: [FormBlock, MediaBlock, LinkGroupBlock],
+            blocks: [FormBlock, MediaBlock, LinkGroupBlock, ButtonBlock],
           }),
           AlignFeature(),
         ];

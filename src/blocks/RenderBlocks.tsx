@@ -1,13 +1,15 @@
 import React, { Fragment } from 'react';
 
 import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component';
+import { ButtonBlock } from '@/blocks/ButtonBlock/Component';
 import { CallToActionBlock } from '@/blocks/CallToAction/Component';
 import { ContentBlock } from '@/blocks/Content/Component';
+import { ContentPathwayBlock } from '@/blocks/ContentPathway/Component';
 import { FormBlock } from '@/blocks/Form/Component';
+import { ImageCarouselBlock } from '@/blocks/ImageCarousel/Component';
 import { MediaBlock } from '@/blocks/MediaBlock/Component';
+import { SliderGalleryBlock } from '@/blocks/SliderGallery/Component';
 import type { Page } from '@/payload-types';
-
-import { SliderGalleryBlock } from './SliderGallery/Component';
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -16,6 +18,9 @@ const blockComponents = {
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
   sliderGallery: SliderGalleryBlock,
+  contentPathway: ContentPathwayBlock,
+  buttonBlock: ButtonBlock,
+  imageCarousel: ImageCarouselBlock,
 };
 
 export const RenderBlocks: React.FC<{

@@ -88,8 +88,8 @@
     --card: 240 5% 96%;
     --card-foreground: 222.2 84% 4.9%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: var(--bright-white);
+    --popover-foreground: var(--deep-green);
 
     --primary: var(--orange);
     --primary-foreground: var(--bright-white);
@@ -110,7 +110,7 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
 
-    --radius: 0.2rem;
+    --radius: 0.7rem;
 
     --success: 196 52% 74%;
     --warning: 34 89% 85%;

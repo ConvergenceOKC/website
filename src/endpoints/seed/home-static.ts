@@ -1,4 +1,4 @@
-import type { Page } from '@/payload-types'
+import type { Page } from '@/payload-types';
 
 // Used for pre-seeded content so that the homepage is not empty
 // @ts-expect-error
@@ -20,7 +20,7 @@ export const homeStatic: Page = {
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: 'Payload Website Template',
+                text: 'Convergence Church',
                 version: 1,
               },
             ],
@@ -81,8 +81,8 @@ export const homeStatic: Page = {
     },
   },
   meta: {
-    description: 'An open-source website built with Payload and Next.js.',
-    title: 'Payload Website Template',
+    description: 'A church of house churches in Oklahoma City.',
+    title: 'Convergence Church',
   },
   title: 'Home',
-}
+};
