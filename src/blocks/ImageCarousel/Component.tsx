@@ -135,11 +135,14 @@ export const ImageCarouselBlock: React.FC<ImageCarouselProps> = ({
             {images.map((image) => (
               <div
                 key={image.id}
-                className="relative h-full w-full flex-shrink-0"
+                className="group relative h-full w-full flex-shrink-0 overflow-hidden"
                 aria-roledescription="slide"
               >
                 <CMSLink {...image.link}>
-                  <Media resource={image.image} />
+                  <Media
+                    resource={image.image}
+                    imgClassName="h-full w-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
                   <div className="text-cream bg-charcoal/30 absolute inset-0 flex flex-col justify-end px-16 pb-10">
                     <h4>{image.title}</h4>
                     {image.description && <p>{image.description}</p>}
@@ -154,7 +157,7 @@ export const ImageCarouselBlock: React.FC<ImageCarouselProps> = ({
               e.stopPropagation();
               goToPrevious();
             }}
-            className="absolute top-1/2 left-4 -translate-y-1/2 rounded-full bg-black/30 p-2 text-white transition-colors hover:bg-black/50"
+            className="bg-charcoal/30 text-cream hover:bg-charcoal/50 absolute top-1/2 left-4 -translate-y-1/2 rounded-full p-2 transition-colors"
             aria-label="Previous slide"
           >
             <ChevronLeft className="h-6 w-6" />
@@ -164,7 +167,7 @@ export const ImageCarouselBlock: React.FC<ImageCarouselProps> = ({
               e.stopPropagation();
               goToNext();
             }}
-            className="absolute top-1/2 right-4 -translate-y-1/2 rounded-full bg-black/30 p-2 text-white transition-colors hover:bg-black/50"
+            className="bg-charcoal/30 text-cream hover:bg-charcoal/50 absolute top-1/2 right-4 -translate-y-1/2 rounded-full p-2 transition-colors"
             aria-label="Next slide"
           >
             <ChevronRight className="h-6 w-6" />
@@ -177,8 +180,8 @@ export const ImageCarouselBlock: React.FC<ImageCarouselProps> = ({
                 onClick={() => goToImage(imageIndex)}
                 className={`h-2.5 w-2.5 rounded-full transition-colors ${
                   currentIndex === imageIndex
-                    ? 'bg-amber-500'
-                    : 'bg-white/50 hover:bg-white/80'
+                    ? 'bg-orange'
+                    : 'bg-cream/50 hover:bg-cream/80'
                 }`}
                 aria-label={`Go to image ${imageIndex + 1}`}
                 aria-current={currentIndex === imageIndex ? 'true' : 'false'}
