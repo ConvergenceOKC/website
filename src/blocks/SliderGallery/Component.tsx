@@ -61,9 +61,9 @@ export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
                     resource={images[index]?.image}
                     imgClassName="absolute h-full w-full object-cover hover:scale-110 transition-transform duration-300"
                   />
-                  <h4 className="text-cream absolute right-8 bottom-5 w-full text-right">
+                  <h5 className="text-cream absolute right-8 bottom-5 w-full text-right">
                     {images[index]?.title}
-                  </h4>
+                  </h5>
                 </div>
               );
             })}
@@ -89,7 +89,7 @@ export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
         <div className="bg-charcoal absolute top-0 right-1/2 h-full w-1/2 max-w-[1100px] mix-blend-multiply" />
         <div className="text-cream relative container grid min-h-96 w-full grid-cols-2 gap-4">
           <div className="mt-16 mr-24 mb-24 flex flex-col items-end gap-16">
-            <h2 className="text-right">{images[activeImageIndex]?.title}</h2>
+            <h3 className="text-right">{images[activeImageIndex]?.title}</h3>
           </div>
           <div className="mx-10 mt-16 mb-24 h-56 overflow-hidden">
             <p className="text-deep-green mb-4 line-clamp-7">

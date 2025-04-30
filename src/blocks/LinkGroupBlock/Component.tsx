@@ -14,7 +14,9 @@ export const LinkGroupBlock: React.FC<Props> = ({
 }) => {
   return (
     <div className={cn('flex flex-col', className)}>
-      <h6>{title}</h6>
+      <div className="mb-[0.5rem] font-serif text-[1rem] leading-normal font-[400]">
+        {title}
+      </div>
       <div className="flex flex-col gap-2">
         {links &&
           links.map(({ link }, i) => {

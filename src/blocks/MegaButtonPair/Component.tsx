@@ -21,7 +21,7 @@ export const MegaButtonPairBlock: React.FC<Props> = ({
         {...leftButton.link}
         className="group relative flex w-1/2 px-16 py-14 hover:cursor-pointer"
       >
-        <div className="absolute right-0 top-0 flex h-full w-full bg-deep-green mix-blend-multiply group-hover:bg-orange group-hover:opacity-95 group-hover:mix-blend-normal" />
+        <div className="bg-deep-green group-hover:bg-orange absolute top-0 right-0 flex h-full w-full mix-blend-multiply group-hover:opacity-95 group-hover:mix-blend-normal" />
         <div className="relative flex">
           <div>
             <Media
@@ -30,7 +30,7 @@ export const MegaButtonPairBlock: React.FC<Props> = ({
             />
           </div>
           <div className="flex flex-col">
-            <h5>{leftButton.title}</h5>
+            <h6>{leftButton.title}</h6>
             <p>{leftButton.description}</p>
           </div>
         </div>
@@ -39,7 +39,7 @@ export const MegaButtonPairBlock: React.FC<Props> = ({
         {...rightButton.link}
         className="group relative flex w-1/2 px-16 py-14 hover:cursor-pointer"
       >
-        <div className="absolute right-0 top-0 flex h-full w-full bg-charcoal mix-blend-multiply group-hover:bg-orange group-hover:opacity-95 group-hover:mix-blend-normal" />
+        <div className="bg-charcoal group-hover:bg-orange absolute top-0 right-0 flex h-full w-full mix-blend-multiply group-hover:opacity-95 group-hover:mix-blend-normal" />
         <div className="relative flex">
           <div>
             <Media
@@ -48,7 +48,7 @@ export const MegaButtonPairBlock: React.FC<Props> = ({
             />
           </div>
           <div className="flex flex-col">
-            <h5>{rightButton.title}</h5>
+            <h6>{rightButton.title}</h6>
             <p>{rightButton.description}</p>
           </div>
         </div>

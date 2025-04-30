@@ -16,7 +16,7 @@ export async function Footer() {
   const socials = (await getCachedGlobal('socials', 1)()) as Social;
 
   return (
-    <footer className="text-cream relative">
+    <footer className="text-cream relative [&_h6]:text-[1rem]">
       <div className="bg-deep-green absolute top-0 right-0 left-0 -z-10 h-full w-full" />
       <div className="absolute top-0 left-0 -z-10 h-full w-full bg-[url('/images/footer-shapes.svg')] bg-bottom bg-no-repeat mix-blend-multiply" />
       <RenderBlocks blocks={blocks} />
