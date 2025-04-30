@@ -5,7 +5,7 @@ import { type VariantProps, cva } from 'class-variance-authority';
 import { cn } from 'src/utilities/ui';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap text-xs uppercase ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex items-center justify-center whitespace-nowrap text-xs ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
   {
     defaultVariants: {
       size: 'default',
@@ -20,15 +20,16 @@ const buttonVariants = cva(
         sm: 'h-9 px-3',
       },
       variant: {
-        default: 'bg-primary text-primary-foreground hover:bg-primary/90',
+        default:
+          'bg-primary text-primary-foreground hover:bg-primary/90 uppercase',
         destructive:
-          'bg-destructive text-destructive-foreground hover:bg-destructive/90',
-        ghost: 'hover:bg-card hover:text-accent-foreground',
+          'bg-destructive text-destructive-foreground hover:bg-destructive/90 uppercase',
+        ghost: 'hover:bg-card hover:text-accent-foreground uppercase',
         link: 'text-primary items-start justify-start underline-offset-4 hover:underline',
         outline:
-          'border border-border bg-background hover:bg-card hover:text-accent-foreground',
+          'border border-border bg-background hover:bg-card hover:text-accent-foreground uppercase',
         secondary:
-          'bg-secondary text-secondary-foreground hover:bg-secondary/80',
+          'bg-secondary text-secondary-foreground hover:bg-secondary/80 uppercase',
       },
     },
   },
