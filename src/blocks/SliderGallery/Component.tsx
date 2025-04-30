@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 
+import { BackgroundShapes } from '@/components/BackgroundShapes';
 import { CMSLink } from '@/components/Link';
 import { Media } from '@/components/Media';
 import type { SliderGalleryBlock as SliderGalleryProps } from '@/payload-types';
@@ -20,33 +21,13 @@ export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
     setActiveImageIndex(index);
   };
 
-  // Determine the shape and background styles
-  const shape = backgroundShape === 'none' ? undefined : backgroundShape;
-
-  const backgroundStyle = useMemo(
-    () => (shape ? { backgroundImage: `url('/images/${shape}.svg')` } : {}),
-    [shape],
-  );
-
-  const shapeStyle = useMemo(
-    () =>
-      cn(
-        'relative bg-no-repeat py-24',
-        shape === 'shape1' && 'bg-cover bg-left',
-        shape === 'shape2' && 'bg-right',
-        shape === 'shape3' && 'bg-left',
-        shape === 'shape4' && 'bg-cover',
-      ),
-    [shape],
-  );
-
   // Early return if no images are provided
   if (!images || images.length === 0) {
     return null;
   }
 
   return (
-    <div className={shapeStyle} style={backgroundStyle}>
+    <BackgroundShapes shape={backgroundShape}>
       {/* Mega Title */}
       {showMegaTitle && megaTitle && (
         <h2 className="text-charcoal -mt-24 -mb-28 flex justify-center overflow-hidden text-center text-[27rem] leading-[27rem] whitespace-nowrap mix-blend-color-burn">
@@ -120,6 +101,6 @@ export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
           </div>
         </div>
       </div>
-    </div>
+    </BackgroundShapes>
   );
 };
