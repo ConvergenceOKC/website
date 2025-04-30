@@ -838,12 +838,26 @@ export interface ImageCarouselBlock {
         image: string | Media;
         title: string;
         description: string;
+        link?: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: string | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: string | Post;
+              } | null);
+          url?: string | null;
+        };
         id?: string | null;
       }[]
     | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'eventCarousel';
+  blockType: 'imageCarousel';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1158,7 +1172,7 @@ export interface PagesSelect<T extends boolean = true> {
         formBlock?: T | FormBlockSelect<T>;
         sliderGallery?: T | SliderGalleryBlockSelect<T>;
         contentPathway?: T | ContentPathwayBlockSelect<T>;
-        eventCarousel?: T | ImageCarouselBlockSelect<T>;
+        imageCarousel?: T | ImageCarouselBlockSelect<T>;
       };
   meta?:
     | T
@@ -1329,6 +1343,14 @@ export interface ImageCarouselBlockSelect<T extends boolean = true> {
         image?: T;
         title?: T;
         description?: T;
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+            };
         id?: T;
       };
   id?: T;
