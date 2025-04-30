@@ -1,7 +1,6 @@
 import type { GlobalConfig } from 'payload';
 
 import { authenticated } from '@/access/authenticated';
-import { link } from '@/fields/link';
 
 import { revalidateSocials } from './hooks/revalidateSocials';
 

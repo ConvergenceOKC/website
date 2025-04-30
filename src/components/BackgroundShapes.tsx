@@ -13,10 +13,6 @@ export const BackgroundShapes: React.FC<BackgroundShapeProps> = ({
   children,
   className,
 }) => {
-  if (!shape || shape === 'none') {
-    return <>{children}</>;
-  }
-
   const backgroundStyle = useMemo(
     () => (shape ? { backgroundImage: `url('/images/${shape}.svg')` } : {}),
     [shape],
@@ -34,6 +30,10 @@ export const BackgroundShapes: React.FC<BackgroundShapeProps> = ({
       ),
     [shape],
   );
+
+  if (!shape || shape === 'none') {
+    return <>{children}</>;
+  }
 
   return (
     <div className={shapeStyle} style={backgroundStyle}>

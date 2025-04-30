@@ -7,7 +7,6 @@ import { cn } from 'src/utilities/ui';
 
 import { Footer } from '@/Footer/Component';
 import { Header } from '@/Header/Component';
-import { AdminBar } from '@/components/AdminBar';
 import { TailwindIndicator } from '@/components/TailwindIndicator';
 import { Providers } from '@/providers';
 import { InitTheme } from '@/providers/Theme/InitTheme';
@@ -34,8 +33,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { isEnabled } = await draftMode();
-
   return (
     <html
       className={cn(sans.variable, serif.variable)}
@@ -49,11 +46,6 @@ export default async function RootLayout({
       </head>
       <body>
         <Providers>
-          {/* <AdminBar
-            adminBarProps={{
-              preview: isEnabled,
-            }}
-          /> */}
           <Header />
           {children}
           <Footer />

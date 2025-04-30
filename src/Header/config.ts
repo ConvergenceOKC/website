@@ -1,7 +1,7 @@
 import type { GlobalConfig } from 'payload';
 
 import { authenticated } from '@/access/authenticated';
-import { LinkAppearances, appearanceOptions, link } from '@/fields/link';
+import { link } from '@/fields/link';
 
 import { revalidateHeader } from './hooks/revalidateHeader';
 

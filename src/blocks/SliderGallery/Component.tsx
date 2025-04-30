@@ -1,12 +1,11 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 
 import { BackgroundShapes } from '@/components/BackgroundShapes';
 import { CMSLink } from '@/components/Link';
 import { Media } from '@/components/Media';
 import type { SliderGalleryBlock as SliderGalleryProps } from '@/payload-types';
-import { cn } from '@/utilities/ui';
 
 export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
   showMegaTitle,

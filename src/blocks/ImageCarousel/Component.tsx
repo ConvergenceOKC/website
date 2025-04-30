@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { ImageError } from 'next/dist/server/image-optimizer';
 
 import { BackgroundShapes } from '@/components/BackgroundShapes';
 import { CMSLink } from '@/components/Link';
@@ -22,10 +21,6 @@ export const ImageCarouselBlock: React.FC<ImageCarouselProps> = ({
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const touchStartX = useRef<number | null>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
-
-  if (!images || images.length === 0) {
-    return null;
-  }
 
   const goToPrevious = useCallback(() => {
     const isFirstImage = currentIndex === 0;

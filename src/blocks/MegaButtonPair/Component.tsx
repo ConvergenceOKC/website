@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 import type { MegaButtonPair as MegaButtonPairProps } from 'src/payload-types';
 
 import { CMSLink } from '@/components/Link';
