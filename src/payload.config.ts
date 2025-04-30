@@ -5,19 +5,22 @@ import { buildConfig } from 'payload';
 import sharp from 'sharp';
 import { fileURLToPath } from 'url';
 
+import { Footer } from '@/Footer/config';
+import { Header } from '@/Header/config';
+import { Socials } from '@/Socials/config';
+import { Categories } from '@/collections/Categories';
+import { HouseChurches } from '@/collections/HouseChurches';
+import { Media } from '@/collections/Media';
+import { Pages } from '@/collections/Pages';
+import { Posts } from '@/collections/Posts';
+import { Roles } from '@/collections/Roles';
+import { SermonSeries } from '@/collections/SermonSeries';
+import { Sermons } from '@/collections/Sermons';
+import { Staff } from '@/collections/Staff';
+import { Users } from '@/collections/Users';
 import { defaultLexical } from '@/fields/defaultLexical';
-
-import { Footer } from './Footer/config';
-import { Header } from './Header/config';
-import { Socials } from './Socials/config';
-import { Categories } from './collections/Categories';
-import { HouseChurches } from './collections/HouseChurches';
-import { Media } from './collections/Media';
-import { Pages } from './collections/Pages';
-import { Posts } from './collections/Posts';
-import { Users } from './collections/Users';
-import { plugins } from './plugins';
-import { getServerSideURL } from './utilities/getURL';
+import { plugins } from '@/plugins';
+import { getServerSideURL } from '@/utilities/getURL';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -59,7 +62,18 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.DATABASE_URL || '',
   }),
-  collections: [Pages, Posts, Media, Categories, Users, HouseChurches],
+  collections: [
+    Pages,
+    Posts,
+    Media,
+    Categories,
+    Users,
+    HouseChurches,
+    Sermons,
+    SermonSeries,
+    Staff,
+    Roles,
+  ],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer, Socials],
   plugins: [

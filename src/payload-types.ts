@@ -73,6 +73,10 @@ export interface Config {
     categories: Category;
     users: User;
     'house-churches': HouseChurch;
+    sermons: Sermon;
+    sermonSeries: SermonSery;
+    staff: Staff;
+    roles: Role;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -90,6 +94,10 @@ export interface Config {
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'house-churches': HouseChurchesSelect<false> | HouseChurchesSelect<true>;
+    sermons: SermonsSelect<false> | SermonsSelect<true>;
+    sermonSeries: SermonSeriesSelect<false> | SermonSeriesSelect<true>;
+    staff: StaffSelect<false> | StaffSelect<true>;
+    roles: RolesSelect<false> | RolesSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -878,6 +886,71 @@ export interface HouseChurch {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sermons".
+ */
+export interface Sermon {
+  id: string;
+  date: string;
+  title: string;
+  description: string;
+  speaker: string | Staff;
+  series?: (string | null) | SermonSery;
+  scripture?:
+    | {
+        book: string;
+        chapter: number;
+        verses: string;
+        id?: string | null;
+      }[]
+    | null;
+  thumbnail: string | Media;
+  video: string;
+  audio?: string | null;
+  notes?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "staff".
+ */
+export interface Staff {
+  id: string;
+  name: string;
+  role?: (string | Role)[] | null;
+  email?: string | null;
+  phone?: string | null;
+  headshot?: (string | null) | Media;
+  bio?: string | null;
+  status: 'active' | 'inactive';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "roles".
+ */
+export interface Role {
+  id: string;
+  name: string;
+  description?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sermonSeries".
+ */
+export interface SermonSery {
+  id: string;
+  title: string;
+  description: string;
+  thumbnail: string | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1071,6 +1144,22 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'house-churches';
         value: string | HouseChurch;
+      } | null)
+    | ({
+        relationTo: 'sermons';
+        value: string | Sermon;
+      } | null)
+    | ({
+        relationTo: 'sermonSeries';
+        value: string | SermonSery;
+      } | null)
+    | ({
+        relationTo: 'staff';
+        value: string | Staff;
+      } | null)
+    | ({
+        relationTo: 'roles';
+        value: string | Role;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -1529,6 +1618,67 @@ export interface HouseChurchesSelect<T extends boolean = true> {
   status?: T;
   lat?: T;
   lng?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sermons_select".
+ */
+export interface SermonsSelect<T extends boolean = true> {
+  date?: T;
+  title?: T;
+  description?: T;
+  speaker?: T;
+  series?: T;
+  scripture?:
+    | T
+    | {
+        book?: T;
+        chapter?: T;
+        verses?: T;
+        id?: T;
+      };
+  thumbnail?: T;
+  video?: T;
+  audio?: T;
+  notes?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sermonSeries_select".
+ */
+export interface SermonSeriesSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  thumbnail?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "staff_select".
+ */
+export interface StaffSelect<T extends boolean = true> {
+  name?: T;
+  role?: T;
+  email?: T;
+  phone?: T;
+  headshot?: T;
+  bio?: T;
+  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "roles_select".
+ */
+export interface RolesSelect<T extends boolean = true> {
+  name?: T;
+  description?: T;
   updatedAt?: T;
   createdAt?: T;
 }
