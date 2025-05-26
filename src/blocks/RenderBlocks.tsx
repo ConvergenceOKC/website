@@ -4,6 +4,7 @@ import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component';
 import { ButtonBlock } from '@/blocks/ButtonBlock/Component';
 import { CallToActionBlock } from '@/blocks/CallToAction/Component';
 import { ContentBlock } from '@/blocks/Content/Component';
+import { ContentContainerBlock } from '@/blocks/ContentContainer/Component';
 import { ContentPathwayBlock } from '@/blocks/ContentPathway/Component';
 import { FormBlock } from '@/blocks/Form/Component';
 import { ImageCarouselBlock } from '@/blocks/ImageCarousel/Component';
@@ -21,6 +22,7 @@ const blockComponents = {
   contentPathway: ContentPathwayBlock,
   buttonBlock: ButtonBlock,
   imageCarousel: ImageCarouselBlock,
+  contentContainer: ContentContainerBlock,
 };
 
 export const RenderBlocks: React.FC<{

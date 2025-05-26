@@ -212,6 +212,7 @@ export interface Page {
     | SliderGalleryBlock
     | ContentPathwayBlock
     | ImageCarouselBlock
+    | ContentContainerBlock
   )[];
   meta?: {
     title?: string | null;
@@ -869,6 +870,93 @@ export interface ImageCarouselBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContentContainerBlock".
+ */
+export interface ContentContainerBlock {
+  settings?: {
+    padding?: ('none' | 'small' | 'medium' | 'large') | null;
+    enableGutter?: boolean | null;
+  };
+  background?: {
+    backgroundColor?: ('none' | 'cream' | 'taupe' | 'charcoal' | 'deep-green') | null;
+    backgroundImage?: (string | null) | Media;
+    blendMode?: ('none' | 'multiply' | 'screen' | 'overlay' | 'colorBurn') | null;
+    backgroundShapes?:
+      | ('none' | 'strataFlow' | 'strataRidgeRight' | 'strataRidgeLeft' | 'strataLedge' | 'strataClash')
+      | null;
+    position?: ('breakout' | 'top' | 'center' | 'bottom') | null;
+  };
+  title?: {
+    showTitle?: boolean | null;
+    title?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    size?: ('normal' | 'mega') | null;
+    color?: ('bright-white' | 'cream' | 'taupe' | 'charcoal' | 'deep-green' | 'orange') | null;
+    blendMode?: ('none' | 'multiply' | 'screen' | 'overlay' | 'colorBurn') | null;
+    position?: ('above' | 'straddle' | 'inside') | null;
+  };
+  content?: {
+    columns?:
+      | {
+          size?: ('full' | 'half' | 'oneThird' | 'twoThirds' | 'oneFifth') | null;
+          richText?: {
+            root: {
+              type: string;
+              children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          } | null;
+          enableLink?: boolean | null;
+          link?: {
+            type?: ('reference' | 'custom') | null;
+            newTab?: boolean | null;
+            reference?:
+              | ({
+                  relationTo: 'pages';
+                  value: string | Page;
+                } | null)
+              | ({
+                  relationTo: 'posts';
+                  value: string | Post;
+                } | null);
+            url?: string | null;
+            label: string;
+            /**
+             * Choose how the link should be rendered.
+             */
+            appearance?: ('link' | 'secondary' | 'ghost' | 'destructive' | 'default' | 'outline') | null;
+          };
+          id?: string | null;
+        }[]
+      | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contentContainer';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "house-churches".
  */
 export interface HouseChurch {
@@ -1262,6 +1350,7 @@ export interface PagesSelect<T extends boolean = true> {
         sliderGallery?: T | SliderGalleryBlockSelect<T>;
         contentPathway?: T | ContentPathwayBlockSelect<T>;
         imageCarousel?: T | ImageCarouselBlockSelect<T>;
+        contentContainer?: T | ContentContainerBlockSelect<T>;
       };
   meta?:
     | T
@@ -1441,6 +1530,61 @@ export interface ImageCarouselBlockSelect<T extends boolean = true> {
               url?: T;
             };
         id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContentContainerBlock_select".
+ */
+export interface ContentContainerBlockSelect<T extends boolean = true> {
+  settings?:
+    | T
+    | {
+        padding?: T;
+        enableGutter?: T;
+      };
+  background?:
+    | T
+    | {
+        backgroundColor?: T;
+        backgroundImage?: T;
+        blendMode?: T;
+        backgroundShapes?: T;
+        position?: T;
+      };
+  title?:
+    | T
+    | {
+        showTitle?: T;
+        title?: T;
+        size?: T;
+        color?: T;
+        blendMode?: T;
+        position?: T;
+      };
+  content?:
+    | T
+    | {
+        columns?:
+          | T
+          | {
+              size?: T;
+              richText?: T;
+              enableLink?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                    label?: T;
+                    appearance?: T;
+                  };
+              id?: T;
+            };
       };
   id?: T;
   blockName?: T;
