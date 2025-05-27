@@ -20,7 +20,10 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
   });
 
   return (
-    <div className="text-cream relative flex pt-[7.375rem]" data-theme="dark">
+    <div
+      className="text-cream relative flex h-[80vh] min-h-[800px] overflow-hidden pt-[7.375rem]"
+      data-theme="dark"
+    >
       <div className="relative container mt-20 mb-24 flex">
         <div className="">
           {richText && (
@@ -44,11 +47,19 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
           )}
         </div>
       </div>
-      <div className="min-h-[50vh] select-none">
+      <div className="absolute inset-0 -z-10 h-full w-full overflow-hidden select-none">
         {media && typeof media === 'object' && (
-          <Media fill priority resource={media} />
+          <Media
+            fill
+            imgClassName="object-cover w-full h-full"
+            videoClassName="object-cover w-full h-full"
+            priority
+            className="h-full w-full"
+            resource={media}
+          />
         )}
       </div>
+      <div className="bg-convergence-teal absolute inset-0 -z-10 h-full w-full overflow-hidden bg-[url(/images/bg-pattern-white-green.jpg)] bg-cover bg-center bg-blend-multiply mix-blend-multiply" />
     </div>
   );
 };

@@ -64,6 +64,13 @@ const config = {
         orange: 'hsl(var(--orange))',
         charcoal: 'hsl(var(--charcoal))',
         'bright-white': 'hsl(var(--bright-white))',
+        'convergence-white': 'hsl(var(--convergence-white))',
+        'convergence-beige': 'hsl(var(--convergence-beige))',
+        'convergence-blue': 'hsl(var(--convergence-blue))',
+        'convergence-teal': 'hsl(var(--convergence-teal))',
+        'convergence-bright-orange': 'hsl(var(--convergence-bright-orange))',
+        'convergence-burnt-orange': 'hsl(var(--convergence-burnt-orange))',
+        'convergence-brown': 'hsl(var(--convergence-brown))',
         accent: {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
@@ -102,8 +109,9 @@ const config = {
         warning: 'hsl(var(--warning))',
       },
       fontFamily: {
-        sans: ['var(--font-sans)'],
-        serif: ['var(--font-serif)'],
+        heading: ['var(--font-heading)'],
+        subheading: ['var(--font-subheading)'],
+        body: ['var(--font-body)'],
       },
       keyframes: {
         'accordion-down': {
@@ -145,18 +153,21 @@ const config = {
           css: [
             {
               h1: {
-                fontSize: '9.875rem',
+                fontSize: '6.25rem',
               },
               h2: {
-                fontSize: '4rem',
+                fontSize: '6.25rem',
               },
               h3: {
-                fontSize: '2.25rem',
+                fontSize: '4rem',
               },
               h4: {
-                fontSize: '1.5rem',
+                fontSize: '2.25rem',
               },
               h5: {
+                fontSize: '1.5rem',
+              },
+              h6: {
                 fontSize: '1.25rem',
               },
             },

@@ -29,24 +29,27 @@
   h6 {
     font-size: auto;
     font-weight: auto;
-    font-family: var(--font-serif);
   }
 
   h1 {
-    font-size: 9.875rem;
+    font-family: var(--font-heading);
+    font-size: 6.25rem;
     font-weight: 400;
-    line-height: 8.125rem;
+    line-height: 7.375rem;
     margin-bottom: 3rem;
+    text-transform: uppercase;
   }
 
   h2 {
-    font-size: 9.875rem;
+    font-family: var(--font-heading);
+    font-size: 6.25rem;
     font-weight: 400;
-    line-height: 8.125rem;
+    line-height: 7.375rem;
     margin-bottom: 3rem;
   }
 
   h3 {
+    font-family: var(--font-subheading);
     font-size: 4rem;
     font-weight: 400;
     line-height: 4.25rem;
@@ -54,6 +57,7 @@
   }
 
   h4 {
+    font-family: var(--font-subheading);
     font-size: 2.25rem;
     font-weight: 400;
     line-height: 2.375rem;
@@ -61,6 +65,7 @@
   }
 
   h5 {
+    font-family: var(--font-subheading);
     font-size: 1.5rem;
     font-weight: 400;
     line-height: 1.875rem;
@@ -68,6 +73,7 @@
   }
 
   h6 {
+    font-family: var(--font-subheading);
     font-size: 1.25rem;
     font-weight: 400;
     line-height: 1.5rem;
@@ -81,27 +87,34 @@
     --orange: 33 74% 54%;
     --charcoal: 45 13% 18%;
     --bright-white: 39 63% 98%;
+    --convergence-white: 48 26% 99%;
+    --convergence-beige: 48 26% 93%;
+    --convergence-brown: 100 9% 26%;
+    --convergence-bright-orange: 42 82% 50%;
+    --convergence-burnt-orange: 31 88% 41%;
+    --convergence-teal: 168 86% 25%;
+    --convergence-blue: 194 23% 49%;
 
-    --background: var(--cream);
-    --foreground: var(--deep-green);
+    --background: var(--convergence-beige);
+    --foreground: var(--convergence-brown);
 
     --card: 240 5% 96%;
     --card-foreground: 222.2 84% 4.9%;
 
-    --popover: var(--bright-white);
-    --popover-foreground: var(--deep-green);
+    --popover: var(--convergence-white);
+    --popover-foreground: var(--convergence-brown);
 
-    --primary: var(--orange);
-    --primary-foreground: var(--bright-white);
+    --primary: var(--convergence-bright-orange);
+    --primary-foreground: var(--convergence-white);
 
-    --secondary: var(--taupe);
-    --secondary-foreground: var(--cream);
+    --secondary: var(--convergence-teal);
+    --secondary-foreground: var(--convergence-beige);
 
-    --muted: var(--charcoal);
-    --muted-foreground: var(--cream);
+    --muted: var(--convergence-brown);
+    --muted-foreground: var(--convergence-beige);
 
-    --accent: var(--orange);
-    --accent-foreground: var(--bright-white);
+    --accent: var(--convergence-bright-orange);
+    --accent-foreground: var(--convergence-white);
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -158,7 +171,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground flex min-h-[100vh] flex-col;
+    @apply bg-background text-foreground font-body flex min-h-[100vh] flex-col;
   }
 }
 

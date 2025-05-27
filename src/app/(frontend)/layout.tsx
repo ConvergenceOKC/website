@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { DM_Sans, DM_Serif_Display } from 'next/font/google';
+import { DM_Sans, League_Spartan } from 'next/font/google';
+import localFont from 'next/font/local';
 import { draftMode } from 'next/headers';
 import React from 'react';
 
@@ -15,17 +16,23 @@ import { mergeOpenGraph } from '@/utilities/mergeOpenGraph';
 
 import './globals.css';
 
-export const sans = DM_Sans({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-sans',
+export const heading = localFont({
+  src: '../../../public/fonts/TAN-Jambore.woff',
+  weight: '400',
+  variable: '--font-heading',
 });
 
-export const serif = DM_Serif_Display({
+export const subheading = League_Spartan({
   subsets: ['latin'],
-  weight: '400',
   display: 'swap',
-  variable: '--font-serif',
+  weight: '700',
+  variable: '--font-subheading',
+});
+
+export const body = DM_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-body',
 });
 
 export default async function RootLayout({
@@ -35,7 +42,7 @@ export default async function RootLayout({
 }) {
   return (
     <html
-      className={cn(sans.variable, serif.variable)}
+      className={cn(heading.variable, subheading.variable, body.variable)}
       lang="en"
       suppressHydrationWarning
     >
