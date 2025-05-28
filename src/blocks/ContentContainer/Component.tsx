@@ -134,7 +134,7 @@ export const ContentContainerBlock: React.FC<ContentContainerBlockProps> = ({
           <div
             className={cn(
               'absolute inset-0 bg-cover bg-no-repeat',
-              bgImageBlendModeClasses[background?.blendMode!],
+              bgImageBlendModeClasses[background?.blendMode || 'none'],
             )}
             style={{
               backgroundImage: `url(${bgImage.url || ''})`,
@@ -152,8 +152,8 @@ export const ContentContainerBlock: React.FC<ContentContainerBlockProps> = ({
         )}
         <div
           className={cn(
-            bgColorClasses[background?.backgroundColor!],
-            paddingClasses[settings?.padding!],
+            bgColorClasses[background?.backgroundColor || 'none'],
+            paddingClasses[settings?.padding || 'medium'],
           )}
         >
           <div
