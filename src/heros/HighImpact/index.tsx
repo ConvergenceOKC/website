@@ -21,7 +21,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
 
   return (
     <div
-      className="text-cream relative flex h-[80vh] min-h-[800px] overflow-hidden pt-[7.375rem]"
+      className="text-convergence-beige relative flex h-[80vh] min-h-[800px] overflow-hidden pt-[7.375rem]"
       data-theme="dark"
     >
       <div className="relative container mt-20 mb-24 flex">
@@ -59,7 +59,8 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
           />
         )}
       </div>
-      <div className="bg-convergence-teal absolute inset-0 -z-10 h-full w-full overflow-hidden bg-[url(/images/bg-pattern-white-green.jpg)] bg-cover bg-center bg-blend-multiply mix-blend-multiply" />
+      <div className="bg-convergence-teal/70 absolute inset-0 -z-10 h-full w-full overflow-hidden" />
+      <div className="absolute inset-0 -z-10 h-full w-full overflow-hidden bg-[url(/images/bg-pattern-white-green.jpg)] bg-cover bg-center bg-blend-multiply mix-blend-multiply" />
     </div>
   );
 };

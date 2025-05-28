@@ -105,16 +105,16 @@
     --popover-foreground: var(--convergence-brown);
 
     --primary: var(--convergence-bright-orange);
-    --primary-foreground: var(--convergence-white);
+    --primary-foreground: var(--convergence-beige);
 
-    --secondary: var(--convergence-teal);
+    --secondary: var(--convergence-brown);
     --secondary-foreground: var(--convergence-beige);
 
-    --muted: var(--convergence-brown);
+    --muted: var(--convergence-teal);
     --muted-foreground: var(--convergence-beige);
 
     --accent: var(--convergence-bright-orange);
-    --accent-foreground: var(--convergence-white);
+    --accent-foreground: var(--convergence-beige);
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
