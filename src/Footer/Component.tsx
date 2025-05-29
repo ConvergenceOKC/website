@@ -16,11 +16,11 @@ export async function Footer() {
   const socials = (await getCachedGlobal('socials', 1)()) as Social;
 
   return (
-    <footer className="text-cream relative [&_h6]:text-[1rem]">
-      <div className="bg-deep-green absolute top-0 right-0 left-0 -z-10 h-full w-full" />
-      <div className="absolute top-0 left-0 -z-10 h-full w-full bg-[url('/images/footer-shapes.svg')] bg-bottom bg-no-repeat mix-blend-multiply" />
+    <footer className="text-convergence-beige relative [&_h6]:text-[1rem]">
+      <div className="bg-convergence-brown absolute inset-0 -z-10 h-full w-full overflow-hidden" />
+      <div className="absolute inset-0 -z-10 h-full w-full overflow-hidden bg-[url('/images/bg-pattern-blue-red.jpg')] bg-cover bg-center bg-no-repeat opacity-30 mix-blend-overlay" />
       <RenderBlocks blocks={blocks} />
-      <div className="text-taupe before:border-taupe relative py-12 text-xs before:pointer-events-none before:absolute before:inset-0 before:w-full before:border-t-[1px] before:mix-blend-overlay">
+      <div className="text-convergence-beige/60 before:border-convergence-beige relative py-12 text-xs before:pointer-events-none before:absolute before:inset-0 before:w-full before:border-t-[1px] before:mix-blend-overlay">
         <div className="container grid grid-cols-5 items-center gap-8">
           <div className="col-span-2">
             <p>
@@ -31,7 +31,7 @@ export async function Footer() {
             {privacy && (
               <CMSLink
                 appearance="link"
-                className="text-taupe text-xs font-normal"
+                className="text-convergence-beige/60 text-xs font-normal"
                 reference={{
                   relationTo: 'pages',
                   value: privacy,
@@ -44,7 +44,7 @@ export async function Footer() {
             {terms && (
               <CMSLink
                 appearance="link"
-                className="text-taupe text-xs"
+                className="text-convergence-beige/60 text-xs"
                 reference={{
                   relationTo: 'pages',
                   value: terms,
@@ -54,7 +54,7 @@ export async function Footer() {
               />
             )}
           </div>
-          <div className="flex justify-end gap-4">
+          <div className="flex justify-end gap-4 opacity-60">
             {socials.platforms &&
               socials.platforms.map((social, i) => {
                 return (

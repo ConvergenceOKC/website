@@ -14,7 +14,7 @@ export const LinkGroupBlock: React.FC<Props> = ({
 }) => {
   return (
     <div className={cn('flex flex-col', className)}>
-      <div className="mb-[0.5rem] font-serif text-[1rem] leading-normal font-[400]">
+      <div className="font-subheading mb-[0.5rem] text-[1rem] leading-normal uppercase">
         {title}
       </div>
       <div className="flex flex-col gap-2">
@@ -23,7 +23,7 @@ export const LinkGroupBlock: React.FC<Props> = ({
             return (
               <CMSLink
                 key={i}
-                className="text-taupe text-xs uppercase"
+                className="text-convergence-beige/60 text-xs uppercase"
                 appearance={'link'}
                 {...link}
               />

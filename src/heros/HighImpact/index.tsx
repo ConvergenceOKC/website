@@ -21,7 +21,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
 
   return (
     <div
-      className="text-convergence-beige relative flex h-[80vh] min-h-[800px] overflow-hidden pt-[7.375rem]"
+      className="text-convergence-beige relative flex h-[80vh] min-h-[900px] overflow-hidden pt-[7.375rem]"
       data-theme="dark"
     >
       <div className="relative container mt-20 mb-24 flex">
