@@ -12,6 +12,7 @@ import { ButtonBlock } from '@/blocks/ButtonBlock/config';
 import { FormBlock } from '@/blocks/Form/config';
 import { LinkGroupBlock } from '@/blocks/LinkGroupBlock/config';
 import { MediaBlock } from '@/blocks/MediaBlock/config';
+import { SliderGallery } from '@/blocks/SliderGallery/config';
 import { link } from '@/fields/link';
 
 const settingsFields: Field[] = [
@@ -55,20 +56,24 @@ const backgroundColorFields: Field[] = [
         value: 'none',
       },
       {
-        label: 'Cream',
-        value: 'cream',
+        label: 'Beige',
+        value: 'beige',
       },
       {
-        label: 'Taupe',
-        value: 'taupe',
+        label: 'Teal',
+        value: 'teal',
       },
       {
-        label: 'Charcoal',
-        value: 'charcoal',
+        label: 'Brown',
+        value: 'brown',
       },
       {
-        label: 'Deep Green',
-        value: 'deep-green',
+        label: 'Orange',
+        value: 'orange',
+      },
+      {
+        label: 'Blue',
+        value: 'blue',
       },
     ],
     defaultValue: 'none',
@@ -121,225 +126,6 @@ const backgroundImageFields: Field[] = [
   },
 ];
 
-const backgroundShapeFields: Field[] = [
-  {
-    type: 'row',
-    fields: [
-      {
-        name: 'backgroundShapes',
-        type: 'select',
-        options: [
-          {
-            label: 'None',
-            value: 'none',
-          },
-          {
-            label: 'Strata Flow',
-            value: 'strataFlow',
-          },
-          {
-            label: 'Strata Ridge (Right)',
-            value: 'strataRidgeRight',
-          },
-          {
-            label: 'Strata Ridge (Left)',
-            value: 'strataRidgeLeft',
-          },
-          {
-            label: 'Strata Ledge',
-            value: 'strataLedge',
-          },
-          {
-            label: 'Strata Clash',
-            value: 'strataClash',
-          },
-        ],
-        defaultValue: 'none',
-      },
-      {
-        name: 'position',
-        label: 'Anchor Position',
-        type: 'select',
-        options: [
-          {
-            label: 'Breakout Top',
-            value: 'breakout',
-          },
-          {
-            label: 'Top',
-            value: 'top',
-          },
-          {
-            label: 'Center',
-            value: 'center',
-          },
-          {
-            label: 'Bottom',
-            value: 'bottom',
-          },
-        ],
-        defaultValue: 'top',
-        admin: {
-          condition: (_, siblingData) => {
-            return siblingData?.backgroundShapes !== 'none';
-          },
-        },
-      },
-    ],
-  },
-];
-
-const titleFields: Field[] = [
-  {
-    name: 'showTitle',
-    type: 'checkbox',
-    defaultValue: false,
-  },
-  {
-    name: 'title',
-    label: 'Title',
-    type: 'richText',
-    editor: lexicalEditor({
-      features: () => {
-        return [FixedToolbarFeature(), AlignFeature()];
-      },
-    }),
-    admin: {
-      condition: (_, siblingData) => {
-        return siblingData?.showTitle;
-      },
-    },
-  },
-  {
-    type: 'row',
-    fields: [
-      {
-        name: 'size',
-        type: 'select',
-        options: [
-          {
-            label: 'Normal',
-            value: 'normal',
-          },
-          {
-            label: 'Mega',
-            value: 'mega',
-          },
-        ],
-        defaultValue: 'normal',
-        admin: {
-          condition: (_, siblingData) => {
-            return siblingData?.showTitle;
-          },
-        },
-      },
-    ],
-  },
-  {
-    type: 'row',
-    fields: [
-      {
-        name: 'color',
-        type: 'select',
-        options: [
-          {
-            label: 'Bright White',
-            value: 'bright-white',
-          },
-          {
-            label: 'Cream',
-            value: 'cream',
-          },
-          {
-            label: 'Taupe',
-            value: 'taupe',
-          },
-          {
-            label: 'Charcoal',
-            value: 'charcoal',
-          },
-          {
-            label: 'Deep Green',
-            value: 'deep-green',
-          },
-          {
-            label: 'Orange',
-            value: 'orange',
-          },
-        ],
-        defaultValue: 'deep-green',
-        admin: {
-          condition: (_, siblingData) => {
-            return siblingData?.showTitle;
-          },
-        },
-      },
-      {
-        name: 'blendMode',
-        type: 'select',
-        options: [
-          {
-            label: 'None',
-            value: 'none',
-          },
-          {
-            label: 'Multiply',
-            value: 'multiply',
-          },
-          {
-            label: 'Screen',
-            value: 'screen',
-          },
-          {
-            label: 'Overlay',
-            value: 'overlay',
-          },
-          {
-            label: 'Color Burn',
-            value: 'colorBurn',
-          },
-        ],
-        defaultValue: 'none',
-        admin: {
-          condition: (_, siblingData) => {
-            return siblingData?.showTitle;
-          },
-        },
-      },
-    ],
-  },
-  {
-    type: 'row',
-    fields: [
-      {
-        name: 'position',
-        label: 'Anchor Position',
-        type: 'select',
-        options: [
-          {
-            label: 'Above Container',
-            value: 'above',
-          },
-          {
-            label: 'Staddle Container',
-            value: 'straddle',
-          },
-          {
-            label: 'Inside Container',
-            value: 'inside',
-          },
-        ],
-        defaultValue: 'inside',
-        admin: {
-          condition: (_, siblingData) => {
-            return siblingData?.showTitle;
-          },
-        },
-      },
-    ],
-  },
-];
-
 const columnFields: Field[] = [
   {
     name: 'size',
@@ -381,7 +167,13 @@ const columnFields: Field[] = [
           FixedToolbarFeature(),
           InlineToolbarFeature(),
           BlocksFeature({
-            blocks: [FormBlock, MediaBlock, LinkGroupBlock, ButtonBlock],
+            blocks: [
+              FormBlock,
+              MediaBlock,
+              LinkGroupBlock,
+              ButtonBlock,
+              SliderGallery,
+            ],
           }),
           AlignFeature(),
         ];
@@ -438,16 +230,7 @@ export const ContentContainer: Block = {
         {
           name: 'background',
           label: 'Background',
-          fields: [
-            ...backgroundColorFields,
-            ...backgroundImageFields,
-            ...backgroundShapeFields,
-          ],
-        },
-        {
-          name: 'title',
-          label: 'Title',
-          fields: titleFields,
+          fields: [...backgroundColorFields, ...backgroundImageFields],
         },
         {
           name: 'content',

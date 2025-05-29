@@ -17,6 +17,7 @@ import { LinkGroupBlock } from '@/blocks/LinkGroupBlock/Component';
 import { LinkedTextBlock } from '@/blocks/LinkedText/Component';
 import { MediaBlock } from '@/blocks/MediaBlock/Component';
 import { MegaButtonPairBlock } from '@/blocks/MegaButtonPair/Component';
+import { SliderGalleryBlock } from '@/blocks/SliderGallery/Component';
 import type {
   BannerBlock as BannerBlockProps,
   ButtonBlock as ButtonBlockProps,
@@ -26,6 +27,7 @@ import type {
   LinkedText as LinkedTextProps,
   MediaBlock as MediaBlockProps,
   MegaButtonPair as MegaButtonPairProps,
+  SliderGalleryBlock as SliderGalleryBlockProps,
 } from '@/payload-types';
 import { cn } from '@/utilities/ui';
 
@@ -41,6 +43,7 @@ type NodeTypes =
       | LinkGroupBlockProps
       | FormBlockProps
       | ButtonBlockProps
+      | SliderGalleryBlockProps
     >;
 
 const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
@@ -68,6 +71,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
     linkGroupBlock: ({ node }) => <LinkGroupBlock {...node.fields} />,
     formBlock: ({ node }) => <FormBlock {...node.fields} />,
     buttonBlock: ({ node }) => <ButtonBlock {...node.fields} />,
+    sliderGallery: ({ node }) => <SliderGalleryBlock {...node.fields} />,
   },
 });
 

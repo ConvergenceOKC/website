@@ -878,35 +878,9 @@ export interface ContentContainerBlock {
     enableGutter?: boolean | null;
   };
   background?: {
-    backgroundColor?: ('none' | 'cream' | 'taupe' | 'charcoal' | 'deep-green') | null;
+    backgroundColor?: ('none' | 'beige' | 'teal' | 'brown' | 'orange' | 'blue') | null;
     backgroundImage?: (string | null) | Media;
     blendMode?: ('none' | 'multiply' | 'screen' | 'overlay' | 'colorBurn') | null;
-    backgroundShapes?:
-      | ('none' | 'strataFlow' | 'strataRidgeRight' | 'strataRidgeLeft' | 'strataLedge' | 'strataClash')
-      | null;
-    position?: ('breakout' | 'top' | 'center' | 'bottom') | null;
-  };
-  title?: {
-    showTitle?: boolean | null;
-    title?: {
-      root: {
-        type: string;
-        children: {
-          type: string;
-          version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
-    size?: ('normal' | 'mega') | null;
-    color?: ('bright-white' | 'cream' | 'taupe' | 'charcoal' | 'deep-green' | 'orange') | null;
-    blendMode?: ('none' | 'multiply' | 'screen' | 'overlay' | 'colorBurn') | null;
-    position?: ('above' | 'straddle' | 'inside') | null;
   };
   content?: {
     columns?:
@@ -1551,18 +1525,6 @@ export interface ContentContainerBlockSelect<T extends boolean = true> {
         backgroundColor?: T;
         backgroundImage?: T;
         blendMode?: T;
-        backgroundShapes?: T;
-        position?: T;
-      };
-  title?:
-    | T
-    | {
-        showTitle?: T;
-        title?: T;
-        size?: T;
-        color?: T;
-        blendMode?: T;
-        position?: T;
       };
   content?:
     | T
