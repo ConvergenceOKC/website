@@ -8,12 +8,124 @@ import {
 } from '@payloadcms/richtext-lexical';
 import type { Block, Field } from 'payload';
 
+import { SliderGallery } from '@/blocks/SliderGallery/config';
 import { link } from '@/fields/link';
 
 import { ButtonBlock } from '../ButtonBlock/config';
 import { FormBlock } from '../Form/config';
 import { LinkGroupBlock } from '../LinkGroupBlock/config';
 import { MediaBlock } from '../MediaBlock/config';
+
+const settingsFields: Field[] = [
+  {
+    name: 'padding',
+    type: 'select',
+    options: [
+      {
+        label: 'None',
+        value: 'none',
+      },
+      {
+        label: 'Small',
+        value: 'small',
+      },
+      {
+        label: 'Medium',
+        value: 'medium',
+      },
+      {
+        label: 'Large',
+        value: 'large',
+      },
+    ],
+    defaultValue: 'medium',
+  },
+  {
+    name: 'enableGutter',
+    type: 'checkbox',
+    defaultValue: true,
+  },
+];
+
+const backgroundColorFields: Field[] = [
+  {
+    name: 'backgroundColor',
+    type: 'select',
+    options: [
+      {
+        label: 'None',
+        value: 'none',
+      },
+      {
+        label: 'Beige',
+        value: 'beige',
+      },
+      {
+        label: 'Teal',
+        value: 'teal',
+      },
+      {
+        label: 'Brown',
+        value: 'brown',
+      },
+      {
+        label: 'Orange',
+        value: 'orange',
+      },
+      {
+        label: 'Blue',
+        value: 'blue',
+      },
+    ],
+    defaultValue: 'none',
+  },
+];
+
+const backgroundImageFields: Field[] = [
+  {
+    type: 'row',
+    fields: [
+      {
+        name: 'backgroundImage',
+        type: 'upload',
+        relationTo: 'media',
+      },
+      {
+        name: 'blendMode',
+        label: 'Image Blend Mode',
+        type: 'select',
+        options: [
+          {
+            label: 'None',
+            value: 'none',
+          },
+          {
+            label: 'Multiply',
+            value: 'multiply',
+          },
+          {
+            label: 'Screen',
+            value: 'screen',
+          },
+          {
+            label: 'Overlay',
+            value: 'overlay',
+          },
+          {
+            label: 'Color Burn',
+            value: 'colorBurn',
+          },
+        ],
+        defaultValue: 'none',
+        admin: {
+          condition: (_, siblingData) => {
+            return siblingData?.backgroundImage;
+          },
+        },
+      },
+    ],
+  },
+];
 
 const columnFields: Field[] = [
   {
@@ -56,7 +168,13 @@ const columnFields: Field[] = [
           FixedToolbarFeature(),
           InlineToolbarFeature(),
           BlocksFeature({
-            blocks: [FormBlock, MediaBlock, LinkGroupBlock, ButtonBlock],
+            blocks: [
+              FormBlock,
+              MediaBlock,
+              LinkGroupBlock,
+              ButtonBlock,
+              SliderGallery,
+            ],
           }),
           AlignFeature(),
         ];
@@ -87,17 +205,40 @@ const columnFields: Field[] = [
   }),
 ];
 
+const contentFields: Field[] = [
+  {
+    name: 'columns',
+    type: 'array',
+    admin: {
+      initCollapsed: true,
+    },
+    fields: columnFields,
+  },
+];
+
 export const Content: Block = {
   slug: 'content',
   interfaceName: 'ContentBlock',
   fields: [
     {
-      name: 'columns',
-      type: 'array',
-      admin: {
-        initCollapsed: true,
-      },
-      fields: columnFields,
+      type: 'tabs',
+      tabs: [
+        {
+          name: 'settings',
+          label: 'Settings',
+          fields: settingsFields,
+        },
+        {
+          name: 'background',
+          label: 'Background',
+          fields: [...backgroundColorFields, ...backgroundImageFields],
+        },
+        {
+          name: 'content',
+          label: 'Content',
+          fields: contentFields,
+        },
+      ],
     },
   ],
 };

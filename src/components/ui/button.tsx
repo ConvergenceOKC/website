@@ -24,10 +24,10 @@ const buttonVariants = cva(
           'bg-primary text-primary-foreground hover:bg-primary/90 uppercase',
         destructive:
           'bg-destructive text-destructive-foreground hover:bg-destructive/90 uppercase',
-        ghost: 'hover:bg-card hover:text-accent-foreground uppercase',
+        ghost: 'hover:bg-card hover:text-card-foreground uppercase',
         link: 'text-primary items-start justify-start underline-offset-4 hover:underline',
         outline:
-          'border border-border bg-background hover:bg-card hover:text-accent-foreground uppercase',
+          'border border-border bg-background hover:bg-card hover:text-card-foreground uppercase',
         secondary:
           'bg-secondary text-secondary-foreground hover:bg-secondary/80 uppercase',
       },

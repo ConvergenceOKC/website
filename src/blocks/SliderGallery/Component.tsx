@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 
+import { ChevronRight } from 'lucide-react';
+
 import { BackgroundShapes } from '@/components/BackgroundShapes';
 import { CMSLink } from '@/components/Link';
 import { Media } from '@/components/Media';
@@ -28,21 +30,18 @@ export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
     <>
       {/* Mega Title */}
       {showMegaTitle && megaTitle && (
-        <h2 className="text-convergence-bright-orange -mb-64 flex justify-center text-center text-[27rem] leading-[40rem] whitespace-nowrap opacity-70 mix-blend-multiply">
+        <h2 className="text-convergence-beige -mb-80 flex justify-center overflow-hidden text-center text-[27rem] leading-[37rem] whitespace-nowrap opacity-30 mix-blend-multiply">
           {megaTitle}
         </h2>
       )}
 
       {/* Image Grid */}
-      <div className="grid h-[800px] w-full grid-cols-[50%_1fr] gap-6 overflow-hidden">
+      <div className="grid h-full w-full grid-cols-[50%_1fr] gap-6 overflow-hidden">
         {/* Main Active Image */}
-        <div className="h-full w-full overflow-hidden">
-          <Media
-            resource={images[activeImageIndex]?.image}
-            className="h-full w-full"
-            imgClassName="relative object-cover h-full w-full max-w-[1100px] rounded-tr-lg rounded-br-lg"
-          />
-        </div>
+        <Media
+          resource={images[activeImageIndex]?.image}
+          imgClassName="object-cover object-center h-[840px] w-full max-w-[1100px] rounded-lg justify-self-end opacity-100"
+        />
 
         <div className="relative flex h-full flex-col gap-6">
           {/* Thumbnail Images */}
@@ -61,7 +60,7 @@ export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
                       resource={images[index]?.image}
                       imgClassName="absolute h-full w-full object-cover hover:scale-110 transition-transform duration-300 "
                     />
-                    <h6 className="text-cream absolute right-8 bottom-5 w-full text-right">
+                    <h6 className="text-convergence-beige absolute right-8 bottom-5 w-full text-right">
                       {images[index]?.title}
                     </h6>
                   </div>
@@ -71,16 +70,21 @@ export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
           </div>
 
           {/* Image Content */}
-          <div className="relative flex h-2/3 max-w-[600px] flex-col pt-8">
-            <h3 className="text-convergence-bright-orange">
+          <div className="relative flex h-2/3 max-w-[600px] flex-col pt-32 pl-8">
+            <h2 className="text-convergence-brown">
               {images[activeImageIndex]?.title}
-            </h3>
-            <p className="text-convergence-brown mb-4 line-clamp-7">
+            </h2>
+            <p className="text-convergence-brown mb-8 line-clamp-7">
               {images[activeImageIndex]?.caption}
             </p>
-            {/* <CMSLink {...images[activeImageIndex]?.link} appearance="secondary">
+            <CMSLink
+              {...images[activeImageIndex]?.link}
+              appearance="ghost"
+              className="flex w-36 gap-1"
+            >
               Learn More
-            </CMSLink> */}
+              <ChevronRight className="h-4 w-4" />
+            </CMSLink>
           </div>
 
           {/* Progress Bar */}

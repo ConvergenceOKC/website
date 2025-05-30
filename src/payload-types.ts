@@ -460,47 +460,58 @@ export interface CallToActionBlock {
  * via the `definition` "ContentBlock".
  */
 export interface ContentBlock {
-  columns?:
-    | {
-        size?: ('full' | 'half' | 'oneThird' | 'twoThirds' | 'oneFifth') | null;
-        richText?: {
-          root: {
-            type: string;
-            children: {
+  settings?: {
+    padding?: ('none' | 'small' | 'medium' | 'large') | null;
+    enableGutter?: boolean | null;
+  };
+  background?: {
+    backgroundColor?: ('none' | 'beige' | 'teal' | 'brown' | 'orange' | 'blue') | null;
+    backgroundImage?: (string | null) | Media;
+    blendMode?: ('none' | 'multiply' | 'screen' | 'overlay' | 'colorBurn') | null;
+  };
+  content?: {
+    columns?:
+      | {
+          size?: ('full' | 'half' | 'oneThird' | 'twoThirds' | 'oneFifth') | null;
+          richText?: {
+            root: {
               type: string;
+              children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
               version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
+            };
+            [k: string]: unknown;
+          } | null;
+          enableLink?: boolean | null;
+          link?: {
+            type?: ('reference' | 'custom') | null;
+            newTab?: boolean | null;
+            reference?:
+              | ({
+                  relationTo: 'pages';
+                  value: string | Page;
+                } | null)
+              | ({
+                  relationTo: 'posts';
+                  value: string | Post;
+                } | null);
+            url?: string | null;
+            label: string;
+            /**
+             * Choose how the link should be rendered.
+             */
+            appearance?: ('link' | 'secondary' | 'ghost' | 'destructive' | 'default' | 'outline') | null;
           };
-          [k: string]: unknown;
-        } | null;
-        enableLink?: boolean | null;
-        link?: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: string | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: string | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-          /**
-           * Choose how the link should be rendered.
-           */
-          appearance?: ('link' | 'secondary' | 'ghost' | 'destructive' | 'default' | 'outline') | null;
-        };
-        id?: string | null;
-      }[]
-    | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
   id?: string | null;
   blockName?: string | null;
   blockType: 'content';
@@ -1369,23 +1380,40 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
  * via the `definition` "ContentBlock_select".
  */
 export interface ContentBlockSelect<T extends boolean = true> {
-  columns?:
+  settings?:
     | T
     | {
-        size?: T;
-        richText?: T;
-        enableLink?: T;
-        link?:
+        padding?: T;
+        enableGutter?: T;
+      };
+  background?:
+    | T
+    | {
+        backgroundColor?: T;
+        backgroundImage?: T;
+        blendMode?: T;
+      };
+  content?:
+    | T
+    | {
+        columns?:
           | T
           | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-              appearance?: T;
+              size?: T;
+              richText?: T;
+              enableLink?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                    label?: T;
+                    appearance?: T;
+                  };
+              id?: T;
             };
-        id?: T;
       };
   id?: T;
   blockName?: T;
