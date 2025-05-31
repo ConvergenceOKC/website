@@ -11,9 +11,6 @@ import { ImageCarouselBlock as ImageCarouselProps } from '@/payload-types';
 import { cn } from '@/utilities/ui';
 
 export const ImageCarouselBlock: React.FC<ImageCarouselProps> = ({
-  showTitle,
-  title,
-  backgroundShape,
   autoPlayInterval,
   images,
 }) => {
@@ -108,88 +105,76 @@ export const ImageCarouselBlock: React.FC<ImageCarouselProps> = ({
   }
 
   return (
-    <BackgroundShapes shape={backgroundShape}>
-      {/* Show Title */}
-      {showTitle && title && (
-        <h2 className="text-charcoal mb-16 flex justify-center text-center mix-blend-color-burn">
-          {title}
-        </h2>
-      )}
-
-      <div className="container">
-        {/* Image Carousel */}
-        <div
-          className={cn('relative h-[450px] w-full overflow-hidden rounded-lg')}
-          ref={carouselRef}
-          onMouseEnter={pauseAutoPlay}
-          onMouseLeave={resumeAutoPlay}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-          aria-roledescription="carousel"
-        >
+    <div
+      className={cn('relative h-[450px] w-full overflow-hidden rounded-lg')}
+      ref={carouselRef}
+      onMouseEnter={pauseAutoPlay}
+      onMouseLeave={resumeAutoPlay}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      aria-roledescription="carousel"
+    >
+      <div
+        className="flex h-full transition-transform duration-500 ease-out"
+        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+      >
+        {images.map((image) => (
           <div
-            className="flex h-full transition-transform duration-500 ease-out"
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            key={image.id}
+            className="group relative h-full w-full flex-shrink-0 overflow-hidden"
+            aria-roledescription="slide"
           >
-            {images.map((image) => (
-              <div
-                key={image.id}
-                className="group relative h-full w-full flex-shrink-0 overflow-hidden"
-                aria-roledescription="slide"
-              >
-                <CMSLink {...image.link}>
-                  <Media
-                    resource={image.image}
-                    imgClassName="h-full w-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                  <div className="text-cream bg-charcoal/30 absolute inset-0 flex flex-col justify-end px-16 pb-10">
-                    <h4>{image.title}</h4>
-                    {image.description && <p>{image.description}</p>}
-                  </div>
-                </CMSLink>
-              </div>
-            ))}
-          </div>
-          {/* Navigation Arrows */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              goToPrevious();
-            }}
-            className="bg-charcoal/30 text-cream hover:bg-charcoal/50 absolute top-1/2 left-4 -translate-y-1/2 rounded-full p-2 transition-colors"
-            aria-label="Previous slide"
-          >
-            <ChevronLeft className="h-6 w-6" />
-          </button>
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              goToNext();
-            }}
-            className="bg-charcoal/30 text-cream hover:bg-charcoal/50 absolute top-1/2 right-4 -translate-y-1/2 rounded-full p-2 transition-colors"
-            aria-label="Next slide"
-          >
-            <ChevronRight className="h-6 w-6" />
-          </button>
-          {/* Dots/Indicators */}
-          <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
-            {images.map((_, imageIndex) => (
-              <button
-                key={imageIndex}
-                onClick={() => goToImage(imageIndex)}
-                className={`h-2.5 w-2.5 rounded-full transition-colors ${
-                  currentIndex === imageIndex
-                    ? 'bg-orange'
-                    : 'bg-cream/50 hover:bg-cream/80'
-                }`}
-                aria-label={`Go to image ${imageIndex + 1}`}
-                aria-current={currentIndex === imageIndex ? 'true' : 'false'}
+            <CMSLink {...image.link}>
+              <Media
+                resource={image.image}
+                imgClassName="h-full w-full object-cover group-hover:scale-110 transition-transform duration-300"
               />
-            ))}
+              <div className="text-convergence-beige bg-convergence-brown/30 absolute inset-0 flex flex-col justify-end px-16 pb-10">
+                <h5>{image.title}</h5>
+                {image.description && <p>{image.description}</p>}
+              </div>
+            </CMSLink>
           </div>
-        </div>
+        ))}
       </div>
-    </BackgroundShapes>
+      {/* Navigation Arrows */}
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          goToPrevious();
+        }}
+        className="bg-convergence-brown/30 text-convergence-beige/50 hover:bg-convergence-brown/50 hover:text-convergence-beige absolute top-1/2 left-4 -translate-y-1/2 cursor-pointer rounded-full p-2 transition-colors"
+        aria-label="Previous slide"
+      >
+        <ChevronLeft className="h-6 w-6" />
+      </button>
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          goToNext();
+        }}
+        className="bg-convergence-brown/30 text-convergence-beige/50 hover:bg-convergence-brown/50 hover:text-convergence-beige absolute top-1/2 right-4 -translate-y-1/2 cursor-pointer rounded-full p-2 transition-colors"
+        aria-label="Next slide"
+      >
+        <ChevronRight className="h-6 w-6" />
+      </button>
+      {/* Dots/Indicators */}
+      <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
+        {images.map((_, imageIndex) => (
+          <button
+            key={imageIndex}
+            onClick={() => goToImage(imageIndex)}
+            className={`h-2.5 w-2.5 rounded-full transition-colors ${
+              currentIndex === imageIndex
+                ? 'bg-convergence-bright-orange'
+                : 'bg-convergence-beige/30 text-convergence-beige/50 hover:bg-convergence-beige hover:text-convergence-beige/80'
+            }`}
+            aria-label={`Go to image ${imageIndex + 1}`}
+            aria-current={currentIndex === imageIndex ? 'true' : 'false'}
+          />
+        ))}
+      </div>
+    </div>
   );
 };

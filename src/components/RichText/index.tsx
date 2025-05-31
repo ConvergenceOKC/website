@@ -14,6 +14,7 @@ import { CallToActionBlock } from '@/blocks/CallToAction/Component';
 import { CodeBlock, CodeBlockProps } from '@/blocks/Code/Component';
 import { ContentPathwayBlock } from '@/blocks/ContentPathway/Component';
 import { FormBlock } from '@/blocks/Form/Component';
+import { ImageCarouselBlock } from '@/blocks/ImageCarousel/Component';
 import { LinkGroupBlock } from '@/blocks/LinkGroupBlock/Component';
 import { LinkedTextBlock } from '@/blocks/LinkedText/Component';
 import { MediaBlock } from '@/blocks/MediaBlock/Component';
@@ -25,6 +26,7 @@ import type {
   CallToActionBlock as CTABlockProps,
   ContentPathwayBlock as ContentPathwayBlockProps,
   FormBlock as FormBlockProps,
+  ImageCarouselBlock as ImageCarouselBlockProps,
   LinkGroupBlock as LinkGroupBlockProps,
   LinkedText as LinkedTextProps,
   MediaBlock as MediaBlockProps,
@@ -47,6 +49,7 @@ type NodeTypes =
       | ButtonBlockProps
       | SliderGalleryBlockProps
       | ContentPathwayBlockProps
+      | ImageCarouselBlockProps
     >;
 
 const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
@@ -76,6 +79,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
     buttonBlock: ({ node }) => <ButtonBlock {...node.fields} />,
     sliderGallery: ({ node }) => <SliderGalleryBlock {...node.fields} />,
     contentPathway: ({ node }) => <ContentPathwayBlock {...node.fields} />,
+    imageCarousel: ({ node }) => <ImageCarouselBlock {...node.fields} />,
   },
 });
 

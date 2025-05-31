@@ -9,6 +9,7 @@ import {
 import type { Block, Field } from 'payload';
 
 import { ContentPathway } from '@/blocks/ContentPathway/config';
+import { ImageCarousel } from '@/blocks/ImageCarousel/config';
 import { SliderGallery } from '@/blocks/SliderGallery/config';
 import { link } from '@/fields/link';
 
@@ -195,6 +196,7 @@ const columnFields: Field[] = [
               ButtonBlock,
               SliderGallery,
               ContentPathway,
+              ImageCarousel,
             ],
           }),
           AlignFeature(),

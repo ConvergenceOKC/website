@@ -849,9 +849,6 @@ export interface ContentPathwayBlock {
  * via the `definition` "ImageCarouselBlock".
  */
 export interface ImageCarouselBlock {
-  showTitle?: boolean | null;
-  title?: string | null;
-  backgroundShape?: ('none' | 'shape1' | 'shape2' | 'shape3' | 'shape4') | null;
   autoPlayInterval?: number | null;
   images?:
     | {
@@ -1452,9 +1449,6 @@ export interface ContentPathwayBlockSelect<T extends boolean = true> {
  * via the `definition` "ImageCarouselBlock_select".
  */
 export interface ImageCarouselBlockSelect<T extends boolean = true> {
-  showTitle?: T;
-  title?: T;
-  backgroundShape?: T;
   autoPlayInterval?: T;
   images?:
     | T
