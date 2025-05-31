@@ -26,7 +26,7 @@ export const ContentPathwayBlock: React.FC<ContentPathwayProps> = ({
       )}
     >
       {/* Dashed Line Container */}
-      <div className="border-taupe absolute top-0 left-1/2 z-0 h-full w-0.5 -translate-x-1/2 border-l-4 border-dashed" />
+      <div className="border-convergence-teal absolute top-0 left-1/2 z-0 h-full w-0.5 -translate-x-1/2 border-l-4 border-dashed" />
 
       {/* Content Items */}
       {contentItems.map((item, index) => {

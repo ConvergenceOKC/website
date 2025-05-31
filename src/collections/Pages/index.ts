@@ -7,7 +7,6 @@ import {
 } from '@payloadcms/plugin-seo/fields';
 import type { CollectionConfig } from 'payload';
 
-import { ContentContainer } from '@/blocks/ContentContainer/config';
 import { ContentPathway } from '@/blocks/ContentPathway/config';
 import { ImageCarousel } from '@/blocks/ImageCarousel/config';
 import { SliderGallery } from '@/blocks/SliderGallery/config';
@@ -88,7 +87,6 @@ export const Pages: CollectionConfig<'pages'> = {
                 SliderGallery,
                 ContentPathway,
                 ImageCarousel,
-                ContentContainer,
               ],
               required: true,
               admin: {

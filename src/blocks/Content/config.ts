@@ -8,6 +8,7 @@ import {
 } from '@payloadcms/richtext-lexical';
 import type { Block, Field } from 'payload';
 
+import { ContentPathway } from '@/blocks/ContentPathway/config';
 import { SliderGallery } from '@/blocks/SliderGallery/config';
 import { link } from '@/fields/link';
 
@@ -49,35 +50,44 @@ const settingsFields: Field[] = [
 
 const backgroundColorFields: Field[] = [
   {
-    name: 'backgroundColor',
-    type: 'select',
-    options: [
+    type: 'row',
+    fields: [
       {
-        label: 'None',
-        value: 'none',
-      },
-      {
-        label: 'Beige',
-        value: 'beige',
-      },
-      {
-        label: 'Teal',
-        value: 'teal',
-      },
-      {
-        label: 'Brown',
-        value: 'brown',
-      },
-      {
-        label: 'Orange',
-        value: 'orange',
-      },
-      {
-        label: 'Blue',
-        value: 'blue',
+        name: 'backgroundColor',
+        type: 'select',
+        options: [
+          {
+            label: 'None',
+            value: 'none',
+          },
+          {
+            label: 'Beige',
+            value: 'beige',
+          },
+          {
+            label: 'Teal',
+            value: 'teal',
+          },
+          {
+            label: 'Brown',
+            value: 'brown',
+          },
+          {
+            label: 'Orange',
+            value: 'orange',
+          },
+          {
+            label: 'Blue',
+            value: 'blue',
+          },
+          {
+            label: 'Beige Darker',
+            value: 'beigeDarker',
+          },
+        ],
+        defaultValue: 'none',
       },
     ],
-    defaultValue: 'none',
   },
 ];
 
@@ -92,7 +102,7 @@ const backgroundImageFields: Field[] = [
       },
       {
         name: 'blendMode',
-        label: 'Image Blend Mode',
+        label: 'Blend Mode',
         type: 'select',
         options: [
           {
@@ -117,6 +127,16 @@ const backgroundImageFields: Field[] = [
           },
         ],
         defaultValue: 'none',
+        admin: {
+          condition: (_, siblingData) => {
+            return siblingData?.backgroundImage;
+          },
+        },
+      },
+      {
+        name: 'backgroundImageOpacity',
+        type: 'number',
+        defaultValue: 1,
         admin: {
           condition: (_, siblingData) => {
             return siblingData?.backgroundImage;
@@ -174,6 +194,7 @@ const columnFields: Field[] = [
               LinkGroupBlock,
               ButtonBlock,
               SliderGallery,
+              ContentPathway,
             ],
           }),
           AlignFeature(),

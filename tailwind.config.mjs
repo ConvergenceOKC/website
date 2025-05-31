@@ -71,6 +71,7 @@ const config = {
         'convergence-bright-orange': 'hsl(var(--convergence-bright-orange))',
         'convergence-burnt-orange': 'hsl(var(--convergence-burnt-orange))',
         'convergence-brown': 'hsl(var(--convergence-brown))',
+        'convergence-beige-darker': 'hsl(var(--convergence-beige-darker))',
         accent: {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',

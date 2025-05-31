@@ -18,6 +18,11 @@ export const ContentBlock: React.FC<ContentBlockProps> = ({
     oneFifth: '2',
   };
 
+  const textColorClasses = {
+    light: 'text-convergence-beige',
+    dark: 'text-convergence-brown',
+  };
+
   const bgColorClasses = {
     none: 'text-convergence-brown',
     beige: 'bg-convergence-beige text-convergence-brown',
@@ -25,6 +30,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = ({
     brown: 'bg-convergence-brown text-convergence-beige',
     orange: 'bg-convergence-bright-orange text-convergence-beige',
     blue: 'bg-convergence-blue text-convergence-beige',
+    beigeDarker: 'bg-convergence-beige-darker text-convergence-brown',
   };
 
   const bgImage = background?.backgroundImage as Media;
@@ -36,6 +42,10 @@ export const ContentBlock: React.FC<ContentBlockProps> = ({
     overlay: 'mix-blend-overlay',
     colorBurn: 'mix-blend-color-burn',
   };
+
+  const bgImageOpacity = background?.backgroundImageOpacity
+    ? `opacity-${Math.round(Math.min(background.backgroundImageOpacity, 1))}`
+    : '';
 
   const paddingClasses = {
     none: '',
@@ -52,6 +62,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = ({
             className={cn(
               'absolute inset-0 bg-cover bg-no-repeat',
               bgImageBlendModeClasses[background?.blendMode || 'none'],
+              bgImageOpacity,
             )}
             style={{
               backgroundImage: `url(${bgImage.url || ''})`,

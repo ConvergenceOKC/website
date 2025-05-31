@@ -93,6 +93,7 @@
     --convergence-burnt-orange: 31 88% 41%;
     --convergence-teal: 168 86% 25%;
     --convergence-blue: 194 23% 49%;
+    --convergence-beige-darker: 60 14% 90%;
 
     --background: var(--convergence-beige);
     --foreground: var(--convergence-brown);
