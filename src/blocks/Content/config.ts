@@ -20,7 +20,30 @@ import { MediaBlock } from '../MediaBlock/config';
 
 const settingsFields: Field[] = [
   {
-    name: 'padding',
+    name: 'paddingTop',
+    type: 'select',
+    options: [
+      {
+        label: 'None',
+        value: 'none',
+      },
+      {
+        label: 'Small',
+        value: 'small',
+      },
+      {
+        label: 'Medium',
+        value: 'medium',
+      },
+      {
+        label: 'Large',
+        value: 'large',
+      },
+    ],
+    defaultValue: 'medium',
+  },
+  {
+    name: 'paddingBottom',
     type: 'select',
     options: [
       {

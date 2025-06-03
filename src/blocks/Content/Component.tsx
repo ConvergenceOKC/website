@@ -47,11 +47,18 @@ export const ContentBlock: React.FC<ContentBlockProps> = ({
     ? `opacity-${Math.round(Math.min(background.backgroundImageOpacity, 1))}`
     : '';
 
-  const paddingClasses = {
+  const paddingTopClasses = {
     none: '',
-    small: 'py-8',
-    medium: 'py-16',
-    large: 'py-32',
+    small: 'pt-16',
+    medium: 'pt-32',
+    large: 'pt-48',
+  };
+
+  const paddingBottomClasses = {
+    none: '',
+    small: 'pb-16',
+    medium: 'pb-32',
+    large: 'pb-48',
   };
 
   return (
@@ -72,7 +79,8 @@ export const ContentBlock: React.FC<ContentBlockProps> = ({
         <div
           className={cn(
             bgColorClasses[background?.backgroundColor || 'none'],
-            paddingClasses[settings?.padding || 'medium'],
+            paddingTopClasses[settings?.paddingTop || 'medium'],
+            paddingBottomClasses[settings?.paddingBottom || 'medium'],
           )}
         >
           <div

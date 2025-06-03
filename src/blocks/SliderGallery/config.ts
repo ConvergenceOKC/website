@@ -14,45 +14,52 @@ export const SliderGallery: Block = {
       defaultValue: false,
     },
     {
-      name: 'megaTitle',
-      type: 'text',
-      label: 'Mega Title',
-      required: false,
-      admin: {
-        condition: (data, siblingData, { blockData }) => {
-          return blockData?.showMegaTitle;
-        },
-      },
-    },
-    {
-      name: 'backgroundShape',
-      type: 'select',
-      options: [
+      type: 'row',
+      fields: [
         {
-          label: 'None',
-          value: 'none',
+          name: 'megaTitle',
+          type: 'text',
+          label: 'Mega Title',
+          required: false,
+          admin: {
+            condition: (data, siblingData, { blockData }) => {
+              return blockData?.showMegaTitle;
+            },
+          },
         },
         {
-          label: 'Shape 1',
-          value: 'shape1',
-        },
-        {
-          label: 'Shape 2',
-          value: 'shape2',
-        },
-        {
-          label: 'Shape 3',
-          value: 'shape3',
-        },
-        {
-          label: 'Shape 4',
-          value: 'shape4',
+          name: 'titleColor',
+          type: 'select',
+          options: [
+            {
+              label: 'Brown',
+              value: 'brown',
+            },
+            {
+              label: 'Teal',
+              value: 'teal',
+            },
+            {
+              label: 'Beige',
+              value: 'beige',
+            },
+            {
+              label: 'Orange',
+              value: 'orange',
+            },
+            {
+              label: 'Blue',
+              value: 'blue',
+            },
+          ],
+          defaultValue: 'orange',
+          admin: {
+            condition: (data, siblingData, { blockData }) => {
+              return blockData?.showMegaTitle;
+            },
+          },
         },
       ],
-      defaultValue: 'none',
-      hooks: {
-        afterChange: [revalidatePage],
-      },
     },
     {
       name: 'images',

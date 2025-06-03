@@ -8,10 +8,12 @@ import { BackgroundShapes } from '@/components/BackgroundShapes';
 import { CMSLink } from '@/components/Link';
 import { Media } from '@/components/Media';
 import type { SliderGalleryBlock as SliderGalleryProps } from '@/payload-types';
+import { cn } from '@/utilities/ui';
 
 export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
   showMegaTitle,
   megaTitle,
+  titleColor,
   images,
 }) => {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
@@ -26,11 +28,26 @@ export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
     return null;
   }
 
+  const megaTitleClass = {
+    brown: 'text-convergence-brown',
+    teal: 'text-convergence-teal',
+    beige: 'text-convergence-beige',
+    orange: 'text-convergence-bright-orange',
+    blue: 'text-convergence-blue',
+    none: '',
+  };
+
   return (
     <>
       {/* Mega Title */}
       {showMegaTitle && megaTitle && (
-        <h2 className="text-convergence-beige -mb-80 flex justify-center overflow-hidden text-center text-[27rem] leading-[37rem] whitespace-nowrap opacity-30 mix-blend-multiply">
+        <h2
+          className={cn(
+            'relative -z-10 -mb-80 flex justify-center overflow-hidden text-center text-[27rem] leading-[38rem] whitespace-nowrap opacity-30',
+
+            megaTitleClass[titleColor || 'none'],
+          )}
+        >
           {megaTitle}
         </h2>
       )}
@@ -53,7 +70,7 @@ export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
                 return (
                   <div
                     key={index}
-                    className="relative h-80 w-80 cursor-pointer overflow-hidden rounded-lg opacity-20 hover:opacity-100"
+                    className="relative h-80 w-80 cursor-pointer overflow-hidden rounded-lg saturate-0 hover:saturate-100"
                     onClick={() => handleClick(index)}
                   >
                     <Media

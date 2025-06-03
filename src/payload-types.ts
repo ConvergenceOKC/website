@@ -460,7 +460,8 @@ export interface CallToActionBlock {
  */
 export interface ContentBlock {
   settings?: {
-    padding?: ('none' | 'small' | 'medium' | 'large') | null;
+    paddingTop?: ('none' | 'small' | 'medium' | 'large') | null;
+    paddingBottom?: ('none' | 'small' | 'medium' | 'large') | null;
     enableGutter?: boolean | null;
   };
   background?: {
@@ -782,7 +783,7 @@ export interface Form {
 export interface SliderGalleryBlock {
   showMegaTitle?: boolean | null;
   megaTitle?: string | null;
-  backgroundShape?: ('none' | 'shape1' | 'shape2' | 'shape3' | 'shape4') | null;
+  titleColor?: ('brown' | 'teal' | 'beige' | 'orange' | 'blue') | null;
   images?:
     | {
         image: string | Media;
@@ -1318,7 +1319,8 @@ export interface ContentBlockSelect<T extends boolean = true> {
   settings?:
     | T
     | {
-        padding?: T;
+        paddingTop?: T;
+        paddingBottom?: T;
         enableGutter?: T;
       };
   background?:
@@ -1404,7 +1406,7 @@ export interface FormBlockSelect<T extends boolean = true> {
 export interface SliderGalleryBlockSelect<T extends boolean = true> {
   showMegaTitle?: T;
   megaTitle?: T;
-  backgroundShape?: T;
+  titleColor?: T;
   images?:
     | T
     | {
