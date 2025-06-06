@@ -117,16 +117,16 @@ const backgroundColorFields: Field[] = [
 
 const backgroundImageFields: Field[] = [
   {
+    name: 'backgroundImage',
+    type: 'upload',
+    relationTo: 'media',
+  },
+  {
     type: 'row',
     fields: [
       {
-        name: 'backgroundImage',
-        type: 'upload',
-        relationTo: 'media',
-      },
-      {
         name: 'blendMode',
-        label: 'Blend Mode',
+        label: 'Background Image Blend Mode',
         type: 'select',
         options: [
           {
@@ -160,7 +160,7 @@ const backgroundImageFields: Field[] = [
       {
         name: 'backgroundImageOpacity',
         type: 'number',
-        defaultValue: 1,
+        defaultValue: 100,
         admin: {
           condition: (_, siblingData) => {
             return siblingData?.backgroundImage;

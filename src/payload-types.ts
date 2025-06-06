@@ -2144,6 +2144,7 @@ export interface LinkGroupBlock {
  * via the `definition` "ButtonBlock".
  */
 export interface ButtonBlock {
+  alignment?: ('left' | 'center' | 'right') | null;
   links?:
     | {
         link: {

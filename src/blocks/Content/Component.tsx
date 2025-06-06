@@ -44,7 +44,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = ({
   };
 
   const bgImageOpacity = background?.backgroundImageOpacity
-    ? `opacity-${Math.round(Math.min(background.backgroundImageOpacity, 1))}`
+    ? `opacity-${Math.round(Math.min(Math.abs(background.backgroundImageOpacity), 100))}`
     : '';
 
   const paddingTopClasses = {
