@@ -2,8 +2,8 @@ import { CollectionConfig } from 'payload';
 
 import { authenticated } from '@/access/authenticated';
 
-export const Sermons: CollectionConfig<'sermons'> = {
-  slug: 'sermons',
+export const Messages: CollectionConfig<'messages'> = {
+  slug: 'messages',
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'date', 'speaker', 'series'],
@@ -46,7 +46,7 @@ export const Sermons: CollectionConfig<'sermons'> = {
     {
       name: 'series',
       type: 'relationship',
-      relationTo: 'sermonSeries',
+      relationTo: 'messageSeries',
       hasMany: false,
       required: false,
     },

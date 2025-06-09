@@ -9,6 +9,7 @@ import type { CollectionConfig } from 'payload';
 
 import { ContentPathway } from '@/blocks/ContentPathway/config';
 import { ImageCarousel } from '@/blocks/ImageCarousel/config';
+import { MessagesBlock } from '@/blocks/Messages/config';
 import { SliderGallery } from '@/blocks/SliderGallery/config';
 import { slugField } from '@/fields/slug';
 import { hero } from '@/heros/config';
@@ -87,6 +88,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 SliderGallery,
                 ContentPathway,
                 ImageCarousel,
+                MessagesBlock,
               ],
               required: true,
               admin: {

@@ -19,6 +19,7 @@ import { LinkGroupBlock } from '@/blocks/LinkGroupBlock/Component';
 import { LinkedTextBlock } from '@/blocks/LinkedText/Component';
 import { MediaBlock } from '@/blocks/MediaBlock/Component';
 import { MegaButtonPairBlock } from '@/blocks/MegaButtonPair/Component';
+import { MessagesBlock } from '@/blocks/Messages/Component';
 import { SliderGalleryBlock } from '@/blocks/SliderGallery/Component';
 import type {
   BannerBlock as BannerBlockProps,
@@ -31,6 +32,7 @@ import type {
   LinkedText as LinkedTextProps,
   MediaBlock as MediaBlockProps,
   MegaButtonPair as MegaButtonPairProps,
+  MessagesBlock as MessagesBlockProps,
   SliderGalleryBlock as SliderGalleryBlockProps,
 } from '@/payload-types';
 import { cn } from '@/utilities/ui';
@@ -50,6 +52,7 @@ type NodeTypes =
       | SliderGalleryBlockProps
       | ContentPathwayBlockProps
       | ImageCarouselBlockProps
+      | MessagesBlockProps
     >;
 
 const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
@@ -80,6 +83,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
     sliderGallery: ({ node }) => <SliderGalleryBlock {...node.fields} />,
     contentPathway: ({ node }) => <ContentPathwayBlock {...node.fields} />,
     imageCarousel: ({ node }) => <ImageCarouselBlock {...node.fields} />,
+    messagesBlock: ({ node }) => <MessagesBlock {...node.fields} />,
   },
 });
 

@@ -2,11 +2,11 @@ import { CollectionConfig } from 'payload';
 
 import { authenticated } from '@/access/authenticated';
 
-export const SermonSeries: CollectionConfig<'sermonSeries'> = {
-  slug: 'sermonSeries',
+export const MessageSeries: CollectionConfig<'messageSeries'> = {
+  slug: 'messageSeries',
   labels: {
-    singular: 'Sermon Series',
-    plural: 'Sermon Series',
+    singular: 'Message Series',
+    plural: 'Message Series',
   },
   admin: {
     useAsTitle: 'title',
