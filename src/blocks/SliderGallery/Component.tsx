@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import { ChevronRight } from 'lucide-react';
 
+import { LinkedTextBlock } from '@/blocks/LinkedText/Component';
 import { BackgroundShapes } from '@/components/BackgroundShapes';
 import { CMSLink } from '@/components/Link';
 import { Media } from '@/components/Media';
@@ -13,6 +14,8 @@ import { cn } from '@/utilities/ui';
 export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
   showMegaTitle,
   megaTitle,
+  showSubtitle,
+  subtitle,
   titleColor,
   images,
 }) => {
@@ -53,7 +56,18 @@ export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
       )}
 
       {/* Image Grid */}
-      <div className="grid h-full w-full grid-cols-[50%_1fr] gap-6 overflow-hidden">
+      <div className="relative grid h-full w-full grid-cols-[50%_1fr] gap-6 overflow-hidden">
+        {/* Subtitle */}
+        {showSubtitle && subtitle && (
+          <div className="absolute top-36 left-1/2 z-10 container grid w-full -translate-x-1/2 grid-cols-[50%_1fr]">
+            <LinkedTextBlock
+              blockType="linkedText"
+              className="w-full"
+              leftText={subtitle}
+              rightText=""
+            />
+          </div>
+        )}
         {/* Main Active Image */}
         <Media
           resource={images[activeImageIndex]?.image}

@@ -11,11 +11,11 @@ import { Socials } from '@/Socials/config';
 import { Categories } from '@/collections/Categories';
 import { HouseChurches } from '@/collections/HouseChurches';
 import { Media } from '@/collections/Media';
+import { MessageSeries } from '@/collections/MessageSeries';
+import { Messages } from '@/collections/Messages';
 import { Pages } from '@/collections/Pages';
 import { Posts } from '@/collections/Posts';
 import { Roles } from '@/collections/Roles';
-import { SermonSeries } from '@/collections/SermonSeries';
-import { Sermons } from '@/collections/Sermons';
 import { Staff } from '@/collections/Staff';
 import { Users } from '@/collections/Users';
 import { defaultLexical } from '@/fields/defaultLexical';
@@ -69,8 +69,8 @@ export default buildConfig({
     Categories,
     Users,
     HouseChurches,
-    Sermons,
-    SermonSeries,
+    Messages,
+    MessageSeries,
     Staff,
     Roles,
   ],

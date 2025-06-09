@@ -73,8 +73,8 @@ export interface Config {
     categories: Category;
     users: User;
     'house-churches': HouseChurch;
-    sermons: Sermon;
-    sermonSeries: SermonSery;
+    messages: Message;
+    messageSeries: MessageSery;
     staff: Staff;
     roles: Role;
     redirects: Redirect;
@@ -94,8 +94,8 @@ export interface Config {
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'house-churches': HouseChurchesSelect<false> | HouseChurchesSelect<true>;
-    sermons: SermonsSelect<false> | SermonsSelect<true>;
-    sermonSeries: SermonSeriesSelect<false> | SermonSeriesSelect<true>;
+    messages: MessagesSelect<false> | MessagesSelect<true>;
+    messageSeries: MessageSeriesSelect<false> | MessageSeriesSelect<true>;
     staff: StaffSelect<false> | StaffSelect<true>;
     roles: RolesSelect<false> | RolesSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
@@ -212,6 +212,7 @@ export interface Page {
     | SliderGalleryBlock
     | ContentPathwayBlock
     | ImageCarouselBlock
+    | MessagesBlock
   )[];
   meta?: {
     title?: string | null;
@@ -784,6 +785,8 @@ export interface SliderGalleryBlock {
   showMegaTitle?: boolean | null;
   megaTitle?: string | null;
   titleColor?: ('brown' | 'teal' | 'beige' | 'orange' | 'blue') | null;
+  showSubtitle?: boolean | null;
+  subtitle?: string | null;
   images?:
     | {
         image: string | Media;
@@ -879,6 +882,29 @@ export interface ImageCarouselBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MessagesBlock".
+ */
+export interface MessagesBlock {
+  block: 'latest' | 'moreSeries' | 'recentSeries' | 'archive';
+  series?: (string | null) | MessageSery;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'messagesBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "messageSeries".
+ */
+export interface MessageSery {
+  id: string;
+  title: string;
+  description: string;
+  thumbnail: string | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "house-churches".
  */
 export interface HouseChurch {
@@ -896,15 +922,15 @@ export interface HouseChurch {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "sermons".
+ * via the `definition` "messages".
  */
-export interface Sermon {
+export interface Message {
   id: string;
   date: string;
   title: string;
   description: string;
   speaker: string | Staff;
-  series?: (string | null) | SermonSery;
+  series?: (string | null) | MessageSery;
   scripture?:
     | {
         book: string;
@@ -944,18 +970,6 @@ export interface Role {
   id: string;
   name: string;
   description?: string | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "sermonSeries".
- */
-export interface SermonSery {
-  id: string;
-  title: string;
-  description: string;
-  thumbnail: string | Media;
   updatedAt: string;
   createdAt: string;
 }
@@ -1156,12 +1170,12 @@ export interface PayloadLockedDocument {
         value: string | HouseChurch;
       } | null)
     | ({
-        relationTo: 'sermons';
-        value: string | Sermon;
+        relationTo: 'messages';
+        value: string | Message;
       } | null)
     | ({
-        relationTo: 'sermonSeries';
-        value: string | SermonSery;
+        relationTo: 'messageSeries';
+        value: string | MessageSery;
       } | null)
     | ({
         relationTo: 'staff';
@@ -1272,6 +1286,7 @@ export interface PagesSelect<T extends boolean = true> {
         sliderGallery?: T | SliderGalleryBlockSelect<T>;
         contentPathway?: T | ContentPathwayBlockSelect<T>;
         imageCarousel?: T | ImageCarouselBlockSelect<T>;
+        messagesBlock?: T | MessagesBlockSelect<T>;
       };
   meta?:
     | T
@@ -1407,6 +1422,8 @@ export interface SliderGalleryBlockSelect<T extends boolean = true> {
   showMegaTitle?: T;
   megaTitle?: T;
   titleColor?: T;
+  showSubtitle?: T;
+  subtitle?: T;
   images?:
     | T
     | {
@@ -1468,6 +1485,16 @@ export interface ImageCarouselBlockSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MessagesBlock_select".
+ */
+export interface MessagesBlockSelect<T extends boolean = true> {
+  block?: T;
+  series?: T;
   id?: T;
   blockName?: T;
 }
@@ -1649,9 +1676,9 @@ export interface HouseChurchesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "sermons_select".
+ * via the `definition` "messages_select".
  */
-export interface SermonsSelect<T extends boolean = true> {
+export interface MessagesSelect<T extends boolean = true> {
   date?: T;
   title?: T;
   description?: T;
@@ -1674,9 +1701,9 @@ export interface SermonsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "sermonSeries_select".
+ * via the `definition` "messageSeries_select".
  */
-export interface SermonSeriesSelect<T extends boolean = true> {
+export interface MessageSeriesSelect<T extends boolean = true> {
   title?: T;
   description?: T;
   thumbnail?: T;

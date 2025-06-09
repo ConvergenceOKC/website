@@ -62,6 +62,22 @@ export const SliderGallery: Block = {
       ],
     },
     {
+      name: 'showSubtitle',
+      type: 'checkbox',
+      defaultValue: false,
+    },
+    {
+      name: 'subtitle',
+      type: 'text',
+      label: 'Subtitle',
+      required: false,
+      admin: {
+        condition: (data, siblingData, { blockData }) => {
+          return blockData?.showSubtitle;
+        },
+      },
+    },
+    {
       name: 'images',
       type: 'array',
       label: 'Images',
