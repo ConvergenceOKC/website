@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 
 import { CMSLink } from '@/components/Link';
 import type { Header as HeaderType } from '@/payload-types';
@@ -27,14 +27,14 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
   return (
     <>
       {/* Desktop Navigation */}
-      <nav className="hidden md:flex items-center gap-6">
+      <nav className="hidden items-center gap-6 md:flex">
         {navItems.map(({ link }, i) => {
           return (
             <CMSLink
               key={i}
               {...link}
               appearance={link.appearance}
-              className="text-xs text-inherit hover:opacity-70 transition-opacity"
+              className="text-xs transition-opacity hover:opacity-70"
             />
           );
         })}
@@ -42,7 +42,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
 
       {/* Mobile Menu Button */}
       <button
-        className="md:hidden flex items-center justify-center w-8 h-8 text-inherit hover:opacity-70 transition-opacity text-lg font-normal"
+        className="flex h-8 w-8 items-center justify-center text-lg font-normal text-inherit transition-opacity hover:opacity-70 md:hidden"
         onClick={toggleMobileMenu}
         aria-label="Toggle mobile menu"
         aria-expanded={isMobileMenuOpen}
@@ -55,12 +55,12 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
         <>
           {/* Backdrop */}
           <div
-            className="fixed inset-0 bg-black/50 z-40 md:hidden"
+            className="fixed inset-0 z-40 bg-black/50 md:hidden"
             onClick={closeMobileMenu}
           />
 
           {/* Mobile Menu */}
-          <nav className="fixed top-16 md:top-[7.375rem] left-0 right-0 bg-inherit border-t border-current/20 z-50 md:hidden">
+          <nav className="fixed top-16 right-0 left-0 z-50 border-t border-current/20 bg-inherit md:top-[7.375rem] md:hidden">
             <div className="container py-4">
               <div className="flex flex-col gap-4">
                 {navItems.map(({ link }, i) => {
@@ -69,7 +69,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
                       key={i}
                       {...link}
                       appearance={link.appearance}
-                      className="text-xs text-inherit hover:opacity-70 transition-opacity py-2 border-b border-current/10 last:border-b-0"
+                      className="border-b border-current/10 py-2 text-xs text-inherit transition-opacity last:border-b-0 hover:opacity-70"
                     />
                   );
                 })}

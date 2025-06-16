@@ -25,7 +25,7 @@ const buttonVariants = cva(
         destructive:
           'bg-destructive text-destructive-foreground hover:bg-destructive/90 uppercase',
         ghost: 'hover:bg-card hover:text-card-foreground uppercase',
-        link: 'text-primary items-start justify-start underline-offset-4 hover:underline',
+        link: 'text-foreground items-start justify-start underline-offset-4 hover:underline',
         outline:
           'border border-border bg-background hover:bg-card hover:text-card-foreground uppercase',
         secondary:
