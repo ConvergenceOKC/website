@@ -67,7 +67,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = ({
         {background?.backgroundImage && (
           <div
             className={cn(
-              'absolute inset-0 bg-cover bg-no-repeat bg-center',
+              'absolute inset-0 bg-cover bg-center bg-no-repeat',
               bgImageBlendModeClasses[background?.blendMode || 'none'],
               bgImageOpacity,
             )}
@@ -100,10 +100,14 @@ export const ContentBlock: React.FC<ContentBlockProps> = ({
                         `col-span-1 sm:col-span-2 xl:col-span-${colsSpanClasses[size!]}`,
                         {
                           'md:col-span-4': size === 'full',
-                          'sm:col-span-1 md:col-span-2 xl:col-span-4': size === 'oneThird',
-                          'sm:col-span-2 md:col-span-3 xl:col-span-6': size === 'twoThirds',
-                          'sm:col-span-1 md:col-span-2 xl:col-span-5': size === 'half',
-                          'sm:col-span-1 md:col-span-1 xl:col-span-2': size === 'oneFifth',
+                          'sm:col-span-1 md:col-span-2 xl:col-span-4':
+                            size === 'oneThird',
+                          'sm:col-span-2 md:col-span-3 xl:col-span-6':
+                            size === 'twoThirds',
+                          'sm:col-span-1 md:col-span-2 xl:col-span-5':
+                            size === 'half',
+                          'sm:col-span-1 md:col-span-1 xl:col-span-2':
+                            size === 'oneFifth',
                         },
                       )}
                       key={index}

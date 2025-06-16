@@ -13,7 +13,7 @@ export const MessagesBlock: React.FC<MessagesBlockProps> = async ({
   }
 
   if (series) {
-    console.log(await getSeriesMessages(series));
+    // console.log(await getSeriesMessages(series));
   }
 
   switch (block) {

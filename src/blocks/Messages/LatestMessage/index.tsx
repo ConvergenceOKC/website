@@ -14,7 +14,6 @@ export const LatestMessage: React.FC = async () => {
   const message = messageDoc?.docs ? messageDoc.docs[0] : null;
 
   if (message) {
-    console.log('Latest message:', message);
     return (
       <div>
         {/* Message Thumbnail */}
