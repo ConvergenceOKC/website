@@ -41,16 +41,19 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
       )}
       {...(theme ? { 'data-theme': theme } : {})}
     >
-      <div className="container h-[7.375rem] pt-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Link href="/">
-              <Media
-                resource={theme === 'light' ? data.logoLight : data.logoDark}
-              />
+      <div className="container h-16 md:h-[7.375rem] pt-2 md:pt-4">
+        <div className="flex items-center justify-between h-full">
+          <div className="flex items-center gap-2 md:gap-4">
+            <Link href="/" className="flex-shrink-0">
+              <div className="w-8 h-8 md:w-auto md:h-auto">
+                <Media
+                  resource={theme === 'light' ? data.logoLight : data.logoDark}
+                  className="w-full h-full object-contain"
+                />
+              </div>
             </Link>
-            <p>|</p>
-            <p>Oklahoma City</p>
+            <span className="hidden sm:inline">|</span>
+            <p className="hidden sm:block text-xs">Oklahoma City</p>
           </div>
           <HeaderNav data={data} />
         </div>

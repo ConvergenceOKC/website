@@ -21,21 +21,21 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
 
   return (
     <div
-      className="text-convergence-beige relative flex h-[80vh] max-h-[950px] min-h-[850px] overflow-hidden pt-[7.375rem]"
+      className="text-convergence-beige relative flex h-[60vh] md:h-[80vh] max-h-[600px] md:max-h-[950px] min-h-[500px] md:min-h-[850px] overflow-hidden pt-16 md:pt-[7.375rem]"
       data-theme="dark"
     >
-      <div className="relative container mt-20 mb-24 flex">
-        <div className="">
+      <div className="relative container mt-8 md:mt-20 mb-12 md:mb-24 flex">
+        <div className="w-full max-w-2xl">
           {richText && (
             <RichText
-              className="mb-6"
+              className="mb-4 md:mb-6"
               data={richText}
               enableGutter={false}
               enableProse={false}
             />
           )}
           {Array.isArray(links) && links.length > 0 && (
-            <ul className="flex gap-4">
+            <ul className="flex flex-col sm:flex-row gap-2 sm:gap-4">
               {links.map(({ link }, i) => {
                 return (
                   <li key={i}>

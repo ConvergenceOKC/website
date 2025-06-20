@@ -49,16 +49,16 @@ export const ContentBlock: React.FC<ContentBlockProps> = ({
 
   const paddingTopClasses = {
     none: '',
-    small: 'pt-16',
-    medium: 'pt-32',
-    large: 'pt-48',
+    small: 'pt-8 md:pt-16',
+    medium: 'pt-16 md:pt-32',
+    large: 'pt-24 md:pt-48',
   };
 
   const paddingBottomClasses = {
     none: '',
-    small: 'pb-16',
-    medium: 'pb-32',
-    large: 'pb-48',
+    small: 'pb-8 md:pb-16',
+    medium: 'pb-16 md:pb-32',
+    large: 'pb-24 md:pb-48',
   };
 
   return (
@@ -67,7 +67,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = ({
         {background?.backgroundImage && (
           <div
             className={cn(
-              'absolute inset-0 bg-cover bg-no-repeat',
+              'absolute inset-0 bg-cover bg-no-repeat bg-center',
               bgImageBlendModeClasses[background?.blendMode || 'none'],
               bgImageOpacity,
             )}
@@ -89,7 +89,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = ({
               settings?.enableGutter ? 'container' : '',
             )}
           >
-            <div className="grid grid-cols-2 gap-x-8 gap-y-8 md:grid-cols-4 xl:grid-cols-10">
+            <div className="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2 md:grid-cols-4 lg:gap-x-8 lg:gap-y-8 xl:grid-cols-10">
               {content?.columns &&
                 content.columns.length > 0 &&
                 content.columns.map((col, index) => {
@@ -97,9 +97,13 @@ export const ContentBlock: React.FC<ContentBlockProps> = ({
                   return (
                     <div
                       className={cn(
-                        `col-span-2 xl:col-span-${colsSpanClasses[size!]}`,
+                        `col-span-1 sm:col-span-2 xl:col-span-${colsSpanClasses[size!]}`,
                         {
                           'md:col-span-4': size === 'full',
+                          'sm:col-span-1 md:col-span-2 xl:col-span-4': size === 'oneThird',
+                          'sm:col-span-2 md:col-span-3 xl:col-span-6': size === 'twoThirds',
+                          'sm:col-span-1 md:col-span-2 xl:col-span-5': size === 'half',
+                          'sm:col-span-1 md:col-span-1 xl:col-span-2': size === 'oneFifth',
                         },
                       )}
                       key={index}
