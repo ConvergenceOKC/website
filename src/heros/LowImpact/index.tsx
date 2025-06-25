@@ -1,25 +1,51 @@
-import React from 'react'
+'use client';
 
-import type { Page } from '@/payload-types'
+import React, { useEffect } from 'react';
 
-import RichText from '@/components/RichText'
+import RichText from '@/components/RichText';
+import { LowImpactHeroClient } from '@/heros/LowImpact/index.client';
+import type { Page } from '@/payload-types';
+import { useHeaderTheme } from '@/providers/HeaderTheme';
+import { cn } from '@/utilities/ui';
 
 type LowImpactHeroType =
   | {
-      children?: React.ReactNode
-      richText?: never
+      children?: React.ReactNode;
+      richText?: never;
+      variant?: 'light' | 'dark';
     }
   | (Omit<Page['hero'], 'richText'> & {
-      children?: never
-      richText?: Page['hero']['richText']
-    })
+      children?: never;
+      richText?: Page['hero']['richText'];
+      variant?: 'light' | 'dark';
+    });
 
-export const LowImpactHero: React.FC<LowImpactHeroType> = ({ children, richText }) => {
+export const LowImpactHero: React.FC<LowImpactHeroType> = ({
+  children,
+  richText,
+  variant = 'light',
+}) => {
+  const { setHeaderTheme } = useHeaderTheme();
+
+  useEffect(() => {
+    setHeaderTheme(variant);
+  });
+
   return (
-    <div className="container mt-16">
-      <div className="max-w-[48rem]">
-        {children || (richText && <RichText data={richText} enableGutter={false} />)}
+    <div
+      className={cn(
+        "bg-[url('/images/bg-pattern-white-green.jpg')] bg-cover bg-bottom",
+        variant === 'dark' &&
+          'bg-convergence-teal text-convergence-beige bg-blend-color-burn',
+        variant === 'light' && 'bg-convergence-beige bg-blend-multiply',
+      )}
+    >
+      <div className="container pt-56 pb-40">
+        <div className="max-w-[48rem]">
+          {children ||
+            (richText && <RichText data={richText} enableGutter={false} />)}
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};

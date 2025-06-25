@@ -42,6 +42,24 @@ export const hero: Field = {
       required: true,
     },
     {
+      name: 'variant',
+      type: 'select',
+      defaultValue: 'light',
+      options: [
+        {
+          label: 'Light',
+          value: 'light',
+        },
+        {
+          label: 'Dark',
+          value: 'dark',
+        },
+      ],
+      admin: {
+        condition: (_, { type } = {}) => ['lowImpact'].includes(type),
+      },
+    },
+    {
       name: 'richText',
       type: 'richText',
       editor: lexicalEditor({
