@@ -38,37 +38,6 @@ export const ContentPathway: Block = {
       minRows: 1,
       fields: [
         {
-          name: 'title',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'icon',
-          type: 'upload',
-          relationTo: 'media',
-          required: true,
-        },
-        {
-          name: 'content',
-          type: 'richText',
-          required: true,
-          editor: lexicalEditor({
-            features: ({ rootFeatures }) => {
-              return [
-                ...rootFeatures,
-                HeadingFeature({
-                  enabledHeadingSizes: ['h3', 'h4', 'h5', 'h6'],
-                }),
-                FixedToolbarFeature(),
-                InlineToolbarFeature(),
-                BlocksFeature({
-                  blocks: [LinkedText, MediaBlock, ButtonBlock],
-                }),
-              ];
-            },
-          }),
-        },
-        {
           name: 'displayMode',
           type: 'select',
           options: [
@@ -129,6 +98,37 @@ export const ContentPathway: Block = {
               return siblingData?.displayMode === 'popover';
             },
           },
+        },
+        {
+          name: 'title',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'icon',
+          type: 'upload',
+          relationTo: 'media',
+          required: true,
+        },
+        {
+          name: 'content',
+          type: 'richText',
+          required: true,
+          editor: lexicalEditor({
+            features: ({ rootFeatures }) => {
+              return [
+                ...rootFeatures,
+                HeadingFeature({
+                  enabledHeadingSizes: ['h3', 'h4', 'h5', 'h6'],
+                }),
+                FixedToolbarFeature(),
+                InlineToolbarFeature(),
+                BlocksFeature({
+                  blocks: [LinkedText, MediaBlock, ButtonBlock],
+                }),
+              ];
+            },
+          }),
         },
       ],
       admin: {

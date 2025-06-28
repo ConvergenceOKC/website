@@ -822,6 +822,9 @@ export interface ContentPathwayBlock {
   alignment: 'left' | 'center';
   contentItems?:
     | {
+        displayMode: 'inline' | 'popover';
+        popoverSide?: ('left' | 'right') | null;
+        anchorPoint?: ('start' | 'center' | 'end') | null;
         title: string;
         icon: string | Media;
         content: {
@@ -839,9 +842,6 @@ export interface ContentPathwayBlock {
           };
           [k: string]: unknown;
         };
-        displayMode: 'inline' | 'popover';
-        popoverSide?: ('left' | 'right') | null;
-        anchorPoint?: ('start' | 'center' | 'end') | null;
         id?: string | null;
       }[]
     | null;
@@ -1454,12 +1454,12 @@ export interface ContentPathwayBlockSelect<T extends boolean = true> {
   contentItems?:
     | T
     | {
-        title?: T;
-        icon?: T;
-        content?: T;
         displayMode?: T;
         popoverSide?: T;
         anchorPoint?: T;
+        title?: T;
+        icon?: T;
+        content?: T;
         id?: T;
       };
   id?: T;

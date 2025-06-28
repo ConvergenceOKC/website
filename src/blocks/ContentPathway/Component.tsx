@@ -26,7 +26,12 @@ export const ContentPathwayBlock: React.FC<ContentPathwayProps> = ({
       )}
     >
       {/* Dashed Line Container */}
-      <div className="border-convergence-teal absolute top-0 left-1/2 z-0 h-full w-0.5 -translate-x-1/2 border-l-4 border-dashed" />
+      <div
+        className={cn(
+          'border-convergence-teal absolute top-0 z-0 h-full w-0.5 -translate-x-1/2 border-l-4 border-dashed',
+          alignment === 'left' ? 'left-[71px]' : 'left-1/2',
+        )}
+      />
 
       {/* Content Items */}
       {contentItems.map((item, index) => {
@@ -55,6 +60,16 @@ export const ContentPathwayBlock: React.FC<ContentPathwayProps> = ({
                   <PopoverArrow className="fill-popover h-6 w-6" />
                 </PopoverContent>
               </Popover>
+            )}
+            {item.displayMode === 'inline' && (
+              <div className="flex gap-10">
+                <Media resource={item.icon} className="shrink-0" />
+                <RichText
+                  data={item.content}
+                  enableGutter={false}
+                  enableProse={false}
+                />
+              </div>
             )}
           </div>
         );
