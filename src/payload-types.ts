@@ -1027,10 +1027,23 @@ export interface Search {
   id: string;
   title?: string | null;
   priority?: number | null;
-  doc: {
-    relationTo: 'posts';
-    value: string | Post;
-  };
+  doc:
+    | {
+        relationTo: 'pages';
+        value: string | Page;
+      }
+    | {
+        relationTo: 'messages';
+        value: string | Message;
+      }
+    | {
+        relationTo: 'staff';
+        value: string | Staff;
+      }
+    | {
+        relationTo: 'messageSeries';
+        value: string | MessageSery;
+      };
   slug?: string | null;
   meta?: {
     title?: string | null;
