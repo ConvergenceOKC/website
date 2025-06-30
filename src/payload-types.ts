@@ -894,39 +894,10 @@ export interface ImageCarouselBlock {
  */
 export interface MessagesBlock {
   block: 'latest' | 'moreSeries' | 'recentSeries' | 'archive';
-  series?: (string | null) | MessageSery;
+  message?: (string | null) | Message;
   id?: string | null;
   blockName?: string | null;
   blockType: 'messagesBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "messageSeries".
- */
-export interface MessageSery {
-  id: string;
-  title: string;
-  description: string;
-  thumbnail: string | Media;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "house-churches".
- */
-export interface HouseChurch {
-  id: string;
-  name: string;
-  locationDescription: string;
-  facilitator: string;
-  time: string;
-  language?: ('english' | 'spanish') | null;
-  status?: ('active' | 'inactive') | null;
-  lat: number;
-  lng: number;
-  updatedAt: string;
-  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -978,6 +949,35 @@ export interface Role {
   id: string;
   name: string;
   description?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "messageSeries".
+ */
+export interface MessageSery {
+  id: string;
+  title: string;
+  description: string;
+  thumbnail: string | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "house-churches".
+ */
+export interface HouseChurch {
+  id: string;
+  name: string;
+  locationDescription: string;
+  facilitator: string;
+  time: string;
+  language?: ('english' | 'spanish') | null;
+  status?: ('active' | 'inactive') | null;
+  lat: number;
+  lng: number;
   updatedAt: string;
   createdAt: string;
 }
@@ -1516,7 +1516,7 @@ export interface ImageCarouselBlockSelect<T extends boolean = true> {
  */
 export interface MessagesBlockSelect<T extends boolean = true> {
   block?: T;
-  series?: T;
+  message?: T;
   id?: T;
   blockName?: T;
 }

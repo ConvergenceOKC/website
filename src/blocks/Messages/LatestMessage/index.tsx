@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { Dot } from 'lucide-react';
@@ -17,7 +18,21 @@ export const LatestMessage: React.FC = async () => {
     return (
       <div>
         {/* Message Thumbnail */}
-        <Media resource={message.thumbnail} size="og" className="mb-9" />
+        <Link
+          href={message.video}
+          className="relative cursor-pointer"
+          target="_blank"
+        >
+          <div className="absolute z-10 flex h-full w-full items-center justify-center">
+            <Image
+              src="/images/play-icon.svg"
+              alt="Play button"
+              width={100}
+              height={100}
+            />
+          </div>
+          <Media resource={message.thumbnail} size="og" className="mb-9" />
+        </Link>
 
         <div className="flex gap-10">
           {/* Message Details */}
@@ -69,11 +84,11 @@ export const LatestMessage: React.FC = async () => {
             )}
             {message.series && (
               <Button variant={'secondary'}>
-                <Link href={'/message#more'}>More In This Series</Link>
+                <Link href={'/messages'}>More In This Series</Link>
               </Button>
             )}
             <Button variant={'secondary'}>
-              <Link href={'/message#all'}>All Messages</Link>
+              <Link href={'/messages'}>All Messages</Link>
             </Button>
           </div>
         </div>

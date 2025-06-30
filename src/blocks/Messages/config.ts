@@ -30,10 +30,10 @@ export const MessagesBlock: Block = {
       required: true,
     },
     {
-      name: 'series',
-      label: 'Series',
+      name: 'message',
+      label: 'Message',
       type: 'relationship',
-      relationTo: 'messageSeries',
+      relationTo: 'messages',
       hasMany: false,
       required: false,
       admin: {
