@@ -5,7 +5,10 @@ import { getPayload } from 'payload';
 
 import { MessageSery } from '@/payload-types';
 
-export async function getSeriesMessages(series: string | MessageSery) {
+export async function getSeriesMessages(
+  series: string | MessageSery,
+  limit: number = 10,
+) {
   const payload = await getPayload({ config });
 
   try {
@@ -16,7 +19,8 @@ export async function getSeriesMessages(series: string | MessageSery) {
           equals: series,
         },
       },
-      limit: 1,
+      sort: '-createdAt',
+      limit,
     });
     return messages;
   } catch (error) {

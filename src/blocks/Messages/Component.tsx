@@ -1,31 +1,42 @@
 // import configPromise from '@payload-config';
 // import { getPayload } from 'payload';
 import { LatestMessage } from '@/blocks/Messages/LatestMessage';
+import { MessageArchive } from '@/blocks/Messages/MessageArchive';
 import { MoreFromSeries } from '@/blocks/Messages/MoreFromSeries';
-import { getSeriesMessages } from '@/blocks/Messages/getSeriesMessages';
-import { MessagesBlock as MessagesBlockProps } from '@/payload-types';
+import { RecentSeries } from '@/blocks/Messages/RecentSeries';
+import { getLatestMessage } from '@/blocks/Messages/getLatestMessage';
+import { Message, MessagesBlock as MessagesBlockProps } from '@/payload-types';
 
 export const MessagesBlock: React.FC<MessagesBlockProps> = async ({
   block,
+  useLatestMessage,
   message,
 }) => {
   if (!block) {
     return null;
   }
 
-  if (message) {
-    // console.log(await getSeriesMessages(message));
-  }
-
   switch (block) {
     case 'latest':
       return <LatestMessage />;
     case 'moreSeries':
-      return <MoreFromSeries />;
+      if (useLatestMessage) {
+        const latestMessage = await getLatestMessage();
+        if (
+          !latestMessage ||
+          latestMessage.docs.length === 0 ||
+          !latestMessage.docs[0]
+        ) {
+          return <div>No latest message found.</div>;
+        }
+        return <MoreFromSeries message={latestMessage.docs[0]} />;
+      } else if (message && typeof message === 'object' && 'id' in message) {
+        return <MoreFromSeries message={message} />;
+      }
     case 'recentSeries':
-      return <div>Recent Series Block</div>;
+      return <RecentSeries />;
     case 'archive':
-      return <div>Message Archive Block</div>;
+      return <MessageArchive />;
     default:
       return null;
   }

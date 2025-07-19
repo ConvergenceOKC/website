@@ -894,6 +894,7 @@ export interface ImageCarouselBlock {
  */
 export interface MessagesBlock {
   block: 'latest' | 'moreSeries' | 'recentSeries' | 'archive';
+  useLatestMessage?: boolean | null;
   message?: (string | null) | Message;
   id?: string | null;
   blockName?: string | null;
@@ -1516,6 +1517,7 @@ export interface ImageCarouselBlockSelect<T extends boolean = true> {
  */
 export interface MessagesBlockSelect<T extends boolean = true> {
   block?: T;
+  useLatestMessage?: T;
   message?: T;
   id?: T;
   blockName?: T;

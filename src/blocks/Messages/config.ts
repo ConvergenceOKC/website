@@ -30,6 +30,15 @@ export const MessagesBlock: Block = {
       required: true,
     },
     {
+      name: 'useLatestMessage',
+      label: 'Use Latest Message',
+      type: 'checkbox',
+      defaultValue: true,
+      admin: {
+        condition: (_, { block }) => block === 'moreSeries',
+      },
+    },
+    {
       name: 'message',
       label: 'Message',
       type: 'relationship',
@@ -37,7 +46,8 @@ export const MessagesBlock: Block = {
       hasMany: false,
       required: false,
       admin: {
-        condition: (_, { block }) => block === 'moreSeries',
+        condition: (_, { block, useLatestMessage }) =>
+          block === 'moreSeries' && !useLatestMessage,
       },
     },
   ],
