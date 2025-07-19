@@ -7,14 +7,14 @@ import { MessagesBlock as MessagesBlockProps } from '@/payload-types';
 
 export const MessagesBlock: React.FC<MessagesBlockProps> = async ({
   block,
-  series,
+  message,
 }) => {
   if (!block) {
     return null;
   }
 
-  if (series) {
-    // console.log(await getSeriesMessages(series));
+  if (message) {
+    // console.log(await getSeriesMessages(message));
   }
 
   switch (block) {
