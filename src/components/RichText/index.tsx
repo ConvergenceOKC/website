@@ -6,6 +6,7 @@ import {
 import {
   RichText as ConvertRichText,
   JSXConvertersFunction,
+  LinkJSXConverter,
 } from '@payloadcms/richtext-lexical/react';
 
 import { BannerBlock } from '@/blocks/Banner/Component';
@@ -21,6 +22,8 @@ import { MediaBlock } from '@/blocks/MediaBlock/Component';
 import { MegaButtonPairBlock } from '@/blocks/MegaButtonPair/Component';
 import { MessagesBlock } from '@/blocks/Messages/Component';
 import { SliderGalleryBlock } from '@/blocks/SliderGallery/Component';
+import { headingConverter } from '@/components/RichText/converters/headingConverter';
+import { internalDocToHref } from '@/components/RichText/converters/internalLink';
 import type {
   BannerBlock as BannerBlockProps,
   ButtonBlock as ButtonBlockProps,
@@ -59,6 +62,8 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
   defaultConverters,
 }) => ({
   ...defaultConverters,
+  ...LinkJSXConverter({ internalDocToHref }),
+  ...headingConverter,
   blocks: {
     banner: ({ node }) => (
       <BannerBlock className="col-start-2 mb-4" {...node.fields} />
