@@ -79,21 +79,26 @@ export const LatestMessage: React.FC = async () => {
             <p>{message.description}</p>
           </div>
           {/* Message Button Bar */}
-          {/* <div className="flex gap-3">
+          <div className="flex gap-3">
+            <Button variant={'secondary'}>
+              <Link href={'/messages/' + message.slug}>Message Details</Link>
+            </Button>
             {message.notes && (
-              <Button asChild>
+              <Button variant={'secondary'}>
                 <Link href={message.notes}>Sermon Notes</Link>
               </Button>
             )}
             {message.series && (
               <Button variant={'secondary'}>
-                <Link href={'/messages'}>More In This Series</Link>
+                <Link href={'/messages#more-from-series'}>
+                  More In This Series
+                </Link>
               </Button>
             )}
-            <Button variant={'secondary'}>
+            {/* <Button variant={'secondary'}>
               <Link href={'/messages'}>All Messages</Link>
-            </Button>
-          </div> */}
+            </Button> */}
+          </div>
         </div>
       </div>
     );

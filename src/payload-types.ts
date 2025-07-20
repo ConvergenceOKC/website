@@ -800,7 +800,7 @@ export interface SliderGalleryBlock {
         image: string | Media;
         title: string;
         caption?: string | null;
-        link?: {
+        link: {
           type?: ('reference' | 'custom') | null;
           newTab?: boolean | null;
           reference?:
@@ -813,6 +813,7 @@ export interface SliderGalleryBlock {
                 value: string | Post;
               } | null);
           url?: string | null;
+          label: string;
         };
         id?: string | null;
       }[]
@@ -1464,6 +1465,7 @@ export interface SliderGalleryBlockSelect<T extends boolean = true> {
               newTab?: T;
               reference?: T;
               url?: T;
+              label?: T;
             };
         id?: T;
       };

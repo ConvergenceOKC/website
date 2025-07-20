@@ -108,7 +108,6 @@ export const SliderGallery: Block = {
         },
         link({
           appearances: false,
-          disableLabel: true,
         }),
       ],
     },

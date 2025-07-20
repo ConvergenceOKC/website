@@ -210,9 +210,9 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 240 6% 90%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: var(--convergence-teal);
+    --input: var(--convergence-teal);
+    --ring: var(--convergence-teal);
 
     --radius: 0.7rem;
 
@@ -246,9 +246,9 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 240 6% 90%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: var(--convergence-beige);
+    --input: var(--convergence-beige);
+    --ring: var(--convergence-beige);
 
     --radius: 0.7rem;
 

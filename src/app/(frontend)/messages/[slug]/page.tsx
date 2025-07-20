@@ -84,6 +84,22 @@ export default async function Message({ params: paramsPromise }: Args) {
         )}
       </div>
       <p>{message.description}</p>
+      {/* Message Button Bar */}
+      <div className="mb-10 flex gap-3">
+        {message.notes && (
+          <Button variant={'secondary'}>
+            <Link href={message.notes}>Sermon Notes</Link>
+          </Button>
+        )}
+        {message.series && (
+          <Button variant={'secondary'}>
+            <Link href={'#more-from-series'}>More In This Series</Link>
+          </Button>
+        )}
+        {/* <Button variant={'secondary'}>
+              <Link href={'/messages'}>All Messages</Link>
+            </Button> */}
+      </div>
       {/* Message Thumbnail */}
       <Link
         href={message.video}
@@ -98,9 +114,9 @@ export default async function Message({ params: paramsPromise }: Args) {
             height={100}
           />
         </div>
-        <Media resource={message.thumbnail} size="og" className="mb-9" />
+        <Media resource={message.thumbnail} size="og" className="mb-24" />
       </Link>
-      <div className="flex flex-col gap-9">
+      <div className="flex flex-col gap-24">
         <MoreFromSeries message={message} />
         <RecentSeries />
       </div>

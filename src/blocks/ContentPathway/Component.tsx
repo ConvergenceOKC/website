@@ -21,7 +21,7 @@ export const ContentPathwayBlock: React.FC<ContentPathwayProps> = ({
   return (
     <div
       className={cn(
-        'relative container my-16 flex flex-col gap-24',
+        'relative container my-16 flex flex-col gap-14',
         alignment === 'left' ? 'items-start' : 'items-center',
       )}
     >

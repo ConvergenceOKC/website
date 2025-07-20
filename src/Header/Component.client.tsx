@@ -34,7 +34,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   return (
     <header
       className={cn(
-        'text-foreground fixed z-10 w-full text-xs uppercase',
+        'text-foreground fixed z-50 w-full text-xs uppercase',
         theme === 'light'
           ? 'from-convergence-beige/100 to-convergence-beige/0 bg-linear-to-b from-50%'
           : 'from-convergence-teal/100 to-convergence-teal/0 bg-linear-to-b from-50%',
