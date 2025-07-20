@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { Dot } from 'lucide-react';
+import Balancer from 'react-wrap-balancer';
 
 import { getLatestMessage } from '@/blocks/Messages/getLatestMessage';
 import { CMSLink } from '@/components/Link';
@@ -37,46 +38,48 @@ export const LatestMessage: React.FC = async () => {
         <div className="flex gap-10">
           {/* Message Details */}
           <div>
-            <h4 className="mb-2">{message.title}</h4>
+            <h4 className="mb-2">
+              <Balancer>{message.title}</Balancer>
+            </h4>
             {/* Message Info Bar */}
             <div className="mb-6 flex items-center gap-0 text-sm uppercase opacity-70">
-              <p>
+              <span>
                 {typeof message.speaker === 'object' &&
                 'name' in message.speaker
                   ? message.speaker.name
                   : message.speaker}
-              </p>
+              </span>
               <Dot />
-              <p>{formatDateTime(message.date)}</p>
+              <span>{formatDateTime(message.date)}</span>
               {message.series && (
                 <>
                   <Dot />
-                  <p>
+                  <span>
                     {typeof message.series === 'object' &&
                     'title' in message.series
                       ? message.series.title
                       : message.series}
-                  </p>
+                  </span>
                 </>
               )}
               {Array.isArray(message.scripture) &&
                 message.scripture.length > 0 && (
                   <>
                     <Dot />
-                    <p>
+                    <span>
                       {message.scripture
                         .map(
                           (ref) => `${ref.book} ${ref.chapter}:${ref.verses}`,
                         )
                         .join('; ')}
-                    </p>
+                    </span>
                   </>
                 )}
             </div>
             <p>{message.description}</p>
           </div>
           {/* Message Button Bar */}
-          <div className="flex gap-3">
+          {/* <div className="flex gap-3">
             {message.notes && (
               <Button asChild>
                 <Link href={message.notes}>Sermon Notes</Link>
@@ -90,7 +93,7 @@ export const LatestMessage: React.FC = async () => {
             <Button variant={'secondary'}>
               <Link href={'/messages'}>All Messages</Link>
             </Button>
-          </div>
+          </div> */}
         </div>
       </div>
     );

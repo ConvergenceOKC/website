@@ -1,12 +1,17 @@
 import { CollectionConfig } from 'payload';
 
 import { authenticated } from '@/access/authenticated';
+import { slugField } from '@/fields/slug';
 
 export const Messages: CollectionConfig<'messages'> = {
   slug: 'messages',
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'date', 'speaker', 'series'],
+  },
+  defaultPopulate: {
+    title: true,
+    slug: true,
   },
   access: {
     create: authenticated,
@@ -98,5 +103,6 @@ export const Messages: CollectionConfig<'messages'> = {
       type: 'text',
       required: false,
     },
+    ...slugField(),
   ],
 };

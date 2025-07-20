@@ -1,6 +1,7 @@
 import { CollectionConfig } from 'payload';
 
 import { authenticated } from '@/access/authenticated';
+import { slugField } from '@/fields/slug';
 
 export const MessageSeries: CollectionConfig<'messageSeries'> = {
   slug: 'messageSeries',
@@ -10,6 +11,10 @@ export const MessageSeries: CollectionConfig<'messageSeries'> = {
   },
   admin: {
     useAsTitle: 'title',
+  },
+  defaultPopulate: {
+    title: true,
+    slug: true,
   },
   access: {
     create: authenticated,
@@ -34,5 +39,6 @@ export const MessageSeries: CollectionConfig<'messageSeries'> = {
       relationTo: 'media',
       required: true,
     },
+    ...slugField(),
   ],
 };

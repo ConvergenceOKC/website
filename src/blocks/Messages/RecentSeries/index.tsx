@@ -16,7 +16,7 @@ export const RecentSeries: React.FC = async () => {
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {recentSeries.docs.map((series) => (
           <Link
-            href={`/series/${series.id}`}
+            href={`/messages/series/${series.slug}`}
             key={series.id}
             className="flex flex-col items-start"
           >

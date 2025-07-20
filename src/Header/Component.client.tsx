@@ -53,7 +53,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
               </div>
             </Link>
             <span className="hidden sm:inline">|</span>
-            <p className="hidden text-xs sm:block">Oklahoma City</p>
+            <span className="hidden text-xs sm:block">Oklahoma City</span>
           </div>
           <HeaderNav data={data} />
         </div>

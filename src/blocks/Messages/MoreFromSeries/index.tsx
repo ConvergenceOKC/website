@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+import Balancer from 'react-wrap-balancer';
+
 import { getSeriesMessages } from '@/blocks/Messages/getSeriesMessages';
 import { Media } from '@/components/Media';
 import { Message } from '@/payload-types';
@@ -44,12 +46,14 @@ export const MoreFromSeries: React.FC<MoreFromSeriesProps> = async ({
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {moreMessages.map((message) => (
           <Link
-            href={`/messages/${message.id}`}
+            href={`/messages/${message.slug}`}
             key={message.id}
-            className="flex flex-col items-start"
+            className="flex flex-col items-start gap-3"
           >
             <Media resource={message.thumbnail} size="sm" />
-            <h5>{message.title}</h5>
+            <h5>
+              <Balancer>{message.title}</Balancer>
+            </h5>
           </Link>
         ))}
       </div>

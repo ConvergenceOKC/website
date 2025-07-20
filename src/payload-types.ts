@@ -923,6 +923,8 @@ export interface Message {
   video: string;
   audio?: string | null;
   notes?: string | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -962,6 +964,8 @@ export interface MessageSery {
   title: string;
   description: string;
   thumbnail: string | Media;
+  slug?: string | null;
+  slugLock?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1727,6 +1731,8 @@ export interface MessagesSelect<T extends boolean = true> {
   video?: T;
   audio?: T;
   notes?: T;
+  slug?: T;
+  slugLock?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1738,6 +1744,8 @@ export interface MessageSeriesSelect<T extends boolean = true> {
   title?: T;
   description?: T;
   thumbnail?: T;
+  slug?: T;
+  slugLock?: T;
   updatedAt?: T;
   createdAt?: T;
 }
