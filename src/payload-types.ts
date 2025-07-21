@@ -977,8 +977,10 @@ export interface MessageSery {
 export interface HouseChurch {
   id: string;
   name: string;
-  locationDescription: string;
   facilitator: string;
+  locationDescription: string;
+  city?: string | null;
+  zip?: number | null;
   time: string;
   language?: ('english' | 'spanish') | null;
   status?: ('active' | 'inactive') | null;
@@ -1701,8 +1703,10 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface HouseChurchesSelect<T extends boolean = true> {
   name?: T;
-  locationDescription?: T;
   facilitator?: T;
+  locationDescription?: T;
+  city?: T;
+  zip?: T;
   time?: T;
   language?: T;
   status?: T;
@@ -2199,6 +2203,10 @@ export interface LinkGroupBlock {
               } | null);
           url?: string | null;
           label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline' | 'destructive' | 'link' | 'ghost' | 'secondary') | null;
         };
         id?: string | null;
       }[]

@@ -35,14 +35,24 @@ export const HouseChurches: CollectionConfig = {
       required: true,
     },
     {
+      name: 'facilitator',
+      type: 'text',
+      required: true,
+    },
+    {
       name: 'locationDescription',
       type: 'text',
       required: true,
     },
     {
-      name: 'facilitator',
+      name: 'city',
       type: 'text',
-      required: true,
+      required: false,
+    },
+    {
+      name: 'zip',
+      type: 'number',
+      required: false,
     },
     {
       name: 'time',

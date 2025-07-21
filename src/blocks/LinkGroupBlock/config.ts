@@ -10,9 +10,7 @@ export const LinkGroupBlock: Block = {
       type: 'text',
       required: true,
     },
-    linkGroup({
-      appearances: false,
-    }),
+    linkGroup(),
   ],
   interfaceName: 'LinkGroupBlock',
 };

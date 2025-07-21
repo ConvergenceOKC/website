@@ -21,11 +21,11 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
 
   return (
     <div
-      className="text-convergence-beige relative flex h-[60vh] md:h-[80vh] max-h-[600px] md:max-h-[950px] min-h-[500px] md:min-h-[850px] overflow-hidden pt-16 md:pt-[7.375rem]"
+      className="text-convergence-beige relative flex h-[60vh] max-h-[600px] min-h-[500px] overflow-hidden pt-16 md:h-[80vh] md:max-h-[950px] md:min-h-[850px] md:pt-[7.375rem]"
       data-theme="dark"
     >
-      <div className="relative container mt-8 md:mt-20 mb-12 md:mb-24 flex">
-        <div className="w-full max-w-2xl">
+      <div className="relative container mt-8 mb-12 flex md:mt-20 md:mb-24">
+        <div className="w-full">
           {richText && (
             <RichText
               className="mb-4 md:mb-6"
@@ -35,7 +35,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
             />
           )}
           {Array.isArray(links) && links.length > 0 && (
-            <ul className="flex flex-col sm:flex-row gap-2 sm:gap-4">
+            <ul className="flex flex-col gap-2 sm:flex-row sm:gap-4">
               {links.map(({ link }, i) => {
                 return (
                   <li key={i}>

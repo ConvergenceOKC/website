@@ -1,21 +1,24 @@
-'use client'
+'use client';
 
-import { Map as GoogleMap } from '@vis.gl/react-google-maps'
-import { Church, Home } from 'lucide-react'
+import { Map as GoogleMap } from '@vis.gl/react-google-maps';
+import { Church, Home } from 'lucide-react';
 
-import MapMarker from './MapMarker'
-import MapPin from './MapPin'
+import { HouseChurch } from '@/payload-types';
+
+import MapMarker from './MapMarker';
+import MapPin from './MapPin';
 
 const convergenceInfo = {
   name: 'Convergence Church',
   street: '6800 N Bryant Avenue',
-  cityStateZip: 'Oklahoma City, OK 73121',
+  city: 'Oklahoma City',
+  zip: '73121',
   serviceTime: 'Sunday 5:30pm',
   lat: 35.54078384255158,
   lng: -97.45800992201534,
-}
+};
 
-export default function Map({ locations }) {
+export default function Map({ locations }: { locations: HouseChurch[] }) {
   return (
     <GoogleMap
       mapId={process.env.NEXT_PUBLIC_GOOGLE_MAP_ID}
@@ -28,10 +31,15 @@ export default function Map({ locations }) {
         position={{ lat: convergenceInfo.lat, lng: convergenceInfo.lng }}
         name={convergenceInfo.name}
         location={convergenceInfo.street}
-        facilitator={convergenceInfo.cityStateZip}
+        city={convergenceInfo.city}
+        zip={convergenceInfo.zip}
+        facilitator={convergenceInfo.name}
         time={convergenceInfo.serviceTime}
       >
-        <MapPin className={'bg-green-500'} icon={<Church />} />
+        <MapPin
+          className={'bg-convergence-teal text-convergence-beige'}
+          icon={<Church />}
+        />
       </MapMarker>
       {locations &&
         locations.map(
@@ -41,14 +49,21 @@ export default function Map({ locations }) {
                 key={index}
                 position={{ lat: location.lat, lng: location.lng }}
                 name={location.name}
+                facilitator={location.facilitator}
                 location={location.locationDescription}
-                facilitator={`Facilitator: ${location.facilitator}`}
-                time={`Time: ${location.time}`}
+                city={location.city}
+                zip={location.zip}
+                time={location.time}
               >
-                <MapPin className={'bg-red-500'} icon={<Home />} />
+                <MapPin
+                  className={
+                    'bg-convergence-bright-orange text-convergence-beige'
+                  }
+                  icon={<Home />}
+                />
               </MapMarker>
             ),
         )}
     </GoogleMap>
-  )
+  );
 }

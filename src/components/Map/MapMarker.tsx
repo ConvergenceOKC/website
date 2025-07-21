@@ -1,28 +1,30 @@
-'use client'
+'use client';
 
-import { useCallback, useState } from 'react'
+import { useCallback, useState } from 'react';
 
 import {
   AdvancedMarker,
   InfoWindow,
   useAdvancedMarkerRef,
-} from '@vis.gl/react-google-maps'
+} from '@vis.gl/react-google-maps';
 
 const MapMarker = ({
   position,
   name,
-  location,
   facilitator,
+  location,
+  city,
+  zip,
   time,
   children,
 }) => {
-  const [markerRef, marker] = useAdvancedMarkerRef()
-  const [infoWindowShown, setInfoWindowShown] = useState(false)
+  const [markerRef, marker] = useAdvancedMarkerRef();
+  const [infoWindowShown, setInfoWindowShown] = useState(false);
   const handleMarkerClick = useCallback(
     () => setInfoWindowShown((isShown) => !isShown),
     [],
-  )
-  const handleClose = useCallback(() => setInfoWindowShown(false), [])
+  );
+  const handleClose = useCallback(() => setInfoWindowShown(false), []);
 
   return (
     <AdvancedMarker
@@ -37,14 +39,26 @@ const MapMarker = ({
           onClose={handleClose}
           className="text-base text-black"
         >
-          <h2 className="mb-2 text-lg font-semibold">{name}</h2>
-          <p>{location}</p>
-          <p>{facilitator}</p>
-          <p>{time}</p>
+          <h3 className="mb-2 text-lg font-semibold">{name}</h3>
+          <p>
+            {location}
+            <br />
+            {`${city}, OK ${zip}`}
+          </p>
+          <ul>
+            <li>
+              <span className="font-bold">Facilitator: </span>
+              {facilitator}
+            </li>
+            <li>
+              <span className="font-bold">Time: </span>
+              {time}
+            </li>
+          </ul>
         </InfoWindow>
       )}
     </AdvancedMarker>
-  )
-}
+  );
+};
 
-export default MapMarker
+export default MapMarker;
