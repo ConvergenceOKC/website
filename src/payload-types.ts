@@ -895,7 +895,7 @@ export interface ImageCarouselBlock {
  * via the `definition` "MessagesBlock".
  */
 export interface MessagesBlock {
-  block: 'latest' | 'moreSeries' | 'recentSeries' | 'archive';
+  block: 'latest' | 'moreSeries' | 'recentSeries';
   useLatestMessage?: boolean | null;
   message?: (string | null) | Message;
   id?: string | null;

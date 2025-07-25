@@ -1,5 +1,4 @@
 import { LatestMessage } from '@/blocks/Messages/LatestMessage';
-import { MessageArchive } from '@/blocks/Messages/MessageArchive';
 import { MoreFromSeries } from '@/blocks/Messages/MoreFromSeries';
 import { RecentSeries } from '@/blocks/Messages/RecentSeries';
 import { getLatestMessage } from '@/blocks/Messages/getLatestMessage';
@@ -33,8 +32,8 @@ export const MessagesBlock: React.FC<MessagesBlockProps> = async ({
       }
     case 'recentSeries':
       return <RecentSeries />;
-    case 'archive':
-      return <MessageArchive />;
+    // case 'archive':
+    //   return <MessageArchive />;
     default:
       return null;
   }

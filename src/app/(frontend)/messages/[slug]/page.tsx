@@ -50,77 +50,80 @@ export default async function Message({ params: paramsPromise }: Args) {
   if (!message) return <PayloadRedirects url={url} />;
 
   return (
-    <div className="container pt-48 pb-32">
-      <h4 className="mb-2">
-        <Balancer>{message.title}</Balancer>
-      </h4>
-      <div className="mb-6 flex items-center gap-0 text-sm uppercase opacity-70">
-        <span>
-          {typeof message.speaker === 'object' && 'name' in message.speaker
-            ? message.speaker.name
-            : message.speaker}
-        </span>
-        <Dot />
-        <span>{formatDateTime(message.date)}</span>
-        {message.series && (
-          <>
-            <Dot />
-            <span>
-              {typeof message.series === 'object' && 'title' in message.series
-                ? message.series.title
-                : message.series}
-            </span>
-          </>
-        )}
-        {Array.isArray(message.scripture) && message.scripture.length > 0 && (
-          <>
-            <Dot />
-            <span>
-              {message.scripture.map(
-                (ref) => `${ref.book} ${ref.chapter}:${ref.verses}`,
-              )}
-            </span>
-          </>
-        )}
-      </div>
-      <p>{message.description}</p>
-      {/* Message Button Bar */}
-      <div className="mb-10 flex gap-3">
-        {message.notes && (
-          <Button variant={'secondary'}>
-            <Link href={message.notes}>Sermon Notes</Link>
-          </Button>
-        )}
-        {message.series && (
-          <Button variant={'secondary'}>
-            <Link href={'#more-from-series'}>More In This Series</Link>
-          </Button>
-        )}
-        {/* <Button variant={'secondary'}>
+    <>
+      <div className="container pt-48">
+        <h4 className="mb-2">
+          <Balancer>{message.title}</Balancer>
+        </h4>
+        <div className="mb-6 flex items-center gap-0 text-sm uppercase opacity-70">
+          <span>
+            {typeof message.speaker === 'object' && 'name' in message.speaker
+              ? message.speaker.name
+              : message.speaker}
+          </span>
+          <Dot />
+          <span>{formatDateTime(message.date)}</span>
+          {message.series && (
+            <>
+              <Dot />
+              <span>
+                {typeof message.series === 'object' && 'title' in message.series
+                  ? message.series.title
+                  : message.series}
+              </span>
+            </>
+          )}
+          {Array.isArray(message.scripture) && message.scripture.length > 0 && (
+            <>
+              <Dot />
+              <span>
+                {message.scripture.map(
+                  (ref) => `${ref.book} ${ref.chapter}:${ref.verses}`,
+                )}
+              </span>
+            </>
+          )}
+        </div>
+        <p>{message.description}</p>
+        {/* Message Button Bar */}
+        <div className="mb-10 flex gap-3">
+          {message.notes && (
+            <Button variant={'secondary'}>
+              <Link href={message.notes}>Sermon Notes</Link>
+            </Button>
+          )}
+          {message.series && (
+            <Button variant={'secondary'}>
+              <Link href={'#more-from-series'}>More In This Series</Link>
+            </Button>
+          )}
+          {/* <Button variant={'secondary'}>
               <Link href={'/messages'}>All Messages</Link>
             </Button> */}
-      </div>
-      {/* Message Thumbnail */}
-      <Link
-        href={message.video}
-        className="relative cursor-pointer"
-        target="_blank"
-      >
-        <div className="absolute z-10 flex h-full w-full items-center justify-center">
-          <Image
-            src="/images/play-icon.svg"
-            alt="Play button"
-            width={100}
-            height={100}
-          />
         </div>
-        <Media resource={message.thumbnail} size="og" className="mb-24" />
-      </Link>
-      <div className="flex flex-col gap-24">
-        <MoreFromSeries message={message} />
-        <RecentSeries />
+        {/* Message Thumbnail */}
+        <Link
+          href={message.video}
+          className="relative cursor-pointer"
+          target="_blank"
+        >
+          <div className="absolute z-10 flex h-full w-full items-center justify-center">
+            <Image
+              src="/images/play-icon.svg"
+              alt="Play button"
+              width={100}
+              height={100}
+            />
+          </div>
+          <Media resource={message.thumbnail} size="og" className="mb-24" />
+        </Link>
       </div>
-    </div>
+      <div className="bg-convergence-beige-darker">
+        <div className="container py-24">
+          <MoreFromSeries message={message} />
+        </div>
+      </div>
+    </>
   );
 }
 

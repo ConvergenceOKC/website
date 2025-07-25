@@ -21,10 +21,6 @@ export const MessagesBlock: Block = {
           label: 'Recent Series',
           value: 'recentSeries',
         },
-        {
-          label: 'Message Archive',
-          value: 'archive',
-        },
       ],
       defaultValue: 'latest',
       required: true,
