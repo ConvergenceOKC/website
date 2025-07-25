@@ -12,7 +12,9 @@ export const RecentSeries: React.FC = async () => {
 
   return (
     <div>
-      <h4 id="recent-series">Recent Series</h4>
+      <h4 id="recent-series" className="scroll-mt-32">
+        Recent Series
+      </h4>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {recentSeries.docs.map((series) => (
           <Link

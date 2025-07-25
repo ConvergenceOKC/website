@@ -42,7 +42,9 @@ export const MoreFromSeries: React.FC<MoreFromSeriesProps> = async ({
 
   return (
     <div>
-      <h4 id="more-from-series">More From This Series</h4>
+      <h4 id="more-from-series" className="scroll-mt-32">
+        More From This Series
+      </h4>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {moreMessages.map((message) => (
           <Link

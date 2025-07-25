@@ -11,7 +11,11 @@ export const headingConverter: JSXConverters<SerializedHeadingNode> = {
         .toLowerCase()
         .replace(/\s+/g, '-')
         .replace(/[^a-z0-9-]/g, '');
-      return <node.tag id={id}>{text}</node.tag>;
+      return (
+        <node.tag id={id} className="scroll-mt-32">
+          {text}
+        </node.tag>
+      );
     } else {
       const text = nodesToJSX({ nodes: node.children }).join('');
       const Tag = node.tag;
