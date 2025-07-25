@@ -801,7 +801,7 @@ export interface SliderGalleryBlock {
         image: string | Media;
         title: string;
         caption?: string | null;
-        link?: {
+        link: {
           type?: ('reference' | 'custom') | null;
           newTab?: boolean | null;
           reference?:
@@ -814,6 +814,7 @@ export interface SliderGalleryBlock {
                 value: string | Post;
               } | null);
           url?: string | null;
+          label: string;
         };
         id?: string | null;
       }[]
@@ -924,6 +925,8 @@ export interface Message {
   video: string;
   audio?: string | null;
   notes?: string | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -963,6 +966,8 @@ export interface MessageSery {
   title: string;
   description: string;
   thumbnail: string | Media;
+  slug?: string | null;
+  slugLock?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -983,8 +988,10 @@ export interface HouseChurchMapBlock {
 export interface HouseChurch {
   id: string;
   name: string;
-  locationDescription: string;
   facilitator: string;
+  locationDescription: string;
+  city?: string | null;
+  zip?: number | null;
   time: string;
   language?: ('english' | 'spanish') | null;
   status?: ('active' | 'inactive') | null;
@@ -1472,6 +1479,7 @@ export interface SliderGalleryBlockSelect<T extends boolean = true> {
               newTab?: T;
               reference?: T;
               url?: T;
+              label?: T;
             };
         id?: T;
       };
@@ -1716,8 +1724,10 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface HouseChurchesSelect<T extends boolean = true> {
   name?: T;
-  locationDescription?: T;
   facilitator?: T;
+  locationDescription?: T;
+  city?: T;
+  zip?: T;
   time?: T;
   language?: T;
   status?: T;
@@ -1748,6 +1758,8 @@ export interface MessagesSelect<T extends boolean = true> {
   video?: T;
   audio?: T;
   notes?: T;
+  slug?: T;
+  slugLock?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1759,6 +1771,8 @@ export interface MessageSeriesSelect<T extends boolean = true> {
   title?: T;
   description?: T;
   thumbnail?: T;
+  slug?: T;
+  slugLock?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -2210,6 +2224,10 @@ export interface LinkGroupBlock {
               } | null);
           url?: string | null;
           label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline' | 'destructive' | 'link' | 'ghost' | 'secondary') | null;
         };
         id?: string | null;
       }[]

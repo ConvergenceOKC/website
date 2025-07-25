@@ -110,9 +110,8 @@ export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
             <CMSLink
               {...images[activeImageIndex]?.link}
               appearance="ghost"
-              className="flex w-36 gap-1"
+              className="flex w-48 gap-1"
             >
-              Learn More
               <ChevronRight className="h-4 w-4" />
             </CMSLink>
           </div>
