@@ -8,16 +8,27 @@ import {
   useAdvancedMarkerRef,
 } from '@vis.gl/react-google-maps';
 
+interface MapMarkerProps {
+  position: { lat: number; lng: number };
+  name: string;
+  location: string;
+  facilitator: string;
+  city: string;
+  zip: string;
+  time: string;
+  children: React.ReactNode;
+}
+
 const MapMarker = ({
   position,
   name,
-  facilitator,
   location,
+  facilitator,
   city,
   zip,
   time,
   children,
-}) => {
+}: MapMarkerProps) => {
   const [markerRef, marker] = useAdvancedMarkerRef();
   const [infoWindowShown, setInfoWindowShown] = useState(false);
   const handleMarkerClick = useCallback(
@@ -39,22 +50,10 @@ const MapMarker = ({
           onClose={handleClose}
           className="text-base text-black"
         >
-          <h3 className="mb-2 text-lg font-semibold">{name}</h3>
-          <p>
-            {location}
-            <br />
-            {`${city}, OK ${zip}`}
-          </p>
-          <ul>
-            <li>
-              <span className="font-bold">Facilitator: </span>
-              {facilitator}
-            </li>
-            <li>
-              <span className="font-bold">Time: </span>
-              {time}
-            </li>
-          </ul>
+          <h2 className="mb-2 text-lg font-semibold">{name}</h2>
+          <p>{location}</p>
+          <p>{facilitator}</p>
+          <p>{time}</p>
         </InfoWindow>
       )}
     </AdvancedMarker>

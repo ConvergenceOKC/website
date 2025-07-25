@@ -5,7 +5,6 @@ import { useState } from 'react';
 import { ChevronRight } from 'lucide-react';
 
 import { LinkedTextBlock } from '@/blocks/LinkedText/Component';
-import { BackgroundShapes } from '@/components/BackgroundShapes';
 import { CMSLink } from '@/components/Link';
 import { Media } from '@/components/Media';
 import type { SliderGalleryBlock as SliderGalleryProps } from '@/payload-types';
@@ -111,8 +110,9 @@ export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
             <CMSLink
               {...images[activeImageIndex]?.link}
               appearance="ghost"
-              className="flex w-48 gap-1"
+              className="flex w-36 gap-1"
             >
+              Learn More
               <ChevronRight className="h-4 w-4" />
             </CMSLink>
           </div>

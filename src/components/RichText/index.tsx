@@ -15,6 +15,7 @@ import { CallToActionBlock } from '@/blocks/CallToAction/Component';
 import { CodeBlock, CodeBlockProps } from '@/blocks/Code/Component';
 import { ContentPathwayBlock } from '@/blocks/ContentPathway/Component';
 import { FormBlock } from '@/blocks/Form/Component';
+import { HouseChurchMapBlock } from '@/blocks/HouseChurchMap/Component';
 import { ImageCarouselBlock } from '@/blocks/ImageCarousel/Component';
 import { LinkGroupBlock } from '@/blocks/LinkGroupBlock/Component';
 import { LinkedTextBlock } from '@/blocks/LinkedText/Component';
@@ -30,6 +31,7 @@ import type {
   CallToActionBlock as CTABlockProps,
   ContentPathwayBlock as ContentPathwayBlockProps,
   FormBlock as FormBlockProps,
+  HouseChurchMapBlock as HouseChurchMapBlockProps,
   ImageCarouselBlock as ImageCarouselBlockProps,
   LinkGroupBlock as LinkGroupBlockProps,
   LinkedText as LinkedTextProps,
@@ -56,6 +58,7 @@ type NodeTypes =
       | ContentPathwayBlockProps
       | ImageCarouselBlockProps
       | MessagesBlockProps
+      | HouseChurchMapBlockProps
     >;
 
 const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
@@ -89,6 +92,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
     contentPathway: ({ node }) => <ContentPathwayBlock {...node.fields} />,
     imageCarousel: ({ node }) => <ImageCarouselBlock {...node.fields} />,
     messagesBlock: ({ node }) => <MessagesBlock {...node.fields} />,
+    houseChurchMap: ({ node }) => <HouseChurchMapBlock {...node.fields} />,
   },
 });
 

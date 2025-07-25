@@ -20,6 +20,8 @@ export const FormBlock: Block = {
       name: 'enableIntro',
       type: 'checkbox',
       label: 'Enable Intro Content',
+      required: true,
+      defaultValue: false,
     },
     {
       name: 'introContent',

@@ -1,11 +1,9 @@
-// import configPromise from '@payload-config';
-// import { getPayload } from 'payload';
 import { LatestMessage } from '@/blocks/Messages/LatestMessage';
 import { MessageArchive } from '@/blocks/Messages/MessageArchive';
 import { MoreFromSeries } from '@/blocks/Messages/MoreFromSeries';
 import { RecentSeries } from '@/blocks/Messages/RecentSeries';
 import { getLatestMessage } from '@/blocks/Messages/getLatestMessage';
-import { Message, MessagesBlock as MessagesBlockProps } from '@/payload-types';
+import { MessagesBlock as MessagesBlockProps } from '@/payload-types';
 
 export const MessagesBlock: React.FC<MessagesBlockProps> = async ({
   block,
