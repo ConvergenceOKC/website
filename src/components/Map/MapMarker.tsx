@@ -14,8 +14,10 @@ interface MapMarkerProps {
   location: string;
   facilitator: string;
   city: string;
-  zip: string;
+  zip: number;
   time: string;
+  language: string;
+  kids: boolean;
   children: React.ReactNode;
 }
 
@@ -27,6 +29,8 @@ const MapMarker = ({
   city,
   zip,
   time,
+  language,
+  kids,
   children,
 }: MapMarkerProps) => {
   const [markerRef, marker] = useAdvancedMarkerRef();
@@ -50,10 +54,26 @@ const MapMarker = ({
           onClose={handleClose}
           className="text-base text-black"
         >
-          <h2 className="mb-2 text-lg font-semibold">{name}</h2>
-          <p>{location}</p>
-          <p>{facilitator}</p>
-          <p>{time}</p>
+          <h6>{name}</h6>
+          <p>
+            {location}
+            <br />
+            {city}, OK {zip}
+          </p>
+          <ul>
+            <li>
+              <strong>Facilitator:</strong> {facilitator}
+            </li>
+            <li>
+              <strong>Time:</strong> {time}
+            </li>
+            <li>
+              <strong>Language(s):</strong> {language}
+            </li>
+            <li>
+              <strong>Kids:</strong> {kids ? 'Yes' : 'No'}
+            </li>
+          </ul>
         </InfoWindow>
       )}
     </AdvancedMarker>

@@ -990,11 +990,12 @@ export interface HouseChurch {
   name: string;
   facilitator: string;
   locationDescription: string;
-  city?: string | null;
-  zip?: number | null;
+  city: string;
+  zip: number;
   time: string;
-  language?: ('english' | 'spanish') | null;
-  status?: ('active' | 'inactive') | null;
+  language: string;
+  kids: boolean;
+  status: 'active' | 'inactive';
   lat: number;
   lng: number;
   updatedAt: string;
@@ -1730,6 +1731,7 @@ export interface HouseChurchesSelect<T extends boolean = true> {
   zip?: T;
   time?: T;
   language?: T;
+  kids?: T;
   status?: T;
   lat?: T;
   lng?: T;

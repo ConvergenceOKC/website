@@ -7,5 +7,9 @@ export const HouseChurchMapBlock: React.FC<HouseChurchMapProps> = async ({
 }) => {
   const houseChurches = await getHouseChurches();
   const locations = houseChurches.docs;
-  return <Map locations={locations} showMainChurch={showMainChurch} />;
+  return (
+    <div className="mb-16 h-[80vh] w-full">
+      <Map locations={locations} showMainChurch={showMainChurch} />
+    </div>
+  );
 };

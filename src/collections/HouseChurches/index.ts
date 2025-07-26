@@ -36,6 +36,7 @@ export const HouseChurches: CollectionConfig = {
     },
     {
       name: 'facilitator',
+      label: 'Facilitator(s)',
       type: 'text',
       required: true,
     },
@@ -47,12 +48,12 @@ export const HouseChurches: CollectionConfig = {
     {
       name: 'city',
       type: 'text',
-      required: false,
+      required: true,
     },
     {
       name: 'zip',
       type: 'number',
-      required: false,
+      required: true,
     },
     {
       name: 'time',
@@ -61,18 +62,17 @@ export const HouseChurches: CollectionConfig = {
     },
     {
       name: 'language',
-      type: 'select',
-      options: [
-        {
-          label: 'English',
-          value: 'english',
-        },
-        {
-          label: 'Spanish',
-          value: 'spanish',
-        },
-      ],
-      defaultValue: 'english',
+      label: 'Language(s)',
+      type: 'text',
+      defaultValue: 'English',
+      required: true,
+    },
+    {
+      name: 'kids',
+      label: 'Kids',
+      type: 'checkbox',
+      defaultValue: true,
+      required: true,
     },
     {
       name: 'status',
@@ -88,6 +88,7 @@ export const HouseChurches: CollectionConfig = {
         },
       ],
       defaultValue: 'active',
+      required: true,
     },
     {
       name: 'lat',

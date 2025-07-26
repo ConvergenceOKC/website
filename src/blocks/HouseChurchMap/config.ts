@@ -7,7 +7,7 @@ export const HouseChurchMap: Block = {
     {
       name: 'showMainChurch',
       type: 'checkbox',
-      label: 'Show Main Church Location',
+      label: 'Show Convergence Church on Map',
       defaultValue: true,
       required: true,
     },
