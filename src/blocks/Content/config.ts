@@ -9,6 +9,7 @@ import {
 import type { Block, Field } from 'payload';
 
 import { ContentPathway } from '@/blocks/ContentPathway/config';
+import { Embed } from '@/blocks/Embed/config';
 import { HouseChurchMap } from '@/blocks/HouseChurchMap/config';
 import { ImageCarousel } from '@/blocks/ImageCarousel/config';
 import { MessagesBlock } from '@/blocks/Messages/config';
@@ -224,6 +225,7 @@ const columnFields: Field[] = [
               ImageCarousel,
               MessagesBlock,
               HouseChurchMap,
+              Embed,
             ],
           }),
           AlignFeature(),

@@ -215,6 +215,7 @@ export interface Page {
     | ImageCarouselBlock
     | MessagesBlock
     | HouseChurchMapBlock
+    | EmbedBlock
   )[];
   meta?: {
     title?: string | null;
@@ -983,6 +984,16 @@ export interface HouseChurchMapBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "EmbedBlock".
+ */
+export interface EmbedBlock {
+  type?: ('privacy' | 'terms') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'embed';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "house-churches".
  */
 export interface HouseChurch {
@@ -1330,6 +1341,7 @@ export interface PagesSelect<T extends boolean = true> {
         imageCarousel?: T | ImageCarouselBlockSelect<T>;
         messagesBlock?: T | MessagesBlockSelect<T>;
         houseChurchMap?: T | HouseChurchMapBlockSelect<T>;
+        embed?: T | EmbedBlockSelect<T>;
       };
   meta?:
     | T
@@ -1549,6 +1561,15 @@ export interface MessagesBlockSelect<T extends boolean = true> {
  */
 export interface HouseChurchMapBlockSelect<T extends boolean = true> {
   showMainChurch?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "EmbedBlock_select".
+ */
+export interface EmbedBlockSelect<T extends boolean = true> {
+  type?: T;
   id?: T;
   blockName?: T;
 }

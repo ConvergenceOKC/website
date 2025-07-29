@@ -8,6 +8,7 @@ import {
 import type { CollectionConfig } from 'payload';
 
 import { ContentPathway } from '@/blocks/ContentPathway/config';
+import { Embed } from '@/blocks/Embed/config';
 import { HouseChurchMap } from '@/blocks/HouseChurchMap/config';
 import { ImageCarousel } from '@/blocks/ImageCarousel/config';
 import { MessagesBlock } from '@/blocks/Messages/config';
@@ -91,6 +92,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 ImageCarousel,
                 MessagesBlock,
                 HouseChurchMap,
+                Embed,
               ],
               required: true,
               admin: {

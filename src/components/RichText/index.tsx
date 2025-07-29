@@ -14,6 +14,7 @@ import { ButtonBlock } from '@/blocks/ButtonBlock/Component';
 import { CallToActionBlock } from '@/blocks/CallToAction/Component';
 import { CodeBlock, CodeBlockProps } from '@/blocks/Code/Component';
 import { ContentPathwayBlock } from '@/blocks/ContentPathway/Component';
+import { EmbedBlock } from '@/blocks/Embed/Component';
 import { FormBlock } from '@/blocks/Form/Component';
 import { HouseChurchMapBlock } from '@/blocks/HouseChurchMap/Component';
 import { ImageCarouselBlock } from '@/blocks/ImageCarousel/Component';
@@ -30,6 +31,7 @@ import type {
   ButtonBlock as ButtonBlockProps,
   CallToActionBlock as CTABlockProps,
   ContentPathwayBlock as ContentPathwayBlockProps,
+  EmbedBlock as EmbedBlockProps,
   FormBlock as FormBlockProps,
   HouseChurchMapBlock as HouseChurchMapBlockProps,
   ImageCarouselBlock as ImageCarouselBlockProps,
@@ -59,6 +61,7 @@ type NodeTypes =
       | ImageCarouselBlockProps
       | MessagesBlockProps
       | HouseChurchMapBlockProps
+      | EmbedBlockProps
     >;
 
 const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
@@ -93,6 +96,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
     imageCarousel: ({ node }) => <ImageCarouselBlock {...node.fields} />,
     messagesBlock: ({ node }) => <MessagesBlock {...node.fields} />,
     houseChurchMap: ({ node }) => <HouseChurchMapBlock {...node.fields} />,
+    embed: ({ node }) => <EmbedBlock {...node.fields} />,
   },
 });
 
