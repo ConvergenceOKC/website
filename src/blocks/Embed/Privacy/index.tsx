@@ -12,7 +12,10 @@ export const Privacy: React.FC = () => {
         </a>{' '}
         to view the policy.
       </div>
-      <script src="https://policies.termageddon.com/api/embed/ZWtoSlVXY3ZOMHBxU1ZKeFdXYzlQUT09.js"></script>
+      <script
+        src="https://policies.termageddon.com/api/embed/ZWtoSlVXY3ZOMHBxU1ZKeFdXYzlQUT09.js"
+        defer
+      />
     </div>
   );
 };

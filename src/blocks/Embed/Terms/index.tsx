@@ -12,7 +12,10 @@ export const Terms: React.FC = () => {
         </a>{' '}
         to view the policy.
       </div>
-      <script src="https://policies.termageddon.com/api/embed/TDNwaWIwaG5jV0ZFT0ZkWE9WRTlQUT09.js"></script>
+      <script
+        src="https://policies.termageddon.com/api/embed/TDNwaWIwaG5jV0ZFT0ZkWE9WRTlQUT09.js"
+        defer
+      />
     </div>
   );
 };
