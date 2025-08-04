@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { DM_Sans, League_Spartan } from 'next/font/google';
 import localFont from 'next/font/local';
-import { draftMode } from 'next/headers';
 import React from 'react';
 
 import { cn } from 'src/utilities/ui';
