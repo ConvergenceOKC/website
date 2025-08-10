@@ -1,4 +1,5 @@
 import { mongooseAdapter } from '@payloadcms/db-mongodb';
+import { resendAdapter } from '@payloadcms/email-resend';
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob';
 import path from 'path';
 import { buildConfig } from 'payload';
@@ -75,6 +76,11 @@ export default buildConfig({
     Roles,
   ],
   cors: [getServerSideURL()].filter(Boolean),
+  email: resendAdapter({
+    defaultFromAddress: 'no-reply@convergenceokc.church',
+    defaultFromName: 'Convergence Church OKC',
+    apiKey: process.env.RESEND_API_KEY || '',
+  }),
   globals: [Header, Footer, Socials],
   plugins: [
     ...plugins,
