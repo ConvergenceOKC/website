@@ -484,7 +484,7 @@ export interface ContentBlock {
   content?: {
     columns?:
       | {
-          size?: ('full' | 'half' | 'oneThird' | 'twoThirds' | 'oneFifth') | null;
+          size?: ('full' | 'half' | 'oneThird' | 'twoThirds' | 'oneFourth') | null;
           richText?: {
             root: {
               type: string;

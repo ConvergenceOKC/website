@@ -18,7 +18,7 @@ const config = {
     'lg:col-span-8',
     'lg:col-span-12',
     'xl:col-span-5',
-    'xl:col-span-10',
+    'xl:col-span-12',
     'border-border',
     'bg-card',
     'border-error',

@@ -11,11 +11,11 @@ export const ContentBlock: React.FC<ContentBlockProps> = ({
   content,
 }) => {
   const colsSpanClasses = {
-    full: '10',
-    half: '5',
-    oneThird: '4',
-    twoThirds: '6',
-    oneFifth: '2',
+    full: 'col-span-1 sm:col-span-2 md:col-span-4 xl:col-span-12',
+    half: 'col-span-1 sm:col-span-2 xl:col-span-6',
+    oneThird: 'col-span-1 sm:col-span-2 md:col-span-4 xl:col-span-4',
+    twoThirds: 'col-span-1 sm:col-span-2 md:col-span-4 xl:col-span-8',
+    oneFourth: 'col-span-1 sm:col-span-2 md:col-span-4 xl:col-span-3',
   };
 
   const textColorClasses = {
@@ -89,29 +89,12 @@ export const ContentBlock: React.FC<ContentBlockProps> = ({
               settings?.enableGutter ? 'container' : '',
             )}
           >
-            <div className="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2 md:grid-cols-4 lg:gap-x-8 lg:gap-y-8 xl:grid-cols-10">
-              {content?.columns &&
-                content.columns.length > 0 &&
-                content.columns.map((col, index) => {
+            {content?.columns && content.columns.length > 0 && (
+              <div className="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2 md:grid-cols-4 lg:gap-x-8 lg:gap-y-8 xl:grid-cols-12">
+                {content.columns.map((col, index) => {
                   const { enableLink, link, richText, size } = col;
                   return (
-                    <div
-                      className={cn(
-                        `col-span-1 sm:col-span-2 xl:col-span-${colsSpanClasses[size!]}`,
-                        {
-                          'md:col-span-4': size === 'full',
-                          'sm:col-span-1 md:col-span-2 xl:col-span-4':
-                            size === 'oneThird',
-                          'sm:col-span-2 md:col-span-3 xl:col-span-6':
-                            size === 'twoThirds',
-                          'sm:col-span-1 md:col-span-2 xl:col-span-5':
-                            size === 'half',
-                          'sm:col-span-1 md:col-span-1 xl:col-span-2':
-                            size === 'oneFifth',
-                        },
-                      )}
-                      key={index}
-                    >
+                    <div className={colsSpanClasses[size!]} key={index}>
                       {richText && (
                         <RichText
                           data={richText}
@@ -123,7 +106,8 @@ export const ContentBlock: React.FC<ContentBlockProps> = ({
                     </div>
                   );
                 })}
-            </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

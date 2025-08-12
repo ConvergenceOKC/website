@@ -197,8 +197,8 @@ const columnFields: Field[] = [
         value: 'twoThirds',
       },
       {
-        label: 'One Fifth',
-        value: 'oneFifth',
+        label: 'One Fourth',
+        value: 'oneFourth',
       },
     ],
   },
