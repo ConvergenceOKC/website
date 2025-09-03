@@ -42,7 +42,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
 
       {/* Mobile Menu Button */}
       <button
-        className="flex h-8 w-8 items-center justify-center text-lg font-normal text-inherit transition-opacity hover:opacity-70 md:hidden"
+        className="z-50 flex h-8 w-8 items-center justify-center text-lg font-normal text-inherit transition-opacity hover:opacity-70 md:hidden"
         onClick={toggleMobileMenu}
         aria-label="Toggle mobile menu"
         aria-expanded={isMobileMenuOpen}
@@ -55,7 +55,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
         <>
           {/* Backdrop */}
           <div
-            className="fixed inset-0 z-40 bg-black/50 md:hidden"
+            className="fixed inset-0 z-40 bg-black/50 backdrop-blur-md md:hidden"
             onClick={closeMobileMenu}
           />
 
@@ -69,7 +69,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
                       key={i}
                       {...link}
                       appearance={link.appearance}
-                      className="border-b border-current/10 py-2 text-xs text-inherit transition-opacity last:border-b-0 hover:opacity-70"
+                      className="justify-center py-2 text-xs text-inherit transition-opacity hover:opacity-70"
                     />
                   );
                 })}
