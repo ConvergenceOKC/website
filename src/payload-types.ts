@@ -216,6 +216,7 @@ export interface Page {
     | MessagesBlock
     | HouseChurchMapBlock
     | EmbedBlock
+    | IconBlock
   )[];
   meta?: {
     title?: string | null;
@@ -994,6 +995,34 @@ export interface EmbedBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "IconBlock".
+ */
+export interface IconBlock {
+  icons: {
+    icon: 'globe' | 'phone' | 'person' | 'email' | 'arrow-left-right';
+    content?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'iconBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "house-churches".
  */
 export interface HouseChurch {
@@ -1005,7 +1034,7 @@ export interface HouseChurch {
   zip: number;
   time: string;
   language: string;
-  kids: boolean;
+  notes?: string | null;
   status: 'active' | 'inactive';
   lat: number;
   lng: number;
@@ -1342,6 +1371,7 @@ export interface PagesSelect<T extends boolean = true> {
         messagesBlock?: T | MessagesBlockSelect<T>;
         houseChurchMap?: T | HouseChurchMapBlockSelect<T>;
         embed?: T | EmbedBlockSelect<T>;
+        iconBlock?: T | IconBlockSelect<T>;
       };
   meta?:
     | T
@@ -1575,6 +1605,21 @@ export interface EmbedBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "IconBlock_select".
+ */
+export interface IconBlockSelect<T extends boolean = true> {
+  icons?:
+    | T
+    | {
+        icon?: T;
+        content?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "posts_select".
  */
 export interface PostsSelect<T extends boolean = true> {
@@ -1752,7 +1797,7 @@ export interface HouseChurchesSelect<T extends boolean = true> {
   zip?: T;
   time?: T;
   language?: T;
-  kids?: T;
+  notes?: T;
   status?: T;
   lat?: T;
   lng?: T;
@@ -2230,7 +2275,7 @@ export interface TaskSchedulePublish {
  * via the `definition` "LinkGroupBlock".
  */
 export interface LinkGroupBlock {
-  title: string;
+  title?: string | null;
   links?:
     | {
         link: {

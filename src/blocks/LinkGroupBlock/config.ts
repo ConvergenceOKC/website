@@ -8,7 +8,7 @@ export const LinkGroupBlock: Block = {
     {
       name: 'title',
       type: 'text',
-      required: true,
+      required: false,
     },
     linkGroup(),
   ],

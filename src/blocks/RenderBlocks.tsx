@@ -7,6 +7,7 @@ import { ContentBlock } from '@/blocks/Content/Component';
 import { ContentPathwayBlock } from '@/blocks/ContentPathway/Component';
 import { FormBlock } from '@/blocks/Form/Component';
 import { HouseChurchMapBlock } from '@/blocks/HouseChurchMap/Component';
+import { IconBlock } from '@/blocks/IconBlock/Component';
 import { ImageCarouselBlock } from '@/blocks/ImageCarousel/Component';
 import { MediaBlock } from '@/blocks/MediaBlock/Component';
 import { SliderGalleryBlock } from '@/blocks/SliderGallery/Component';
@@ -23,6 +24,7 @@ const blockComponents = {
   buttonBlock: ButtonBlock,
   imageCarousel: ImageCarouselBlock,
   houseChurchMap: HouseChurchMapBlock,
+  iconBlock: IconBlock,
 };
 
 export const RenderBlocks: React.FC<{
