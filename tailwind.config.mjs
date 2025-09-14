@@ -27,6 +27,15 @@ const config = {
     'bg-success/30',
     'border-warning',
     'bg-warning/30',
+    'xl:grid-cols-3',
+    'xl:grid-cols-4',
+    'xl:grid-cols-5',
+    'h-8',
+    'h-16',
+    'md:h-24',
+    'w-8',
+    'w-16',
+    'md:w-24',
   ],
   theme: {
     container: {

@@ -998,8 +998,10 @@ export interface EmbedBlock {
  * via the `definition` "IconBlock".
  */
 export interface IconBlock {
+  gridSize: 'grid-cols-3' | 'grid-cols-4' | 'grid-cols-5';
+  iconSize: 'small' | 'medium' | 'large';
   icons: {
-    icon: 'globe' | 'phone' | 'person' | 'email' | 'arrow-left-right';
+    type: 'globe' | 'phone' | 'person' | 'email' | 'arrow-left-right';
     content?: {
       root: {
         type: string;
@@ -1608,10 +1610,12 @@ export interface EmbedBlockSelect<T extends boolean = true> {
  * via the `definition` "IconBlock_select".
  */
 export interface IconBlockSelect<T extends boolean = true> {
+  gridSize?: T;
+  iconSize?: T;
   icons?:
     | T
     | {
-        icon?: T;
+        type?: T;
         content?: T;
         id?: T;
       };
