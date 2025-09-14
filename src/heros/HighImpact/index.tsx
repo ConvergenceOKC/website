@@ -24,18 +24,28 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
       className="text-convergence-beige relative flex h-[60vh] max-h-[600px] min-h-[500px] overflow-hidden pt-16 md:h-[80vh] md:max-h-[950px] md:min-h-[850px] md:pt-[7.375rem]"
       data-theme="dark"
     >
-      <div className="relative container mt-8 mb-12 flex md:mt-20 md:mb-24">
-        <div className="w-full">
+      <div className="relative container mt-8 mb-12 flex items-center justify-center md:items-start md:justify-start md:mt-20 md:mb-24 min-h-full">
+        <div className="w-full text-center md:text-left">
           {richText && (
-            <RichText
-              className="mb-4 md:mb-6"
-              data={richText}
-              enableGutter={false}
-              enableProse={false}
-            />
+            <div className="mb-4 md:mb-6">
+              {/* Mobile: Show only the main heading */}
+              <div className="block md:hidden">
+                <h1 className="text-3xl sm:text-4xl leading-tight">
+                  TEACHING AND EQUIPPING THROUGH WORD AND SPIRIT
+                </h1>
+              </div>
+              {/* Desktop: Show everything */}
+              <div className="hidden md:block">
+                <RichText
+                  data={richText}
+                  enableGutter={false}
+                  enableProse={false}
+                />
+              </div>
+            </div>
           )}
           {Array.isArray(links) && links.length > 0 && (
-            <ul className="flex flex-col gap-2 sm:flex-row sm:gap-4">
+            <ul className="flex flex-col gap-2 sm:flex-row sm:gap-4 justify-center md:justify-start">
               {links.map(({ link }, i) => {
                 return (
                   <li key={i}>

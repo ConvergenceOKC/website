@@ -28,32 +28,33 @@ export const LatestMessage: React.FC = async () => {
             <Image
               src="/images/play-icon.svg"
               alt="Play button"
-              width={100}
-              height={100}
+              width={40}
+              height={40}
+              className="sm:w-[60px] sm:h-[60px] md:w-[100px] md:h-[100px]"
             />
           </div>
-          <Media resource={message.thumbnail} size="og" className="mb-9" />
+          <Media resource={message.thumbnail} size="og" className="mb-6 sm:mb-9" />
         </Link>
 
-        <div className="flex gap-10">
+        <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-10">
           {/* Message Details */}
-          <div>
-            <h4 className="mb-2">
+          <div className="flex-1">
+            <h4 className="mb-2 text-xl sm:text-2xl lg:text-3xl">
               <Balancer>{message.title}</Balancer>
             </h4>
             {/* Message Info Bar */}
-            <div className="mb-6 flex items-center gap-0 text-sm uppercase opacity-70">
+            <div className="mb-4 sm:mb-6 flex flex-wrap items-center gap-0 text-xs sm:text-sm uppercase opacity-70">
               <span>
                 {typeof message.speaker === 'object' &&
                 'name' in message.speaker
                   ? message.speaker.name
                   : message.speaker}
               </span>
-              <Dot />
+              <Dot className="w-3 h-3 sm:w-4 sm:h-4" />
               <span>{formatDateTime(message.date)}</span>
               {message.series && (
                 <>
-                  <Dot />
+                  <Dot className="w-3 h-3 sm:w-4 sm:h-4" />
                   <span>
                     {typeof message.series === 'object' &&
                     'title' in message.series
@@ -65,8 +66,8 @@ export const LatestMessage: React.FC = async () => {
               {Array.isArray(message.scripture) &&
                 message.scripture.length > 0 && (
                   <>
-                    <Dot />
-                    <span>
+                    <Dot className="w-3 h-3 sm:w-4 sm:h-4" />
+                    <span className="break-words">
                       {message.scripture
                         .map(
                           (ref) => `${ref.book} ${ref.chapter}:${ref.verses}`,
@@ -76,20 +77,20 @@ export const LatestMessage: React.FC = async () => {
                   </>
                 )}
             </div>
-            <p>{message.description}</p>
+            <p className="text-sm sm:text-base leading-relaxed">{message.description}</p>
           </div>
           {/* Message Button Bar */}
-          <div className="flex gap-3">
-            <Button variant={'secondary'}>
+          <div className="flex flex-wrap lg:flex-col gap-2 sm:gap-3 lg:gap-2 lg:min-w-[200px]">
+            <Button variant={'secondary'} className="text-xs sm:text-sm">
               <Link href={'/messages/' + message.slug}>Message Details</Link>
             </Button>
             {message.notes && (
-              <Button variant={'secondary'}>
+              <Button variant={'secondary'} className="text-xs sm:text-sm">
                 <Link href={message.notes}>Sermon Notes</Link>
               </Button>
             )}
             {message.series && (
-              <Button variant={'secondary'}>
+              <Button variant={'secondary'} className="text-xs sm:text-sm">
                 <Link href={'/messages#more-from-series'}>
                   More In This Series
                 </Link>
