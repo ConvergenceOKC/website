@@ -106,7 +106,7 @@ export const ImageCarouselBlock: React.FC<ImageCarouselProps> = ({
 
   return (
     <div
-      className={cn('relative h-[450px] w-full overflow-hidden rounded-lg')}
+      className={cn('relative h-[300px] md:h-[450px] w-full overflow-hidden rounded-lg')}
       ref={carouselRef}
       onMouseEnter={pauseAutoPlay}
       onMouseLeave={resumeAutoPlay}
@@ -130,9 +130,9 @@ export const ImageCarouselBlock: React.FC<ImageCarouselProps> = ({
                 resource={image.image}
                 imgClassName="h-full w-full object-cover group-hover:scale-110 transition-transform duration-300"
               />
-              <div className="text-convergence-beige bg-convergence-brown/30 absolute inset-0 flex flex-col justify-end px-16 pb-10">
-                <h5>{image.title}</h5>
-                {image.description && <p>{image.description}</p>}
+              <div className="text-convergence-beige bg-convergence-brown/30 absolute inset-0 flex flex-col justify-end px-4 pb-4 sm:px-6 sm:pb-6 md:px-16 md:pb-10">
+                <h5 className="text-base sm:text-lg md:text-2xl leading-tight">{image.title}</h5>
+                {image.description && <p className="text-xs sm:text-sm md:text-base mt-1 sm:mt-2 line-clamp-2 sm:line-clamp-none">{image.description}</p>}
               </div>
             </CMSLink>
           </div>
@@ -144,20 +144,20 @@ export const ImageCarouselBlock: React.FC<ImageCarouselProps> = ({
           e.stopPropagation();
           goToPrevious();
         }}
-        className="bg-convergence-brown/30 text-convergence-beige/50 hover:bg-convergence-brown/50 hover:text-convergence-beige absolute top-1/2 left-4 -translate-y-1/2 cursor-pointer rounded-full p-2 transition-colors"
+        className="bg-convergence-brown/30 text-convergence-beige/50 hover:bg-convergence-brown/50 hover:text-convergence-beige absolute top-1/2 left-2 md:left-4 -translate-y-1/2 cursor-pointer rounded-full p-1.5 md:p-2 transition-colors"
         aria-label="Previous slide"
       >
-        <ChevronLeft className="h-6 w-6" />
+        <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
       </button>
       <button
         onClick={(e) => {
           e.stopPropagation();
           goToNext();
         }}
-        className="bg-convergence-brown/30 text-convergence-beige/50 hover:bg-convergence-brown/50 hover:text-convergence-beige absolute top-1/2 right-4 -translate-y-1/2 cursor-pointer rounded-full p-2 transition-colors"
+        className="bg-convergence-brown/30 text-convergence-beige/50 hover:bg-convergence-brown/50 hover:text-convergence-beige absolute top-1/2 right-2 md:right-4 -translate-y-1/2 cursor-pointer rounded-full p-1.5 md:p-2 transition-colors"
         aria-label="Next slide"
       >
-        <ChevronRight className="h-6 w-6" />
+        <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
       </button>
       {/* Dots/Indicators */}
       <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">

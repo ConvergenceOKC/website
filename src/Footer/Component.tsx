@@ -28,7 +28,7 @@ export async function Footer() {
             {privacy && (
               <CMSLink
                 appearance="link"
-                className="text-convergence-beige/60 text-center text-xs font-normal md:text-left"
+                className="text-convergence-beige/60 md:justify-left justify-center text-xs font-normal"
                 reference={{
                   relationTo: 'pages',
                   value: privacy,
@@ -41,7 +41,7 @@ export async function Footer() {
             {terms && (
               <CMSLink
                 appearance="link"
-                className="text-convergence-beige/60 text-center text-xs md:text-left"
+                className="text-convergence-beige/60 justify-center text-xs md:justify-start"
                 reference={{
                   relationTo: 'pages',
                   value: terms,
