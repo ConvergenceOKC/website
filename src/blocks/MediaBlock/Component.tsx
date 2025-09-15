@@ -46,13 +46,17 @@ export const MediaBlock: React.FC<Props> = (props) => {
       {enableLink ? (
         <CMSLink {...link}>
           <Media
-            imgClassName={imgClassName}
+            imgClassName={cn(imgClassName, 'rounded-lg')}
             resource={media}
             src={staticImage}
           />
         </CMSLink>
       ) : (
-        <Media imgClassName={imgClassName} resource={media} src={staticImage} />
+        <Media
+          imgClassName={cn(imgClassName, 'rounded-lg')}
+          resource={media}
+          src={staticImage}
+        />
       )}
       {caption && (
         <div
