@@ -19,14 +19,7 @@ export const HouseChurches: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'name',
-    defaultColumns: [
-      'name',
-      'language',
-      'locationDescription',
-      'facilitator',
-      'time',
-      'status',
-    ],
+    defaultColumns: ['name', 'facilitator', 'status'],
   },
   fields: [
     {
@@ -68,11 +61,9 @@ export const HouseChurches: CollectionConfig = {
       required: true,
     },
     {
-      name: 'kids',
-      label: 'Kids',
-      type: 'checkbox',
-      defaultValue: true,
-      required: true,
+      name: 'notes',
+      type: 'text',
+      required: false,
     },
     {
       name: 'status',

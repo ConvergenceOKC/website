@@ -17,7 +17,7 @@ interface MapMarkerProps {
   zip: number;
   time: string;
   language: string;
-  kids: boolean;
+  notes?: string;
   children: React.ReactNode;
 }
 
@@ -30,7 +30,7 @@ const MapMarker = ({
   zip,
   time,
   language,
-  kids,
+  notes,
   children,
 }: MapMarkerProps) => {
   const [markerRef, marker] = useAdvancedMarkerRef();
@@ -70,9 +70,11 @@ const MapMarker = ({
             <li>
               <strong>Language(s):</strong> {language}
             </li>
-            <li>
-              <strong>Kids:</strong> {kids ? 'Yes' : 'No'}
-            </li>
+            {notes && (
+              <li>
+                <strong>Notes:</strong> {notes}
+              </li>
+            )}
           </ul>
         </InfoWindow>
       )}

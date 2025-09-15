@@ -10,6 +10,7 @@ import type { CollectionConfig } from 'payload';
 import { ContentPathway } from '@/blocks/ContentPathway/config';
 import { Embed } from '@/blocks/Embed/config';
 import { HouseChurchMap } from '@/blocks/HouseChurchMap/config';
+import { IconBlock } from '@/blocks/IconBlock/config';
 import { ImageCarousel } from '@/blocks/ImageCarousel/config';
 import { MessagesBlock } from '@/blocks/Messages/config';
 import { SliderGallery } from '@/blocks/SliderGallery/config';
@@ -93,6 +94,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 MessagesBlock,
                 HouseChurchMap,
                 Embed,
+                IconBlock,
               ],
               required: true,
               admin: {

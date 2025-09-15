@@ -42,7 +42,6 @@ export default function Map({ locations, showMainChurch }: MapProps) {
           facilitator={convergenceInfo.name}
           time={convergenceInfo.serviceTime}
           language={'English, Spanish'}
-          kids={true}
         >
           <MapPin
             className={'bg-convergence-teal text-convergence-beige'}
@@ -64,7 +63,7 @@ export default function Map({ locations, showMainChurch }: MapProps) {
                 zip={location.zip}
                 time={location.time}
                 language={location.language}
-                kids={location.kids}
+                notes={location.notes ?? undefined}
               >
                 <MapPin
                   className={
