@@ -174,16 +174,6 @@
     margin-bottom: 2rem;
   }
 
-  /* Need to find a way for this not to impact button-style links */
-  /* .payload-richtext {
-    a {
-      text-decoration: underline;
-    }
-    a.hover {
-      opacity: 0.8;
-    }
-  } */
-
   :root {
     --cream: 39 63% 90%;
     --deep-green: 69 18% 23%;
