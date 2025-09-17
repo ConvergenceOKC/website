@@ -3,7 +3,6 @@
 import { Banner } from '@payloadcms/ui';
 
 import { revalidateTags } from '@/components/BeforeDashboard/revalidateTags';
-import { Button } from '@/components/ui/button';
 
 const BeforeDashboard = () => {
   const handleClick = async (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -22,7 +21,7 @@ const BeforeDashboard = () => {
         to visit the live site
       </p>
       <p>
-        If you've made changes to the header and/or footer but are not seeing
+        If you have made changes to the header and/or footer but are not seeing
         them reflected on the site,{' '}
         <a href="" onClick={handleClick}>
           click here
