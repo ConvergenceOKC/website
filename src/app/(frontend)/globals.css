@@ -174,17 +174,6 @@
     margin-bottom: 2rem;
   }
 
-  // Underlines text links in rich text content
-  .payload-richtext {
-    a {
-      text-decoration: underline;
-      text-underline-offset: 4px;
-    }
-    a:hover {
-      opacity: 0.75;
-    }
-  }
-
   :root {
     --cream: 39 63% 90%;
     --deep-green: 69 18% 23%;
@@ -279,6 +268,12 @@
   }
   body {
     @apply bg-background text-foreground font-body flex min-h-[100vh] flex-col;
+
+    .payload-richtext {
+      a {
+        @apply underline underline-offset-4 hover:opacity-70;
+      }
+    }
   }
 }
 
