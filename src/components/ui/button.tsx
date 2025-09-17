@@ -5,7 +5,7 @@ import { type VariantProps, cva } from 'class-variance-authority';
 import { cn } from 'src/utilities/ui';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap text-xs ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 rounded-full',
+  'inline-flex items-center justify-center whitespace-nowrap text-xs ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 rounded-full no-underline',
   {
     defaultVariants: {
       size: 'default',
@@ -21,15 +21,16 @@ const buttonVariants = cva(
       },
       variant: {
         default:
-          'bg-primary text-primary-foreground hover:bg-primary/90 uppercase',
+          'bg-primary text-primary-foreground hover:bg-primary/90 uppercase no-underline',
         destructive:
-          'bg-destructive text-destructive-foreground hover:bg-destructive/90 uppercase',
-        ghost: 'hover:bg-card hover:text-card-foreground uppercase',
-        link: 'text-foreground items-start justify-start underline-offset-4 hover:underline',
+          'bg-destructive text-destructive-foreground hover:bg-destructive/90 uppercase no-underline',
+        ghost:
+          'hover:bg-card hover:text-card-foreground uppercase no-underline',
+        link: 'text-foreground items-start justify-start underline-offset-4 hover:underline no-underline',
         outline:
-          'border border-border bg-background hover:bg-card hover:text-card-foreground uppercase text-card-foreground!',
+          'border border-border bg-background hover:bg-card hover:text-card-foreground uppercase text-card-foreground! no-underline',
         secondary:
-          'bg-secondary text-secondary-foreground hover:bg-secondary/80 uppercase',
+          'bg-secondary text-secondary-foreground hover:bg-secondary/80 uppercase no-underline',
       },
     },
   },
