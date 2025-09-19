@@ -25,6 +25,7 @@ import { MediaBlock } from '@/blocks/MediaBlock/Component';
 import { MegaButtonPairBlock } from '@/blocks/MegaButtonPair/Component';
 import { MessagesBlock } from '@/blocks/Messages/Component';
 import { SliderGalleryBlock } from '@/blocks/SliderGallery/Component';
+import { StaffBlock } from '@/blocks/StaffBlock/Component';
 import { headingConverter } from '@/components/RichText/converters/headingConverter';
 import { internalDocToHref } from '@/components/RichText/converters/internalLink';
 import type {
@@ -43,6 +44,7 @@ import type {
   MegaButtonPair as MegaButtonPairProps,
   MessagesBlock as MessagesBlockProps,
   SliderGalleryBlock as SliderGalleryBlockProps,
+  StaffBlock as StaffBlockProps,
 } from '@/payload-types';
 import { cn } from '@/utilities/ui';
 
@@ -65,6 +67,7 @@ type NodeTypes =
       | HouseChurchMapBlockProps
       | EmbedBlockProps
       | IconBlockProps
+      | StaffBlockProps
     >;
 
 const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
@@ -101,6 +104,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
     houseChurchMap: ({ node }) => <HouseChurchMapBlock {...node.fields} />,
     embed: ({ node }) => <EmbedBlock {...node.fields} />,
     iconBlock: ({ node }) => <IconBlock {...node.fields} />,
+    staffBlock: ({ node }) => <StaffBlock {...node.fields} />,
   },
 });
 

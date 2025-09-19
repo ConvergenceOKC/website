@@ -1,3 +1,4 @@
+import { ParagraphFeature, lexicalEditor } from '@payloadcms/richtext-lexical';
 import { CollectionConfig } from 'payload';
 
 import { authenticated } from '@/access/authenticated';
@@ -49,8 +50,13 @@ export const Staff: CollectionConfig<'staff'> = {
     },
     {
       name: 'bio',
-      type: 'textarea',
+      type: 'richText',
       required: false,
+      editor: lexicalEditor({
+        features: () => {
+          return [ParagraphFeature()];
+        },
+      }),
     },
     {
       name: 'status',

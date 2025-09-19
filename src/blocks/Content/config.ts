@@ -15,6 +15,7 @@ import { IconBlock } from '@/blocks/IconBlock/config';
 import { ImageCarousel } from '@/blocks/ImageCarousel/config';
 import { MessagesBlock } from '@/blocks/Messages/config';
 import { SliderGallery } from '@/blocks/SliderGallery/config';
+import { StaffBlock } from '@/blocks/StaffBlock/config';
 import { link } from '@/fields/link';
 
 import { ButtonBlock } from '../ButtonBlock/config';
@@ -228,6 +229,7 @@ const columnFields: Field[] = [
               HouseChurchMap,
               Embed,
               IconBlock,
+              StaffBlock,
             ],
           }),
           AlignFeature(),

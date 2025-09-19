@@ -15,7 +15,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = ({
     half: 'col-span-1 sm:col-span-2 xl:col-span-6',
     oneThird: 'col-span-1 sm:col-span-2 md:col-span-4 xl:col-span-4',
     twoThirds: 'col-span-1 sm:col-span-2 md:col-span-4 xl:col-span-8',
-    oneFourth: 'col-span-1 sm:col-span-2 md:col-span-4 xl:col-span-3',
+    oneFourth: 'col-span-1 xl:col-span-3',
   };
 
   const textColorClasses = {

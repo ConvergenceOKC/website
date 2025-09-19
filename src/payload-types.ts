@@ -943,7 +943,21 @@ export interface Staff {
   email?: string | null;
   phone?: string | null;
   headshot?: (string | null) | Media;
-  bio?: string | null;
+  bio?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   status: 'active' | 'inactive';
   updatedAt: string;
   createdAt: string;
@@ -2352,6 +2366,23 @@ export interface LinkedText {
   id?: string | null;
   blockName?: string | null;
   blockType: 'linkedText';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StaffBlock".
+ */
+export interface StaffBlock {
+  layout: '2-col' | '3-col';
+  /**
+   * Select one or more staff members to display.
+   */
+  staff: {
+    staffMember?: (string | null) | Staff;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'staffBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
