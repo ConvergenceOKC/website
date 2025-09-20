@@ -480,7 +480,7 @@ export interface ContentBlock {
     backgroundColor?: ('none' | 'beige' | 'teal' | 'brown' | 'orange' | 'blue' | 'beigeDarker') | null;
     backgroundImage?: (string | null) | Media;
     blendMode?: ('none' | 'multiply' | 'screen' | 'overlay' | 'colorBurn') | null;
-    backgroundImageOpacity?: number | null;
+    imageOpacity?: ('100' | '75' | '50' | '25' | '10') | null;
   };
   content?: {
     columns?:
@@ -1459,7 +1459,7 @@ export interface ContentBlockSelect<T extends boolean = true> {
         backgroundColor?: T;
         backgroundImage?: T;
         blendMode?: T;
-        backgroundImageOpacity?: T;
+        imageOpacity?: T;
       };
   content?:
     | T

@@ -59,10 +59,10 @@ export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
       <div className="relative container grid h-full w-full grid-cols-1 gap-4 sm:gap-6 xl:max-w-full xl:grid-cols-[50%_1fr] xl:overflow-hidden">
         {/* Subtitle */}
         {showSubtitle && subtitle && (
-          <div className="absolute top-40 left-1/2 z-10 container hidden w-full -translate-x-1/2 -translate-y-1/2 xl:grid xl:grid-cols-[50%_1fr]">
+          <div className="pointer-events-none absolute top-40 left-1/2 z-10 container hidden w-full -translate-x-1/2 -translate-y-1/2 xl:grid xl:grid-cols-[50%_1fr]">
             <LinkedTextBlock
               blockType="linkedText"
-              className="w-full pl-6"
+              className="mb-0! w-full pl-6"
               leftText={subtitle}
               rightText=""
             />
@@ -105,7 +105,7 @@ export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
             <h2 className="text-convergence-brown leading-tight">
               <Balancer>{images[activeImageIndex]?.title}</Balancer>
             </h2>
-            <p className="text-convergence-brown mb-6 line-clamp-3 sm:mb-8 sm:line-clamp-4 md:line-clamp-7">
+            <p className="text-convergence-brown mb-6 sm:mb-8">
               {images[activeImageIndex]?.caption}
             </p>
             <CMSLink

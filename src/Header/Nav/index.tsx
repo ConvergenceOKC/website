@@ -69,7 +69,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
                       key={i}
                       {...link}
                       appearance={link.appearance}
-                      className="justify-center py-2 text-xs text-inherit transition-opacity hover:opacity-70"
+                      className="text-convergence-beige justify-center py-2 text-xs transition-opacity hover:opacity-70"
                     />
                   );
                 })}

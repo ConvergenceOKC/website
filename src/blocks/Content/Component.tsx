@@ -43,8 +43,8 @@ export const ContentBlock: React.FC<ContentBlockProps> = ({
     colorBurn: 'mix-blend-color-burn',
   };
 
-  const bgImageOpacity = background?.backgroundImageOpacity
-    ? `opacity-${Math.round(Math.min(Math.abs(background.backgroundImageOpacity), 100))}`
+  const bgImageOpacity = background?.imageOpacity
+    ? `opacity-${background.imageOpacity}`
     : '';
 
   const paddingTopClasses = {

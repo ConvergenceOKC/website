@@ -36,6 +36,11 @@ const config = {
     'w-8',
     'w-16',
     'md:w-24',
+    'opacity-100',
+    'opacity-75',
+    'opacity-50',
+    'opacity-25',
+    'opacity-10',
   ],
   theme: {
     container: {

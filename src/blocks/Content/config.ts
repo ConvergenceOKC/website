@@ -163,9 +163,16 @@ const backgroundImageFields: Field[] = [
         },
       },
       {
-        name: 'backgroundImageOpacity',
-        type: 'number',
-        defaultValue: 100,
+        name: 'imageOpacity',
+        type: 'select',
+        options: [
+          { label: 'Opaque', value: '100' },
+          { label: '75% Opaque', value: '75' },
+          { label: '50% Opaque', value: '50' },
+          { label: '25% Opaque', value: '25' },
+          { label: '10% Opaque', value: '10' },
+        ],
+        defaultValue: '100',
         admin: {
           condition: (_, siblingData) => {
             return siblingData?.backgroundImage;
