@@ -29,7 +29,7 @@ export const ButtonBlock: React.FC<ButtonBlockProps> = ({
   return (
     <div className={cn('my-4 flex gap-4', alignmentClass)}>
       {Array.isArray(links) && links.length > 0 && (
-        <ul className="flex gap-4">
+        <ul className="flex gap-2">
           {links.map(({ link }, i) => {
             return (
               <li key={i}>

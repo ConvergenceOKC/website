@@ -34,7 +34,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
             />
           )}
           {Array.isArray(links) && links.length > 0 && (
-            <ul className="mt-14 flex flex-col gap-2 sm:flex-row sm:gap-4 lg:mt-16">
+            <ul className="mt-14 flex flex-col gap-2 sm:flex-row lg:mt-16">
               {links.map(({ link }, i) => {
                 return (
                   <li key={i}>

@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 
-import { ChevronRight } from 'lucide-react';
 import Balancer from 'react-wrap-balancer';
 
 import { LinkedTextBlock } from '@/blocks/LinkedText/Component';
@@ -71,27 +70,27 @@ export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
         {/* Main Active Image */}
         <Media
           resource={images[activeImageIndex]?.image}
-          imgClassName="object-cover object-center h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[800px] w-full xl:max-w-[1100px] rounded-lg xl:justify-self-end opacity-100"
+          imgClassName="object-cover object-center h-[400px] lg:h-[500px] xl:h-[800px] w-full xl:max-w-[1100px] rounded-lg xl:justify-self-end opacity-100"
         />
 
-        <div className="relative flex h-full flex-col gap-4 sm:gap-6">
+        <div className="relative flex h-full flex-col gap-4 sm:gap-6 xl:max-w-[1100px]">
           {/* Thumbnail Images */}
           <div className="relative flex flex-col gap-4 sm:gap-6">
-            <div className="scrollbar-hide flex flex-row gap-3 overflow-x-auto pb-3 sm:gap-4 sm:pb-4 md:gap-6">
+            <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6">
               {images.map((_, i) => {
                 const index = (activeImageIndex + i) % images.length; // Calculate reordered index
                 if (index === activeImageIndex) return null; // Skip active image
                 return (
                   <div
                     key={index}
-                    className="relative h-20 w-20 flex-shrink-0 cursor-pointer overflow-hidden rounded-lg saturate-0 transition-all duration-300 hover:saturate-100 sm:h-32 sm:w-32 md:h-48 md:w-48 lg:h-72 lg:w-72 xl:h-80 xl:w-80"
+                    className="relative flex cursor-pointer overflow-hidden rounded-lg saturate-0 transition-all duration-300 hover:saturate-100"
                     onClick={() => handleClick(index)}
                   >
                     <Media
                       resource={images[index]?.image}
-                      imgClassName="absolute h-full w-full object-cover hover:scale-110 transition-transform duration-300"
+                      imgClassName="h-48 lg:h-60 xl:h-80 object-cover object-center hover:scale-110 transition-transform duration-300"
                     />
-                    <h6 className="text-convergence-beige absolute right-8 bottom-5 hidden w-full text-right leading-tight lg:block">
+                    <h6 className="text-convergence-beige absolute bottom-0 w-full p-6 leading-tight">
                       {images[index]?.title}
                     </h6>
                   </div>
@@ -101,7 +100,7 @@ export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
           </div>
 
           {/* Image Content */}
-          <div className="relative flex h-auto max-w-full flex-col px-3 pt-4 sm:px-4 sm:pt-8 lg:h-2/3 lg:max-w-[600px] lg:pl-8">
+          <div className="relative flex h-auto max-w-full flex-col px-3 pt-4 sm:px-4 sm:pt-8 lg:h-2/3 lg:max-w-[600px] lg:pl-6">
             <h2 className="text-convergence-brown leading-tight">
               <Balancer>{images[activeImageIndex]?.title}</Balancer>
             </h2>
