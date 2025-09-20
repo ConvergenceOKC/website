@@ -88,12 +88,12 @@ export default async function Message({ params: paramsPromise }: Args) {
         {/* Message Button Bar */}
         <div className="mb-10 flex gap-3">
           {message.notes && (
-            <Button variant={'secondary'}>
+            <Button asChild variant={'secondary'}>
               <Link href={message.notes}>Sermon Notes</Link>
             </Button>
           )}
           {message.series && (
-            <Button variant={'secondary'}>
+            <Button asChild variant={'secondary'}>
               <Link href={'#more-from-series'}>More In This Series</Link>
             </Button>
           )}

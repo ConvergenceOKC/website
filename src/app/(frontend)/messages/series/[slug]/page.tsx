@@ -12,6 +12,7 @@ import { MoreFromSeries } from '@/blocks/Messages/MoreFromSeries';
 import { RecentSeries } from '@/blocks/Messages/RecentSeries';
 import { Media } from '@/components/Media';
 import { PayloadRedirects } from '@/components/PayloadRedirects';
+import RichText from '@/components/RichText';
 import { Button } from '@/components/ui/button';
 import { formatDateTime } from '@/utilities/formatDateTime';
 import { generateMeta } from '@/utilities/generateMeta';
@@ -80,7 +81,7 @@ export default async function Series({ params: paramsPromise }: Args) {
       <h4 className="mb-2">
         <Balancer>{series.title}</Balancer>
       </h4>
-      <p>{series.description}</p>
+      <RichText data={series.description} />
       {/* Series Videos */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {seriesMessages.docs.map((message) => (

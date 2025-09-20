@@ -20,7 +20,7 @@ export const RecentSeries: React.FC = async () => {
           <Link
             href={`/messages/series/${series.slug}`}
             key={series.id}
-            className="flex flex-col items-start"
+            className="flex flex-col items-start gap-3 no-underline"
           >
             <Media resource={series.thumbnail} size="sm" />
             <h5>{series.title}</h5>
