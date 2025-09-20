@@ -46,7 +46,7 @@ export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
       {showMegaTitle && megaTitle && (
         <h2
           className={cn(
-            'relative -z-10 -mb-12 hidden justify-center overflow-hidden text-center text-[4rem] leading-[4rem] whitespace-nowrap opacity-10 mix-blend-multiply sm:-mb-40 sm:flex sm:text-[13rem] sm:leading-[18rem] md:-mb-60 md:text-[20rem] md:leading-[28rem] xl:-mb-80 xl:text-[27rem] xl:leading-[38rem]',
+            'relative -z-50 -mt-5 -mb-10 justify-center overflow-hidden text-center text-[8rem] leading-[8rem] whitespace-nowrap opacity-10 mix-blend-multiply sm:-mt-10 sm:-mb-40 sm:text-[13rem] sm:leading-[18rem] md:-mt-16 md:-mb-60 md:text-[20rem] md:leading-[28rem] xl:-mt-24 xl:-mb-80 xl:text-[27rem] xl:leading-[38rem]',
 
             megaTitleClass[titleColor || 'none'],
           )}
@@ -71,7 +71,7 @@ export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
         {/* Main Active Image */}
         <Media
           resource={images[activeImageIndex]?.image}
-          imgClassName="object-cover object-center h-[300px] sm:h-[400px] md:h-[500px] lg:h-[700px] xl:h-[900px] w-full xl:max-w-[1100px] rounded-lg xl:justify-self-end opacity-100"
+          imgClassName="object-cover object-center h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[800px] w-full xl:max-w-[1100px] rounded-lg xl:justify-self-end opacity-100"
         />
 
         <div className="relative flex h-full flex-col gap-4 sm:gap-6">
@@ -101,20 +101,16 @@ export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
           </div>
 
           {/* Image Content */}
-          <div className="relative flex h-auto max-w-full flex-col px-3 pt-4 sm:px-4 sm:pt-8 md:pt-16 lg:h-2/3 lg:max-w-[600px] lg:pt-32 lg:pl-8">
+          <div className="relative flex h-auto max-w-full flex-col px-3 pt-4 sm:px-4 sm:pt-8 lg:h-2/3 lg:max-w-[600px] lg:pl-8">
             <h2 className="text-convergence-brown leading-tight">
               <Balancer>{images[activeImageIndex]?.title}</Balancer>
             </h2>
             <p className="text-convergence-brown mb-6 sm:mb-8">
               {images[activeImageIndex]?.caption}
             </p>
-            <CMSLink
-              {...images[activeImageIndex]?.link}
-              appearance="ghost"
-              className="flex w-32 gap-1 sm:w-48"
-            >
-              <ChevronRight className="h-3 w-3 sm:h-4 sm:w-4" />
-            </CMSLink>
+            <div className="flex gap-4">
+              <CMSLink {...images[activeImageIndex]?.link} />
+            </div>
           </div>
 
           {/* Progress Bar */}

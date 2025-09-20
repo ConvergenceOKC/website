@@ -49,8 +49,8 @@
 
   @media (min-width: 1024px) {
     h1 {
-      font-size: 6.25rem;
-      line-height: 7.375rem;
+      font-size: 5rem;
+      line-height: 6rem;
     }
   }
 
@@ -72,8 +72,8 @@
 
   @media (min-width: 1024px) {
     h2 {
-      font-size: 6.25rem;
-      line-height: 7.375rem;
+      font-size: 4rem;
+      line-height: 4.5rem;
     }
   }
 
@@ -99,8 +99,8 @@
 
   @media (min-width: 1024px) {
     h3 {
-      font-size: 4rem;
-      line-height: 3.5rem;
+      font-size: 3rem;
+      line-height: 3.15rem;
     }
   }
 

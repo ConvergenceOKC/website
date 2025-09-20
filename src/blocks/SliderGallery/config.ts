@@ -106,9 +106,7 @@ export const SliderGallery: Block = {
           label: 'Caption',
           required: false,
         },
-        link({
-          appearances: false,
-        }),
+        link(),
       ],
     },
   ],

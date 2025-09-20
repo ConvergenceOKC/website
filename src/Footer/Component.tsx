@@ -15,7 +15,7 @@ export async function Footer() {
   const socials = (await getCachedGlobal('socials', 1)()) as Social;
 
   return (
-    <footer className="text-convergence-beige [&_h6]:text-convergence-beige [&_label]:text-convergence-beige/60 relative [&_h6]:text-[1rem]">
+    <footer className="text-convergence-beige [&_h6]:text-convergence-beige [&_label]:text-convergence-beige/60 relative [&_h6]:text-[1rem] [&_img]:rounded-none">
       <div className="bg-convergence-brown absolute inset-0 -z-10 h-full w-full overflow-hidden" />
       <div className="absolute inset-0 -z-10 h-full w-full overflow-hidden bg-[url('/images/bg-pattern-blue-red.jpg')] bg-cover bg-center bg-no-repeat opacity-30 mix-blend-overlay" />
       <RenderBlocks blocks={blocks} />
