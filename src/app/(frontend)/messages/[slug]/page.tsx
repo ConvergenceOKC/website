@@ -51,10 +51,10 @@ export default async function Message({ params: paramsPromise }: Args) {
 
   return (
     <>
-      <div className="container pt-48">
-        <h4 className="mb-2">
+      <div className="container pt-48 pb-24">
+        <h3 className="mb-2">
           <Balancer>{message.title}</Balancer>
-        </h4>
+        </h3>
         <div className="mb-6 flex items-center gap-0 text-sm uppercase opacity-70">
           <span>
             {typeof message.speaker === 'object' && 'name' in message.speaker
@@ -94,7 +94,9 @@ export default async function Message({ params: paramsPromise }: Args) {
           )}
           {message.series && (
             <Button asChild variant={'secondary'}>
-              <Link href={'#more-from-series'}>More In This Series</Link>
+              <Link href={`/messages/series/${message.series.slug}`}>
+                More In This Series
+              </Link>
             </Button>
           )}
           {/* <Button variant={'secondary'}>
@@ -107,7 +109,7 @@ export default async function Message({ params: paramsPromise }: Args) {
           className="relative cursor-pointer"
           target="_blank"
         >
-          <div className="absolute z-10 flex h-full w-full items-center justify-center">
+          <div className="pointer-events-none absolute z-10 flex h-full w-full items-center justify-center">
             <Image
               src="/images/play-icon.svg"
               alt="Play button"
@@ -115,7 +117,12 @@ export default async function Message({ params: paramsPromise }: Args) {
               height={100}
             />
           </div>
-          <Media resource={message.thumbnail} size="og" className="mb-24" />
+          <div className="w-full overflow-hidden rounded-lg">
+            <Media
+              resource={message.thumbnail}
+              imgClassName="object-cover object-center hover:scale-110 transition-transform duration-300 max-h-[700px]"
+            />
+          </div>
         </Link>
       </div>
       <div className="bg-convergence-beige-darker">

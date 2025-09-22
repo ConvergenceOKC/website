@@ -984,7 +984,7 @@ export interface Role {
 export interface MessageSery {
   id: string;
   title: string;
-  description: {
+  description?: {
     root: {
       type: string;
       children: {
@@ -998,7 +998,7 @@ export interface MessageSery {
       version: number;
     };
     [k: string]: unknown;
-  };
+  } | null;
   thumbnail: string | Media;
   slug?: string | null;
   slugLock?: boolean | null;

@@ -32,7 +32,7 @@ export const MessageSeries: CollectionConfig<'messageSeries'> = {
     {
       name: 'description',
       type: 'richText',
-      required: true,
+      required: false,
       editor: lexicalEditor({
         features: () => {
           return [ParagraphFeature()];

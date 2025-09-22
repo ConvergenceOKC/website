@@ -77,11 +77,17 @@ export default async function Series({ params: paramsPromise }: Args) {
   }
 
   return (
-    <div className="container pt-48 pb-32">
-      <h4 className="mb-2">
+    <div className="container flex flex-col gap-6 pt-48 pb-32">
+      <h3 className="mb-2">
         <Balancer>{series.title}</Balancer>
-      </h4>
-      <RichText data={series.description} />
+      </h3>
+      {series.description && (
+        <RichText
+          data={series.description}
+          enableGutter={false}
+          enableProse={false}
+        />
+      )}
       {/* Series Videos */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {seriesMessages.docs.map((message) => (
@@ -90,7 +96,12 @@ export default async function Series({ params: paramsPromise }: Args) {
             key={message.id}
             className="flex flex-col items-start gap-3"
           >
-            <Media resource={message.thumbnail} size="sm" />
+            <div className="w-full overflow-hidden rounded-lg">
+              <Media
+                resource={message.thumbnail}
+                imgClassName="h-60 object-cover object-center hover:scale-110 transition-transform duration-300"
+              />
+            </div>
             <h5>
               <Balancer>{message.title}</Balancer>
             </h5>

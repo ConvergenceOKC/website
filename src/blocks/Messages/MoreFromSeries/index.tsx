@@ -42,17 +42,22 @@ export const MoreFromSeries: React.FC<MoreFromSeriesProps> = async ({
 
   return (
     <div>
-      <h4 id="more-from-series" className="scroll-mt-32">
+      <h3 id="more-from-series" className="scroll-mt-32">
         More From This Series
-      </h4>
+      </h3>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {moreMessages.map((message) => (
           <Link
             href={`/messages/${message.slug}`}
             key={message.id}
-            className="flex flex-col items-start gap-3"
+            className="flex flex-col items-start gap-3 no-underline"
           >
-            <Media resource={message.thumbnail} size="sm" />
+            <div className="w-full overflow-hidden rounded-lg">
+              <Media
+                resource={message.thumbnail}
+                imgClassName="h-60 object-cover object-center hover:scale-110 transition-transform duration-300"
+              />
+            </div>
             <h5>
               <Balancer>{message.title}</Balancer>
             </h5>

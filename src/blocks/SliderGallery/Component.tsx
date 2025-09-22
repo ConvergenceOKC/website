@@ -90,7 +90,7 @@ export const SliderGalleryBlock: React.FC<SliderGalleryProps> = ({
                       resource={images[index]?.image}
                       imgClassName="h-48 lg:h-60 xl:h-80 object-cover object-center hover:scale-110 transition-transform duration-300"
                     />
-                    <h6 className="text-convergence-beige absolute bottom-0 w-full p-6 leading-tight">
+                    <h6 className="text-convergence-beige absolute bottom-0 hidden w-full p-6 leading-tight sm:block">
                       {images[index]?.title}
                     </h6>
                   </div>

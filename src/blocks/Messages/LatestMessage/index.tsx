@@ -17,14 +17,14 @@ export const LatestMessage: React.FC = async () => {
 
   if (message) {
     return (
-      <div>
+      <div className="flex flex-col gap-6">
         {/* Message Thumbnail */}
         <Link
           href={message.video}
           className="relative cursor-pointer"
           target="_blank"
         >
-          <div className="absolute z-10 flex h-full w-full items-center justify-center">
+          <div className="pointer-events-none absolute z-10 flex h-full w-full items-center justify-center">
             <Image
               src="/images/play-icon.svg"
               alt="Play button"
@@ -33,19 +33,19 @@ export const LatestMessage: React.FC = async () => {
               className="sm:h-[60px] sm:w-[60px] md:h-[100px] md:w-[100px]"
             />
           </div>
-          <Media
-            resource={message.thumbnail}
-            size="og"
-            className="mb-6 sm:mb-9"
-          />
+          <div className="w-full overflow-hidden rounded-lg">
+            <Media
+              resource={message.thumbnail}
+              imgClassName="object-cover object-center hover:scale-110 transition-transform duration-300 max-h-[700px]"
+            />
+          </div>
         </Link>
-
         <div className="flex flex-col gap-4 sm:gap-6 lg:flex-row lg:gap-10">
           {/* Message Details */}
           <div className="flex-1">
-            <h4 className="mb-2 text-xl sm:text-2xl lg:text-3xl">
+            <h3>
               <Balancer>{message.title}</Balancer>
-            </h4>
+            </h3>
             {/* Message Info Bar */}
             <div className="mb-4 flex flex-wrap items-center gap-0 text-xs uppercase opacity-70 sm:mb-6 sm:text-sm">
               <span>
@@ -109,7 +109,7 @@ export const LatestMessage: React.FC = async () => {
                 variant={'secondary'}
                 className="text-xs sm:text-sm"
               >
-                <Link href={'/messages#more-from-series'}>
+                <Link href={`/messages/series/${message.series.slug}`}>
                   More In This Series
                 </Link>
               </Button>
