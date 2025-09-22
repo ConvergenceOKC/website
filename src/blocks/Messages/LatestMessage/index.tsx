@@ -48,13 +48,6 @@ export const LatestMessage: React.FC = async () => {
             </h3>
             {/* Message Info Bar */}
             <div className="mb-4 flex flex-wrap items-center gap-0 text-xs uppercase opacity-70 sm:mb-6 sm:text-sm">
-              <span>
-                {typeof message.speaker === 'object' &&
-                'name' in message.speaker
-                  ? message.speaker.name
-                  : message.speaker}
-              </span>
-              <Dot className="h-3 w-3 sm:h-4 sm:w-4" />
               <span>{formatDateTime(message.date)}</span>
               {message.series && (
                 <>
@@ -80,6 +73,13 @@ export const LatestMessage: React.FC = async () => {
                     </span>
                   </>
                 )}
+              <Dot className="h-3 w-3 sm:h-4 sm:w-4" />
+              <span>
+                {typeof message.speaker === 'object' &&
+                'name' in message.speaker
+                  ? message.speaker.name
+                  : message.speaker}
+              </span>
             </div>
             <p className="text-sm leading-relaxed sm:text-base">
               {message.description}

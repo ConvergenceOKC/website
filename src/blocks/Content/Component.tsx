@@ -12,7 +12,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = ({
 }) => {
   const colsSpanClasses = {
     full: 'col-span-1 sm:col-span-2 md:col-span-4 xl:col-span-12',
-    half: 'col-span-1 sm:col-span-2 xl:col-span-6',
+    half: 'col-span-1 sm:col-span-2 md:col-span-4 xl:col-span-6',
     oneThird: 'col-span-1 sm:col-span-2 md:col-span-4 xl:col-span-4',
     twoThirds: 'col-span-1 sm:col-span-2 md:col-span-4 xl:col-span-8',
     oneFourth: 'col-span-1 xl:col-span-3',
@@ -90,7 +90,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = ({
             )}
           >
             {content?.columns && content.columns.length > 0 && (
-              <div className="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2 md:grid-cols-4 lg:gap-x-8 lg:gap-y-8 xl:grid-cols-12">
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4 lg:gap-8 xl:grid-cols-12">
                 {content.columns.map((col, index) => {
                   const { enableLink, link, richText, size } = col;
                   return (

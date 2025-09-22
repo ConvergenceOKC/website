@@ -136,12 +136,17 @@ export const FormBlock: React.FC<
           className="mb-8 lg:mb-12"
           data={introContent}
           enableGutter={false}
+          enableProse={false}
         />
       )}
       <div>
         <FormProvider {...formMethods}>
           {!isLoading && hasSubmitted && confirmationType === 'message' && (
-            <RichText data={confirmationMessage} />
+            <RichText
+              data={confirmationMessage}
+              enableGutter={false}
+              enableProse={false}
+            />
           )}
           {isLoading && !hasSubmitted && <p>Loading, please wait...</p>}
           {error && (

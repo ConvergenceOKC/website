@@ -55,13 +55,8 @@ export default async function Message({ params: paramsPromise }: Args) {
         <h3 className="mb-2">
           <Balancer>{message.title}</Balancer>
         </h3>
-        <div className="mb-6 flex items-center gap-0 text-sm uppercase opacity-70">
-          <span>
-            {typeof message.speaker === 'object' && 'name' in message.speaker
-              ? message.speaker.name
-              : message.speaker}
-          </span>
-          <Dot />
+        {/* Message Info Bar */}
+        <div className="mb-6 flex flex-wrap items-center gap-0 text-sm uppercase opacity-70">
           <span>{formatDateTime(message.date)}</span>
           {message.series && (
             <>
@@ -83,6 +78,12 @@ export default async function Message({ params: paramsPromise }: Args) {
               </span>
             </>
           )}
+          <Dot />
+          <span>
+            {typeof message.speaker === 'object' && 'name' in message.speaker
+              ? message.speaker.name
+              : message.speaker}
+          </span>
         </div>
         <p>{message.description}</p>
         {/* Message Button Bar */}

@@ -28,10 +28,10 @@ export const StaffBlock: React.FC<StaffBlockProps> = ({ layout, staff }) => {
       <div className="flex flex-col gap-8 lg:gap-24">
         {staffMembers.map((member) => (
           <div
-            className={`grid grid-cols-1 gap-8 md:grid-cols-[1fr_2fr]`}
+            className={`grid grid-cols-1 gap-8 md:grid-cols-[1fr_2.5fr] lg:gap-12`}
             key={member.id}
           >
-            <div className="flex justify-center md:justify-start">
+            <div className="flex">
               <Avatar className="h-44 w-44 md:h-52 md:w-52 lg:h-72 lg:w-72">
                 {member.headshot && (
                   <AvatarImage>
@@ -47,7 +47,7 @@ export const StaffBlock: React.FC<StaffBlockProps> = ({ layout, staff }) => {
                 </AvatarFallback>
               </Avatar>
             </div>
-            <div className="flex flex-col justify-center text-center md:justify-start md:text-left">
+            <div className="flex flex-col">
               <h3>{member.name}</h3>
               <h5>
                 {member.role
@@ -71,7 +71,7 @@ export const StaffBlock: React.FC<StaffBlockProps> = ({ layout, staff }) => {
     );
   } else if (layout === '3-col') {
     return (
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {staffMembers.map((member) => (
           <div className="flex flex-col items-center gap-8" key={member.id}>
             <Avatar className="h-44 w-44 md:h-52 md:w-52">
@@ -89,7 +89,7 @@ export const StaffBlock: React.FC<StaffBlockProps> = ({ layout, staff }) => {
               </AvatarFallback>
             </Avatar>
             <div className="flex flex-col justify-center text-center">
-              <h5 className="mb-2">{member.name}</h5>
+              <h5 className="mb-1">{member.name}</h5>
               <p>
                 {member.role
                   ?.map((role) => {

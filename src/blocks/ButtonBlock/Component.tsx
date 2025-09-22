@@ -29,10 +29,10 @@ export const ButtonBlock: React.FC<ButtonBlockProps> = ({
   return (
     <div className={cn('my-4 flex gap-4', alignmentClass)}>
       {Array.isArray(links) && links.length > 0 && (
-        <ul className="flex gap-2">
+        <ul className="flex flex-col gap-2 sm:flex-row">
           {links.map(({ link }, i) => {
             return (
-              <li key={i}>
+              <li key={i} className={cn('flex', alignmentClass)}>
                 <CMSLink {...link} />
               </li>
             );
