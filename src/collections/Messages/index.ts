@@ -7,7 +7,7 @@ export const Messages: CollectionConfig<'messages'> = {
   slug: 'messages',
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'date', 'speaker', 'series'],
+    defaultColumns: ['title', 'date', 'thumbnail', 'speaker', 'series'],
   },
   defaultPopulate: {
     title: true,
