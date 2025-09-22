@@ -4,6 +4,8 @@ import { Banner } from '@payloadcms/ui';
 
 import { revalidateTags } from '@/components/BeforeDashboard/revalidateTags';
 
+import './index.scss';
+
 const BeforeDashboard = () => {
   const handleClick = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     await revalidateTags();
@@ -11,8 +13,8 @@ const BeforeDashboard = () => {
 
   return (
     <>
-      <Banner type="success" className="mb-0">
-        <h4>Welcome to the Convergence Church website backend!</h4>
+      <Banner type="success" className="banner">
+        <h4>Welcome to the Convergence Church CMS</h4>
       </Banner>
       <p>
         <a href="/" target="_blank" rel="noopener noreferrer">

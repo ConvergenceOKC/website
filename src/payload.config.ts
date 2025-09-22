@@ -28,9 +28,19 @@ const dirname = path.dirname(filename);
 
 export default buildConfig({
   admin: {
+    meta: {
+      titleSuffix: ' - Convergence CMS',
+      icons: {
+        icon: 'assets/favicon.ico',
+      },
+    },
     components: {
-      beforeLogin: ['@/components/BeforeLogin'],
+      // beforeLogin: ['@/components/BeforeLogin'],
       beforeDashboard: ['@/components/BeforeDashboard'],
+      graphics: {
+        Icon: '/graphics/Icon/index.tsx#Icon',
+        Logo: '/graphics/Logo/index.tsx#Logo',
+      },
     },
     importMap: {
       baseDir: path.resolve(dirname),
@@ -78,7 +88,7 @@ export default buildConfig({
   ],
   cors: [getServerSideURL()].filter(Boolean),
   email: resendAdapter({
-    defaultFromAddress: 'no-reply@convergenceokc.church',
+    defaultFromAddress: 'no-reply@jebryan.com',
     defaultFromName: 'Convergence Church OKC',
     apiKey: process.env.RESEND_API_KEY || '',
   }),
