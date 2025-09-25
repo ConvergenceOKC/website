@@ -923,8 +923,8 @@ export interface Message {
   scripture?:
     | {
         book: string;
-        chapter: number;
-        verses: string;
+        chapter?: string | null;
+        verses?: string | null;
         id?: string | null;
       }[]
     | null;

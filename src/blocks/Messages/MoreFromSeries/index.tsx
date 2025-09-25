@@ -26,7 +26,7 @@ export const MoreFromSeries: React.FC<MoreFromSeriesProps> = async ({
   }
 
   // Get more messages from the same series
-  const messages = await getSeriesMessages(series, 5); // Fetch one extra in case we filter out the current message
+  const messages = await getSeriesMessages(series, 4); // Fetch one extra in case we filter out the current message
   if (!messages || messages.docs.length === 0) {
     return <div>No additional messages found for this series.</div>;
   }
@@ -34,7 +34,7 @@ export const MoreFromSeries: React.FC<MoreFromSeriesProps> = async ({
   // Filter out the provided message
   const moreMessages = messages.docs
     .filter((msg) => msg.id !== message.id)
-    .slice(0, 4);
+    .slice(0, 3);
 
   if (moreMessages.length === 0) {
     return <div>No additional messages found for this series.</div>;

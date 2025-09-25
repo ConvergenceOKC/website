@@ -68,13 +68,13 @@ export const Messages: CollectionConfig<'messages'> = {
         },
         {
           name: 'chapter',
-          type: 'number',
-          required: true,
+          type: 'text',
+          required: false,
         },
         {
           name: 'verses',
           type: 'text',
-          required: true,
+          required: false,
         },
       ],
     },

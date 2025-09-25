@@ -24,7 +24,7 @@ export default async function Series() {
 
   return (
     <div className="container flex flex-col gap-6 pt-48 pb-32">
-      <h3>All Message Series</h3>
+      <h3>Message Series</h3>
       {/* Series Thumbnails */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {series.docs.map((series) => (

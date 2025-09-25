@@ -104,7 +104,7 @@ export default async function Series({ params: paramsPromise }: Args) {
       <div className="flex flex-col gap-6">
         {seriesMessages.docs.map((message) => (
           <Link
-            href={message.video ? message.video : '/messages/' + message.slug}
+            href={'/messages/' + message.slug}
             key={message.id}
             className="bg-convergence-beige-darker md:hover:bg-convergence-beige-darker grid grid-cols-1 items-start gap-4 rounded-lg p-6 transition md:grid-cols-[200px_1fr] md:bg-inherit"
           >
@@ -127,9 +127,15 @@ export default async function Series({ params: paramsPromise }: Args) {
                       <Dot className="h-3 w-3 sm:h-4 sm:w-4" />
                       <span className="break-words">
                         {message.scripture
-                          .map(
-                            (ref) => `${ref.book} ${ref.chapter}:${ref.verses}`,
-                          )
+                          .map((ref) => {
+                            if (ref.book && ref.chapter && ref.verses) {
+                              return `${ref.book} ${ref.chapter}:${ref.verses}`;
+                            } else if (ref.book && ref.chapter) {
+                              return `${ref.book} ${ref.chapter}`;
+                            } else {
+                              return `${ref.book}`;
+                            }
+                          })
                           .join('; ')}
                       </span>
                     </>
