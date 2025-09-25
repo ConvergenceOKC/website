@@ -37,7 +37,6 @@ export const LatestMessage: React.FC = async () => {
             <Media
               resource={message.thumbnail}
               imgClassName="object-cover object-center hover:scale-110 transition-transform duration-300 max-h-[700px]"
-              size="small"
             />
           </div>
         </Link>

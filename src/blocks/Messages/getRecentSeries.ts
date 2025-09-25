@@ -3,13 +3,13 @@
 import config from '@payload-config';
 import { getPayload } from 'payload';
 
-export async function getRecentSeries(limit: number = 6) {
+export async function getRecentSeries(limit: number = 3) {
   const payload = await getPayload({ config });
 
   try {
     const series = await payload.find({
       collection: 'messageSeries',
-      sort: '-date',
+      sort: '-updatedAt',
       limit,
       depth: 2,
     });

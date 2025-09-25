@@ -72,9 +72,9 @@ export default async function Message({ params: paramsPromise }: Args) {
             <>
               <Dot />
               <span>
-                {message.scripture.map(
-                  (ref) => `${ref.book} ${ref.chapter}:${ref.verses}`,
-                )}
+                {message.scripture
+                  .map((ref) => `${ref.book} ${ref.chapter}:${ref.verses}`)
+                  .join('; ')}
               </span>
             </>
           )}
