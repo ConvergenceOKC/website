@@ -111,6 +111,16 @@ export const ContentPathway: Block = {
           required: true,
         },
         {
+          name: 'popoverImage',
+          type: 'upload',
+          relationTo: 'media',
+          admin: {
+            condition: (data, siblingData) => {
+              return siblingData?.displayMode === 'popover';
+            },
+          },
+        },
+        {
           name: 'content',
           type: 'richText',
           required: true,

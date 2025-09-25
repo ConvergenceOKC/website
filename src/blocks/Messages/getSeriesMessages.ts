@@ -19,7 +19,7 @@ export async function getSeriesMessages(
           equals: series,
         },
       },
-      sort: '-createdAt',
+      sort: '-date',
       limit,
     });
     return messages;

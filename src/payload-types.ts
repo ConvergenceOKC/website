@@ -842,6 +842,7 @@ export interface ContentPathwayBlock {
         anchorPoint?: ('start' | 'center' | 'end') | null;
         title: string;
         icon: string | Media;
+        popoverImage?: (string | null) | Media;
         content: {
           root: {
             type: string;
@@ -1578,6 +1579,7 @@ export interface ContentPathwayBlockSelect<T extends boolean = true> {
         anchorPoint?: T;
         title?: T;
         icon?: T;
+        popoverImage?: T;
         content?: T;
         id?: T;
       };

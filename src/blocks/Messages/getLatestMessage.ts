@@ -9,7 +9,7 @@ export async function getLatestMessage() {
   try {
     const message = await payload.find({
       collection: 'messages',
-      sort: '-publishedAt',
+      sort: '-date',
       limit: 1,
       depth: 2,
     });

@@ -9,7 +9,7 @@ export async function getRecentSeries(limit: number = 6) {
   try {
     const series = await payload.find({
       collection: 'messageSeries',
-      sort: '-publishedAt',
+      sort: '-date',
       limit,
       depth: 2,
     });

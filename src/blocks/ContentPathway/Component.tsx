@@ -62,6 +62,14 @@ export const ContentPathwayBlock: React.FC<ContentPathwayProps> = ({
                       side={item.popoverSide || 'right'}
                       className="w-[85vw] max-w-[500px] border-none p-3 sm:w-[90vw] sm:p-4 md:p-6"
                     >
+                      {item.popoverImage && (
+                        <div className="mb-6 w-full overflow-hidden rounded-lg">
+                          <Media
+                            resource={item.popoverImage}
+                            imgClassName="object-cover object-center max-h-80"
+                          />
+                        </div>
+                      )}
                       <RichText
                         data={item.content}
                         enableGutter={false}
@@ -88,6 +96,14 @@ export const ContentPathwayBlock: React.FC<ContentPathwayProps> = ({
                       side="bottom"
                       className="w-[85vw] max-w-[500px] border-none p-3 sm:w-[90vw] sm:p-4 md:p-6"
                     >
+                      {item.popoverImage && (
+                        <div className="mb-6 w-full overflow-hidden rounded-lg">
+                          <Media
+                            resource={item.popoverImage}
+                            imgClassName="object-cover object-center max-h-56"
+                          />
+                        </div>
+                      )}
                       <RichText
                         data={item.content}
                         enableGutter={false}
