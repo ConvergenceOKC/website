@@ -902,8 +902,9 @@ export interface ImageCarouselBlock {
  * via the `definition` "MessagesBlock".
  */
 export interface MessagesBlock {
-  block: 'latest' | 'moreSeries' | 'recentSeries';
+  block: 'latest' | 'moreSeries' | 'recentSeries' | 'recentMessages';
   useLatestMessage?: boolean | null;
+  excludeLatestMessage?: boolean | null;
   message?: (string | null) | Message;
   id?: string | null;
   blockName?: string | null;
@@ -1618,6 +1619,7 @@ export interface ImageCarouselBlockSelect<T extends boolean = true> {
 export interface MessagesBlockSelect<T extends boolean = true> {
   block?: T;
   useLatestMessage?: T;
+  excludeLatestMessage?: T;
   message?: T;
   id?: T;
   blockName?: T;

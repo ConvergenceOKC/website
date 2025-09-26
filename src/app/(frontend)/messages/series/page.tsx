@@ -14,7 +14,7 @@ export default async function Series() {
     limit: 1000,
     overrideAccess: false,
     pagination: false,
-    sort: '-createdAt',
+    sort: '-updatedAt',
     select: {
       title: true,
       slug: true,

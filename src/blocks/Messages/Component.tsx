@@ -1,5 +1,6 @@
 import { LatestMessage } from '@/blocks/Messages/LatestMessage';
 import { MoreFromSeries } from '@/blocks/Messages/MoreFromSeries';
+import { RecentMessages } from '@/blocks/Messages/RecentMessages';
 import { RecentSeries } from '@/blocks/Messages/RecentSeries';
 import { getLatestMessage } from '@/blocks/Messages/getLatestMessage';
 import { MessagesBlock as MessagesBlockProps } from '@/payload-types';
@@ -7,6 +8,7 @@ import { MessagesBlock as MessagesBlockProps } from '@/payload-types';
 export const MessagesBlock: React.FC<MessagesBlockProps> = async ({
   block,
   useLatestMessage,
+  excludeLatestMessage = false,
   message,
 }) => {
   if (!block) {
@@ -32,6 +34,10 @@ export const MessagesBlock: React.FC<MessagesBlockProps> = async ({
       }
     case 'recentSeries':
       return <RecentSeries />;
+    case 'recentMessages':
+      return (
+        <RecentMessages excludeLatestMessage={excludeLatestMessage || false} />
+      );
     // case 'archive':
     //   return <MessageArchive />;
     default:

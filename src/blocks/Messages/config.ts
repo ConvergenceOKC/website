@@ -21,17 +21,28 @@ export const MessagesBlock: Block = {
           label: 'Recent Series',
           value: 'recentSeries',
         },
+        {
+          label: 'Recent Messages',
+          value: 'recentMessages',
+        },
       ],
       defaultValue: 'latest',
       required: true,
     },
     {
       name: 'useLatestMessage',
-      label: 'Use Latest Message',
       type: 'checkbox',
       defaultValue: true,
       admin: {
         condition: (_, { block }) => block === 'moreSeries',
+      },
+    },
+    {
+      name: 'excludeLatestMessage',
+      type: 'checkbox',
+      defaultValue: true,
+      admin: {
+        condition: (_, { block }) => block === 'recentMessages',
       },
     },
     {
