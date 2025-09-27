@@ -23,10 +23,10 @@ export default async function Series() {
   });
 
   return (
-    <div className="container flex flex-col gap-6 pt-48 pb-32">
+    <div className="container flex flex-col gap-6 pt-28 pb-24 md:pt-48">
       <h3>Message Series</h3>
       {/* Series Thumbnails */}
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {series.docs.map((series) => (
           <Link
             key={series.id}

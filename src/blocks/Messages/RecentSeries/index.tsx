@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { getRecentSeries } from '@/blocks/Messages/getRecentSeries';
 import { Media } from '@/components/Media';
+import { Button } from '@/components/ui/button';
 
 export const RecentSeries: React.FC = async () => {
   // This component will display recent messages from a series.

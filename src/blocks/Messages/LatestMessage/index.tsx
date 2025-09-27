@@ -66,9 +66,15 @@ export const LatestMessage: React.FC = async () => {
                     <Dot className="h-3 w-3 sm:h-4 sm:w-4" />
                     <span className="break-words">
                       {message.scripture
-                        .map(
-                          (ref) => `${ref.book} ${ref.chapter}:${ref.verses}`,
-                        )
+                        .map((ref) => {
+                          if (ref.book && ref.chapter && ref.verses) {
+                            return `${ref.book} ${ref.chapter}:${ref.verses}`;
+                          } else if (ref.book && ref.chapter) {
+                            return `${ref.book} ${ref.chapter}`;
+                          } else {
+                            return `${ref.book}`;
+                          }
+                        })
                         .join('; ')}
                     </span>
                   </>
@@ -86,7 +92,7 @@ export const LatestMessage: React.FC = async () => {
             </p>
           </div>
           {/* Message Button Bar */}
-          <div className="flex flex-wrap gap-2 sm:gap-3 lg:min-w-[200px] lg:flex-col lg:gap-2">
+          <div className="flex flex-col flex-wrap gap-2 sm:flex-row sm:gap-3 lg:min-w-[200px] lg:flex-col lg:gap-2">
             <Button
               asChild
               variant={'secondary'}

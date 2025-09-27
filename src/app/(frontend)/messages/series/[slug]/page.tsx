@@ -80,7 +80,7 @@ export default async function Series({ params: paramsPromise }: Args) {
   }
 
   return (
-    <div className="container flex flex-col gap-6 pt-48 pb-32">
+    <div className="container flex flex-col gap-6 pt-28 pb-24 md:pt-48">
       {/* Series Info */}
       {series.thumbnail && (
         <div className="w-full overflow-hidden rounded-lg">

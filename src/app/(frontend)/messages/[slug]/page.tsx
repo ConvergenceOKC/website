@@ -51,7 +51,7 @@ export default async function Message({ params: paramsPromise }: Args) {
 
   return (
     <>
-      <div className="container pt-48 pb-24">
+      <div className="container pt-28 pb-24 md:pt-48">
         <h3 className="mb-2">
           <Balancer>{message.title}</Balancer>
         </h3>
@@ -95,7 +95,7 @@ export default async function Message({ params: paramsPromise }: Args) {
         </div>
         <p>{message.description}</p>
         {/* Message Button Bar */}
-        <div className="mb-10 flex gap-3">
+        <div className="mb-10 flex flex-col gap-3 sm:flex-row">
           {message.notes && (
             <Button asChild variant={'secondary'}>
               <Link href={message.notes}>Sermon Notes</Link>
