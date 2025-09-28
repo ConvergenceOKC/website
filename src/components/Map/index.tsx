@@ -1,6 +1,8 @@
 'use client';
 
-import { Map as GoogleMap } from '@vis.gl/react-google-maps';
+import { useCallback, useState } from 'react';
+
+import { Map as GoogleMap, InfoWindow } from '@vis.gl/react-google-maps';
 import { Church, Home } from 'lucide-react';
 
 import { HouseChurch } from '@/payload-types';
@@ -23,7 +25,50 @@ interface MapProps {
   showMainChurch: boolean;
 }
 
+interface SelectedMarker {
+  position: { lat: number; lng: number };
+  name: string;
+  location: string;
+  facilitator: string;
+  city: string;
+  zip: number;
+  time: string;
+  language: string;
+  notes?: string;
+  marker: google.maps.marker.AdvancedMarkerElement;
+}
+
 export default function Map({ locations, showMainChurch }: MapProps) {
+  const [selectedMarker, setSelectedMarker] = useState<SelectedMarker | null>(
+    null,
+  );
+
+  const handleMarkerClick = useCallback(
+    (
+      markerData: Omit<SelectedMarker, 'marker'>,
+      marker: google.maps.marker.AdvancedMarkerElement,
+    ) => {
+      // Check if clicking the same marker that's already selected
+      if (selectedMarker && selectedMarker.marker === marker) {
+        // Toggle: close if same marker clicked
+        setSelectedMarker(null);
+      } else {
+        // Open new marker info window
+        setSelectedMarker({ ...markerData, marker });
+      }
+    },
+    [selectedMarker],
+  );
+
+  const handleMapClick = useCallback(() => {
+    // Close info window when clicking on empty map area
+    setSelectedMarker(null);
+  }, []);
+
+  const handleInfoWindowClose = useCallback(() => {
+    setSelectedMarker(null);
+  }, []);
+
   return (
     <GoogleMap
       mapId={process.env.NEXT_PUBLIC_GOOGLE_MAP_ID}
@@ -31,6 +76,7 @@ export default function Map({ locations, showMainChurch }: MapProps) {
       defaultCenter={{ lat: convergenceInfo.lat, lng: convergenceInfo.lng }}
       defaultZoom={10}
       gestureHandling={'greedy'}
+      onClick={handleMapClick}
     >
       {showMainChurch && (
         <MapMarker
@@ -42,6 +88,7 @@ export default function Map({ locations, showMainChurch }: MapProps) {
           facilitator={convergenceInfo.name}
           time={convergenceInfo.serviceTime}
           language={'English, Spanish'}
+          onMarkerClick={handleMarkerClick}
         >
           <MapPin
             className={'bg-convergence-teal text-convergence-beige'}
@@ -64,6 +111,7 @@ export default function Map({ locations, showMainChurch }: MapProps) {
                 time={location.time}
                 language={location.language}
                 notes={location.notes ?? undefined}
+                onMarkerClick={handleMarkerClick}
               >
                 <MapPin
                   className={
@@ -74,6 +122,37 @@ export default function Map({ locations, showMainChurch }: MapProps) {
               </MapMarker>
             ),
         )}
+
+      {selectedMarker && (
+        <InfoWindow
+          anchor={selectedMarker.marker}
+          onCloseClick={handleInfoWindowClose}
+          className="text-base text-black"
+        >
+          <h6>{selectedMarker.name}</h6>
+          <p>
+            {selectedMarker.location}
+            <br />
+            {selectedMarker.city}, OK {selectedMarker.zip}
+          </p>
+          <ul>
+            <li>
+              <strong>Facilitator:</strong> {selectedMarker.facilitator}
+            </li>
+            <li>
+              <strong>Time:</strong> {selectedMarker.time}
+            </li>
+            <li>
+              <strong>Language(s):</strong> {selectedMarker.language}
+            </li>
+            {selectedMarker.notes && (
+              <li>
+                <strong>Notes:</strong> {selectedMarker.notes}
+              </li>
+            )}
+          </ul>
+        </InfoWindow>
+      )}
     </GoogleMap>
   );
 }

@@ -1,10 +1,9 @@
 'use client';
 
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 
 import {
   AdvancedMarker,
-  InfoWindow,
   useAdvancedMarkerRef,
 } from '@vis.gl/react-google-maps';
 
@@ -19,6 +18,10 @@ interface MapMarkerProps {
   language: string;
   notes?: string;
   children: React.ReactNode;
+  onMarkerClick: (
+    markerData: Omit<MapMarkerProps, 'children' | 'onMarkerClick'>,
+    marker: google.maps.marker.AdvancedMarkerElement,
+  ) => void;
 }
 
 const MapMarker = ({
@@ -32,14 +35,40 @@ const MapMarker = ({
   language,
   notes,
   children,
+  onMarkerClick,
 }: MapMarkerProps) => {
   const [markerRef, marker] = useAdvancedMarkerRef();
-  const [infoWindowShown, setInfoWindowShown] = useState(false);
-  const handleMarkerClick = useCallback(
-    () => setInfoWindowShown((isShown) => !isShown),
-    [],
-  );
-  const handleClose = useCallback(() => setInfoWindowShown(false), []);
+
+  const handleMarkerClick = useCallback(() => {
+    if (marker) {
+      onMarkerClick(
+        {
+          position,
+          name,
+          location,
+          facilitator,
+          city,
+          zip,
+          time,
+          language,
+          notes,
+        },
+        marker,
+      );
+    }
+  }, [
+    marker,
+    onMarkerClick,
+    position,
+    name,
+    location,
+    facilitator,
+    city,
+    zip,
+    time,
+    language,
+    notes,
+  ]);
 
   return (
     <AdvancedMarker
@@ -48,36 +77,6 @@ const MapMarker = ({
       onClick={handleMarkerClick}
     >
       {children}
-      {infoWindowShown && (
-        <InfoWindow
-          anchor={marker}
-          onClose={handleClose}
-          className="text-base text-black"
-        >
-          <h6>{name}</h6>
-          <p>
-            {location}
-            <br />
-            {city}, OK {zip}
-          </p>
-          <ul>
-            <li>
-              <strong>Facilitator:</strong> {facilitator}
-            </li>
-            <li>
-              <strong>Time:</strong> {time}
-            </li>
-            <li>
-              <strong>Language(s):</strong> {language}
-            </li>
-            {notes && (
-              <li>
-                <strong>Notes:</strong> {notes}
-              </li>
-            )}
-          </ul>
-        </InfoWindow>
-      )}
     </AdvancedMarker>
   );
 };
