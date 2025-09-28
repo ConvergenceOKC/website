@@ -4,6 +4,7 @@ import configPromise from '@payload-config';
 import { getPayload } from 'payload';
 import Balancer from 'react-wrap-balancer';
 
+import { RenderBreadcrumbs } from '@/components/Breadcrumbs';
 import { Media } from '@/components/Media';
 
 export default async function Series() {
@@ -22,9 +23,20 @@ export default async function Series() {
     },
   });
 
+  const breadcrumbs = [
+    { id: '0', label: 'Home', url: '/' },
+    { id: '1', label: 'Messages', url: '/messages' },
+    { id: '2', label: 'Series', url: '/messages/series' },
+  ];
+
   return (
-    <div className="container flex flex-col gap-6 pt-28 pb-24 md:pt-48">
-      <h3>Message Series</h3>
+    <div className="container flex flex-col pt-16 pb-24 md:pt-28">
+      <RenderBreadcrumbs
+        breadcrumbs={breadcrumbs}
+        variant="light"
+        enableGutter={false}
+      />
+      <h3 className="mt-6 mb-2 md:mt-10">Message Series</h3>
       {/* Series Thumbnails */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {series.docs.map((series) => (

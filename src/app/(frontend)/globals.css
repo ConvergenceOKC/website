@@ -206,8 +206,8 @@
     --secondary: var(--convergence-brown);
     --secondary-foreground: var(--convergence-beige);
 
-    --muted: var(--convergence-teal);
-    --muted-foreground: var(--convergence-beige);
+    --muted: var(--convergence-beige);
+    --muted-foreground: 100 6% 40%;
 
     --accent: var(--convergence-bright-orange);
     --accent-foreground: var(--convergence-beige);

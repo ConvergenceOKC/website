@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { cache } from 'react';
 
@@ -8,6 +7,7 @@ import { Dot } from 'lucide-react';
 import { getPayload } from 'payload';
 import Balancer from 'react-wrap-balancer';
 
+import { RenderBreadcrumbs } from '@/components/Breadcrumbs';
 import { Media } from '@/components/Media';
 import { PayloadRedirects } from '@/components/PayloadRedirects';
 import RichText from '@/components/RichText';
@@ -79,11 +79,23 @@ export default async function Series({ params: paramsPromise }: Args) {
     return <div>No messages found for this series.</div>;
   }
 
+  const breadcrumbs = [
+    { id: '0', label: 'Home', url: '/' },
+    { id: '1', label: 'Messages', url: '/messages' },
+    { id: '2', label: 'Series', url: '/messages/series' },
+    { id: '3', label: series.title, url: '/messages/series/' + series.slug },
+  ];
+
   return (
-    <div className="container flex flex-col gap-6 pt-28 pb-24 md:pt-48">
+    <div className="container flex flex-col pt-16 pb-24 md:pt-28">
+      <RenderBreadcrumbs
+        breadcrumbs={breadcrumbs}
+        variant="light"
+        enableGutter={false}
+      />
       {/* Series Info */}
       {series.thumbnail && (
-        <div className="w-full overflow-hidden rounded-lg">
+        <div className="mt-6 w-full overflow-hidden rounded-lg md:mt-10">
           <Media
             resource={series.thumbnail}
             imgClassName="max-h-[600px] w-full object-cover object-center"

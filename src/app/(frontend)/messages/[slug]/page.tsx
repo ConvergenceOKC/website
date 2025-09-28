@@ -9,7 +9,7 @@ import { getPayload } from 'payload';
 import Balancer from 'react-wrap-balancer';
 
 import { MoreFromSeries } from '@/blocks/Messages/MoreFromSeries';
-import { RecentSeries } from '@/blocks/Messages/RecentSeries';
+import { RenderBreadcrumbs } from '@/components/Breadcrumbs';
 import { Media } from '@/components/Media';
 import { PayloadRedirects } from '@/components/PayloadRedirects';
 import { Button } from '@/components/ui/button';
@@ -49,10 +49,35 @@ export default async function Message({ params: paramsPromise }: Args) {
 
   if (!message) return <PayloadRedirects url={url} />;
 
+  const breadcrumbs = [
+    { id: '0', label: 'Home', url: '/' },
+    { id: '1', label: 'Messages', url: '/messages' },
+  ];
+
+  if (message.series) {
+    breadcrumbs.push(
+      {
+        id: '2',
+        label: 'Series',
+        url: '/messages/series',
+      },
+      {
+        id: '3',
+        label: message.series.title,
+        url: `/messages/series/${message.series.slug}`,
+      },
+    );
+  }
+
   return (
     <>
-      <div className="container pt-28 pb-24 md:pt-48">
-        <h3 className="mb-2">
+      <div className="container pt-16 pb-24 md:pt-28">
+        <RenderBreadcrumbs
+          breadcrumbs={breadcrumbs}
+          variant="light"
+          enableGutter={false}
+        />
+        <h3 className="mt-6 mb-2 md:mt-10">
           <Balancer>{message.title}</Balancer>
         </h3>
         {/* Message Info Bar */}
