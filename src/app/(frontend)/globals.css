@@ -286,6 +286,14 @@
         @apply mb-2;
       }
     }
+
+    .list-number {
+      @apply mb-6 list-outside list-decimal pl-6;
+
+      li {
+        @apply mb-2;
+      }
+    }
   }
 }
 
