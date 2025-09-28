@@ -4,6 +4,8 @@ import {
   FixedToolbarFeature,
   HeadingFeature,
   InlineToolbarFeature,
+  OrderedListFeature,
+  UnorderedListFeature,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical';
 import type { Block, Field } from 'payload';
@@ -240,6 +242,8 @@ const columnFields: Field[] = [
             ],
           }),
           AlignFeature(),
+          OrderedListFeature(),
+          UnorderedListFeature(),
         ];
       },
     }),

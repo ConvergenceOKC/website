@@ -171,10 +171,6 @@
     }
   }
 
-  p {
-    margin-bottom: 2rem;
-  }
-
   :root {
     --cream: 39 63% 90%;
     --deep-green: 69 18% 23%;
@@ -270,12 +266,24 @@
   body {
     @apply bg-background text-foreground font-body flex min-h-[100vh] flex-col;
 
+    p {
+      @apply mb-6;
+    }
+
     .payload-richtext {
       a {
         @apply underline underline-offset-4;
       }
       a:not(:has(img)):hover {
         @apply opacity-70;
+      }
+    }
+
+    .list-bullet {
+      @apply mb-6 list-outside list-disc pl-6;
+
+      li {
+        @apply mb-2;
       }
     }
   }
