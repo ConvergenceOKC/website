@@ -40,8 +40,8 @@ export const LowImpactHero: React.FC<LowImpactHeroType> = ({
         variant === 'light' && 'bg-convergence-beige bg-blend-multiply',
       )}
     >
-      <div className="container pt-36 pb-16 md:pt-52 md:pb-28 lg:pt-56 lg:pb-40">
-        <div className="max-w-[50rem]">
+      <div className="container pt-36 pb-16 md:pt-52 md:pb-24 lg:pt-56 lg:pb-28">
+        <div className="max-w-[35rem] lg:max-w-[50rem]">
           {children ||
             (richText && (
               <RichText
