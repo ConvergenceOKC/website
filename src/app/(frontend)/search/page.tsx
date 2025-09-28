@@ -6,7 +6,6 @@ import { getPayload } from 'payload';
 
 import { CardPostData } from '@/components/Card';
 import { CollectionArchive } from '@/components/CollectionArchive';
-import { Post } from '@/payload-types';
 import { Search } from '@/search/Component';
 
 import PageClient from './page.client';

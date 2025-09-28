@@ -7,7 +7,6 @@ import {
 } from '@payloadcms/richtext-lexical';
 import type { Field } from 'payload';
 
-import { Banner } from '@/blocks/Banner/config';
 import { LinkedText } from '@/blocks/LinkedText/config';
 import { MegaButtonPair } from '@/blocks/MegaButtonPair/config';
 import { linkGroup } from '@/fields/linkGroup';

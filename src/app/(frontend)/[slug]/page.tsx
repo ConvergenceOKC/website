@@ -8,8 +8,8 @@ import { getPayload } from 'payload';
 import { RenderBlocks } from '@/blocks/RenderBlocks';
 import { RenderBreadcrumbs } from '@/components/Breadcrumbs';
 import { LivePreviewListener } from '@/components/LivePreviewListener';
+import { PageNavigator } from '@/components/PageNavigator';
 import { PayloadRedirects } from '@/components/PayloadRedirects';
-import { homeStatic } from '@/endpoints/seed/home-static';
 import { RenderHero } from '@/heros/RenderHero';
 import type { Page as PageType } from '@/payload-types';
 import { generateMeta } from '@/utilities/generateMeta';
@@ -51,9 +51,7 @@ export default async function Page({ params: paramsPromise }: Args) {
   const { slug = 'home' } = await paramsPromise;
   const url = '/' + slug;
 
-  let page: PageType | null;
-
-  page = await queryPageBySlug({
+  const page: PageType | null = await queryPageBySlug({
     slug,
   });
 
@@ -61,7 +59,7 @@ export default async function Page({ params: paramsPromise }: Args) {
     return <PayloadRedirects url={url} />;
   }
 
-  const { hero, layout, breadcrumbs } = page;
+  const { hero, layout, breadcrumbs, settings } = page;
 
   return (
     <article>
@@ -70,7 +68,9 @@ export default async function Page({ params: paramsPromise }: Args) {
       <PayloadRedirects disableNotFound url={url} />
 
       {draft && <LivePreviewListener />}
-
+      {settings?.enablePageNavigator && (
+        <PageNavigator headingLevel={settings.navigatorHeadingLevel || '2'} />
+      )}
       <RenderHero {...hero} />
       {slug !== 'home' && (
         <RenderBreadcrumbs breadcrumbs={breadcrumbs} variant={hero.variant} />

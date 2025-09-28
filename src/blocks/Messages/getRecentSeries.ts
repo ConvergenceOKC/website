@@ -15,6 +15,6 @@ export async function getRecentSeries(limit: number = 3) {
     });
     return series;
   } catch (error) {
-    throw new Error(`Error getting recent series`);
+    throw new Error(`Error getting recent series: ${error}`);
   }
 }

@@ -15,6 +15,6 @@ export async function getRecentMessages(limit: number = 3) {
     });
     return messages;
   } catch (error) {
-    throw new Error(`Error getting recent messages`);
+    throw new Error(`Error getting recent messages: ${error}`);
   }
 }

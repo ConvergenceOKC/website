@@ -14,6 +14,6 @@ export async function getHouseChurches() {
     });
     return houseChurches;
   } catch (error) {
-    throw new Error(`Error getting house churches`);
+    throw new Error(`Error getting house churches: ${error}`);
   }
 }

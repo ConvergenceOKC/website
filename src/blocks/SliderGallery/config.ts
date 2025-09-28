@@ -2,8 +2,6 @@ import { Block } from 'payload';
 
 import { link } from '@/fields/link';
 
-import { revalidatePage } from './revalidatePage';
-
 export const SliderGallery: Block = {
   slug: 'sliderGallery',
   interfaceName: 'SliderGalleryBlock',

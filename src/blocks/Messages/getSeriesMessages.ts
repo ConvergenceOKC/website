@@ -24,6 +24,6 @@ export async function getSeriesMessages(
     });
     return messages;
   } catch (error) {
-    throw new Error(`Error getting messages for given series`);
+    throw new Error(`Error getting messages for given series: ${error}`);
   }
 }

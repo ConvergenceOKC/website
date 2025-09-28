@@ -36,9 +36,6 @@ export const Pages: CollectionConfig<'pages'> = {
     read: authenticatedOrPublished,
     update: authenticated,
   },
-  // This config controls what's populated by default when a page is referenced
-  // https://payloadcms.com/docs/queries/select#defaultpopulate-collection-config-property
-  // Type safe if the collection slug generic is passed to `CollectionConfig` - `CollectionConfig<'pages'>
   defaultPopulate: {
     title: true,
     slug: true,
@@ -122,13 +119,66 @@ export const Pages: CollectionConfig<'pages'> = {
 
             MetaDescriptionField({}),
             PreviewField({
-              // if the `generateUrl` function is configured
               hasGenerateFn: true,
-
-              // field paths to match the target field for data
               titlePath: 'meta.title',
               descriptionPath: 'meta.description',
             }),
+          ],
+        },
+        {
+          name: 'settings',
+          label: 'Settings',
+          fields: [
+            {
+              name: 'enablePageNavigator',
+              type: 'checkbox',
+              label: 'Enable Page Navigator',
+              defaultValue: false,
+              admin: {
+                description:
+                  'Show a page navigator that displays headings from the page content',
+                position: 'sidebar',
+              },
+            },
+            {
+              name: 'navigatorHeadingLevel',
+              type: 'select',
+              label: 'Heading Level to Display',
+              defaultValue: '2',
+              options: [
+                {
+                  label: '1',
+                  value: '1',
+                },
+                {
+                  label: '2',
+                  value: '2',
+                },
+                {
+                  label: '3',
+                  value: '3',
+                },
+                {
+                  label: '4',
+                  value: '4',
+                },
+                {
+                  label: '5',
+                  value: '5',
+                },
+                {
+                  label: '6',
+                  value: '6',
+                },
+              ],
+              admin: {
+                condition: (data) =>
+                  data?.settings?.enablePageNavigator === true,
+                description:
+                  'Select which heading level to include in the page navigator',
+                position: 'sidebar',
+              },
+            },
           ],
         },
       ],
@@ -150,7 +200,7 @@ export const Pages: CollectionConfig<'pages'> = {
   versions: {
     drafts: {
       autosave: {
-        interval: 100, // We set this interval for optimal live preview
+        interval: 100,
       },
       schedulePublish: true,
     },

@@ -15,6 +15,6 @@ export async function getLatestMessage() {
     });
     return message;
   } catch (error) {
-    throw new Error(`Error getting latest message`);
+    throw new Error(`Error getting latest message: ${error}`);
   }
 }

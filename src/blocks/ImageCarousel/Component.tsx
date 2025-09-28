@@ -4,7 +4,6 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-import { BackgroundShapes } from '@/components/BackgroundShapes';
 import { CMSLink } from '@/components/Link';
 import { Media } from '@/components/Media';
 import { ImageCarouselBlock as ImageCarouselProps } from '@/payload-types';
@@ -106,7 +105,9 @@ export const ImageCarouselBlock: React.FC<ImageCarouselProps> = ({
 
   return (
     <div
-      className={cn('relative h-[300px] md:h-[450px] w-full overflow-hidden rounded-lg')}
+      className={cn(
+        'relative h-[300px] w-full overflow-hidden rounded-lg md:h-[450px]',
+      )}
       ref={carouselRef}
       onMouseEnter={pauseAutoPlay}
       onMouseLeave={resumeAutoPlay}
@@ -131,8 +132,14 @@ export const ImageCarouselBlock: React.FC<ImageCarouselProps> = ({
                 imgClassName="h-full w-full object-cover group-hover:scale-110 transition-transform duration-300"
               />
               <div className="text-convergence-beige bg-convergence-brown/30 absolute inset-0 flex flex-col justify-end px-4 pb-4 sm:px-6 sm:pb-6 md:px-16 md:pb-10">
-                <h5 className="text-base sm:text-lg md:text-2xl leading-tight">{image.title}</h5>
-                {image.description && <p className="text-xs sm:text-sm md:text-base mt-1 sm:mt-2 line-clamp-2 sm:line-clamp-none">{image.description}</p>}
+                <h5 className="text-base leading-tight sm:text-lg md:text-2xl">
+                  {image.title}
+                </h5>
+                {image.description && (
+                  <p className="mt-1 line-clamp-2 text-xs sm:mt-2 sm:line-clamp-none sm:text-sm md:text-base">
+                    {image.description}
+                  </p>
+                )}
               </div>
             </CMSLink>
           </div>
@@ -144,7 +151,7 @@ export const ImageCarouselBlock: React.FC<ImageCarouselProps> = ({
           e.stopPropagation();
           goToPrevious();
         }}
-        className="bg-convergence-brown/30 text-convergence-beige/50 hover:bg-convergence-brown/50 hover:text-convergence-beige absolute top-1/2 left-2 md:left-4 -translate-y-1/2 cursor-pointer rounded-full p-1.5 md:p-2 transition-colors"
+        className="bg-convergence-brown/30 text-convergence-beige/50 hover:bg-convergence-brown/50 hover:text-convergence-beige absolute top-1/2 left-2 -translate-y-1/2 cursor-pointer rounded-full p-1.5 transition-colors md:left-4 md:p-2"
         aria-label="Previous slide"
       >
         <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
@@ -154,7 +161,7 @@ export const ImageCarouselBlock: React.FC<ImageCarouselProps> = ({
           e.stopPropagation();
           goToNext();
         }}
-        className="bg-convergence-brown/30 text-convergence-beige/50 hover:bg-convergence-brown/50 hover:text-convergence-beige absolute top-1/2 right-2 md:right-4 -translate-y-1/2 cursor-pointer rounded-full p-1.5 md:p-2 transition-colors"
+        className="bg-convergence-brown/30 text-convergence-beige/50 hover:bg-convergence-brown/50 hover:text-convergence-beige absolute top-1/2 right-2 -translate-y-1/2 cursor-pointer rounded-full p-1.5 transition-colors md:right-4 md:p-2"
         aria-label="Next slide"
       >
         <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />

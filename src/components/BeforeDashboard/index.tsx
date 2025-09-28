@@ -7,7 +7,7 @@ import { revalidateTags } from '@/components/BeforeDashboard/revalidateTags';
 import './index.scss';
 
 const BeforeDashboard = () => {
-  const handleClick = async (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleClick = async () => {
     await revalidateTags();
   };
 

@@ -18,11 +18,6 @@ export const ContentBlock: React.FC<ContentBlockProps> = ({
     oneFourth: 'col-span-1 xl:col-span-3',
   };
 
-  const textColorClasses = {
-    light: 'text-convergence-beige',
-    dark: 'text-convergence-brown',
-  };
-
   const bgColorClasses = {
     none: 'text-convergence-brown',
     beige: 'bg-convergence-beige text-convergence-brown',

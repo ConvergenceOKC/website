@@ -3,7 +3,6 @@
 import React, { useEffect } from 'react';
 
 import RichText from '@/components/RichText';
-import { LowImpactHeroClient } from '@/heros/LowImpact/index.client';
 import type { Page } from '@/payload-types';
 import { useHeaderTheme } from '@/providers/HeaderTheme';
 import { cn } from '@/utilities/ui';
