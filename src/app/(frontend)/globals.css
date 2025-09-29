@@ -87,7 +87,7 @@
   }
 
   h3:not(:first-of-type) {
-    padding-top: 3rem;
+    margin-top: 3rem;
   }
 
   @media (min-width: 768px) {

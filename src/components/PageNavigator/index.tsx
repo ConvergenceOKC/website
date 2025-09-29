@@ -2,9 +2,16 @@
 
 import React, { useEffect, useState } from 'react';
 
+import { Button } from '@/components/ui/button';
+import { cn } from '@/utilities/ui';
+
 type Heading = {
   id: string;
   text: string;
+};
+
+type PageNavigatorProps = {
+  headingLevel?: string;
 };
 
 function getHeadings(level: string = '2'): Heading[] {
@@ -16,13 +23,12 @@ function getHeadings(level: string = '2'): Heading[] {
   }));
 }
 
-export const PageNavigator: React.FC<{ headingLevel?: string }> = ({
+export const PageNavigator: React.FC<PageNavigatorProps> = ({
   headingLevel = '2',
 }) => {
   const [headings, setHeadings] = useState<Heading[]>([]);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(false);
-  // const observer = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
     setHeadings(getHeadings(headingLevel));
@@ -47,17 +53,11 @@ export const PageNavigator: React.FC<{ headingLevel?: string }> = ({
       );
       let currentId: string | null = null;
 
-      // Get the scroll margin value (assuming it's consistent across headings)
-      const scrollMarginTop =
-        headingElements[0] &&
-        (parseInt(getComputedStyle(headingElements[0]).scrollMarginTop) || 100);
-
       for (let i = 0; i < headingElements.length; i++) {
         const el = headingElements[i];
         if (el) {
           const rect = el.getBoundingClientRect();
-          // Use scroll margin instead of fixed 100px offset
-          if (rect.top <= (scrollMarginTop || 100)) {
+          if (rect.top <= 300) {
             currentId = el.id;
           }
         }
@@ -73,7 +73,11 @@ export const PageNavigator: React.FC<{ headingLevel?: string }> = ({
   const handleClick = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      el.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest',
+      });
       // Update active state immediately after click to provide instant feedback
       setActiveId(id);
     }
@@ -82,29 +86,40 @@ export const PageNavigator: React.FC<{ headingLevel?: string }> = ({
   if (headings.length === 0) return null;
 
   return (
-    <nav
-      className={`fixed top-20 right-4 z-50 max-h-[80vh] w-[300px] overflow-y-auto border-l border-gray-200 bg-white p-4 transition-opacity duration-300 ease-in-out ${
-        isVisible ? 'opacity-100' : 'pointer-events-none opacity-0'
-      }`}
-      aria-label="Page sections"
-    >
-      <ul className="m-0 list-none p-0">
-        {headings.map((heading) => (
-          <li key={heading.id}>
-            <button
-              onClick={() => handleClick(heading.id)}
-              className={`w-full cursor-pointer border-none bg-none px-0 py-2 text-left ${
-                activeId === heading.id
-                  ? 'font-bold text-blue-600'
-                  : 'font-normal text-gray-800'
-              }`}
-              aria-current={activeId === heading.id ? 'true' : undefined}
+    <div className="pointer-events-none fixed inset-x-0 top-32 z-50 container hidden justify-end xl:flex">
+      <nav
+        className={`pointer-events-auto relative w-[350px] overflow-y-auto p-10 transition-opacity duration-300 ease-in-out ${
+          isVisible ? 'opacity-100' : 'pointer-events-none opacity-0'
+        }`}
+        aria-label="Page sections"
+      >
+        <div className="bg-convergence-beige/70 absolute inset-0 backdrop-blur-sm" />
+        {/* <div className="bg-convergence-beige absolute inset-0 bg-[url('/images/bg-pattern-white-green.jpg')] bg-cover opacity-80 bg-blend-multiply" /> */}
+        <ul className="relative z-10 m-0 list-disc p-0">
+          {headings.map((heading) => (
+            <li
+              key={heading.id}
+              className={cn(
+                'marker:text-convergence-burnt-orange',
+                activeId === heading.id ? '' : 'list-none',
+              )}
             >
-              {heading.text}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </nav>
+              <Button
+                variant={'link'}
+                onClick={() => handleClick(heading.id)}
+                className={`cursor-pointer pl-1 text-sm underline-offset-4 ${
+                  activeId === heading.id
+                    ? 'text-convergence-burnt-orange decoration-convergence-burnt-orange font-bold'
+                    : 'text-convergence-brown font-normal'
+                }`}
+                aria-current={activeId === heading.id ? 'true' : undefined}
+              >
+                {heading.text}
+              </Button>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
   );
 };

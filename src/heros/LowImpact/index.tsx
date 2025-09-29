@@ -32,6 +32,7 @@ export const LowImpactHero: React.FC<LowImpactHeroType> = ({
 
   return (
     <div
+      data-block-type="hero"
       className={cn(
         "bg-[url('/images/bg-pattern-white-green.jpg')] bg-cover bg-bottom",
         variant === 'dark' &&
