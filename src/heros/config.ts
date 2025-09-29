@@ -44,6 +44,7 @@ export const hero: Field = {
       name: 'variant',
       type: 'select',
       defaultValue: 'light',
+      required: true,
       options: [
         {
           label: 'Light',

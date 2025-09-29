@@ -72,7 +72,7 @@ export default async function Page({ params: paramsPromise }: Args) {
         <PageNavigator headingLevel={settings.navigatorHeadingLevel || '2'} />
       )}
       <RenderHero {...hero} />
-      {slug !== 'home' && (
+      {slug !== 'home' && breadcrumbs && breadcrumbs?.length > 1 && (
         <RenderBreadcrumbs breadcrumbs={breadcrumbs} variant={hero.variant} />
       )}
       <RenderBlocks blocks={layout} />

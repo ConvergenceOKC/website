@@ -16,7 +16,7 @@ type LowImpactHeroType =
   | (Omit<Page['hero'], 'richText'> & {
       children?: never;
       richText?: Page['hero']['richText'];
-      variant?: 'light' | 'dark';
+      variant: 'light' | 'dark';
     });
 
 export const LowImpactHero: React.FC<LowImpactHeroType> = ({
