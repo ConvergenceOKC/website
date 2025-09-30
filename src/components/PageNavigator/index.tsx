@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 
+import { set } from 'react-hook-form';
+
 import { Button } from '@/components/ui/button';
 import { cn } from '@/utilities/ui';
 
@@ -38,14 +40,25 @@ export const PageNavigator: React.FC<PageNavigatorProps> = ({
     const handleScroll = () => {
       // Check if user has scrolled past the hero section
       const heroElement = document.querySelector('[data-block-type="hero"]');
+      let hasScrolledPastHero = false;
       if (heroElement) {
         const heroRect = heroElement.getBoundingClientRect();
-        const hasScrolledPastHero = heroRect.bottom <= 0;
-        setIsVisible(hasScrolledPastHero);
+        hasScrolledPastHero = heroRect.bottom <= 200;
       } else {
         // Fallback: show after scrolling down a certain amount
-        setIsVisible(window.scrollY > 300);
+        hasScrolledPastHero = window.scrollY > 300;
       }
+
+      // Check if user has scrolled to footer and hide if so
+      const footerElement = document.querySelector('footer');
+      let hasScrolledToFooter = false;
+      if (footerElement) {
+        const footerRect = footerElement.getBoundingClientRect();
+        hasScrolledToFooter = footerRect.top <= 400;
+      }
+
+      // Only show if past hero and not at footer
+      setIsVisible(hasScrolledPastHero && !hasScrolledToFooter);
 
       // Find active heading - account for scroll margin
       const headingElements = headings.map((h) =>

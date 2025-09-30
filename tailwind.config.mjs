@@ -53,13 +53,6 @@ const config = {
         xl: '2rem',
         '2xl': '2rem',
       },
-      // screens: {
-      //   lg: '64rem',
-      //   md: '48rem',
-      //   sm: '40rem',
-      //   xl: '80rem',
-      //   '2xl': '86rem',
-      // },
     },
     extend: {
       animation: {
@@ -72,12 +65,6 @@ const config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       colors: {
-        cream: 'hsl(var(--cream))',
-        'deep-green': 'hsl(var(--deep-green))',
-        taupe: 'hsl(var(--taupe))',
-        orange: 'hsl(var(--orange))',
-        charcoal: 'hsl(var(--charcoal))',
-        'bright-white': 'hsl(var(--bright-white))',
         'convergence-white': 'hsl(var(--convergence-white))',
         'convergence-beige': 'hsl(var(--convergence-beige))',
         'convergence-blue': 'hsl(var(--convergence-blue))',
@@ -139,27 +126,24 @@ const config = {
         },
       },
       typography: () => ({
-        DEFAULT: {
-          css: [
-            {
-              '--tw-prose-body': 'var(--text)',
-              '--tw-prose-headings': 'var(--text)',
-              h1: {
-                fontWeight: 'normal',
-                marginBottom: '0.25em',
-              },
-            },
-          ],
-        },
         base: {
           css: [
             {
               h1: {
-                fontSize: '2.5rem',
+                fontFamily: 'var(--font-heading)',
+                fontSize: '3.25rem',
+                fontWeight: 400,
+                lineHeight: '4rem',
+                textTransform: 'uppercase',
+                marginBottom: '1rem',
               },
               h2: {
-                fontSize: '1.25rem',
-                fontWeight: 600,
+                fontFamily: 'var(--font-heading)',
+                fontSize: '3rem',
+                fontWeight: 400,
+                lineHeight: '3.5rem',
+                textTransform: 'uppercase',
+                marginBottom: '0.75rem',
               },
             },
           ],
@@ -168,7 +152,8 @@ const config = {
           css: [
             {
               h1: {
-                fontSize: '6.25rem',
+                fontSize: '4rem',
+                lineHeight: '4.5rem',
               },
               h2: {
                 fontSize: '6.25rem',
@@ -184,6 +169,31 @@ const config = {
               },
               h6: {
                 fontSize: '1.25rem',
+              },
+            },
+          ],
+        },
+        lg: {
+          css: [
+            {
+              h1: {
+                fontSize: '5rem',
+                lineHeight: '6rem',
+              },
+              h2: {
+                fontSize: '4rem',
+              },
+              h3: {
+                fontSize: '2.25rem',
+              },
+              h4: {
+                fontSize: '1.5rem',
+              },
+              h5: {
+                fontSize: '1.25rem',
+              },
+              h6: {
+                fontSize: '1.125rem',
               },
             },
           ],

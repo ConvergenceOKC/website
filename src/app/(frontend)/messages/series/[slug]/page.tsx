@@ -95,7 +95,7 @@ export default async function Series({ params: paramsPromise }: Args) {
       />
       {/* Series Info */}
       {series.thumbnail && (
-        <div className="mt-6 w-full overflow-hidden rounded-lg md:mt-10">
+        <div className="mt-6 mb-6 w-full overflow-hidden rounded-lg md:mt-10">
           <Media
             resource={series.thumbnail}
             imgClassName="max-h-[600px] w-full object-cover object-center"
