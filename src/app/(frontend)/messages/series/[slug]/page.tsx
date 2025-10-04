@@ -12,7 +12,6 @@ import { RenderBreadcrumbs } from '@/components/Breadcrumbs';
 import { Media } from '@/components/Media';
 import { PayloadRedirects } from '@/components/PayloadRedirects';
 import RichText from '@/components/RichText';
-import { Button } from '@/components/ui/button';
 import { formatDateTime } from '@/utilities/formatDateTime';
 import { generateMeta } from '@/utilities/generateMeta';
 

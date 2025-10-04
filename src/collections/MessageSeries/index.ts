@@ -17,6 +17,7 @@ export const MessageSeries: CollectionConfig<'messageSeries'> = {
     title: true,
     slug: true,
   },
+  defaultSort: '-updatedAt',
   access: {
     create: authenticated,
     delete: authenticated,

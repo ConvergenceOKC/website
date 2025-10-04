@@ -13,6 +13,7 @@ export const Roles: CollectionConfig<'roles'> = {
     read: () => true,
     update: authenticated,
   },
+  defaultSort: 'name',
   fields: [
     {
       name: 'name',

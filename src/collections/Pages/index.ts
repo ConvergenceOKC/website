@@ -40,6 +40,7 @@ export const Pages: CollectionConfig<'pages'> = {
     title: true,
     slug: true,
   },
+  defaultSort: 'title',
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
     livePreview: {

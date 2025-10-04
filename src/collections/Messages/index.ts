@@ -13,6 +13,7 @@ export const Messages: CollectionConfig<'messages'> = {
     title: true,
     slug: true,
   },
+  defaultSort: '-date',
   access: {
     create: authenticated,
     delete: authenticated,

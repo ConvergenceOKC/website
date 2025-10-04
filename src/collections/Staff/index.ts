@@ -18,6 +18,7 @@ export const Staff: CollectionConfig<'staff'> = {
     read: () => true,
     update: authenticated,
   },
+  defaultSort: 'name',
   fields: [
     {
       name: 'name',

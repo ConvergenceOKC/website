@@ -21,6 +21,7 @@ export const HouseChurches: CollectionConfig = {
     useAsTitle: 'name',
     defaultColumns: ['name', 'facilitator', 'status'],
   },
+  defaultSort: '-name',
   fields: [
     {
       name: 'name',
