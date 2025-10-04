@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { cn } from 'src/utilities/ui';
+import { cn } from '@/utilities/ui';
 
 const Card = React.forwardRef<
   HTMLDivElement,
@@ -8,7 +8,7 @@ const Card = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     className={cn(
-      'rounded-lg border bg-card text-card-foreground shadow-xs',
+      'bg-card text-card-foreground rounded-lg border shadow-xs',
       className,
     )}
     ref={ref}
@@ -35,7 +35,7 @@ const CardTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <h3
     className={cn(
-      'text-2xl font-semibold leading-none tracking-tight',
+      'text-2xl leading-none font-semibold tracking-tight',
       className,
     )}
     ref={ref}
@@ -49,7 +49,7 @@ const CardDescription = React.forwardRef<
   React.HTMLAttributes<HTMLParagraphElement>
 >(({ className, ...props }, ref) => (
   <p
-    className={cn('text-sm text-muted-foreground', className)}
+    className={cn('text-muted-foreground text-sm', className)}
     ref={ref}
     {...props}
   />

@@ -3,8 +3,6 @@ import { DM_Sans, League_Spartan } from 'next/font/google';
 import localFont from 'next/font/local';
 import React from 'react';
 
-import { cn } from 'src/utilities/ui';
-
 import { Footer } from '@/Footer/Component';
 import { Header } from '@/Header/Component';
 import { TailwindIndicator } from '@/components/TailwindIndicator';
@@ -12,6 +10,7 @@ import { Providers } from '@/providers';
 import { InitTheme } from '@/providers/Theme/InitTheme';
 import { getServerSideURL } from '@/utilities/getURL';
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph';
+import { cn } from '@/utilities/ui';
 
 import './globals.css';
 

@@ -3,10 +3,9 @@ type Props = {
 };
 
 const termageddonAPIPath = 'https://policies.termageddon.com/api/policy/';
-const datasetExtra = '?h-align=left&h-depth=3&table-style=accordion';
 
 const Policy: React.FC<Props> = async ({ policyKey }) => {
-  const data = await fetch(termageddonAPIPath + policyKey + datasetExtra, {
+  const data = await fetch(termageddonAPIPath + policyKey, {
     method: 'GET',
     headers: {
       'Content-Type': 'text/html',
@@ -23,13 +22,7 @@ const Policy: React.FC<Props> = async ({ policyKey }) => {
     return <div>No policy found.</div>;
   }
 
-  return (
-    <div
-      id="policy"
-      data-extra="h-align=left&h-depth=3&table-style=accordion"
-      dangerouslySetInnerHTML={{ __html: text }}
-    />
-  );
+  return <div id="policy" dangerouslySetInnerHTML={{ __html: text }} />;
 };
 
 export default Policy;

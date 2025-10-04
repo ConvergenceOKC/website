@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { cache } from 'react';
 
@@ -120,7 +121,16 @@ export default async function Series({ params: paramsPromise }: Args) {
             key={message.id}
             className="bg-convergence-beige-darker md:hover:bg-convergence-beige-darker grid grid-cols-1 items-start gap-4 rounded-lg p-6 transition md:grid-cols-[200px_1fr] md:bg-inherit"
           >
-            <div className="w-full overflow-hidden rounded-lg">
+            <div className="relative w-full overflow-hidden rounded-lg">
+              <div className="pointer-events-none absolute z-10 flex h-full w-full items-center justify-center">
+                <Image
+                  src="/images/play-icon.svg"
+                  alt="Play button"
+                  width={40}
+                  height={40}
+                  className="h-[60px] w-[60px]"
+                />
+              </div>
               <Media
                 resource={message.thumbnail}
                 imgClassName="h-60 object-cover object-center hover:scale-110 transition-transform duration-300"
@@ -161,9 +171,9 @@ export default async function Series({ params: paramsPromise }: Args) {
                 </span>
               </div>
               <p>{message.description}</p>
-              <div className="flex md:hidden">
-                <Button variant={'secondary'}>Watch</Button>
-              </div>
+              {/* <div className="flex md:hidden">
+                <Button variant={'secondary'}>Message Details</Button>
+              </div> */}
             </div>
           </Link>
         ))}

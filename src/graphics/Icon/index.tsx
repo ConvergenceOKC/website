@@ -2,7 +2,7 @@ export const Icon = () => {
   return (
     <svg
       width={16}
-      height="auto"
+      height={16}
       viewBox="0 0 48 53"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"

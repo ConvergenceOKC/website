@@ -25,13 +25,13 @@ export const StaffBlock: React.FC<StaffBlockProps> = ({ layout, staff }) => {
 
   if (layout === '2-col') {
     return (
-      <div className="flex flex-col gap-8 lg:gap-24">
+      <div className="my-8 flex flex-col gap-8 md:my-16 lg:gap-24">
         {staffMembers.map((member) => (
           <div
             className={`grid grid-cols-1 gap-8 md:grid-cols-[1fr_2.5fr] lg:gap-12`}
             key={member.id}
           >
-            <div className="flex">
+            <div className="flex justify-center">
               <Avatar className="h-44 w-44 md:h-52 md:w-52 lg:h-72 lg:w-72">
                 {member.headshot && (
                   <AvatarImage>
@@ -47,21 +47,22 @@ export const StaffBlock: React.FC<StaffBlockProps> = ({ layout, staff }) => {
                 </AvatarFallback>
               </Avatar>
             </div>
-            <div className="flex flex-col">
-              <h3>{member.name}</h3>
-              <h5>
+            <div className="flex flex-col items-center md:items-start">
+              <h4>{member.name}</h4>
+              <h6>
                 {member.role
                   ?.map((role) => {
                     if (typeof role === 'string') return role;
                     if (typeof role === 'object') return role.name;
                   })
                   .join(', ')}
-              </h5>
+              </h6>
               {member.bio && (
                 <RichText
                   data={member.bio}
                   enableGutter={false}
                   enableProse={false}
+                  className="text-center md:text-left"
                 />
               )}
             </div>
@@ -71,7 +72,7 @@ export const StaffBlock: React.FC<StaffBlockProps> = ({ layout, staff }) => {
     );
   } else if (layout === '3-col') {
     return (
-      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="my-8 grid grid-cols-1 gap-8 sm:grid-cols-2 md:my-16 lg:grid-cols-3">
         {staffMembers.map((member) => (
           <div className="flex flex-col items-center gap-8" key={member.id}>
             <Avatar className="h-44 w-44 md:h-52 md:w-52">

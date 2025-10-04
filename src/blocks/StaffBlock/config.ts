@@ -29,7 +29,6 @@ export const StaffBlock: Block = {
           name: 'staffMember',
           type: 'relationship',
           relationTo: 'staff',
-          maxDepth: 2,
         },
       ],
       admin: {
