@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import Balancer from 'react-wrap-balancer';
 
+import { RecentSeries } from '@/blocks/Messages/RecentSeries';
 import { getSeriesMessages } from '@/blocks/Messages/getSeriesMessages';
 import { Media } from '@/components/Media';
 import { Message } from '@/payload-types';
@@ -22,7 +23,7 @@ export const MoreFromSeries: React.FC<MoreFromSeriesProps> = async ({
 
   const series = message.series;
   if (!series) {
-    return <div>No series found for the provided message.</div>;
+    return <RecentSeries />;
   }
 
   // Get more messages from the same series
