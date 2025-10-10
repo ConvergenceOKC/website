@@ -3,8 +3,8 @@ import { CollectionConfig } from 'payload';
 import { authenticated } from '@/access/authenticated';
 import {
   revalidateDelete,
-  revalidateLatestMessage,
-} from '@/collections/Messages/hooks/revalidateLatestMessage';
+  revalidateMessages,
+} from '@/collections/Messages/hooks/revalidateMessages';
 import { slugField } from '@/fields/slug';
 
 export const Messages: CollectionConfig<'messages'> = {
@@ -111,7 +111,7 @@ export const Messages: CollectionConfig<'messages'> = {
     ...slugField(),
   ],
   hooks: {
-    afterChange: [revalidateLatestMessage],
+    afterChange: [revalidateMessages],
     afterDelete: [revalidateDelete],
   },
 };

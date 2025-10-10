@@ -7,13 +7,15 @@ import type {
 
 import { Message } from '@/payload-types';
 
-export const revalidateLatestMessage: CollectionAfterChangeHook<Message> = ({
+export const revalidateMessages: CollectionAfterChangeHook<Message> = ({
   doc,
   req: { payload, context },
 }) => {
   if (!context.disableRevalidate) {
-    payload.logger.info(`Revalidating latest message`);
+    payload.logger.info(`Revalidating messages`);
     revalidateTag('latest-message');
+    revalidateTag('recent-messages');
+    revalidateTag('recent-series');
   }
 
   return doc;
@@ -25,6 +27,8 @@ export const revalidateDelete: CollectionAfterDeleteHook<Message> = ({
 }) => {
   if (!context.disableRevalidate) {
     revalidateTag('latest-message');
+    revalidateTag('recent-messages');
+    revalidateTag('recent-series');
   }
 
   return doc;

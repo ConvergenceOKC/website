@@ -2,6 +2,10 @@ import { ParagraphFeature, lexicalEditor } from '@payloadcms/richtext-lexical';
 import { CollectionConfig } from 'payload';
 
 import { authenticated } from '@/access/authenticated';
+import {
+  revalidateDelete,
+  revalidateSeries,
+} from '@/collections/MessageSeries/hooks/revalidateSeries';
 import { slugField } from '@/fields/slug';
 
 export const MessageSeries: CollectionConfig<'messageSeries'> = {
@@ -48,4 +52,8 @@ export const MessageSeries: CollectionConfig<'messageSeries'> = {
     },
     ...slugField(),
   ],
+  hooks: {
+    afterChange: [revalidateSeries],
+    afterDelete: [revalidateDelete],
+  },
 };
