@@ -1014,6 +1014,10 @@ export interface Staff {
   id: string;
   name: string;
   role?: (string | Role)[] | null;
+  /**
+   * If checked, this staff member will be available to select as a speaker on messages.
+   */
+  isSpeaker?: boolean | null;
   email?: string | null;
   phone?: string | null;
   headshot?: (string | null) | Media;
@@ -2000,6 +2004,7 @@ export interface MessageSeriesSelect<T extends boolean = true> {
 export interface StaffSelect<T extends boolean = true> {
   name?: T;
   role?: T;
+  isSpeaker?: T;
   email?: T;
   phone?: T;
   headshot?: T;

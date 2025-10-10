@@ -50,6 +50,9 @@ export const Messages: CollectionConfig<'messages'> = {
       name: 'speaker',
       type: 'relationship',
       relationTo: 'staff',
+      filterOptions: {
+        isSpeaker: { equals: true },
+      },
       hasMany: false,
       required: true,
     },

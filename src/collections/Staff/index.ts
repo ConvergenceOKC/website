@@ -11,6 +11,7 @@ export const Staff: CollectionConfig<'staff'> = {
   },
   admin: {
     useAsTitle: 'name',
+    defaultColumns: ['name', 'role', 'email', 'phone', 'status'],
   },
   access: {
     create: authenticated,
@@ -32,6 +33,16 @@ export const Staff: CollectionConfig<'staff'> = {
       relationTo: 'roles',
       hasMany: true,
       required: false,
+    },
+    {
+      name: 'isSpeaker',
+      label: 'Show in list of message speakers?',
+      type: 'checkbox',
+      defaultValue: false,
+      admin: {
+        description:
+          'If checked, this staff member will be available to select as a speaker on messages.',
+      },
     },
     {
       name: 'email',
