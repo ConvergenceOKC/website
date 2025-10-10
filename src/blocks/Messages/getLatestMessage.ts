@@ -1,9 +1,11 @@
 'use server';
 
+import { unstable_cache } from 'next/cache';
+
 import config from '@payload-config';
 import { getPayload } from 'payload';
 
-export async function getLatestMessage() {
+export const getLatestMessage = unstable_cache(async () => {
   const payload = await getPayload({ config });
 
   try {
@@ -17,4 +19,4 @@ export async function getLatestMessage() {
   } catch (error) {
     throw new Error(`Error getting latest message: ${error}`);
   }
-}
+}, ['latest-message']);
