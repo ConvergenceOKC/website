@@ -54,6 +54,16 @@ export const Media: CollectionConfig = {
         width: 300,
       },
       {
+        name: '16:9',
+        width: 1400,
+        height: 788,
+      },
+      {
+        name: '4:3',
+        width: 900,
+        height: 675,
+      },
+      {
         name: 'square',
         width: 500,
         height: 500,

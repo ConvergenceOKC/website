@@ -16,6 +16,7 @@ export interface Props {
   ref?: Ref<HTMLImageElement | HTMLVideoElement | null>;
   resource?: MediaType | string | number | null; // for Payload media
   size?: string; // for NextImage only
+  sizes?: string;
   src?: StaticImageData; // for static media
   videoClassName?: string;
   placeholder?: boolean; // for NextImage only
