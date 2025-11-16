@@ -28,6 +28,12 @@ const dirname = path.dirname(filename);
 
 export default buildConfig({
   admin: {
+    autoLogin:
+      process.env.NODE_ENV === 'development'
+        ? {
+            email: process.env.AUTOLOGIN_EMAIL || '',
+          }
+        : false,
     meta: {
       titleSuffix: ' - Convergence CMS',
       icons: {
