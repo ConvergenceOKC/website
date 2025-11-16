@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 import { Banner } from '@payloadcms/ui';
 
 import { revalidateTags } from '@/components/BeforeDashboard/revalidateTags';
@@ -22,7 +24,7 @@ const BeforeDashboard = () => {
           <li>
             <div className="card card-pages card--has-onclick">
               <h3 className="card__title">Live Site</h3>
-              <a
+              <Link
                 type="button"
                 href="/"
                 className="btn card__click"
@@ -34,7 +36,7 @@ const BeforeDashboard = () => {
           <li>
             <div className="card card-pages card--has-onclick">
               <h3 className="card__title">Reset Cache</h3>
-              <a
+              <Link
                 type="button"
                 href="/"
                 className="btn card__click"
