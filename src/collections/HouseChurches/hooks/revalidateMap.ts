@@ -1,29 +1,29 @@
-import { revalidatePath } from 'next/cache'
+import { revalidateTag } from 'next/cache';
 
 import type {
   CollectionAfterChangeHook,
   CollectionAfterDeleteHook,
-} from 'payload'
+} from 'payload';
 
 export const revalidateMap: CollectionAfterChangeHook = ({
   doc,
   req: { context, payload },
 }) => {
   if (!context.disableRevalidate) {
-    payload.logger.info(`Revalidating map`)
-    revalidatePath('/map')
+    payload.logger.info(`Revalidating map`);
+    revalidateTag('house-churches');
   }
-  return doc
-}
+  return doc;
+};
 
 export const revalidateDelete: CollectionAfterDeleteHook = ({
   doc,
   req: { context, payload },
 }) => {
   if (!context.disableRevalidate) {
-    payload.logger.info(`Revalidating map`)
-    revalidatePath('/map')
+    payload.logger.info(`Revalidating map`);
+    revalidateTag('house-churches');
   }
 
-  return doc
-}
+  return doc;
+};

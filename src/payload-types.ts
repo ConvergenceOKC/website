@@ -2522,10 +2522,10 @@ export interface LinkedText {
 export interface StaffBlock {
   layout: '2-col' | '3-col';
   /**
-   * Select one or more staff members to display.
+   * Select one or more staff roles to display for this block. All staff having this role will be displayed on the site.
    */
-  staff: {
-    staffMember?: (string | null) | Staff;
+  roles: {
+    role?: (string | null) | Role;
     id?: string | null;
   }[];
   id?: string | null;

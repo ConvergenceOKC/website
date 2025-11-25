@@ -1,32 +1,21 @@
+import { getStaff } from '@/blocks/StaffBlock/getStaff';
 import { Media } from '@/components/Media';
 import RichText from '@/components/RichText';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Staff, StaffBlock as StaffBlockProps } from '@/payload-types';
 
-export const StaffBlock: React.FC<StaffBlockProps> = ({ layout, staff }) => {
-  const staffMembers = staff
-    .map((member) => {
-      if (
-        member.staffMember &&
-        typeof member.staffMember === 'object' &&
-        'id' in member.staffMember &&
-        member.staffMember.status === 'active'
-      ) {
-        return member.staffMember as Staff;
-      } else {
-        return undefined;
-      }
-    })
-    .filter((member): member is Staff => member !== undefined);
-
-  if (!staffMembers || staffMembers.length === 0) {
-    return null;
-  }
+export const StaffBlock: React.FC<StaffBlockProps> = async ({
+  layout,
+  roles,
+}) => {
+  // Fetch staff members with the selected roles
+  const rolesToDisplay = roles?.map((role) => role.role || '') as string[];
+  const staff = await getStaff(rolesToDisplay);
 
   if (layout === '2-col') {
     return (
       <div className="my-8 flex flex-col gap-8 md:my-16 lg:gap-24">
-        {staffMembers.map((member) => (
+        {staff.docs.map((member) => (
           <div
             className={`grid grid-cols-1 gap-8 md:grid-cols-[1fr_2.5fr] lg:gap-12`}
             key={member.id}
@@ -73,7 +62,7 @@ export const StaffBlock: React.FC<StaffBlockProps> = ({ layout, staff }) => {
   } else if (layout === '3-col') {
     return (
       <div className="my-8 grid grid-cols-1 gap-8 sm:grid-cols-2 md:my-16 lg:grid-cols-3">
-        {staffMembers.map((member) => (
+        {staff.docs.map((member) => (
           <div className="flex flex-col items-center gap-8" key={member.id}>
             <Avatar className="h-44 w-44 md:h-52 md:w-52">
               {member.headshot && (

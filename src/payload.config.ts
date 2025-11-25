@@ -94,7 +94,7 @@ export default buildConfig({
   ],
   cors: [getServerSideURL()].filter(Boolean),
   email: resendAdapter({
-    defaultFromAddress: 'no-reply@jebryan.com',
+    defaultFromAddress: 'no-reply@convergenceokc.church',
     defaultFromName: 'Convergence Church OKC',
     apiKey: process.env.RESEND_API_KEY || '',
   }),

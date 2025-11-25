@@ -2,6 +2,7 @@ import { ParagraphFeature, lexicalEditor } from '@payloadcms/richtext-lexical';
 import { CollectionConfig } from 'payload';
 
 import { authenticated } from '@/access/authenticated';
+import { revalidateStaff } from '@/collections/Staff/hooks/revalidateStaff';
 
 export const Staff: CollectionConfig<'staff'> = {
   slug: 'staff',
@@ -87,4 +88,8 @@ export const Staff: CollectionConfig<'staff'> = {
       required: true,
     },
   ],
+  hooks: {
+    afterChange: [revalidateStaff],
+    afterDelete: [revalidateStaff],
+  },
 };

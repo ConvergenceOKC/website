@@ -21,18 +21,19 @@ export const StaffBlock: Block = {
       required: true,
     },
     {
-      name: 'staff',
+      name: 'roles',
       type: 'array',
       minRows: 1,
       fields: [
         {
-          name: 'staffMember',
+          name: 'role',
           type: 'relationship',
-          relationTo: 'staff',
+          relationTo: 'roles',
         },
       ],
       admin: {
-        description: 'Select one or more staff members to display.',
+        description:
+          'Select one or more staff roles to display for this block. All staff having this role will be displayed on the site.',
       },
       required: true,
     },
