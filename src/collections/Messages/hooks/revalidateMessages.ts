@@ -13,9 +13,7 @@ export const revalidateMessages: CollectionAfterChangeHook<Message> = ({
 }) => {
   if (!context.disableRevalidate) {
     payload.logger.info(`Revalidating messages`);
-    revalidateTag('latest-message');
-    revalidateTag('recent-messages');
-    revalidateTag('recent-series');
+    revalidateTag('messages');
   }
 
   return doc;
@@ -26,9 +24,7 @@ export const revalidateDelete: CollectionAfterDeleteHook<Message> = ({
   req: { context },
 }) => {
   if (!context.disableRevalidate) {
-    revalidateTag('latest-message');
-    revalidateTag('recent-messages');
-    revalidateTag('recent-series');
+    revalidateTag('messages');
   }
 
   return doc;

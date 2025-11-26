@@ -22,5 +22,5 @@ export const getLatestMessage = unstable_cache(
     }
   },
   ['latest-message'],
-  { tags: ['latest-message'] },
+  { tags: ['messages'] },
 );

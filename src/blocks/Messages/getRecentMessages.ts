@@ -21,5 +21,5 @@ export const getRecentMessages = unstable_cache(
     }
   },
   ['recent-messages'],
-  { tags: ['recent-messages'] },
+  { tags: ['messages'] },
 );

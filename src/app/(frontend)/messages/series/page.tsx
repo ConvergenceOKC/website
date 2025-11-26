@@ -1,27 +1,13 @@
 import Link from 'next/link';
 
-import configPromise from '@payload-config';
-import { getPayload } from 'payload';
 import Balancer from 'react-wrap-balancer';
 
+import { getRecentSeries } from '@/blocks/Messages/getRecentSeries';
 import { RenderBreadcrumbs } from '@/components/Breadcrumbs';
 import { Media } from '@/components/Media';
 
 export default async function Series() {
-  const payload = await getPayload({ config: configPromise });
-  const series = await payload.find({
-    collection: 'messageSeries',
-    draft: false,
-    limit: 1000,
-    overrideAccess: false,
-    pagination: false,
-    sort: '-updatedAt',
-    select: {
-      title: true,
-      slug: true,
-      thumbnail: true,
-    },
-  });
+  const series = await getRecentSeries(1000); // Get all series
 
   const breadcrumbs = [
     { id: '0', label: 'Home', url: '/' },
@@ -41,20 +27,20 @@ export default async function Series() {
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {series.docs.map((series) => (
           <Link
-            key={series.id}
-            href={'/messages/series/' + series.slug}
+            key={series?.id}
+            href={'/messages/series/' + series?.slug}
             className="hover:bg-convergence-beige-darker rounded-lg p-6 transition"
           >
-            {series.thumbnail && (
+            {series?.thumbnail && (
               <div className="mb-2 w-full overflow-hidden rounded-lg">
                 <Media
                   resource={series.thumbnail}
-                  imgClassName="h-80 w-full object-cover object-center"
+                  imgClassName="h-80 w-full object-cover object-center hover:scale-110 transition-transform duration-300"
                 />
               </div>
             )}
             <h5 className="mb-2">
-              <Balancer>{series.title}</Balancer>
+              <Balancer>{series?.title}</Balancer>
             </h5>
           </Link>
         ))}

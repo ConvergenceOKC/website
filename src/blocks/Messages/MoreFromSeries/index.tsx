@@ -23,7 +23,7 @@ export const MoreFromSeries: React.FC<MoreFromSeriesProps> = async ({
 
   const series = message.series;
   if (!series) {
-    return <RecentSeries />;
+    return null;
   }
 
   // Get more messages from the same series

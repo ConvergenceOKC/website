@@ -9,6 +9,7 @@ import { getPayload } from 'payload';
 import Balancer from 'react-wrap-balancer';
 
 import { MoreFromSeries } from '@/blocks/Messages/MoreFromSeries';
+import { RecentSeries } from '@/blocks/Messages/RecentSeries';
 import { RenderBreadcrumbs } from '@/components/Breadcrumbs';
 import { Media } from '@/components/Media';
 import { PayloadRedirects } from '@/components/PayloadRedirects';
@@ -159,8 +160,8 @@ export default async function Message({ params: paramsPromise }: Args) {
           </div>
         </Link>
       </div>
-      <div className="bg-convergence-beige-darker">
-        <div className="container py-24">
+      <div className="bg-convergence-beige-darker flex flex-col gap-16 py-24">
+        <div className="container">
           <MoreFromSeries message={message} />
         </div>
       </div>
