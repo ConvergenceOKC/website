@@ -12,6 +12,7 @@ import {
 } from '@payloadcms/richtext-lexical';
 import { Plugin } from 'payload';
 
+import { revalidateForm } from '@/hooks/revalidateForm';
 import { revalidateRedirects } from '@/hooks/revalidateRedirects';
 import { Page, Post } from '@/payload-types';
 import { beforeSyncWithSearch } from '@/search/beforeSync';
@@ -67,6 +68,9 @@ export const plugins: Plugin[] = [
       payment: false,
     },
     formOverrides: {
+      hooks: {
+        afterChange: [revalidateForm],
+      },
       fields: ({ defaultFields }) => {
         return defaultFields.map((field) => {
           if ('name' in field && field.name === 'confirmationMessage') {
