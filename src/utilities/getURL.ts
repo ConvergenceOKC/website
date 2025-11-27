@@ -22,7 +22,7 @@ export const getClientSideURL = () => {
 
     // If on staging and sharing database with production, use production URLs for images
     if (domain === 'staging.convergenceokc.church') {
-      return 'https://convergenceokc.church';
+      return 'https://www.convergenceokc.church';
     }
 
     return `${protocol}//${domain}${port ? `:${port}` : ''}`;
