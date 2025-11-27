@@ -2,9 +2,11 @@ import { withPayload } from '@payloadcms/next/withPayload';
 
 import redirects from './redirects.js';
 
-const NEXT_PUBLIC_SERVER_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
-  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-  : process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000';
+// Set the current server URL based on the environment
+const NEXT_PUBLIC_SERVER_URL =
+  process.env.NEXT_PUBLIC_SERVER_URL ||
+  process.env.VERCEL_PROJECT_PRODUCTION_URL ||
+  'http://localhost:3000';
 
 console.log('🔍 NEXT_PUBLIC_SERVER_URL:', NEXT_PUBLIC_SERVER_URL);
 
