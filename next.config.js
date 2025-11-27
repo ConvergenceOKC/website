@@ -20,6 +20,11 @@ const nextConfig = {
           protocol: url.protocol.replace(':', ''),
         };
       }),
+      {
+        // All subdomains
+        hostname: '**.convergenceokc.church',
+        protocol: 'https',
+      },
     ],
     qualities: [100],
     localPatterns: [
