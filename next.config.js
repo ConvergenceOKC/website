@@ -2,13 +2,16 @@ import { withPayload } from '@payloadcms/next/withPayload';
 
 import redirects from './redirects.js';
 
-// Set the current server URL based on the environment
-const NEXT_PUBLIC_SERVER_URL =
-  process.env.NEXT_PUBLIC_SERVER_URL ||
-  process.env.VERCEL_PROJECT_PRODUCTION_URL ||
-  'http://localhost:3000';
+const NEXT_PUBLIC_SERVER_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : undefined || process.env.__NEXT_PRIVATE_ORIGIN || 'http://localhost:3000';
 
 console.log('🔍 NEXT_PUBLIC_SERVER_URL:', NEXT_PUBLIC_SERVER_URL);
+console.log(
+  '🔍 VERCEL_PROJECT_PRODUCTION_URL:',
+  process.env.VERCEL_PROJECT_PRODUCTION_URL,
+);
+console.log('🔍 NODE_ENV:', process.env.NODE_ENV);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -24,21 +27,6 @@ const nextConfig = {
           protocol: url.protocol.replace(':', ''),
         };
       }),
-      // Explicit production domain (for fallback images)
-      {
-        hostname: 'convergenceokc.church',
-        protocol: 'https',
-      },
-      // Explicit staging domain
-      {
-        hostname: 'staging.convergenceokc.church',
-        protocol: 'https',
-      },
-      // All other subdomains as fallback
-      {
-        protocol: 'https',
-        hostname: '*.convergenceokc.church',
-      },
     ],
     qualities: [100],
     localPatterns: [
@@ -54,5 +42,9 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
 };
+
+console.log('🔍 Allow Local IP:', nextConfig.images.dangerouslyAllowLocalIP);
+console.log('🔍 Remote Patterns:', nextConfig.images.remotePatterns);
+console.log('🔍 Local Patterns:', nextConfig.images.localPatterns);
 
 export default withPayload(nextConfig);
