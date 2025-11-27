@@ -49,7 +49,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
 
     const cacheTag = resource.updatedAt;
 
-    src = `${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'}${url}?${cacheTag}`;
+    src = `${process.env.VERCEL_PROJECT_PRODUCTION_URL || 'http://localhost:3000'}${url}?${cacheTag}`;
   }
 
   const loading = loadingFromProps || (!priority ? 'lazy' : undefined);
