@@ -6,6 +6,8 @@ const NEXT_PUBLIC_SERVER_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
   ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
   : process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000';
 
+console.log('🔍 NEXT_PUBLIC_SERVER_URL:', NEXT_PUBLIC_SERVER_URL);
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -32,8 +34,8 @@ const nextConfig = {
       },
       // All other subdomains as fallback
       {
-        hostname: '*.convergenceokc.church',
         protocol: 'https',
+        hostname: '*.convergenceokc.church',
       },
     ],
     qualities: [100],
