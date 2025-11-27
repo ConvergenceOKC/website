@@ -18,6 +18,12 @@ const nextConfig = {
           protocol: url.protocol.replace(':', ''),
         };
       }),
+      {
+        protocol: 'https',
+        hostname: '**.convergenceokc.church',
+        port: '',
+        search: '',
+      },
     ],
     qualities: [100],
     localPatterns: [
