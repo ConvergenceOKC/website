@@ -17,7 +17,10 @@ console.log('🔍 NODE_ENV:', process.env.NODE_ENV);
 const nextConfig = {
   images: {
     dangerouslyAllowLocalIP:
-      process.env.NODE_ENV === 'development' ? true : false,
+      process.env.NODE_ENV === 'development' ||
+      NEXT_PUBLIC_SERVER_URL === 'http://localhost:3000'
+        ? true
+        : false,
     remotePatterns: [
       // Current domain (production, staging, or localhost)
       ...[NEXT_PUBLIC_SERVER_URL].map((item) => {
@@ -27,6 +30,11 @@ const nextConfig = {
           protocol: url.protocol.replace(':', ''),
         };
       }),
+      {
+        protocol: 'https',
+        hostname: 'staging.convergenceokc.church',
+        search: '*',
+      },
     ],
     qualities: [100],
     localPatterns: [
