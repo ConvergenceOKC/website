@@ -20,9 +20,19 @@ const nextConfig = {
           protocol: url.protocol.replace(':', ''),
         };
       }),
+      // Explicit production domain (for fallback images)
       {
-        // All subdomains
-        hostname: '**.convergenceokc.church',
+        hostname: 'convergenceokc.church',
+        protocol: 'https',
+      },
+      // Explicit staging domain
+      {
+        hostname: 'staging.convergenceokc.church',
+        protocol: 'https',
+      },
+      // All other subdomains as fallback
+      {
+        hostname: '*.convergenceokc.church',
         protocol: 'https',
       },
     ],
