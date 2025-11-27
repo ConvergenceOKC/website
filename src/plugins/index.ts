@@ -12,6 +12,7 @@ import {
 } from '@payloadcms/richtext-lexical';
 import { Plugin } from 'payload';
 
+import { processFormSubmission } from '@/hooks/processFormSubmission';
 import { revalidateForm } from '@/hooks/revalidateForm';
 import { revalidateRedirects } from '@/hooks/revalidateRedirects';
 import { Page, Post } from '@/payload-types';
@@ -91,6 +92,11 @@ export const plugins: Plugin[] = [
           }
           return field;
         });
+      },
+    },
+    formSubmissionOverrides: {
+      hooks: {
+        afterChange: [processFormSubmission],
       },
     },
   }),

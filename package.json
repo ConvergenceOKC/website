@@ -19,6 +19,7 @@
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
   },
   "dependencies": {
+    "@mailchimp/mailchimp_marketing": "^3.0.80",
     "@payloadcms/db-mongodb": "^3.58.0",
     "@payloadcms/email-nodemailer": "^3.58.0",
     "@payloadcms/email-resend": "^3.58.0",
@@ -68,6 +69,7 @@
     "@tailwindcss/typography": "^0.5.19",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/escape-html": "^1.0.4",
+    "@types/mailchimp__mailchimp_marketing": "^3.0.22",
     "@types/node": "24.6.2",
     "@types/react": "19.2.0",
     "@types/react-dom": "19.2.0",
