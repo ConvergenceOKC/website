@@ -41,7 +41,9 @@ export const processFormSubmission: CollectionAfterChangeHook = async ({
         );
       }
     } catch (error) {
-      payload.logger.error(`Error processing Mailchimp subscription: ${error}`);
+      payload.logger.error(
+        `Error processing Mailchimp subscription: ${error.response?.body.detail || error.message}`,
+      );
     }
   }
 };
