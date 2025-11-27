@@ -16,7 +16,6 @@ console.log('🔍 NODE_ENV:', process.env.NODE_ENV);
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    unoptimized: true,
     dangerouslyAllowLocalIP:
       process.env.NODE_ENV === 'development' ||
       NEXT_PUBLIC_SERVER_URL === 'http://localhost:3000'
