@@ -28,9 +28,7 @@ const nextConfig = {
   },
   reactStrictMode: true,
   redirects,
-  experimental: {
-    reactCompiler: true,
-  },
+  reactCompiler: true,
   typescript: {
     ignoreBuildErrors: true,
   },
