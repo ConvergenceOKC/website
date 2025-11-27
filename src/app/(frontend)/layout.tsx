@@ -3,6 +3,8 @@ import { DM_Sans, League_Spartan } from 'next/font/google';
 import localFont from 'next/font/local';
 import React from 'react';
 
+import { Analytics } from '@vercel/analytics/next';
+
 import { Footer } from '@/Footer/Component';
 import { Header } from '@/Header/Component';
 import { TailwindIndicator } from '@/components/TailwindIndicator';
@@ -56,6 +58,7 @@ export default async function RootLayout({
           {children}
           <Footer />
           <TailwindIndicator />
+          <Analytics />
         </Providers>
       </body>
     </html>
