@@ -28,6 +28,7 @@ export const MediaBlock: React.FC<Props> = (props) => {
     disableInnerContainer,
     enableLink,
     link,
+    size,
   } = props;
 
   let caption;
@@ -49,6 +50,7 @@ export const MediaBlock: React.FC<Props> = (props) => {
             imgClassName={cn(imgClassName, 'rounded-lg')}
             resource={media}
             src={staticImage}
+            size={size}
           />
         </CMSLink>
       ) : (
@@ -56,6 +58,7 @@ export const MediaBlock: React.FC<Props> = (props) => {
           imgClassName={cn(imgClassName, 'rounded-lg')}
           resource={media}
           src={staticImage}
+          size={size}
         />
       )}
       {caption && (

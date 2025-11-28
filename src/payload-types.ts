@@ -606,6 +606,7 @@ export interface ContentBlock {
  */
 export interface MediaBlock {
   media: string | Media;
+  size: 'original' | '16:9' | '4:3' | 'xlarge' | 'large' | 'medium' | 'small' | 'square' | 'thumbnail' | 'og';
   enableLink?: boolean | null;
   link?: {
     type?: ('reference' | 'custom') | null;
@@ -1605,6 +1606,7 @@ export interface ContentBlockSelect<T extends boolean = true> {
  */
 export interface MediaBlockSelect<T extends boolean = true> {
   media?: T;
+  size?: T;
   enableLink?: T;
   link?:
     | T

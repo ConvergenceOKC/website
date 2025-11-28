@@ -45,7 +45,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "redirects.js",
-    "next.config.js",
+    "next.config.mjs",
     "next-sitemap.config.cjs",
     "src/global.d.ts",
     ".next/dev/types/**/*.ts"

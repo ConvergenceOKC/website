@@ -8,6 +8,7 @@ export interface Props {
   className?: string;
   fill?: boolean; // for NextImage only
   htmlElement?: ElementType | null;
+  pictureClassName?: string;
   imgClassName?: string;
   onClick?: () => void;
   onLoad?: () => void;
@@ -15,7 +16,9 @@ export interface Props {
   priority?: boolean; // for NextImage only
   ref?: Ref<HTMLImageElement | HTMLVideoElement | null>;
   resource?: MediaType | string | number | null; // for Payload media
-  size?: string; // for NextImage only
+  size?: MediaType extends { sizes?: infer S }
+    ? keyof S | 'original'
+    : 'original'; // for NextImage only
   sizes?: string;
   src?: StaticImageData; // for static media
   videoClassName?: string;

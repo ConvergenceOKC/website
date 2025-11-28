@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 
-import { getClientSideURL } from '@/utilities/getURL';
+import { getMediaUrl } from '@/utilities/getMediaUrl';
 import { cn } from '@/utilities/ui';
 
 import type { Props as MediaProps } from '../types';
@@ -37,7 +37,7 @@ export const VideoMedia: React.FC<MediaProps> = (props) => {
         playsInline
         ref={videoRef}
       >
-        <source src={`${getClientSideURL()}/api/media/file/${filename}`} />
+        <source src={getMediaUrl(`api/media/file/${filename}`)} />
       </video>
     );
   }

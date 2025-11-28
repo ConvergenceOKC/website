@@ -5,7 +5,7 @@ import NextImage from 'next/image';
 import React from 'react';
 
 import { cssVariables } from '@/cssVariables';
-import { getClientSideURL } from '@/utilities/getURL';
+import { getMediaUrl } from '@/utilities/getMediaUrl';
 import { cn } from '@/utilities/ui';
 
 import type { Props as MediaProps } from '../types';
@@ -20,13 +20,13 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
   const {
     alt: altFromProps,
     fill,
+    pictureClassName,
     imgClassName,
     priority,
     resource,
     size: sizeFromProps,
     src: srcFromProps,
     loading: loadingFromProps,
-    placeholder: placeholderFromProps = true,
   } = props;
 
   let width: number | undefined;
@@ -40,7 +40,6 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
       height: fullHeight,
       url,
       width: fullWidth,
-      sizes: _,
     } = resource;
 
     width = fullWidth!;
@@ -49,7 +48,17 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
 
     const cacheTag = resource.updatedAt;
 
-    src = `${getClientSideURL()}${url}?${cacheTag}`;
+    if (props.size && props.size !== 'original') {
+      const imagePath =
+        resource.sizes?.[props.size as keyof typeof resource.sizes]?.url;
+      if (imagePath) {
+        src = getMediaUrl(imagePath, cacheTag);
+      } else {
+        src = getMediaUrl(url, cacheTag);
+      }
+    } else {
+      src = getMediaUrl(url, cacheTag);
+    }
   }
 
   const loading = loadingFromProps || (!priority ? 'lazy' : undefined);
@@ -62,13 +71,13 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         .join(', ');
 
   return (
-    <picture>
+    <picture className={cn(pictureClassName)}>
       <NextImage
         alt={alt || ''}
-        className={cn(imgClassName, '')}
+        className={cn(imgClassName)}
         fill={fill}
         height={!fill ? height : undefined}
-        placeholder={placeholderFromProps ? 'blur' : undefined}
+        placeholder="blur"
         blurDataURL={placeholderBlur}
         priority={priority}
         quality={100}
