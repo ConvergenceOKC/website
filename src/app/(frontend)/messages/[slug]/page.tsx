@@ -9,7 +9,6 @@ import { getPayload } from 'payload';
 import Balancer from 'react-wrap-balancer';
 
 import { MoreFromSeries } from '@/blocks/Messages/MoreFromSeries';
-import { RecentSeries } from '@/blocks/Messages/RecentSeries';
 import { RenderBreadcrumbs } from '@/components/Breadcrumbs';
 import { Media } from '@/components/Media';
 import { PayloadRedirects } from '@/components/PayloadRedirects';
@@ -156,6 +155,7 @@ export default async function Message({ params: paramsPromise }: Args) {
             <Media
               resource={message.thumbnail}
               imgClassName="object-cover object-center hover:scale-110 transition-transform duration-300 max-h-[700px]"
+              size='16:9'
             />
           </div>
         </Link>

@@ -26,6 +26,7 @@ export const RecentSeries: React.FC = async () => {
               <Media
                 resource={series?.thumbnail}
                 imgClassName="h-60 object-cover object-center hover:scale-110 transition-transform duration-300"
+                size='4:3'
               />
             </div>
             <h5>{series?.title}</h5>

@@ -41,6 +41,7 @@ export const RecentMessages: React.FC<RecentMessagesProps> = async ({
               <Media
                 resource={message.thumbnail}
                 imgClassName="h-60 object-cover object-center hover:scale-110 transition-transform duration-300"
+                size='4:3'
               />
             </div>
             <h5>{message.title}</h5>

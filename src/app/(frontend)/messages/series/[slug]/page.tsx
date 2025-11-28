@@ -133,6 +133,7 @@ export default async function Series({ params: paramsPromise }: Args) {
               <Media
                 resource={message.thumbnail}
                 imgClassName="h-60 object-cover object-center hover:scale-110 transition-transform duration-300"
+                size='4:3'
               />
             </div>
             <div className="mt-2 flex flex-col">
@@ -146,7 +147,7 @@ export default async function Series({ params: paramsPromise }: Args) {
                   message.scripture.length > 0 && (
                     <>
                       <Dot className="h-3 w-3 sm:h-4 sm:w-4" />
-                      <span className="break-words">
+                      <span className="wrap-break-word">
                         {message.scripture
                           .map((ref) => {
                             if (ref.book && ref.chapter && ref.verses) {

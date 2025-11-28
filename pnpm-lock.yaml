@@ -89,6 +89,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      convergence:
+        specifier: 'link:'
+        version: 'link:'
       cross-env:
         specifier: ^10.1.0
         version: 10.1.0

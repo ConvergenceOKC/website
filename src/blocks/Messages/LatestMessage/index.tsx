@@ -35,6 +35,7 @@ export const LatestMessage: React.FC = async () => {
             <Media
               resource={message.thumbnail}
               imgClassName="object-cover object-center hover:scale-110 transition-transform duration-300 max-h-[700px]"
+              size='16:9'
             />
           </div>
         </Link>
@@ -62,7 +63,7 @@ export const LatestMessage: React.FC = async () => {
                 message.scripture.length > 0 && (
                   <>
                     <Dot className="h-3 w-3 sm:h-4 sm:w-4" />
-                    <span className="break-words">
+                    <span className="wrap-break-word">
                       {message.scripture
                         .map((ref) => {
                           if (ref.book && ref.chapter && ref.verses) {
@@ -107,7 +108,7 @@ export const LatestMessage: React.FC = async () => {
                 <Link href={message.notes}>Sermon Notes</Link>
               </Button>
             )}
-            {message.series && (
+            {message.series && typeof message.series === 'object' && 'slug' in message.series && (
               <Button
                 asChild
                 variant={'secondary'}
