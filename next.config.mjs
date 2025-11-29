@@ -22,6 +22,8 @@ const nextConfig = {
       {
         hostname: 'staging.convergenceokc.church',
         protocol: 'https',
+        search: '**',
+        pathname: '/**',
       },
     ],
     qualities: [100],
