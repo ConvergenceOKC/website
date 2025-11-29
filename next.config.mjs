@@ -19,10 +19,6 @@ const nextConfig = {
           protocol: url.protocol.replace(':', ''),
         };
       }),
-      {
-        hostname: 'staging.convergenceokc.church',
-        protocol: 'https',
-      },
     ],
     qualities: [100],
     localPatterns: [
@@ -47,11 +43,5 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
 };
-
-console.log(
-  'dangerouslyAllowLocalIP:',
-  nextConfig.images.dangerouslyAllowLocalIP,
-);
-console.log('remotePatterns:', nextConfig.images.remotePatterns);
 
 export default withPayload(nextConfig, { devBundleServerPackages: false });
