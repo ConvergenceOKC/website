@@ -22,11 +22,10 @@ const nextConfig = {
       {
         hostname: 'staging.convergenceokc.church',
         protocol: 'https',
-        search: '**',
-        pathname: '/**',
       },
     ],
     qualities: [100],
+    imageSizes: [1280, 1536, 2048, 2560, 3072, 3840],
     localPatterns: [
       {
         pathname: '/api/media/file/**',
