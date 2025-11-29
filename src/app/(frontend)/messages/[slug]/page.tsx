@@ -16,6 +16,7 @@ import { Button } from '@/components/ui/button';
 import { formatDateTime } from '@/utilities/formatDateTime';
 import { generateMeta } from '@/utilities/generateMeta';
 import { MediaPlayer } from '@/components/MediaPlayer';
+import { MessageInfoBar } from '@/blocks/Messages/MessageInfoBar';
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise });
@@ -82,43 +83,7 @@ export default async function Message({ params: paramsPromise }: Args) {
           <Balancer>{message.title}</Balancer>
         </h3>
         {/* Message Info Bar */}
-        <div className="mb-6 flex flex-wrap items-center gap-0 text-sm uppercase opacity-70">
-          <span>{formatDateTime(message.date)}</span>
-          {message.series && (
-            <>
-              <Dot />
-              <span>
-                {typeof message.series === 'object' && 'title' in message.series
-                  ? message.series.title
-                  : message.series}
-              </span>
-            </>
-          )}
-          {Array.isArray(message.scripture) && message.scripture.length > 0 && (
-            <>
-              <Dot />
-              <span>
-                {message.scripture
-                  .map((ref) => {
-                    if (ref.book && ref.chapter && ref.verses) {
-                      return `${ref.book} ${ref.chapter}:${ref.verses}`;
-                    } else if (ref.book && ref.chapter) {
-                      return `${ref.book} ${ref.chapter}`;
-                    } else {
-                      return `${ref.book}`;
-                    }
-                  })
-                  .join('; ')}
-              </span>
-            </>
-          )}
-          <Dot />
-          <span>
-            {typeof message.speaker === 'object' && 'name' in message.speaker
-              ? message.speaker.name
-              : message.speaker}
-          </span>
-        </div>
+        <MessageInfoBar message={message} />
         <p>{message.description}</p>
         {/* Message Button Bar */}
         <div className="mb-10 flex flex-col gap-3 sm:flex-row">

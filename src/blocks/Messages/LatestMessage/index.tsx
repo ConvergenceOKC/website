@@ -1,14 +1,11 @@
-import Image from 'next/image';
 import Link from 'next/link';
 
-import { Dot } from 'lucide-react';
 import Balancer from 'react-wrap-balancer';
 
 import { getLatestMessage } from '@/blocks/Messages/getLatestMessage';
-import { Media } from '@/components/Media';
 import { Button } from '@/components/ui/button';
-import { formatDateTime } from '@/utilities/formatDateTime';
 import { MediaPlayer } from '@/components/MediaPlayer';
+import { MessageInfoBar } from '@/blocks/Messages/MessageInfoBar';
 
 export const LatestMessage: React.FC = async () => {
   const messageDoc = await getLatestMessage();
@@ -26,46 +23,7 @@ export const LatestMessage: React.FC = async () => {
               <Balancer>{message.title}</Balancer>
             </h3>
             {/* Message Info Bar */}
-            <div className="mb-4 flex flex-wrap items-center gap-0 text-xs uppercase opacity-70 sm:mb-6 sm:text-sm">
-              <span>{formatDateTime(message.date)}</span>
-              {message.series && (
-                <>
-                  <Dot className="h-3 w-3 sm:h-4 sm:w-4" />
-                  <span>
-                    {typeof message.series === 'object' &&
-                    'title' in message.series
-                      ? message.series.title
-                      : message.series}
-                  </span>
-                </>
-              )}
-              {Array.isArray(message.scripture) &&
-                message.scripture.length > 0 && (
-                  <>
-                    <Dot className="h-3 w-3 sm:h-4 sm:w-4" />
-                    <span className="wrap-break-word">
-                      {message.scripture
-                        .map((ref) => {
-                          if (ref.book && ref.chapter && ref.verses) {
-                            return `${ref.book} ${ref.chapter}:${ref.verses}`;
-                          } else if (ref.book && ref.chapter) {
-                            return `${ref.book} ${ref.chapter}`;
-                          } else {
-                            return `${ref.book}`;
-                          }
-                        })
-                        .join('; ')}
-                    </span>
-                  </>
-                )}
-              <Dot className="h-3 w-3 sm:h-4 sm:w-4" />
-              <span>
-                {typeof message.speaker === 'object' &&
-                'name' in message.speaker
-                  ? message.speaker.name
-                  : message.speaker}
-              </span>
-            </div>
+            <MessageInfoBar message={message} />
             <p className="text-sm leading-relaxed sm:text-base">
               {message.description}
             </p>
