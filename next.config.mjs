@@ -6,6 +6,8 @@ const NEXT_PUBLIC_SERVER_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
   ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
   : undefined || process.env.__NEXT_PRIVATE_ORIGIN || 'http://localhost:3000';
 
+console.log('NEXT_PUBLIC_VERCEL_ENV', process.env.NEXT_PUBLIC_VERCEL_ENV)
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -40,6 +42,25 @@ const nextConfig = {
   redirects,
   typescript: {
     ignoreBuildErrors: true,
+  },
+  // Add noindex header for Vercel preview environments
+  async headers() {
+    const headers = [];
+    
+    // Add noindex header for staging/preview environments
+    if (process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview') {
+      headers.push({
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'x-robots-tag',
+            value: 'noindex',
+          },
+        ],
+      });
+    }
+    
+    return headers;
   },
 };
 
