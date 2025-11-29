@@ -8,6 +8,7 @@ import { getLatestMessage } from '@/blocks/Messages/getLatestMessage';
 import { Media } from '@/components/Media';
 import { Button } from '@/components/ui/button';
 import { formatDateTime } from '@/utilities/formatDateTime';
+import { MediaPlayer } from '@/components/MediaPlayer';
 
 export const LatestMessage: React.FC = async () => {
   const messageDoc = await getLatestMessage();
@@ -16,29 +17,8 @@ export const LatestMessage: React.FC = async () => {
   if (message) {
     return (
       <div className="flex flex-col gap-6">
-        {/* Message Thumbnail */}
-        <Link
-          href={message.video}
-          className="relative cursor-pointer"
-          target="_blank"
-        >
-          <div className="pointer-events-none absolute z-10 flex h-full w-full items-center justify-center">
-            <Image
-              src="/images/play-icon.svg"
-              alt="Play button"
-              width={40}
-              height={40}
-              className="sm:h-[60px] sm:w-[60px] md:h-[100px] md:w-[100px]"
-            />
-          </div>
-          <div className="w-full overflow-hidden rounded-lg">
-            <Media
-              resource={message.thumbnail}
-              imgClassName="object-cover object-center hover:scale-110 transition-transform duration-300 max-h-[700px]"
-              size='16:9'
-            />
-          </div>
-        </Link>
+        {/* Message Player */}
+        <MediaPlayer message={message} />
         <div className="flex flex-col gap-4 sm:gap-6 lg:flex-row lg:gap-10">
           {/* Message Details */}
           <div className="flex-1">

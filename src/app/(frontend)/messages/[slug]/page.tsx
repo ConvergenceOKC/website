@@ -15,6 +15,7 @@ import { PayloadRedirects } from '@/components/PayloadRedirects';
 import { Button } from '@/components/ui/button';
 import { formatDateTime } from '@/utilities/formatDateTime';
 import { generateMeta } from '@/utilities/generateMeta';
+import { MediaPlayer } from '@/components/MediaPlayer';
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise });
@@ -137,28 +138,8 @@ export default async function Message({ params: paramsPromise }: Args) {
               <Link href={'/messages'}>All Messages</Link>
             </Button> */}
         </div>
-        {/* Message Thumbnail */}
-        <Link
-          href={message.video}
-          className="relative cursor-pointer"
-          target="_blank"
-        >
-          <div className="pointer-events-none absolute z-10 flex h-full w-full items-center justify-center">
-            <Image
-              src="/images/play-icon.svg"
-              alt="Play button"
-              width={100}
-              height={100}
-            />
-          </div>
-          <div className="w-full overflow-hidden rounded-lg">
-            <Media
-              resource={message.thumbnail}
-              imgClassName="object-cover object-center hover:scale-110 transition-transform duration-300 max-h-[700px]"
-              size='16:9'
-            />
-          </div>
-        </Link>
+        {/* Message Player */}
+        <MediaPlayer message={message} />
       </div>
       <div className="bg-convergence-beige-darker flex flex-col gap-16 py-24">
         <div className="container">
