@@ -10,6 +10,10 @@ import { cn } from '@/utilities/ui';
 
 import type { Props as MediaProps } from '../types';
 
+const imageLoader = ({ src, width, quality = 100 }: { src: string; width: number; quality?: number }) => {
+  return `${getMediaUrl(src)}?w=${width}&q=${quality}`
+}
+
 const { breakpoints } = cssVariables;
 
 // A base64 encoded image to use as a placeholder while the image is loading
@@ -73,6 +77,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
   return (
     <picture className={cn(pictureClassName)}>
       <NextImage
+        loader={imageLoader}
         alt={alt || ''}
         className={cn(imgClassName)}
         fill={fill}
