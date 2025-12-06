@@ -4,6 +4,7 @@ import localFont from 'next/font/local';
 import React from 'react';
 
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { Footer } from '@/Footer/Component';
 import { Header } from '@/Header/Component';
@@ -59,6 +60,7 @@ export default async function RootLayout({
           <Footer />
           <TailwindIndicator />
           <Analytics />
+          <SpeedInsights />
         </Providers>
       </body>
     </html>
