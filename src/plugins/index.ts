@@ -15,6 +15,7 @@ import { Plugin } from 'payload';
 import { processFormSubmission } from '@/hooks/processFormSubmission';
 import { revalidateForm } from '@/hooks/revalidateForm';
 import { revalidateRedirects } from '@/hooks/revalidateRedirects';
+import { validateRecaptcha } from '@/hooks/validateRecaptcha';
 import { Page, Post } from '@/payload-types';
 import { beforeSyncWithSearch } from '@/search/beforeSync';
 import { searchFields } from '@/search/fieldOverrides';
@@ -97,6 +98,7 @@ export const plugins: Plugin[] = [
     formSubmissionOverrides: {
       hooks: {
         afterChange: [processFormSubmission],
+        beforeValidate: [validateRecaptcha],
       },
     },
   }),
