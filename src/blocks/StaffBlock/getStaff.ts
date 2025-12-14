@@ -20,6 +20,7 @@ export const getStaff = unstable_cache(
             in: roleIds,
           },
         },
+        depth: 2,
         limit: 1000,
         pagination: false,
         sort: ['name'],

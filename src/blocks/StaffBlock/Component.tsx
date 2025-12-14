@@ -2,15 +2,15 @@ import { getStaff } from '@/blocks/StaffBlock/getStaff';
 import { Media } from '@/components/Media';
 import RichText from '@/components/RichText';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Staff, StaffBlock as StaffBlockProps } from '@/payload-types';
+import { StaffBlock as StaffBlockProps } from '@/payload-types';
 
 export const StaffBlock: React.FC<StaffBlockProps> = async ({
   layout,
   roles,
 }) => {
   // Fetch staff members with the selected roles
-  const rolesToDisplay = roles?.map((role) => role.role || '') as string[];
-  const staff = await getStaff(rolesToDisplay);
+  const selectedRoles = roles?.map((role) => role.role || '') as string[];
+  const staff = await getStaff(selectedRoles);
 
   if (layout === '2-col') {
     return (
@@ -22,11 +22,14 @@ export const StaffBlock: React.FC<StaffBlockProps> = async ({
           >
             <div className="flex justify-center">
               <Avatar className="h-44 w-44 md:h-52 md:w-52 lg:h-72 lg:w-72">
-                {member.headshot && (
-                  <AvatarImage>
-                    <Media resource={member.headshot} />
-                  </AvatarImage>
-                )}
+                {typeof member.headshot === 'object' &&
+                  member.headshot?.url && (
+                    <AvatarImage
+                      src={member.headshot.url}
+                      alt={member.name}
+                      className="object-cover"
+                    />
+                  )}
                 <AvatarFallback className="bg-convergence-beige-darker text-convergence-teal text-4xl lg:text-7xl">
                   {member.name
                     .split(' ')
@@ -65,10 +68,12 @@ export const StaffBlock: React.FC<StaffBlockProps> = async ({
         {staff.docs.map((member) => (
           <div className="flex flex-col items-center gap-8" key={member.id}>
             <Avatar className="h-44 w-44 md:h-52 md:w-52">
-              {member.headshot && (
-                <AvatarImage>
-                  <Media resource={member.headshot} />
-                </AvatarImage>
+              {typeof member.headshot === 'object' && member.headshot?.url && (
+                <AvatarImage
+                  src={member.headshot.url}
+                  alt={member.name}
+                  className="object-cover"
+                />
               )}
               <AvatarFallback className="bg-convergence-beige-darker text-convergence-teal text-4xl">
                 {member.name
