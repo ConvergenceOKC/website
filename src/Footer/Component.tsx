@@ -28,7 +28,7 @@ export async function Footer() {
             {privacy && (
               <CMSLink
                 appearance="link"
-                className="text-convergence-beige/60 md:justify-left justify-center text-xs font-normal"
+                className="text-convergence-beige/60 md:justify-left justify-center text-xs"
                 reference={{
                   relationTo: 'pages',
                   value: privacy,

@@ -27,7 +27,7 @@ const buttonVariants = cva(
           'bg-destructive text-destructive-foreground hover:bg-destructive/90 uppercase no-underline',
         ghost:
           'hover:bg-card hover:text-card-foreground uppercase no-underline',
-        link: 'text-foreground items-start justify-start underline-offset-4 hover:underline no-underline',
+        link: 'text-foreground items-start justify-start underline-offset-4 hover:underline no-underline hover:opacity-90',
         outline:
           'border border-border bg-background hover:bg-card hover:text-card-foreground uppercase text-card-foreground! no-underline',
         secondary:
@@ -38,7 +38,8 @@ const buttonVariants = cva(
 );
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }

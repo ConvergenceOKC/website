@@ -34,7 +34,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
               key={i}
               {...link}
               appearance={link.appearance}
-              className="text-xs transition-opacity hover:opacity-70"
+              className="text-xs"
             />
           );
         })}
@@ -42,7 +42,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
 
       {/* Mobile Menu Button */}
       <button
-        className="z-50 flex h-8 w-8 items-center justify-center text-lg font-normal text-inherit transition-opacity hover:opacity-70 md:hidden"
+        className="z-50 flex h-8 w-8 items-center justify-center text-lg font-normal text-inherit md:hidden"
         onClick={toggleMobileMenu}
         aria-label="Toggle mobile menu"
         aria-expanded={isMobileMenuOpen}
@@ -69,7 +69,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
                       key={i}
                       {...link}
                       appearance={link.appearance}
-                      className="text-convergence-beige justify-center py-2 text-xs transition-opacity hover:opacity-70"
+                      className="text-convergence-beige justify-center py-2 text-xs"
                     />
                   );
                 })}
