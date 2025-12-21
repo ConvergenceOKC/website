@@ -9,7 +9,7 @@ export const revalidateStaff: CollectionAfterChangeHook &
   CollectionAfterDeleteHook = ({ doc, req: { context, payload } }) => {
   if (!context.disableRevalidate) {
     payload.logger.info(`Revalidating staff`);
-    revalidateTag('staff');
+    revalidateTag('staff', 'max');
   }
   return doc;
 };

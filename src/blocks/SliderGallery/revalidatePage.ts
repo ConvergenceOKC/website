@@ -14,7 +14,7 @@ export const revalidatePage: FieldHook = ({
       payload.logger.info(`Revalidating page at path: ${path}`);
 
       revalidatePath(path);
-      revalidateTag('pages-sitemap');
+      revalidateTag('pages-sitemap', 'max');
     }
 
     // If the page was previously published, we need to revalidate the old path
@@ -28,7 +28,7 @@ export const revalidatePage: FieldHook = ({
       payload.logger.info(`Revalidating old page at path: ${oldPath}`);
 
       revalidatePath(oldPath);
-      revalidateTag('pages-sitemap');
+      revalidateTag('pages-sitemap', 'max');
     }
   }
   return originalDoc;

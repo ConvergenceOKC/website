@@ -11,7 +11,7 @@ export const revalidateMap: CollectionAfterChangeHook = ({
 }) => {
   if (!context.disableRevalidate) {
     payload.logger.info(`Revalidating map`);
-    revalidateTag('house-churches');
+    revalidateTag('house-churches', 'max');
   }
   return doc;
 };
@@ -22,7 +22,7 @@ export const revalidateDelete: CollectionAfterDeleteHook = ({
 }) => {
   if (!context.disableRevalidate) {
     payload.logger.info(`Revalidating map`);
-    revalidateTag('house-churches');
+    revalidateTag('house-churches', 'max');
   }
 
   return doc;

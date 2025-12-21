@@ -13,7 +13,7 @@ export const revalidateSeries: CollectionAfterChangeHook<MessageSery> = ({
 }) => {
   if (!context.disableRevalidate) {
     payload.logger.info(`Revalidating message series`);
-    revalidateTag('messages');
+    revalidateTag('messages', 'max');
   }
 
   return doc;
@@ -24,7 +24,7 @@ export const revalidateDelete: CollectionAfterDeleteHook<MessageSery> = ({
   req: { context },
 }) => {
   if (!context.disableRevalidate) {
-    revalidateTag('messages');
+    revalidateTag('messages', 'max');
   }
 
   return doc;

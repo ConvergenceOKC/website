@@ -9,7 +9,7 @@ export const revalidateSocials: GlobalAfterChangeHook = ({
   if (!context.disableRevalidate) {
     payload.logger.info(`Revalidating socials`);
 
-    revalidateTag('global_socials');
+    revalidateTag('global_socials', 'max');
   }
 
   return doc;

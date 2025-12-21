@@ -3,6 +3,6 @@
 import { revalidateTag } from 'next/cache';
 
 export const revalidateTags = async () => {
-  revalidateTag('global_header');
-  revalidateTag('global_footer');
+  revalidateTag('global_header', 'max');
+  revalidateTag('global_footer', 'max');
 };
