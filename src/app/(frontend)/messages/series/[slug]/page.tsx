@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { unstable_cache } from 'next/cache';
 import Image from 'next/image';
 import Link from 'next/link';
 import { cache } from 'react';
@@ -133,7 +134,7 @@ export default async function Series({ params: paramsPromise }: Args) {
               <Media
                 resource={message.thumbnail}
                 imgClassName="h-60 object-cover object-center hover:scale-110 transition-transform duration-300"
-                size='4:3'
+                size="4:3"
               />
             </div>
             <div className="mt-2 flex flex-col">
@@ -191,21 +192,26 @@ export async function generateMetadata({
   return generateMeta({ doc: series });
 }
 
-const querySeriesBySlug = cache(async ({ slug }: { slug: string }) => {
-  const payload = await getPayload({ config: configPromise });
+const querySeriesBySlug = ({ slug }: { slug: string }) =>
+  unstable_cache(
+    async () => {
+      const payload = await getPayload({ config: configPromise });
 
-  const result = await payload.find({
-    collection: 'messageSeries',
-    draft: false,
-    limit: 1,
-    overrideAccess: false,
-    pagination: false,
-    where: {
-      slug: {
-        equals: slug,
-      },
+      const result = await payload.find({
+        collection: 'messageSeries',
+        draft: false,
+        limit: 1,
+        overrideAccess: false,
+        pagination: false,
+        where: {
+          slug: {
+            equals: slug,
+          },
+        },
+      });
+
+      return result.docs?.[0] || null;
     },
-  });
-
-  return result.docs?.[0] || null;
-});
+    [`${slug}`],
+    { tags: [`${slug}`] },
+  )();

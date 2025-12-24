@@ -12,8 +12,9 @@ export const revalidateMessages: CollectionAfterChangeHook<Message> = ({
   req: { payload, context },
 }) => {
   if (!context.disableRevalidate) {
-    payload.logger.info(`Revalidating messages`);
+    payload.logger.info(`Revalidating messages - message/${doc.slug}`);
     revalidateTag('messages', 'max');
+    revalidateTag(doc.slug || '', 'max'); // This is for the individual message page
   }
 
   return doc;
@@ -25,6 +26,7 @@ export const revalidateDelete: CollectionAfterDeleteHook<Message> = ({
 }) => {
   if (!context.disableRevalidate) {
     revalidateTag('messages', 'max');
+    revalidateTag(doc.slug || '', 'max'); // This is for the individual message page
   }
 
   return doc;

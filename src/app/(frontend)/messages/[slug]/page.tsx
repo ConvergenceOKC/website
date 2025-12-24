@@ -1,22 +1,18 @@
 import { Metadata } from 'next';
-import Image from 'next/image';
+import { unstable_cache } from 'next/cache';
 import Link from 'next/link';
-import { cache } from 'react';
 
 import configPromise from '@payload-config';
-import { Dot } from 'lucide-react';
 import { getPayload } from 'payload';
 import Balancer from 'react-wrap-balancer';
 
+import { MessageInfoBar } from '@/blocks/Messages/MessageInfoBar';
 import { MoreFromSeries } from '@/blocks/Messages/MoreFromSeries';
 import { RenderBreadcrumbs } from '@/components/Breadcrumbs';
-import { Media } from '@/components/Media';
+import { MediaPlayer } from '@/components/MediaPlayer';
 import { PayloadRedirects } from '@/components/PayloadRedirects';
 import { Button } from '@/components/ui/button';
-import { formatDateTime } from '@/utilities/formatDateTime';
 import { generateMeta } from '@/utilities/generateMeta';
-import { MediaPlayer } from '@/components/MediaPlayer';
-import { MessageInfoBar } from '@/blocks/Messages/MessageInfoBar';
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise });
@@ -124,21 +120,26 @@ export async function generateMetadata({
   return generateMeta({ doc: message });
 }
 
-const queryMessageBySlug = cache(async ({ slug }: { slug: string }) => {
-  const payload = await getPayload({ config: configPromise });
+const queryMessageBySlug = ({ slug }: { slug: string }) =>
+  unstable_cache(
+    async () => {
+      const payload = await getPayload({ config: configPromise });
 
-  const result = await payload.find({
-    collection: 'messages',
-    draft: false,
-    limit: 1,
-    overrideAccess: false,
-    pagination: false,
-    where: {
-      slug: {
-        equals: slug,
-      },
+      const result = await payload.find({
+        collection: 'messages',
+        draft: false,
+        limit: 1,
+        overrideAccess: false,
+        pagination: false,
+        where: {
+          slug: {
+            equals: slug,
+          },
+        },
+      });
+
+      return result.docs?.[0] || null;
     },
-  });
-
-  return result.docs?.[0] || null;
-});
+    [`${slug}`],
+    { tags: [`${slug}`] },
+  )();
