@@ -1,6 +1,7 @@
 import { mongooseAdapter } from '@payloadcms/db-mongodb';
 import { resendAdapter } from '@payloadcms/email-resend';
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob';
+import { attachDatabasePool } from '@vercel/functions';
 import path from 'path';
 import { buildConfig } from 'payload';
 import sharp from 'sharp';
@@ -79,6 +80,10 @@ export default buildConfig({
   editor: defaultLexical,
   db: mongooseAdapter({
     url: process.env.DATABASE_URL || '',
+    afterOpenConnection: async (adapter) => {
+      const client = adapter.connection.getClient();
+      attachDatabasePool(client);
+    },
   }),
   collections: [
     Pages,
