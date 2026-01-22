@@ -11,8 +11,8 @@ import { ContentPathway } from '@/blocks/ContentPathway/config';
 import { Embed } from '@/blocks/Embed/config';
 import { HouseChurchMap } from '@/blocks/HouseChurchMap/config';
 import { IconBlock } from '@/blocks/IconBlock/config';
-import { ImageCarousel } from '@/blocks/ImageCarousel/config';
 import { MessagesBlock } from '@/blocks/Messages/config';
+import { ShowcaseGallery } from '@/blocks/ShowcaseGallery/config';
 import { SliderGallery } from '@/blocks/SliderGallery/config';
 import { slugField } from '@/fields/slug';
 import { hero } from '@/heros/config';
@@ -86,13 +86,13 @@ export const Pages: CollectionConfig<'pages'> = {
                 MediaBlock,
                 Archive,
                 FormBlock,
-                SliderGallery,
+                ShowcaseGallery,
                 ContentPathway,
-                ImageCarousel,
                 MessagesBlock,
                 HouseChurchMap,
                 Embed,
                 IconBlock,
+                SliderGallery,
               ],
               required: true,
               admin: {

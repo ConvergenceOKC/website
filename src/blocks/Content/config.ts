@@ -14,9 +14,8 @@ import { ContentPathway } from '@/blocks/ContentPathway/config';
 import { Embed } from '@/blocks/Embed/config';
 import { HouseChurchMap } from '@/blocks/HouseChurchMap/config';
 import { IconBlock } from '@/blocks/IconBlock/config';
-import { ImageCarousel } from '@/blocks/ImageCarousel/config';
 import { MessagesBlock } from '@/blocks/Messages/config';
-import { SliderGallery } from '@/blocks/SliderGallery/config';
+import { ShowcaseGallery } from '@/blocks/ShowcaseGallery/config';
 import { StaffBlock } from '@/blocks/StaffBlock/config';
 import { link } from '@/fields/link';
 
@@ -24,6 +23,7 @@ import { ButtonBlock } from '../ButtonBlock/config';
 import { FormBlock } from '../Form/config';
 import { LinkGroupBlock } from '../LinkGroupBlock/config';
 import { MediaBlock } from '../MediaBlock/config';
+import { SliderGallery } from '../SliderGallery/config';
 
 const settingsFields: Field[] = [
   {
@@ -231,14 +231,14 @@ const columnFields: Field[] = [
               MediaBlock,
               LinkGroupBlock,
               ButtonBlock,
-              SliderGallery,
+              ShowcaseGallery,
               ContentPathway,
-              ImageCarousel,
               MessagesBlock,
               HouseChurchMap,
               Embed,
               IconBlock,
               StaffBlock,
+              SliderGallery,
             ],
           }),
           AlignFeature(),

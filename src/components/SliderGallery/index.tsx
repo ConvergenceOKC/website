@@ -6,17 +6,20 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import { CMSLink } from '@/components/Link';
 import { Media } from '@/components/Media';
-import { ImageCarouselBlock as ImageCarouselProps } from '@/payload-types';
+import { SliderGalleryBlock as SliderGalleryProps } from '@/payload-types';
 import { cn } from '@/utilities/ui';
 
-export const ImageCarouselBlock: React.FC<ImageCarouselProps> = ({
-  autoPlayInterval,
-  images,
-}) => {
+export const SliderGallery: React.FC<
+  Pick<SliderGalleryProps, 'autoPlayInterval' | 'images'>
+> = ({ autoPlayInterval, images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const touchStartX = useRef<number | null>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
+
+  if (!images || images.length === 0) {
+    return null;
+  }
 
   const goToPrevious = useCallback(() => {
     const isFirstImage = currentIndex === 0;
@@ -36,13 +39,14 @@ export const ImageCarouselBlock: React.FC<ImageCarouselProps> = ({
 
   // Handle touch events for mobile swiping
   const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
+    touchStartX.current = e.touches[0]?.clientX ?? null;
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
     if (touchStartX.current === null) return;
 
-    const touchEndX = e.touches[0].clientX;
+    const touchEndX = e.touches[0]?.clientX ?? null;
+    if (touchEndX === null) return;
     const diff = touchStartX.current - touchEndX;
 
     // Swipe threshold
@@ -99,14 +103,10 @@ export const ImageCarouselBlock: React.FC<ImageCarouselProps> = ({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [goToPrevious, goToNext]);
 
-  if (!images || images.length === 0) {
-    return null;
-  }
-
   return (
     <div
       className={cn(
-        'relative h-[300px] w-full overflow-hidden rounded-lg md:h-[450px]',
+        'relative h-[300px] w-full cursor-pointer overflow-hidden rounded-lg xl:h-[480px] 2xl:h-[560px]',
       )}
       ref={carouselRef}
       onMouseEnter={pauseAutoPlay}
@@ -120,24 +120,30 @@ export const ImageCarouselBlock: React.FC<ImageCarouselProps> = ({
         className="flex h-full transition-transform duration-500 ease-out"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
-        {images.map((image) => (
+        {images.map((item) => (
           <div
-            key={image.id}
+            key={item.id}
             className="group relative h-full w-full flex-shrink-0 overflow-hidden"
             aria-roledescription="slide"
           >
-            <CMSLink {...image.link}>
+            <CMSLink
+              {...item.link}
+              className="relative block h-full w-full overflow-hidden"
+            >
               <Media
-                resource={image.image}
-                imgClassName="h-full w-full object-cover group-hover:scale-110 transition-transform duration-300"
+                resource={item.image}
+                fill
+                pictureClassName="block h-full w-full"
+                imgClassName="object-cover object-center group-hover:scale-110 transition-transform duration-300"
+                size="panoramic"
               />
               <div className="text-convergence-beige bg-convergence-brown/30 absolute inset-0 flex flex-col justify-end px-4 pb-4 sm:px-6 sm:pb-6 md:px-16 md:pb-10">
                 <h5 className="text-base leading-tight sm:text-lg md:text-2xl">
-                  {image.title}
+                  {item.title}
                 </h5>
-                {image.description && (
+                {item.description && (
                   <p className="mt-1 line-clamp-2 text-xs sm:mt-2 sm:line-clamp-none sm:text-sm md:text-base">
-                    {image.description}
+                    {item.description}
                   </p>
                 )}
               </div>

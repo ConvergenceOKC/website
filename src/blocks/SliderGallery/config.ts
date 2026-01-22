@@ -7,83 +7,34 @@ export const SliderGallery: Block = {
   interfaceName: 'SliderGalleryBlock',
   fields: [
     {
-      name: 'showMegaTitle',
-      type: 'checkbox',
-      defaultValue: false,
+      name: 'autoPlayInterval',
+      type: 'number',
+      defaultValue: 5,
     },
     {
-      type: 'row',
-      fields: [
+      name: 'source',
+      type: 'select',
+      options: [
         {
-          name: 'megaTitle',
-          type: 'text',
-          label: 'Mega Title',
-          required: false,
-          admin: {
-            condition: (data, siblingData, { blockData }) => {
-              return blockData?.showMegaTitle;
-            },
-          },
+          label: 'Images',
+          value: 'images',
         },
         {
-          name: 'titleColor',
-          type: 'select',
-          options: [
-            {
-              label: 'Brown',
-              value: 'brown',
-            },
-            {
-              label: 'Teal',
-              value: 'teal',
-            },
-            {
-              label: 'Beige',
-              value: 'beige',
-            },
-            {
-              label: 'Orange',
-              value: 'orange',
-            },
-            {
-              label: 'Blue',
-              value: 'blue',
-            },
-          ],
-          defaultValue: 'orange',
-          admin: {
-            condition: (data, siblingData, { blockData }) => {
-              return blockData?.showMegaTitle;
-            },
-          },
+          label: 'Events',
+          value: 'events',
         },
       ],
-    },
-    {
-      name: 'showSubtitle',
-      type: 'checkbox',
-      defaultValue: false,
-    },
-    {
-      name: 'subtitle',
-      type: 'text',
-      label: 'Subtitle',
-      required: false,
-      admin: {
-        condition: (data, siblingData, { blockData }) => {
-          return blockData?.showSubtitle;
-        },
-      },
+      defaultValue: 'images',
+      required: true,
     },
     {
       name: 'images',
       type: 'array',
-      label: 'Images',
       minRows: 1,
       maxRows: 10,
       admin: {
-        components: {
-          RowLabel: '@/blocks/SliderGallery/RowLabel#RowLabel',
+        condition: (_, siblingData) => {
+          return siblingData?.source === 'images';
         },
       },
       fields: [
@@ -99,12 +50,14 @@ export const SliderGallery: Block = {
           required: true,
         },
         {
-          name: 'caption',
-          type: 'textarea',
-          label: 'Caption',
-          required: false,
+          name: 'description',
+          type: 'text',
+          required: true,
         },
-        link(),
+        link({
+          appearances: false,
+          disableLabel: true,
+        }),
       ],
     },
   ],

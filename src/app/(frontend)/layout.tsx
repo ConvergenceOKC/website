@@ -45,7 +45,7 @@ export default async function RootLayout({
     <html
       className={cn(heading.variable, subheading.variable, body.variable)}
       lang="en"
-      suppressHydrationWarning
+      suppressHydrationWarning={true}
     >
       <head>
         <InitTheme />

@@ -73,6 +73,7 @@ export interface Config {
     categories: Category;
     users: User;
     'house-churches': HouseChurch;
+    events: Event;
     messages: Message;
     messageSeries: MessageSery;
     staff: Staff;
@@ -100,6 +101,7 @@ export interface Config {
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'house-churches': HouseChurchesSelect<false> | HouseChurchesSelect<true>;
+    events: EventsSelect<false> | EventsSelect<true>;
     messages: MessagesSelect<false> | MessagesSelect<true>;
     messageSeries: MessageSeriesSelect<false> | MessageSeriesSelect<true>;
     staff: StaffSelect<false> | StaffSelect<true>;
@@ -219,13 +221,13 @@ export interface Page {
     | MediaBlock
     | ArchiveBlock
     | FormBlock
-    | SliderGalleryBlock
+    | ShowcaseGalleryBlock
     | ContentPathwayBlock
-    | ImageCarouselBlock
     | MessagesBlock
     | HouseChurchMapBlock
     | EmbedBlock
     | IconBlock
+    | SliderGalleryBlock
   )[];
   meta?: {
     title?: string | null;
@@ -351,22 +353,6 @@ export interface Media {
       filesize?: number | null;
       filename?: string | null;
     };
-    '16:9'?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    '4:3'?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
     square?: {
       url?: string | null;
       width?: number | null;
@@ -400,6 +386,30 @@ export interface Media {
       filename?: string | null;
     };
     xlarge?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    '16:9'?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    '4:3'?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    panoramic?: {
       url?: string | null;
       width?: number | null;
       height?: number | null;
@@ -862,9 +872,9 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "SliderGalleryBlock".
+ * via the `definition` "ShowcaseGalleryBlock".
  */
-export interface SliderGalleryBlock {
+export interface ShowcaseGalleryBlock {
   showMegaTitle?: boolean | null;
   megaTitle?: string | null;
   titleColor?: ('brown' | 'teal' | 'beige' | 'orange' | 'blue') | null;
@@ -899,7 +909,7 @@ export interface SliderGalleryBlock {
     | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'sliderGallery';
+  blockType: 'showcaseGallery';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -936,38 +946,6 @@ export interface ContentPathwayBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'contentPathway';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ImageCarouselBlock".
- */
-export interface ImageCarouselBlock {
-  autoPlayInterval?: number | null;
-  images?:
-    | {
-        image: string | Media;
-        title: string;
-        description: string;
-        link?: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: string | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: string | Post;
-              } | null);
-          url?: string | null;
-        };
-        id?: string | null;
-      }[]
-    | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'imageCarousel';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1135,6 +1113,39 @@ export interface IconBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SliderGalleryBlock".
+ */
+export interface SliderGalleryBlock {
+  autoPlayInterval?: number | null;
+  source: 'images' | 'events';
+  images?:
+    | {
+        image: string | Media;
+        title: string;
+        description: string;
+        link?: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: string | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: string | Post;
+              } | null);
+          url?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'sliderGallery';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "house-churches".
  */
 export interface HouseChurch {
@@ -1150,6 +1161,25 @@ export interface HouseChurch {
   status: 'active' | 'inactive';
   lat: number;
   lng: number;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events".
+ */
+export interface Event {
+  id: string;
+  name: string;
+  description: string;
+  date: string;
+  location?: string | null;
+  requiresRegistration?: boolean | null;
+  /**
+   * Link to the registration page for this event.
+   */
+  url?: string | null;
+  image: string | Media;
   updatedAt: string;
   createdAt: string;
 }
@@ -1380,6 +1410,10 @@ export interface PayloadLockedDocument {
         value: string | HouseChurch;
       } | null)
     | ({
+        relationTo: 'events';
+        value: string | Event;
+      } | null)
+    | ({
         relationTo: 'messages';
         value: string | Message;
       } | null)
@@ -1494,13 +1528,13 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
-        sliderGallery?: T | SliderGalleryBlockSelect<T>;
+        showcaseGallery?: T | ShowcaseGalleryBlockSelect<T>;
         contentPathway?: T | ContentPathwayBlockSelect<T>;
-        imageCarousel?: T | ImageCarouselBlockSelect<T>;
         messagesBlock?: T | MessagesBlockSelect<T>;
         houseChurchMap?: T | HouseChurchMapBlockSelect<T>;
         embed?: T | EmbedBlockSelect<T>;
         iconBlock?: T | IconBlockSelect<T>;
+        sliderGallery?: T | SliderGalleryBlockSelect<T>;
       };
   meta?:
     | T
@@ -1646,9 +1680,9 @@ export interface FormBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "SliderGalleryBlock_select".
+ * via the `definition` "ShowcaseGalleryBlock_select".
  */
-export interface SliderGalleryBlockSelect<T extends boolean = true> {
+export interface ShowcaseGalleryBlockSelect<T extends boolean = true> {
   showMegaTitle?: T;
   megaTitle?: T;
   titleColor?: T;
@@ -1698,31 +1732,6 @@ export interface ContentPathwayBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ImageCarouselBlock_select".
- */
-export interface ImageCarouselBlockSelect<T extends boolean = true> {
-  autoPlayInterval?: T;
-  images?:
-    | T
-    | {
-        image?: T;
-        title?: T;
-        description?: T;
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-            };
-        id?: T;
-      };
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "MessagesBlock_select".
  */
 export interface MessagesBlockSelect<T extends boolean = true> {
@@ -1763,6 +1772,32 @@ export interface IconBlockSelect<T extends boolean = true> {
     | {
         type?: T;
         content?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SliderGalleryBlock_select".
+ */
+export interface SliderGalleryBlockSelect<T extends boolean = true> {
+  autoPlayInterval?: T;
+  source?: T;
+  images?:
+    | T
+    | {
+        image?: T;
+        title?: T;
+        description?: T;
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+            };
         id?: T;
       };
   id?: T;
@@ -1831,26 +1866,6 @@ export interface MediaSelect<T extends boolean = true> {
               filesize?: T;
               filename?: T;
             };
-        '16:9'?:
-          | T
-          | {
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
-        '4:3'?:
-          | T
-          | {
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
         square?:
           | T
           | {
@@ -1892,6 +1907,36 @@ export interface MediaSelect<T extends boolean = true> {
               filename?: T;
             };
         xlarge?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        '16:9'?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        '4:3'?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        panoramic?:
           | T
           | {
               url?: T;
@@ -1972,6 +2017,21 @@ export interface HouseChurchesSelect<T extends boolean = true> {
   status?: T;
   lat?: T;
   lng?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events_select".
+ */
+export interface EventsSelect<T extends boolean = true> {
+  name?: T;
+  description?: T;
+  date?: T;
+  location?: T;
+  requiresRegistration?: T;
+  url?: T;
+  image?: T;
   updatedAt?: T;
   createdAt?: T;
 }

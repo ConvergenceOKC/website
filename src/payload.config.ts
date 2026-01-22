@@ -11,6 +11,7 @@ import { Footer } from '@/Footer/config';
 import { Header } from '@/Header/config';
 import { Socials } from '@/Socials/config';
 import { Categories } from '@/collections/Categories';
+import { Events } from '@/collections/Events';
 import { HouseChurches } from '@/collections/HouseChurches';
 import { Media } from '@/collections/Media';
 import { MessageSeries } from '@/collections/MessageSeries';
@@ -92,6 +93,7 @@ export default buildConfig({
     Categories,
     Users,
     HouseChurches,
+    Events,
     Messages,
     MessageSeries,
     Staff,

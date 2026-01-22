@@ -8,9 +8,8 @@ import { ContentPathwayBlock } from '@/blocks/ContentPathway/Component';
 import { FormBlock } from '@/blocks/Form/Component';
 import { HouseChurchMapBlock } from '@/blocks/HouseChurchMap/Component';
 import { IconBlock } from '@/blocks/IconBlock/Component';
-import { ImageCarouselBlock } from '@/blocks/ImageCarousel/Component';
 import { MediaBlock } from '@/blocks/MediaBlock/Component';
-import { SliderGalleryBlock } from '@/blocks/SliderGallery/Component';
+import { ShowcaseGalleryBlock } from '@/blocks/ShowcaseGallery/Component';
 import type { Page } from '@/payload-types';
 
 const blockComponents = {
@@ -19,10 +18,9 @@ const blockComponents = {
   cta: CallToActionBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
-  sliderGallery: SliderGalleryBlock,
+  showcaseGallery: ShowcaseGalleryBlock,
   contentPathway: ContentPathwayBlock,
   buttonBlock: ButtonBlock,
-  imageCarousel: ImageCarouselBlock,
   houseChurchMap: HouseChurchMapBlock,
   iconBlock: IconBlock,
 };

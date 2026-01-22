@@ -18,12 +18,12 @@ import { EmbedBlock } from '@/blocks/Embed/Component';
 import { FormBlock } from '@/blocks/Form/Component';
 import { HouseChurchMapBlock } from '@/blocks/HouseChurchMap/Component';
 import { IconBlock } from '@/blocks/IconBlock/Component';
-import { ImageCarouselBlock } from '@/blocks/ImageCarousel/Component';
 import { LinkGroupBlock } from '@/blocks/LinkGroupBlock/Component';
 import { LinkedTextBlock } from '@/blocks/LinkedText/Component';
 import { MediaBlock } from '@/blocks/MediaBlock/Component';
 import { MegaButtonPairBlock } from '@/blocks/MegaButtonPair/Component';
 import { MessagesBlock } from '@/blocks/Messages/Component';
+import { ShowcaseGalleryBlock } from '@/blocks/ShowcaseGallery/Component';
 import { SliderGalleryBlock } from '@/blocks/SliderGallery/Component';
 import { StaffBlock } from '@/blocks/StaffBlock/Component';
 import { headingConverter } from '@/components/RichText/converters/headingConverter';
@@ -37,12 +37,12 @@ import type {
   FormBlock as FormBlockProps,
   HouseChurchMapBlock as HouseChurchMapBlockProps,
   IconBlock as IconBlockProps,
-  ImageCarouselBlock as ImageCarouselBlockProps,
   LinkGroupBlock as LinkGroupBlockProps,
   LinkedText as LinkedTextProps,
   MediaBlock as MediaBlockProps,
   MegaButtonPair as MegaButtonPairProps,
   MessagesBlock as MessagesBlockProps,
+  ShowcaseGalleryBlock as ShowcaseGalleryBlockProps,
   SliderGalleryBlock as SliderGalleryBlockProps,
   StaffBlock as StaffBlockProps,
 } from '@/payload-types';
@@ -60,14 +60,14 @@ type NodeTypes =
       | LinkGroupBlockProps
       | FormBlockProps
       | ButtonBlockProps
-      | SliderGalleryBlockProps
+      | ShowcaseGalleryBlockProps
       | ContentPathwayBlockProps
-      | ImageCarouselBlockProps
       | MessagesBlockProps
       | HouseChurchMapBlockProps
       | EmbedBlockProps
       | IconBlockProps
       | StaffBlockProps
+      | SliderGalleryBlockProps
     >;
 
 const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
@@ -97,14 +97,14 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
     linkGroupBlock: ({ node }) => <LinkGroupBlock {...node.fields} />,
     formBlock: ({ node }) => <FormBlock {...node.fields} />,
     buttonBlock: ({ node }) => <ButtonBlock {...node.fields} />,
-    sliderGallery: ({ node }) => <SliderGalleryBlock {...node.fields} />,
+    showcaseGallery: ({ node }) => <ShowcaseGalleryBlock {...node.fields} />,
     contentPathway: ({ node }) => <ContentPathwayBlock {...node.fields} />,
-    imageCarousel: ({ node }) => <ImageCarouselBlock {...node.fields} />,
     messagesBlock: ({ node }) => <MessagesBlock {...node.fields} />,
     houseChurchMap: ({ node }) => <HouseChurchMapBlock {...node.fields} />,
     embed: ({ node }) => <EmbedBlock {...node.fields} />,
     iconBlock: ({ node }) => <IconBlock {...node.fields} />,
     staffBlock: ({ node }) => <StaffBlock {...node.fields} />,
+    sliderGallery: ({ node }) => <SliderGalleryBlock {...node.fields} />,
   },
 });
 
