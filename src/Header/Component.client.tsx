@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
 import { Media } from '@/components/Media';
+import RichText from '@/components/RichText';
 import type { Header } from '@/payload-types';
 import { useHeaderTheme } from '@/providers/HeaderTheme';
 import { cn } from '@/utilities/ui';
@@ -41,13 +42,16 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
       )}
       {...(theme ? { 'data-theme': theme } : {})}
     >
-      <div className="bg-convergence-bright-orange flex min-h-12 items-center py-3">
-        <div className="container font-bold">
-          No in-person service on Sunday, January 25 due to inclement weather. A
-          virtual service will be held via Zoom at 10am. A link will be provided
-          soon.
+      {data.showBanner && data.banner && (
+        <div className="bg-convergence-bright-orange flex items-center py-3">
+          <RichText
+            data={data.banner}
+            className="text-convergence-white [&>p]:text-convergence-white text-xs [&>p]:mb-0"
+            enableProse={false}
+            enableGutter={true}
+          />
         </div>
-      </div>
+      )}
       <div className="container h-16 md:h-[7.375rem]">
         <div className="flex h-full items-center justify-between">
           <div className="z-50 flex items-center gap-2 md:gap-4">
