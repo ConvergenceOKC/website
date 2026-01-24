@@ -41,8 +41,8 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
       )}
       {...(theme ? { 'data-theme': theme } : {})}
     >
-      <div className="bg-convergence-bright-orange h-12">
-        <div className="container flex h-full items-center font-bold">
+      <div className="bg-convergence-bright-orange flex min-h-12 items-center py-3">
+        <div className="container font-bold">
           No in-person service on Sunday, January 25 due to inclement weather. A
           virtual service will be held via Zoom at 10am. A link will be provided
           soon.
