@@ -106,7 +106,7 @@ export const SliderGallery: React.FC<
   return (
     <div
       className={cn(
-        'relative h-[300px] w-full cursor-pointer overflow-hidden rounded-lg xl:h-[480px] 2xl:h-[560px]',
+        'relative h-[300px] w-full overflow-hidden rounded-lg xl:h-[480px] 2xl:h-[560px]',
       )}
       ref={carouselRef}
       onMouseEnter={pauseAutoPlay}
@@ -126,28 +126,50 @@ export const SliderGallery: React.FC<
             className="group relative h-full w-full flex-shrink-0 overflow-hidden"
             aria-roledescription="slide"
           >
-            <CMSLink
-              {...item.link}
-              className="relative block h-full w-full overflow-hidden"
-            >
-              <Media
-                resource={item.image}
-                fill
-                pictureClassName="block h-full w-full"
-                imgClassName="object-cover object-center group-hover:scale-110 transition-transform duration-300"
-                size="panoramic"
-              />
-              <div className="text-convergence-beige bg-convergence-brown/30 absolute inset-0 flex flex-col justify-end px-4 pb-4 sm:px-6 sm:pb-6 md:px-16 md:pb-10">
-                <h5 className="text-base leading-tight sm:text-lg md:text-2xl">
-                  {item.title}
-                </h5>
-                {item.description && (
-                  <p className="mt-1 line-clamp-2 text-xs sm:mt-2 sm:line-clamp-none sm:text-sm md:text-base">
-                    {item.description}
-                  </p>
-                )}
-              </div>
-            </CMSLink>
+            {item.link && Object.keys(item.link).length > 0 ? (
+              <CMSLink
+                {...item.link}
+                className="relative block h-full w-full overflow-hidden"
+              >
+                <Media
+                  resource={item.image}
+                  fill
+                  pictureClassName="block h-full w-full"
+                  imgClassName="object-cover object-center group-hover:scale-110 transition-transform duration-300"
+                  size="panoramic"
+                />
+                <div className="text-convergence-beige bg-convergence-brown/30 absolute inset-0 flex flex-col justify-end px-4 pb-4 sm:px-6 sm:pb-6 md:px-16 md:pb-10">
+                  <h5 className="text-base leading-tight sm:text-lg md:text-2xl">
+                    {item.title}
+                  </h5>
+                  {item.description && (
+                    <p className="mt-1 line-clamp-2 text-xs sm:mt-2 sm:line-clamp-none sm:text-sm md:text-base">
+                      {item.description}
+                    </p>
+                  )}
+                </div>
+              </CMSLink>
+            ) : (
+              <>
+                <Media
+                  resource={item.image}
+                  fill
+                  pictureClassName="block h-full w-full"
+                  imgClassName="object-cover object-center group-hover:scale-110 transition-transform duration-300"
+                  size="panoramic"
+                />
+                <div className="text-convergence-beige bg-convergence-brown/30 absolute inset-0 flex flex-col justify-end px-4 pb-4 sm:px-6 sm:pb-6 md:px-16 md:pb-10">
+                  <h5 className="text-base leading-tight sm:text-lg md:text-2xl">
+                    {item.title}
+                  </h5>
+                  {item.description && (
+                    <p className="mt-1 line-clamp-2 text-xs sm:mt-2 sm:line-clamp-none sm:text-sm md:text-base">
+                      {item.description}
+                    </p>
+                  )}
+                </div>
+              </>
+            )}
           </div>
         ))}
       </div>
