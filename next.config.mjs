@@ -41,10 +41,15 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  experimental: {
+    staticGenerationRetryCount: 1,
+    staticGenerationMaxConcurrency: 2,
+    staticGenerationMinPagesPerWorker: 25,
+  },
   // Add noindex header for  staging/preview environments
   async headers() {
     const headers = [];
-    
+
     if (process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview') {
       headers.push({
         headers: [
@@ -56,7 +61,7 @@ const nextConfig = {
         source: '/:path*',
       });
     }
-    
+
     return headers;
   },
 };
