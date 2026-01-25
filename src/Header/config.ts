@@ -1,3 +1,8 @@
+import {
+  FixedToolbarFeature,
+  InlineToolbarFeature,
+  lexicalEditor,
+} from '@payloadcms/richtext-lexical';
 import type { GlobalConfig } from 'payload';
 
 import { authenticated } from '@/access/authenticated';
@@ -12,6 +17,28 @@ export const Header: GlobalConfig = {
     update: authenticated,
   },
   fields: [
+    {
+      name: 'showBanner',
+      label: 'Show Banner',
+      type: 'checkbox',
+      defaultValue: false,
+    },
+    {
+      name: 'banner',
+      type: 'richText',
+      editor: lexicalEditor({
+        features: ({ rootFeatures }) => {
+          return [
+            ...rootFeatures,
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+          ];
+        },
+      }),
+      admin: {
+        condition: (_, siblingData) => Boolean(siblingData.showBanner),
+      },
+    },
     {
       name: 'logoLight',
       label: 'Logo (Light Header)',

@@ -2381,6 +2381,22 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Header {
   id: string;
+  showBanner?: boolean | null;
+  banner?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   logoLight?: (string | null) | Media;
   logoDark?: (string | null) | Media;
   navItems?:
@@ -2445,6 +2461,8 @@ export interface Social {
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
+  showBanner?: T;
+  banner?: T;
   logoLight?: T;
   logoDark?: T;
   navItems?:
