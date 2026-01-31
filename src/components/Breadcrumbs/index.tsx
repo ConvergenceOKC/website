@@ -26,6 +26,25 @@ export const RenderBreadcrumbs: React.FC<BreadcrumbsProps> = ({
 }) => {
   if (!breadcrumbs?.length) return null;
 
+  // Process breadcrumbs to remove /home
+  const processedBreadcrumbs = breadcrumbs.map((crumb) => {
+    // If /home is the only breadcrumb, replace with /
+    if (crumb.url === '/home') {
+      return {
+        ...crumb,
+        url: '/',
+      };
+    }
+    // Remove /home prefix from paths like /home/messages
+    if (crumb.url?.startsWith('/home/')) {
+      return {
+        ...crumb,
+        url: crumb.url.replace('/home', ''),
+      };
+    }
+    return crumb;
+  });
+
   return (
     <Breadcrumb
       className={cn(
@@ -36,7 +55,7 @@ export const RenderBreadcrumbs: React.FC<BreadcrumbsProps> = ({
       )}
     >
       <BreadcrumbList className={enableGutter ? 'container' : ''}>
-        {breadcrumbs.map((crumb, index) => (
+        {processedBreadcrumbs.map((crumb, index) => (
           <Fragment key={crumb.id}>
             <BreadcrumbItem>
               <BreadcrumbLink
@@ -51,7 +70,7 @@ export const RenderBreadcrumbs: React.FC<BreadcrumbsProps> = ({
                 <Link href={crumb.url || '#'}>{crumb.label}</Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
-            {index < breadcrumbs.length - 1 && (
+            {index < processedBreadcrumbs.length - 1 && (
               <BreadcrumbSeparator
                 className={cn({
                   'text-convergence-brown': variant === 'light',
