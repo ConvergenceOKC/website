@@ -3,8 +3,10 @@
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
-import { CMSLink } from '@/components/Link';
 import type { Header as HeaderType } from '@/payload-types';
+
+import { DesktopNavItem } from './DesktopNavItem';
+import { MobileNavItem } from './MobileNavItem';
 
 export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
   const navItems = data?.navItems || [];
@@ -28,16 +30,9 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
     <>
       {/* Desktop Navigation */}
       <nav className="hidden items-center gap-6 md:flex">
-        {navItems.map(({ link }, i) => {
-          return (
-            <CMSLink
-              key={i}
-              {...link}
-              appearance={link.appearance}
-              className="text-xs"
-            />
-          );
-        })}
+        {navItems.map((item, i) => (
+          <DesktopNavItem key={i} item={item} />
+        ))}
       </nav>
 
       {/* Mobile Menu Button */}
@@ -63,16 +58,9 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
           <nav className="fixed top-16 right-0 left-0 z-50 border-t border-current/20 bg-inherit md:top-[7.375rem] md:hidden">
             <div className="container py-4">
               <div className="flex flex-col gap-4">
-                {navItems.map(({ link }, i) => {
-                  return (
-                    <CMSLink
-                      key={i}
-                      {...link}
-                      appearance={link.appearance}
-                      className="text-convergence-beige justify-center py-2 text-xs"
-                    />
-                  );
-                })}
+                {navItems.map((item, i) => (
+                  <MobileNavItem key={i} item={item} />
+                ))}
               </div>
             </div>
           </nav>

@@ -67,6 +67,30 @@ export const Header: GlobalConfig = {
             'outline',
           ],
         }),
+        {
+          name: 'hasSubItems',
+          label: 'Has Dropdown Menu',
+          type: 'checkbox',
+          defaultValue: false,
+        },
+        {
+          name: 'subItems',
+          type: 'array',
+          label: 'Dropdown Menu Items',
+          fields: [
+            link({
+              appearances: false,
+            }),
+          ],
+          maxRows: 8,
+          admin: {
+            condition: (_, siblingData) => Boolean(siblingData?.hasSubItems),
+            initCollapsed: true,
+            components: {
+              RowLabel: '@/Header/SubItemRowLabel#SubItemRowLabel',
+            },
+          },
+        },
       ],
       maxRows: 8,
       admin: {
