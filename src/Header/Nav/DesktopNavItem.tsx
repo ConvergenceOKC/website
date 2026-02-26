@@ -26,7 +26,7 @@ export const DesktopNavItem: React.FC<{ item: NavItem }> = ({ item }) => {
 }
 
 const DesktopDropdown: React.FC<{ item: NavItem }> = ({ item }) => {
-  const { link, subItems } = item
+  const { label, subItems } = item
   const [open, setOpen] = useState(false)
   const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
 
@@ -44,11 +44,6 @@ const DesktopDropdown: React.FC<{ item: NavItem }> = ({ item }) => {
     }, 150)
   }, [])
 
-  // Determine if the parent link itself has a URL
-  const parentHasUrl =
-    (link.type === 'reference' && link.reference) ||
-    (link.type === 'custom' && link.url)
-
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -58,7 +53,7 @@ const DesktopDropdown: React.FC<{ item: NavItem }> = ({ item }) => {
           onMouseLeave={handleClose}
           type="button"
         >
-          {link.label}
+          {label}
           <ChevronDown
             className={`h-3 w-3 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
           />
@@ -72,13 +67,6 @@ const DesktopDropdown: React.FC<{ item: NavItem }> = ({ item }) => {
         onMouseLeave={handleClose}
       >
         <div className="flex flex-col gap-1">
-          {parentHasUrl && (
-            <CMSLink
-              {...link}
-              appearance="link"
-              className="text-xs px-3 py-1.5 rounded-md hover:bg-accent transition-colors"
-            />
-          )}
           {subItems?.map(({ link: subLink }, i) => (
             <CMSLink
               key={i}

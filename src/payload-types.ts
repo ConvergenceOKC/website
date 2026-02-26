@@ -2401,7 +2401,9 @@ export interface Header {
   logoDark?: (string | null) | Media;
   navItems?:
     | {
-        link: {
+        hasSubItems?: boolean | null;
+        label?: string | null;
+        link?: {
           type?: ('reference' | 'custom') | null;
           newTab?: boolean | null;
           reference?:
@@ -2420,7 +2422,6 @@ export interface Header {
            */
           appearance?: ('link' | 'secondary' | 'ghost' | 'destructive' | 'default' | 'outline') | null;
         };
-        hasSubItems?: boolean | null;
         subItems?:
           | {
               link: {
@@ -2489,6 +2490,8 @@ export interface HeaderSelect<T extends boolean = true> {
   navItems?:
     | T
     | {
+        hasSubItems?: T;
+        label?: T;
         link?:
           | T
           | {
@@ -2499,7 +2502,6 @@ export interface HeaderSelect<T extends boolean = true> {
               label?: T;
               appearance?: T;
             };
-        hasSubItems?: T;
         subItems?:
           | T
           | {

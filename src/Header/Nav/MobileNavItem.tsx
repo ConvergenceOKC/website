@@ -22,11 +22,6 @@ export const MobileNavItem: React.FC<{ item: NavItem }> = ({ item }) => {
     )
   }
 
-  // Determine if the parent link itself has a URL
-  const parentHasUrl =
-    (link.type === 'reference' && link.reference) ||
-    (link.type === 'custom' && link.url)
-
   return (
     <div>
       <button
@@ -35,7 +30,7 @@ export const MobileNavItem: React.FC<{ item: NavItem }> = ({ item }) => {
         type="button"
         aria-expanded={expanded}
       >
-        {link.label}
+        {item.label}
         <ChevronDown
           className={`h-3 w-3 transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`}
         />
@@ -46,13 +41,6 @@ export const MobileNavItem: React.FC<{ item: NavItem }> = ({ item }) => {
         }`}
       >
         <div className="flex flex-col gap-2 pl-4 pb-2">
-          {parentHasUrl && (
-            <CMSLink
-              {...link}
-              appearance="link"
-              className="text-convergence-beige justify-center py-1 text-xs opacity-80"
-            />
-          )}
           {subItems.map(({ link: subLink }, i) => (
             <CMSLink
               key={i}

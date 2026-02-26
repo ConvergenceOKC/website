@@ -57,6 +57,21 @@ export const Header: GlobalConfig = {
       name: 'navItems',
       type: 'array',
       fields: [
+        {
+          name: 'hasSubItems',
+          label: 'Has Dropdown Menu',
+          type: 'checkbox',
+          defaultValue: false,
+        },
+        {
+          name: 'label',
+          type: 'text',
+          label: 'Menu Label',
+          required: true,
+          admin: {
+            condition: (_, siblingData) => Boolean(siblingData?.hasSubItems),
+          },
+        },
         link({
           appearances: [
             'link',
@@ -66,13 +81,12 @@ export const Header: GlobalConfig = {
             'default',
             'outline',
           ],
+          overrides: {
+            admin: {
+              condition: (_, siblingData) => !siblingData?.hasSubItems,
+            },
+          },
         }),
-        {
-          name: 'hasSubItems',
-          label: 'Has Dropdown Menu',
-          type: 'checkbox',
-          defaultValue: false,
-        },
         {
           name: 'subItems',
           type: 'array',

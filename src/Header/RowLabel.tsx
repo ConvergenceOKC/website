@@ -7,8 +7,9 @@ export const RowLabel: React.FC<RowLabelProps> = () => {
 
   const hasSubItems = data?.data?.hasSubItems
   const suffix = hasSubItems ? ' (dropdown)' : ''
-  const label = data?.data?.link?.label
-    ? `Nav item ${data.rowNumber !== undefined ? data.rowNumber + 1 : ''}: ${data?.data?.link?.label}${suffix}`
+  const displayLabel = hasSubItems ? data?.data?.label : data?.data?.link?.label
+  const label = displayLabel
+    ? `Nav item ${data.rowNumber !== undefined ? data.rowNumber + 1 : ''}: ${displayLabel}${suffix}`
     : 'Row'
 
   return <div>{label}</div>

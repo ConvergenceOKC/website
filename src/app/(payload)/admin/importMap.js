@@ -28,6 +28,7 @@ import { FolderField as FolderField_ab83ff7e88da8d3530831f296ec4756a } from '@pa
 import { LinkToDoc as LinkToDoc_aead06e4cbf6b2620c5c51c9ab283634 } from '@payloadcms/plugin-search/client'
 import { ReindexButton as ReindexButton_aead06e4cbf6b2620c5c51c9ab283634 } from '@payloadcms/plugin-search/client'
 import { FolderTypeField as FolderTypeField_3817bf644402e67bfe6577f60ef982de } from '@payloadcms/ui'
+import { SubItemRowLabel as SubItemRowLabel_2910ffa62bb15f2d296c64d27bf31d46 } from '@/Header/SubItemRowLabel'
 import { RowLabel as RowLabel_ec255a65fa6fa8d1faeb09cf35284224 } from '@/Header/RowLabel'
 import { RowLabel as RowLabel_7b33cfa087ad1b6a2f3c3947606f3b4f } from '@/Socials/RowLabel'
 import { Icon as Icon_9c1a3ff8a9adb7b1e4b7a5cd42725bdb } from '../../../graphics/Icon/index.tsx'
@@ -67,6 +68,7 @@ export const importMap = {
   "@payloadcms/plugin-search/client#LinkToDoc": LinkToDoc_aead06e4cbf6b2620c5c51c9ab283634,
   "@payloadcms/plugin-search/client#ReindexButton": ReindexButton_aead06e4cbf6b2620c5c51c9ab283634,
   "@payloadcms/ui#FolderTypeField": FolderTypeField_3817bf644402e67bfe6577f60ef982de,
+  "@/Header/SubItemRowLabel#SubItemRowLabel": SubItemRowLabel_2910ffa62bb15f2d296c64d27bf31d46,
   "@/Header/RowLabel#RowLabel": RowLabel_ec255a65fa6fa8d1faeb09cf35284224,
   "@/Socials/RowLabel#RowLabel": RowLabel_7b33cfa087ad1b6a2f3c3947606f3b4f,
   "/graphics/Icon/index.tsx#Icon": Icon_9c1a3ff8a9adb7b1e4b7a5cd42725bdb,
