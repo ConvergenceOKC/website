@@ -9,7 +9,6 @@ import { fileURLToPath } from 'url';
 
 import { anyone } from '../access/anyone';
 import { authenticated } from '../access/authenticated';
-import { getMediaUrl } from '../utilities/getMediaUrl';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -47,8 +46,14 @@ export const Media: CollectionConfig = {
   upload: {
     // Upload to the public/media directory in Next.js making them publicly accessible even outside of Payload
     staticDir: path.resolve(dirname, '../../public/media'),
-    adminThumbnail: ({ doc }) => {
-      return doc.sizes.thumbnail.url;
+    adminThumbnail: ({ doc }: { doc: any }) => {
+      // Fixes some media thumbnail URLs still pointing to the old API route instead of the new Vercel Storage URL
+      // This workaround prevents having to reupload all media to update the thumbnail URLs
+      if (doc?.sizes?.thumbnail?.url?.includes('api/media')) {
+        return `https://wyjpvuoo7aiqaczo.public.blob.vercel-storage.com/${doc?.sizes?.thumbnail?.filename}`;
+      } else {
+        return doc?.sizes?.thumbnail?.url;
+      }
     },
     imageSizes: [
       {
