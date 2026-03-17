@@ -7,12 +7,13 @@ import { mergeOpenGraph } from './mergeOpenGraph';
 const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
   const serverUrl = getServerSideURL();
 
-  let url = serverUrl + '/website-template-OG.webp';
+  let url = serverUrl + '/images/thumbnail.webp';
 
   if (image && typeof image === 'object' && 'url' in image) {
     const ogUrl = image.sizes?.og?.url;
-
-    url = ogUrl ? serverUrl + ogUrl : serverUrl + image.url;
+    if (ogUrl) {
+      url = ogUrl;
+    }
   }
 
   return url;

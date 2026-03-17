@@ -7,7 +7,7 @@ const defaultOpenGraph: Metadata['openGraph'] = {
   description: 'A church of house churhces in Oklahoma City',
   images: [
     {
-      url: `${getServerSideURL()}/website-template-OG.webp`,
+      url: `${getServerSideURL()}/images/thumbnail.webp`,
     },
   ],
   siteName: 'Convergence Church',
