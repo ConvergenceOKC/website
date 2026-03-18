@@ -111,7 +111,9 @@ export default buildConfig({
     vercelBlobStorage({
       collections: {
         media: {
-          disablePayloadAccessControl: true,
+          generateFileURL: ({ filename }) => {
+            return `${process.env.BLOB_STORAGE_BASE_URL}/${filename}`;
+          },
         },
       },
       token: process.env.BLOB_READ_WRITE_TOKEN || '',
