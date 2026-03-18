@@ -20,6 +20,7 @@ import { StaffBlock } from '@/blocks/StaffBlock/config';
 import { link } from '@/fields/link';
 
 import { ButtonBlock } from '../ButtonBlock/config';
+import { EventsBlock } from '../Events/config';
 import { FormBlock } from '../Form/config';
 import { LinkGroupBlock } from '../LinkGroupBlock/config';
 import { MediaBlock } from '../MediaBlock/config';
@@ -239,6 +240,7 @@ const columnFields: Field[] = [
               IconBlock,
               StaffBlock,
               SliderGallery,
+              EventsBlock,
             ],
           }),
           AlignFeature(),

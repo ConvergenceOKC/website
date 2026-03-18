@@ -2688,6 +2688,15 @@ export interface StaffBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "EventsBlock".
+ */
+export interface EventsBlock {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'eventsBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "MegaButtonPair".
  */
 export interface MegaButtonPair {

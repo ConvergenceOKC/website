@@ -15,6 +15,7 @@ import { CallToActionBlock } from '@/blocks/CallToAction/Component';
 import { CodeBlock, CodeBlockProps } from '@/blocks/Code/Component';
 import { ContentPathwayBlock } from '@/blocks/ContentPathway/Component';
 import { EmbedBlock } from '@/blocks/Embed/Component';
+import { EventsBlock } from '@/blocks/Events/Component';
 import { FormBlock } from '@/blocks/Form/Component';
 import { HouseChurchMapBlock } from '@/blocks/HouseChurchMap/Component';
 import { IconBlock } from '@/blocks/IconBlock/Component';
@@ -34,6 +35,7 @@ import type {
   CallToActionBlock as CTABlockProps,
   ContentPathwayBlock as ContentPathwayBlockProps,
   EmbedBlock as EmbedBlockProps,
+  EventsBlock as EventsBlockProps,
   FormBlock as FormBlockProps,
   HouseChurchMapBlock as HouseChurchMapBlockProps,
   IconBlock as IconBlockProps,
@@ -68,6 +70,7 @@ type NodeTypes =
       | IconBlockProps
       | StaffBlockProps
       | SliderGalleryBlockProps
+      | EventsBlockProps
     >;
 
 const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
@@ -105,6 +108,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
     iconBlock: ({ node }) => <IconBlock {...node.fields} />,
     staffBlock: ({ node }) => <StaffBlock {...node.fields} />,
     sliderGallery: ({ node }) => <SliderGalleryBlock {...node.fields} />,
+    eventsBlock: ({ node }) => <EventsBlock />,
   },
 });
 
