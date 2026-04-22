@@ -18,7 +18,7 @@ import { cn } from '@/utilities/ui';
 import './globals.css';
 
 export const heading = localFont({
-  src: '../../../public/fonts/NeueMontreal-Medium.otf',
+  src: '../../../public/fonts/NeueMontreal-Bold.otf',
   variable: '--font-heading',
 });
 
