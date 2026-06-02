@@ -18,32 +18,23 @@ import { cn } from '@/utilities/ui';
 import './globals.css';
 
 export const heading = localFont({
-  src: '../../../public/fonts/NeueMontreal-Medium.otf',
+  src: '../../../public/fonts/TAN-Jambore.woff',
+  weight: '400',
   variable: '--font-heading',
 });
 
-export const subheading = localFont({
-  src: '../../../public/fonts/NeueMontreal-Medium.otf',
+export const subheading = League_Spartan({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: '700',
   variable: '--font-subheading',
 });
 
-export const body = localFont({
-  src: '../../../public/fonts/NeueMontreal-Regular.otf',
+export const body = DM_Sans({
+  subsets: ['latin'],
+  display: 'swap',
   variable: '--font-body',
 });
-
-// export const subheading = League_Spartan({
-//   subsets: ['latin'],
-//   display: 'swap',
-//   weight: '700',
-//   variable: '--font-subheading',
-// });
-
-// export const body = DM_Sans({
-//   subsets: ['latin'],
-//   display: 'swap',
-//   variable: '--font-body',
-// });
 
 export default async function RootLayout({
   children,
