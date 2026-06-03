@@ -119,7 +119,7 @@ export default async function Series({ params: paramsPromise }: Args) {
           <Link
             href={'/messages/' + message.slug}
             key={message.id}
-            className="bg-convergence-beige-darker md:hover:bg-convergence-beige-darker grid grid-cols-1 items-start gap-4 rounded-lg p-6 transition md:grid-cols-[200px_1fr] md:bg-inherit"
+            className="bg-convergence-beige-darker md:hover:bg-convergence-beige-darker grid grid-cols-1 items-start gap-6 rounded-lg p-6 transition md:grid-cols-[1fr_2fr] md:bg-inherit"
           >
             <div className="relative w-full overflow-hidden rounded-lg">
               <div className="pointer-events-none absolute z-10 flex h-full w-full items-center justify-center">
