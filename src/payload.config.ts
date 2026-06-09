@@ -81,6 +81,10 @@ export default buildConfig({
   editor: defaultLexical,
   db: mongooseAdapter({
     url: process.env.DATABASE_URL || '',
+    connectOptions: {
+      maxPoolSize: 10, // max 10 connections per Lambda instance (default: 100)
+      maxIdleTimeMS: 270000, // close idle connections after 4.5 minutes (default: 0 = no limit)
+    },
     afterOpenConnection: async (adapter) => {
       const client = adapter.connection.getClient();
       attachDatabasePool(client);
