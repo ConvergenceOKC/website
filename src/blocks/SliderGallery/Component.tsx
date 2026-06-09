@@ -25,7 +25,19 @@ export const SliderGalleryBlock: React.FC<SliderGalleryProps> = async ({
     }));
 
     return (
-      <SliderGallery autoPlayInterval={autoPlayInterval} images={images} />
+      <>
+        {events &&
+        events.docs.length > 0 &&
+        events.docs.some(
+          (event) => event.date && new Date(event.date) > new Date(),
+        ) ? (
+          <SliderGallery autoPlayInterval={autoPlayInterval} images={images} />
+        ) : (
+          <p className="py-16 text-center">
+            No upcoming events found. Please check back again soon!
+          </p>
+        )}
+      </>
     );
   } else {
     return (

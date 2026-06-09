@@ -3,6 +3,8 @@ import { CollectionConfig } from 'payload';
 import { anyone } from '@/access/anyone';
 import { authenticated } from '@/access/authenticated';
 
+import { revalidateDelete, revalidateEvents } from './hooks/revalidateEvents';
+
 export const Events: CollectionConfig<'events'> = {
   slug: 'events',
   labels: {
@@ -76,4 +78,8 @@ export const Events: CollectionConfig<'events'> = {
       required: true,
     },
   ],
+  hooks: {
+    afterChange: [revalidateEvents],
+    afterDelete: [revalidateDelete],
+  },
 };
