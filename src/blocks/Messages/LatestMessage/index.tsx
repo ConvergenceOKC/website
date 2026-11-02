@@ -2,10 +2,10 @@ import Link from 'next/link';
 
 import Balancer from 'react-wrap-balancer';
 
-import { getLatestMessage } from '@/blocks/Messages/getLatestMessage';
-import { Button } from '@/components/ui/button';
-import { MediaPlayer } from '@/components/MediaPlayer';
 import { MessageInfoBar } from '@/blocks/Messages/MessageInfoBar';
+import { getLatestMessage } from '@/blocks/Messages/getLatestMessage';
+import { MediaPlayer } from '@/components/MediaPlayer';
+import { Button } from '@/components/ui/button';
 
 export const LatestMessage: React.FC = async () => {
   const messageDoc = await getLatestMessage();
@@ -46,17 +46,28 @@ export const LatestMessage: React.FC = async () => {
                 <Link href={message.notes}>Sermon Notes</Link>
               </Button>
             )}
-            {message.series && typeof message.series === 'object' && 'slug' in message.series && (
+            {message.manuscript && (
               <Button
                 asChild
                 variant={'secondary'}
                 className="text-xs sm:text-sm"
               >
-                <Link href={`/messages/series/${message.series.slug}`}>
-                  More In This Series
-                </Link>
+                <Link href={message.manuscript}>Manuscript</Link>
               </Button>
             )}
+            {message.series &&
+              typeof message.series === 'object' &&
+              'slug' in message.series && (
+                <Button
+                  asChild
+                  variant={'secondary'}
+                  className="text-xs sm:text-sm"
+                >
+                  <Link href={`/messages/series/${message.series.slug}`}>
+                    More In This Series
+                  </Link>
+                </Button>
+              )}
             {/* <Button variant={'secondary'}>
               <Link href={'/messages'}>All Messages</Link>
             </Button> */}

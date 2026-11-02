@@ -111,6 +111,16 @@ export const Messages: CollectionConfig<'messages'> = {
       type: 'text',
       required: false,
     },
+    {
+      name: 'manuscript',
+      label: 'Manuscript URL',
+      type: 'text',
+      required: false,
+      admin: {
+        description:
+          'Link to the sermon manuscript document. Separate from Notes URL, which is the study guide or sermon notes PDF.',
+      },
+    },
     ...slugField(),
   ],
   hooks: {
