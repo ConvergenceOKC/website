@@ -985,6 +985,10 @@ export interface Message {
   video: string;
   audio?: string | null;
   notes?: string | null;
+  /**
+   * Link to the sermon manuscript document. Separate from Notes URL, which is the study guide or sermon notes PDF.
+   */
+  manuscript?: string | null;
   slug?: string | null;
   slugLock?: boolean | null;
   updatedAt: string;
@@ -2059,6 +2063,7 @@ export interface MessagesSelect<T extends boolean = true> {
   video?: T;
   audio?: T;
   notes?: T;
+  manuscript?: T;
   slug?: T;
   slugLock?: T;
   updatedAt?: T;

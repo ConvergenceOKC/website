@@ -88,6 +88,11 @@ export default async function Message({ params: paramsPromise }: Args) {
               <Link href={message.notes}>Sermon Notes</Link>
             </Button>
           )}
+          {message.manuscript && (
+            <Button asChild variant={'secondary'}>
+              <Link href={message.manuscript}>Manuscript</Link>
+            </Button>
+          )}
           {message.series && (
             <Button asChild variant={'secondary'}>
               <Link href={`/messages/series/${message.series.slug}`}>
